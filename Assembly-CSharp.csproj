@@ -52,10 +52,16 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Button.cs" />
+     <Compile Include="Assets\Scripts\ButtonManager.cs" />
      <Compile Include="Assets\Scripts\EndScreen.cs" />
+     <Compile Include="Assets\Scripts\Gate.cs" />
+     <Compile Include="Assets\Scripts\IO.cs" />
+     <Compile Include="Assets\Scripts\IOButton.cs" />
      <Compile Include="Assets\Scripts\MoveCamera.cs" />
      <Compile Include="Assets\Scripts\Pin.cs" />
      <Compile Include="Assets\Scripts\Quit.cs" />
+     <Compile Include="Assets\Scripts\Wire.cs" />
+     <Compile Include="Assets\Scripts\WireManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -658,11 +664,17 @@
  <Reference Include="Unity.InternalAPIEditorBridge.003">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.003.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.AddOns.Editor">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -687,6 +699,12 @@
  </Reference>
  <Reference Include="Unity.2D.Path.Editor">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.Editor">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
