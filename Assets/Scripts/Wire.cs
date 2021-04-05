@@ -10,6 +10,8 @@ public class Wire : MonoBehaviour {
 
     public Pin startPin;
     public Pin endPin;
+    public Pin leftPin;
+    public Pin rightPin;
     public Gate startGate;
     public Gate endGate;
     public IO startIO;
@@ -20,7 +22,7 @@ public class Wire : MonoBehaviour {
 
     public state currentState;
     public bool lineDrawn;
-    private readonly int numSteps = 120;
+    private readonly int numSteps = 30;
     private Vector3 drawingPoint;
     private Vector3 end;
     private bool highOrLow;
@@ -69,40 +71,45 @@ public class Wire : MonoBehaviour {
                 lineRed.SetPosition(0, startPin.transform.position);
                 lineRed.SetPosition(1, endPin.transform.position);
             }
+            else {
+                lineRed.SetPosition(0, startPin.transform.position);
+                lineRed.SetPosition(1, startPin.transform.position);
+            }
         }
         else if (currentState == state.DRAWING) {
-            line.SetPosition(0, startPin.transform.position);
-            line.SetPosition(1, endPin.transform.position);
+            line.SetPosition(0, leftPin.transform.position);
+            line.SetPosition(1, rightPin.transform.position);
             print("drawing");
-            drawingPoint = Lerp(startPin.transform.position, endPin.transform.position, iterator1 / numSteps);
-            lineRed.SetPosition(0, startPin.transform.position);
+            drawingPoint = Lerp(leftPin.transform.position, rightPin.transform.position, iterator1 / numSteps);
+            lineRed.SetPosition(0, leftPin.transform.position);
             lineRed.SetPosition(1, drawingPoint);
             iterator1++;
             if (iterator1 >= numSteps) {
                 currentState = state.FINISHED;
-                endPin.value = true;
+                rightPin.value = true;
                 lineDrawn = true;
             }
         }
         else if (currentState == state.UNDRAWING) {
             print("undrawing");
-            line.SetPosition(0, startPin.transform.position);
-            line.SetPosition(1, endPin.transform.position);
-            undrawingPoint = Lerp(startPin.transform.position, endPin.transform.position, iterator2 / numSteps);
+            line.SetPosition(0, leftPin.transform.position);
+            line.SetPosition(1, rightPin.transform.position);
+            undrawingPoint = Lerp(leftPin.transform.position, rightPin.transform.position, iterator2 / numSteps);
             if (iterator1 != numSteps) {
-                Vector3 drawingPointMove = Lerp(drawingPoint, endPin.transform.position,
+                Vector3 drawingPointMove = Lerp(drawingPoint, rightPin.transform.position,
                     iterator2 / (numSteps - iterator1));
                 lineRed.SetPosition(1, drawingPointMove);
-                if (drawingPointMove == endPin.transform.position) iterator1 = numSteps;
+                if (drawingPointMove == rightPin.transform.position) iterator1 = numSteps;
             }
             else {
-                lineRed.SetPosition(1, endPin.transform.position);
+                lineRed.SetPosition(1, rightPin.transform.position);
             }
+
             lineRed.SetPosition(0, undrawingPoint);
             iterator2++;
             if (iterator2 >= numSteps) {
                 currentState = state.FINISHED;
-                endPin.value = false;
+                rightPin.value = false;
                 lineDrawn = false;
             }
         }
@@ -114,16 +121,29 @@ public class Wire : MonoBehaviour {
         if (currentState == state.FINISHED) {
             line.startWidth = 0.02f;
             line.endWidth = 0.02f;
+            lineRed.startWidth = 0.02f;
+            lineRed.endWidth = 0.02f;
         }
     }
 
     private void OnMouseExit() {
         line.startWidth = 0.01f;
         line.endWidth = 0.01f;
+        lineRed.startWidth = 0.01f;
+        lineRed.endWidth = 0.01f;
     }
 
     private void OnMouseOver() {
-        if (Input.GetMouseButtonDown(2)) manager.removeWire(gameObject);
+        if (Input.GetMouseButtonDown(2)) {
+            rightPin.value = false;
+            if (!leftPin.gateOrIO) {
+                if (leftPin.io.IOType != IO.type.IN) leftPin.value = false;
+            }
+            else {
+                leftPin.value = false;
+            }
+            manager.removeWire(gameObject);
+        }
     }
 
     public void propogateSignalHigh() {
@@ -148,7 +168,7 @@ public class Wire : MonoBehaviour {
 
     public void startWire(Pin pin) {
         startPin = pin;
-        if (pin.io)
+        if (!pin.gateOrIO)
             startIO = pin.io;
         else
             startGate = pin.gate;
@@ -158,14 +178,41 @@ public class Wire : MonoBehaviour {
 
     public void endWire(Pin pin) {
         endPin = pin;
-        if (pin.io)
+        if (!pin.gateOrIO) {
             endIO = pin.io;
-        else
+            if (pin.io.IOType == IO.type.IN) {
+                leftPin = pin;
+                rightPin = startPin;
+            }
+            else {
+                leftPin = startPin;
+                rightPin = pin;
+            }
+        } else {
+            if (pin.IO_Type == Pin.inOut.INPUT) {
+                rightPin = pin;
+                leftPin = startPin;
+            }
+            else {
+                rightPin = startPin;
+                leftPin = pin;
+            }
             endGate = pin.gate;
-        currentState = state.FINISHED;
-        if (startPin.value) {
-            propogateSignalHigh();
         }
+        if (!startPin.gateOrIO) {
+            endIO = pin.io;
+            if (startPin.io.IOType == IO.type.IN) {
+                leftPin = startPin;
+                rightPin = pin;
+            }
+            else {
+                leftPin = pin;
+                rightPin = startPin;
+            }
+        }
+
+        currentState = state.FINISHED;
+        if (leftPin.value) propogateSignalHigh();
     }
 
     private Vector3 Lerp(Vector3 start, Vector3 end, float t) {

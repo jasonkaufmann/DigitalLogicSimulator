@@ -47,7 +47,6 @@ public class IO : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
-        print(currentState);
         if (currentState == state.PLACING) {
             Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
             Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
@@ -56,21 +55,25 @@ public class IO : MonoBehaviour {
             if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
         }
         else if (currentState == state.INSCENE) {
-            var wires = manager.getConnectedWireIO(this);
-            if (log == logic.HIGH && wires.Count > 0 && !manager.connectionInProgress() && noChange) {
-                pin.value = true;
-                foreach (GameObject wire in wires) wire.GetComponent<Wire>().propogateSignalHigh();
-                noChange = false;
-            }
-            else if (log == logic.LOW && wires.Count > 0 && !manager.connectionInProgress() && noChange) {
-                pin.value = false;
-                foreach (GameObject wire in wires) {
-                    if (wire.GetComponent<Wire>().lineDrawn || wire.GetComponent<Wire>().currentState == Wire.state.DRAWING) wire.GetComponent<Wire>().propogateSignalLow();
+            if (IOType == type.IN) {
+                var wires = manager.getConnectedWireIO(this);
+                if (log == logic.HIGH && wires.Count > 0 && !manager.connectionInProgress() && noChange) {
+                    pin.value = true;
+                    foreach (GameObject wire in wires) wire.GetComponent<Wire>().propogateSignalHigh();
                     noChange = false;
                 }
+                else if (log == logic.LOW && wires.Count > 0 && !manager.connectionInProgress() && noChange) {
+                    pin.value = false;
+                    foreach (GameObject wire in wires) {
+                        if (wire.GetComponent<Wire>().lineDrawn ||
+                            wire.GetComponent<Wire>().currentState == Wire.state.DRAWING)
+                            wire.GetComponent<Wire>().propogateSignalLow();
+                        noChange = false;
+                    }
+                }
             }
-
-            if (IOType == type.OUT) {
+            else {
+                if (manager.getConnectedWireIO(this).Count == 0) pin.value = false;
                 if (pin.value)
                     log = logic.HIGH;
                 else

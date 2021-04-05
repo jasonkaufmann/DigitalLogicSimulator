@@ -22,7 +22,7 @@ public class WireManager: MonoBehaviour {
             if (wire.GetComponent<Wire>().startGate == gate || wire.GetComponent<Wire>().endGate == gate) {
                 connectedWires.Add(wire);
             }
-
+        print(connectedWires);
         return connectedWires;
     }
 

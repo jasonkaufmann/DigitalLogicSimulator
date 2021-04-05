@@ -37,7 +37,6 @@ public class Gate : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
-        print(currentState);
         if (currentState == state.PLACING) {
             Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
             Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
@@ -74,12 +73,13 @@ public class Gate : MonoBehaviour {
         }
         else if (gateType == type.NOT) {
             if (pins[0].value && noChange) {
-                pins[1].value = true;
-                manager.propogateHighToAllConnectedWires(pins[2]);
+                pins[1].value = false;
+                manager.propogateLowToAllConnectedWires(pins[1]);
                 noChange = false;
             }
             else if (!pins[0].value && noChange) {
-                manager.propogateLowToAllConnectedWires(pins[2]);
+                pins[1].value = true;
+                manager.propogateHighToAllConnectedWires(pins[1]);
                 noChange = false;
             }
         }

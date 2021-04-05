@@ -14,7 +14,6 @@ public class IOButton : MonoBehaviour {
 
     private void OnMouseOver() {
         currentState = gameObject.transform.parent.GetComponent<IO>().currentState;
-        print("mouse over button");
         if (Input.GetMouseButtonDown(0) && currentState == IO.state.INSCENE &&
             gameObject.transform.parent.GetComponent<IO>().IOType == IO.type.IN) {
             gameObject.transform.parent.GetComponent<IO>().noChange = true;
