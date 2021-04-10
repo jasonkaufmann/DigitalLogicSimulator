@@ -24,17 +24,18 @@ public class IO : MonoBehaviour {
     public Pin pin;
     public type IOType;
     public bool noChange;
+    public bool connectingWire;
 
     public logic log;
 
     public state currentState;
+    public bool createdFromCopy = false;
 
     // Start is called before the first frame update
     private void Start() {
         noChange = true;
-        log = logic.LOW;
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
-        currentState = state.PLACING;
+        currentState = createdFromCopy ? state.INSCENE : state.PLACING;
         pin = gameObject.GetComponentInChildren<Pin>();
         pin.io = this;
         pin.gateOrIO = false;
@@ -42,7 +43,10 @@ public class IO : MonoBehaviour {
             pin.IO_Type = Pin.inOut.INPUT;
         else
             pin.IO_Type = Pin.inOut.OUTPUT;
-        gameObject.transform.Find("circle").gameObject.AddComponent<IOButton>();
+        if (!createdFromCopy) {
+            gameObject.transform.Find("circle").gameObject.AddComponent<IOButton>();
+            log = logic.LOW;
+        }
     }
 
     // Update is called once per frame
@@ -53,9 +57,16 @@ public class IO : MonoBehaviour {
                 Mathf.Abs(moveCam.transform.position.z + 10)));
             transform.position = movePos;
             if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
+            if (IOType == type.IN) {
+                if (manager.getConnectedWireIO(this).Count == 0) pin.value = false;
+                if (pin.value)
+                    log = logic.HIGH;
+                else
+                    log = logic.LOW;
+            }
         }
         else if (currentState == state.INSCENE) {
-            if (IOType == type.IN) {
+            if (IOType == type.OUT) {
                 var wires = manager.getConnectedWireIO(this);
                 if (log == logic.HIGH && wires.Count > 0 && !manager.connectionInProgress() && noChange) {
                     pin.value = true;
@@ -74,6 +85,7 @@ public class IO : MonoBehaviour {
             }
             else {
                 if (manager.getConnectedWireIO(this).Count == 0) pin.value = false;
+                //print(pin.value);
                 if (pin.value)
                     log = logic.HIGH;
                 else

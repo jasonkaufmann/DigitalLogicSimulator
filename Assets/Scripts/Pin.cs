@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Pin : MonoBehaviour {
     public enum highOrLow {
@@ -25,6 +24,19 @@ public class Pin : MonoBehaviour {
         value = false;
     }
 
+    private void Update() {
+        var currentValue = value;
+        if (currentValue != pastValue && gate != null) {
+            //print("value changed!");
+            gate.noChange = true;
+        } else if (currentValue != pastValue && io != null) {
+            //print("value changed!");
+            io.noChange = true;
+        }
+
+        pastValue = currentValue;
+    }
+
     private void OnMouseEnter() {
         if (gateOrIO) {
             if (gate.GetComponent<Gate>().currentState != Gate.state.PLACING)
@@ -40,28 +52,34 @@ public class Pin : MonoBehaviour {
         GetComponent<SpriteRenderer>().color = Color.black;
     }
 
-    private void Update() {
-        bool currentValue = value;
-        if (currentValue != pastValue && gate!=null) {
-            print("value changed!");
-            gate.noChange = true;
-        }
-        pastValue = currentValue;
-    }
-
     private void OnMouseOver() {
         if (Input.GetMouseButtonDown(0)) {
             GameObject wire = manager.connectionInProgress();
             if (wire) {
-                if (wire.GetComponent<Wire>().startPin.IO_Type == IO_Type &&
-                    wire.GetComponent<Wire>().startPin.gateOrIO != gateOrIO)
-                    wire.GetComponent<Wire>().endWire(this);
-                else if (wire.GetComponent<Wire>().startPin.IO_Type != IO_Type &&
-                         wire.GetComponent<Wire>().startPin.gateOrIO == gateOrIO)
-                    wire.GetComponent<Wire>().endWire(this);
+                if (wire.GetComponent<Wire>().startPin.IO_Type != IO_Type) {
+                    if (IO_Type == inOut.INPUT && manager.getConnectedWiresPin(this).Count > 0) {
+                        
+                    }
+                    else {
+                        wire.GetComponent<Wire>().endWire(this);
+                    }
+                }
             }
             else {
-                if (true) manager.createWire(this);
+                if (!gateOrIO) {
+                    if (io.IOType == IO.type.IN && manager.getConnectedWiresPin(this).Count > 0) {
+                    }
+                    else {
+                        manager.createWire(this);
+                    }
+                }
+                else {
+                    if (IO_Type == inOut.INPUT && manager.getConnectedWiresPin(this).Count > 0) {
+                    }
+                    else {
+                        manager.createWire(this);
+                    }
+                }
             }
         }
     }

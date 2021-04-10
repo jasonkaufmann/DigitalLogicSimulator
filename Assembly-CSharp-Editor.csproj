@@ -51,7 +51,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Install Bolt\Editor\InstallBoltMenuItem.cs" />
+     <Compile Include="Assets\PathCreator\Examples\Scripts\Editor\PathSceneToolEditor.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.0a8/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -252,51 +252,6 @@
  </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.0a8/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="Bolt.State.Editor">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Bolt.State.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Bolt.Core.Editor">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Bolt.Core.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Ludiq.Graphs.Editor">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Ludiq.Graphs.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Bolt.Core.Runtime">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Bolt.Core.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Ludiq.Graphs.Runtime">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Ludiq.Graphs.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="YamlDotNet">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/YamlDotNet.dll</HintPath>
- </Reference>
- <Reference Include="Antlr3.Runtime">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Antlr3.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Ionic.Zip">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Ionic.Zip.dll</HintPath>
- </Reference>
- <Reference Include="Bolt.Flow.Editor">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Bolt.Flow.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Ludiq.Core.Editor">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Ludiq.Core.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Bolt.Flow.Runtime">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Bolt.Flow.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Ludiq.Core.Runtime">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Ludiq.Core.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Ludiq.Platforms">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Ludiq.Platforms.dll</HintPath>
- </Reference>
- <Reference Include="MiscUtil">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/MiscUtil.dll</HintPath>
- </Reference>
- <Reference Include="Bolt.State.Runtime">
- <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/Ludiq/Assemblies/Bolt.State.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -661,11 +616,20 @@
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.InternalAPIEditorBridge.003">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.003.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.AddOns.Editor">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -675,6 +639,27 @@
  </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VectorGraphics.Editor">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VectorGraphics.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.InternalAPIEngineBridge.003">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.003.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VectorGraphics">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VectorGraphics.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Path.Editor">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.Editor">
+ <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -690,6 +675,14 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{a1c63111-3ec1-1f5a-5682-c67f4261d9f4}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="PathCreatorEditor.csproj">
+      <Project>{0bfd9c7b-2e6b-620c-bff2-29b8ae63975a}</Project>
+      <Name>PathCreatorEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PathCreator.csproj">
+      <Project>{41b0bbef-55c8-1fb2-4562-5f67b0b81882}</Project>
+      <Name>PathCreator</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

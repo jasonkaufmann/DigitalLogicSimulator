@@ -5,6 +5,7 @@ public class MoveCamera : MonoBehaviour {
 
     private readonly int sensitivity = 2;
     private Vector3 dragOrigin;
+    public Vector3 difference;
     private Vector3 lastDragPoint, currentDragPoint;
 
     // Update is called once per frame
@@ -23,7 +24,7 @@ public class MoveCamera : MonoBehaviour {
                 moveCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y,
                     Mathf.Abs(moveCamera.transform.position.z + 10)));
             if (Input.GetMouseButtonDown(1)) lastDragPoint = currentDragPoint;
-            Vector3 difference = currentDragPoint - lastDragPoint;
+            difference = currentDragPoint - lastDragPoint;
             moveCamera.transform.position -= new Vector3(difference.x, difference.y, 0);
             currentDragPoint =
                 moveCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y,

@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - MoveCamera
     - Pin
     - Quit
+    - Selection
     - WireManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.RiderScriptEditorData
@@ -28,6 +29,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/EndScreen.unity:
@@ -66,13 +68,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13276}
     - Class: 114
-      Script: {instanceID: 13850}
+      Script: {instanceID: 13852}
     - Class: 114
-      Script: {instanceID: 14114}
+      Script: {instanceID: 14116}
     - Class: 114
-      Script: {instanceID: 19604}
+      Script: {instanceID: 18652}
     - Class: 114
-      Script: {instanceID: 19606}
+      Script: {instanceID: 18654}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -113,6 +115,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11910}
     - Class: 114
+      Script: {instanceID: 12060}
+    - Class: 114
       Script: {instanceID: 12136}
     - Class: 114
       Script: {instanceID: 12706}
@@ -129,11 +133,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13276}
     - Class: 114
-      Script: {instanceID: 13674}
+      Script: {instanceID: 13350}
     - Class: 114
-      Script: {instanceID: 14600}
+      Script: {instanceID: 13676}
     - Class: 114
-      Script: {instanceID: 14966}
+      Script: {instanceID: 14602}
+    - Class: 114
+      Script: {instanceID: 14968}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -192,13 +198,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13276}
     - Class: 114
-      Script: {instanceID: 13850}
+      Script: {instanceID: 13852}
     - Class: 114
-      Script: {instanceID: 14186}
+      Script: {instanceID: 14188}
     - Class: 114
-      Script: {instanceID: 14278}
+      Script: {instanceID: 14280}
     - Class: 114
-      Script: {instanceID: 14534}
+      Script: {instanceID: 14536}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -290,7 +296,7 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 11fc25b1366eb7016380692b0d797914
+      Hash: 5abb9316ff5efe919c59a02b051d087a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: IO
@@ -560,6 +566,12 @@ ScriptsOnlyBuild:
     className: Benchmark04
   - hash:
       serializedVersion: 2
+      Hash: bf307e02385fc9485e09f2e0595c7650
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Selection
+  - hash:
+      serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -632,7 +644,7 @@ ScriptsOnlyBuild:
     className: TextMeshProFloatingText
   - hash:
       serializedVersion: 2
-      Hash: 5006b2f1ee1994adf91015404be0f2dd
+      Hash: fad3540c7b7ee68d12f1d35f8c621ea3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MoveCamera
@@ -740,7 +752,7 @@ ScriptsOnlyBuild:
     className: EnvMapAnimator
   - hash:
       serializedVersion: 2
-      Hash: 2e0d825e93317cf4a7d3179a496ad462
+      Hash: c9efa520deac75eddad9240330fafd3b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Gate
@@ -908,7 +920,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: fa8cea0d3e48b056905fb86c10c083a6
+      Hash: 0f53648efa1760afb8a87dbc24e642f3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Wire

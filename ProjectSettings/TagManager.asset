@@ -6,6 +6,7 @@ TagManager:
   tags:
   - moveCam
   - startup
+  - slider
   layers:
   - Default
   - TransparentFX

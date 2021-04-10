@@ -19,19 +19,19 @@ public class Gate : MonoBehaviour {
     public WireManager manager;
     public List<Pin> pins;
     public bool noChange;
+    public bool createdFromCopy = false;
 
     public type gateType;
 
     // Start is called before the first frame update
     private void Start() {
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
-        currentState = state.PLACING;
+        currentState = createdFromCopy ? state.INSCENE : state.PLACING;
         pins = new List<Pin>(gameObject.GetComponentsInChildren<Pin>());
         foreach (Pin pin in pins) {
             pin.gate = this;
             pin.gateOrIO = true;
         }
-
         noChange = true;
     }
 
