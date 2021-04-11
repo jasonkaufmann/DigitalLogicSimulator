@@ -5,6 +5,7 @@ public class IOButton : MonoBehaviour {
   
 
     private void Update() {
+        if(Time.timeScale == 0)return;
         if (gameObject.transform.parent.GetComponent<IO>().IOType == IO.type.IN) {
             if (gameObject.transform.parent.GetComponent<IO>().log == IO.logic.HIGH)
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(236f / 255f, 34f / 255f, 56f / 255f, 1f);

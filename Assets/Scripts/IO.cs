@@ -51,6 +51,7 @@ public class IO : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
+        if(Time.timeScale == 0)return;
         if (currentState == state.PLACING) {
             Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
             Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,

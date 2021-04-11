@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - Button
     - ButtonManager
+    - ControlsManager
     - MoveCamera
     - Pin
     - Quit
@@ -24,6 +25,7 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
@@ -72,9 +74,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14116}
     - Class: 114
-      Script: {instanceID: 18652}
+      Script: {instanceID: 19930}
     - Class: 114
-      Script: {instanceID: 18654}
+      Script: {instanceID: 19932}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -105,6 +107,8 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 58
+      Script: {instanceID: 0}
+    - Class: 60
       Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
@@ -137,9 +141,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13676}
     - Class: 114
+      Script: {instanceID: 13846}
+    - Class: 114
       Script: {instanceID: 14602}
     - Class: 114
       Script: {instanceID: 14968}
+    - Class: 114
+      Script: {instanceID: 26520}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -872,7 +880,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 6e27e28ec2705566115903fde83f2f3b
+      Hash: 5ed90cfd228bfc5fc1990d4211fb0871
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WireManager
@@ -920,7 +928,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: 0f53648efa1760afb8a87dbc24e642f3
+      Hash: 18dc84330d15d6e0e17435162acac283
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Wire
@@ -962,10 +970,16 @@ ScriptsOnlyBuild:
     className: TMP_TextEventCheck
   - hash:
       serializedVersion: 2
-      Hash: 5088143e3a247febafb184247f2beaf4
+      Hash: 22be2a39e050129ef52db4a0cf382735
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ButtonManager
+  - hash:
+      serializedVersion: 2
+      Hash: bebcaf2940ef27321bbf04b992d9a9cc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ControlsManager
   platform: 5
   scenePathNames:
   - Assets/Scenes/StartScreen.unity

@@ -11,7 +11,8 @@ public class Gate : MonoBehaviour {
     public enum type {
         NOT,
         OR,
-        AND
+        AND,
+        AND3
     }
 
     public state currentState;
@@ -37,6 +38,7 @@ public class Gate : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
+        if(Time.timeScale == 0)return;
         if (currentState == state.PLACING) {
             Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
             Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
@@ -80,6 +82,18 @@ public class Gate : MonoBehaviour {
             else if (!pins[0].value && noChange) {
                 pins[1].value = true;
                 manager.propogateHighToAllConnectedWires(pins[1]);
+                noChange = false;
+            }
+        }
+        else if (gateType == type.AND3) {
+            if (pins[0].value && pins[1].value && pins[2].value && noChange && !pins[3].value) {
+                pins[3].value = true;
+                manager.propogateHighToAllConnectedWires(pins[3]);
+                noChange = false;
+            }
+            else if (!(pins[0].value && pins[1].value && pins[2].value) && noChange && pins[3].value) {
+                pins[3].value = false;
+                manager.propogateLowToAllConnectedWires(pins[3]);
                 noChange = false;
             }
         }

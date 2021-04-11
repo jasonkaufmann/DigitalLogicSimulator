@@ -26,6 +26,7 @@ public class Selection : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
+        if(Time.timeScale == 0)return;
         Vector3 newPos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             Mathf.Abs(moveCam.transform.position.z + 10)));
         bool onScreen = (Input.mousePosition.y < Screen.height * 0.914f &&
@@ -56,6 +57,7 @@ public class Selection : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.M) && currentState == state.INSCENE) {
             currentState = state.COPYINGOBJECTS;
             copiedObjects = GetObjectsInSelection();
+            Destroy(newArea);
             firstFrame = true;
         }
         if (currentState == state.COPYINGOBJECTS) {
@@ -83,6 +85,7 @@ public class Selection : MonoBehaviour {
         }
 
         if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.LeftControl) && currentState == state.INSCENE) {
+            Destroy(newArea);
             var dic = new Dictionary<GameObject, GameObject>();
             firstFrame = true;
             var objectsInSelection = GetObjectsInSelection();

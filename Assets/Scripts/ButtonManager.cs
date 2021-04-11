@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,9 +8,20 @@ public class ButtonManager : MonoBehaviour
 {
     public GameObject notPF;
     public GameObject andPF;
+    public GameObject and3PF;
     public GameObject orPF;
     public GameObject inPF;
     public GameObject outPF;
+
+    public void mouseEnter() {
+        //print("mouse enter");
+        gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.75f);
+    }
+    public void mouseExit() {
+        //print("mouse exit");
+        gameObject.GetComponent<Image>().color = new Color(38f / 255f, 38f / 255f, 38f / 255f, 1f);
+    }
+    
 
     public void NOTButton() {
         GameObject newobj = Instantiate(notPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10), Quaternion.identity);
@@ -21,6 +33,13 @@ public class ButtonManager : MonoBehaviour
         GameObject newobj = Instantiate(andPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10), Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.AND;
+        newobj.name += newobj.GetInstanceID().ToString();
+    }
+    
+    public void AND3Button() {
+        GameObject newobj = Instantiate(and3PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10), Quaternion.identity);
+        newobj.AddComponent<Gate>();
+        newobj.GetComponent<Gate>().gateType = Gate.type.AND3;
         newobj.name += newobj.GetInstanceID().ToString();
     }
     

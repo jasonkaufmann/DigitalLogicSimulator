@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Slider = UnityEngine.UI.Slider;
 
 public class Wire : MonoBehaviour {
     public enum state {
@@ -29,35 +32,34 @@ public class Wire : MonoBehaviour {
 
 
     public List<Vector2> drawPoints;
+    public List<Vector2> drawPointsCopy1;
+    public List<Vector2> drawPointsCopy2;
     public List<Vector2> drawPointsRed;
 
     public int resolution = 1000;
     public state currentState;
     public bool lineDrawn = false;
-    private readonly int numSteps = 30;
 
     private float distance;
     private Vector3 drawingPoint;
-    private Vector3 end;
     private bool highOrLow;
-    private List<Vector3> interpolatedPoints;
-    private float iterator1;
-    private float iterator2;
+    
     private int j;
     private int k;
     private LineRenderer line;
-    private List<Vector3> linePoints;
     private LineRenderer lineRed;
-    private Vector3 start;
-    private float startTime;
+
     private int steps;
     private int timestep1;
     private int timestep2;
-    private Vector3 undrawingPoint;
+
+    public Camera moveCam; 
     public bool createdFromCopy = false;
+    private Mesh mesh;
 
     private void Start() {
-        
+        moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
+        mesh = new Mesh();
         if (!createdFromCopy) {
             line = gameObject.AddComponent<LineRenderer>();
             line.material = new Material(Shader.Find("Sprites/Default"));
@@ -80,8 +82,8 @@ public class Wire : MonoBehaviour {
             DestroyImmediate(gameObject.GetComponent<LineRenderer>());
             DestroyImmediate(gameObject.transform.GetChild(0).gameObject.GetComponent<LineRenderer>());
             line = gameObject.AddComponent<LineRenderer>();
-            //print(line);
             line.material = new Material(Shader.Find("Sprites/Default"));
+            line.material.color = new Color(82f / 255f, 81f / 255f, 81f / 255f, 1f);
             line.startWidth = 0.01f;
             line.endWidth = 0.01f;
             line.sortingOrder = 0;
@@ -99,14 +101,23 @@ public class Wire : MonoBehaviour {
             print(leftPin.value);
             if (leftPin.value) propogateSignalHigh();
         }
+        line.BakeMesh(mesh, GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>(), true);
+        meshCollide.sharedMesh = mesh;
+        StartCoroutine(meshUpdater());
     }
 
+    IEnumerator meshUpdater() {
+        while (true) {
+            updateMesh();
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
     // Update is called once per frame
     private void Update() {
-        updateMesh();
+        if(Time.timeScale == 0)return;
         propogateResolution = 105 - (int)GameObject.FindGameObjectWithTag("slider").GetComponent<Slider>().value;
         if (currentState == state.STARTED) {
-            Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
+            line.material.color = Color.black;
             Vector3 mousePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
                 Mathf.Abs(moveCam.transform.position.z + 10)));
 
@@ -148,21 +159,16 @@ public class Wire : MonoBehaviour {
                 lineRed.SetPosition(i, new Vector3(drawPointsRed[i].x, drawPointsRed[i].y, -10));
         }
         else if (currentState == state.UNDRAWING) {
-            //print("undrawing");
             anchorPoints[0] = startPin.transform.position;
             anchorPoints[anchorPoints.Count - 1] = endPin.transform.position;
             GenerateDrawPoints();
             line.positionCount = drawPoints.Count;
             for (var i = 0; i <= drawPoints.Count - 1; i++)
                 line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
-            /*lineRed.positionCount = drawPoints.Count;
-            for (var i = 0; i <= drawPoints.Count - 1; i++)
-                    lineRed.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));*/
-            //drawPointsRed = drawPoints;
             GenerateDrawPointsRed();
             GenerateUnDrawPointsRed();
             lineRed.positionCount = drawPointsRed.Count;
-            for (var i = 0; i <= drawPointsRed.Count - 1; i++)
+            for (var i = 0; i < drawPointsRed.Count; i++)
                 lineRed.SetPosition(i, new Vector3(drawPointsRed[i].x, drawPointsRed[i].y, -10));
         }
 
@@ -196,32 +202,32 @@ public class Wire : MonoBehaviour {
             }
 
             manager.removeWire(gameObject);
+        } else if (Input.GetMouseButtonDown(0) && currentState != state.STARTED && !manager.connectionInProgress()) {
+            Vector3 mousePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+                Mathf.Abs(moveCam.transform.position.z + 10)));
+            manager.createWireFromClick(anchorPoints, mousePos, leftPin, startPin);
         }
     }
 
     public void propogateSignalHigh() {
         lineDrawn = false;
         timestep1 = 0;
-        //print("got high command");
         highOrLow = true;
         rightPin.value = false;
-        j = 0;
-        k = 0;
         drawPointsRed = new List<Vector2>();
         lineRed.positionCount = 0;
         currentState = state.DRAWING;
     }
 
     public void propogateSignalLow() {
+        print("got low signal");
         timestep2 = 0;
-        //print("got low command");
+        lineDrawn = false;
         highOrLow = false;
-        iterator2 = 0;
         currentState = state.UNDRAWING;
     }
 
     private void updateMesh() {
-        Mesh mesh = new Mesh();
         line.BakeMesh(mesh, GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>(), true);
         meshCollide.sharedMesh = mesh;
     }
@@ -266,45 +272,41 @@ public class Wire : MonoBehaviour {
         }
         anchorPoints.Add(endPin.transform.position);
         currentState = state.FINISHED;
+        line.material.color = new Color(82f / 255f, 81f / 255f, 81f / 255f, 1f);
         if (leftPin.value) propogateSignalHigh();
     }
 
     private void GenerateUnDrawPointsRed() {
-        var drawPointsNew = new List<Vector2>(drawPoints);
-        //drawPointsRed.Clear();
-        if (startPin.IO_Type == Pin.inOut.INPUT) {
-            drawPointsNew.Reverse();
-            //drawPointsRed.Add(anchorPoints[anchorPoints.Count - 1]);
-        }
-        
+        drawPointsCopy2 = drawPoints;
         j = 0;
         k = 0;
         steps = 0;
-        distance = Vector2.Distance(drawPoints[0], drawPoints[1]);
+        distance = Vector2.Distance(drawPointsCopy2[0], drawPointsCopy2[1]);
         steps = Mathf.RoundToInt(distance * propogateResolution);
 
         for (var i = 0; i < timestep2; i++) {
             if (steps > 0) {
-                drawingPoint = Lerp(drawPointsNew[j], drawPointsNew[j + 1], k / (float) steps);
+                drawingPoint = Lerp(drawPointsCopy2[j], drawPointsCopy2[j + 1], k / (float) steps);
                 k++;
                 drawPointsRed.Remove(drawingPoint);
             }
             else {
-                drawPointsRed.Remove(drawPointsNew[j]);
+                drawPointsRed.Remove(drawPointsCopy2[j]);
             }
 
             if (k == steps) {
                 j++;
                 if (j > drawPoints.Count - 2) {
+                    print("undrawn");
                     lineDrawn = false;
                     lineRed.positionCount = 0;
+                    drawPointsRed.Clear();
                     currentState = state.FINISHED;
-                    //print(rightPin.name);
                     rightPin.value = false;
                     return;
                 }
 
-                distance = Vector2.Distance(drawPointsNew[j], drawPointsNew[j + 1]);
+                distance = Vector2.Distance(drawPointsCopy2[j], drawPointsCopy2[j + 1]);
                 steps = Mathf.RoundToInt(distance * propogateResolution);
                 k = 0;
             }
@@ -314,26 +316,26 @@ public class Wire : MonoBehaviour {
     }
 
     private void GenerateDrawPointsRed() {
-        var drawPointsNew = new List<Vector2>(drawPoints);
+        drawPointsCopy1 = drawPoints;
         drawPointsRed.Clear();
         if (startPin.IO_Type == Pin.inOut.INPUT) {
-            drawPointsNew.Reverse();
+            drawPointsCopy1.Reverse();
         }
 
         j = 0;
         k = 0;
         steps = 0;
-        distance = Vector2.Distance(drawPoints[0], drawPoints[1]);
+        distance = Vector2.Distance(drawPointsCopy1[0], drawPointsCopy1[1]);
         steps = Mathf.RoundToInt(distance * propogateResolution);
 
         for (var i = 0; i < timestep1; i++) {
             if (steps > 0) {
-                drawingPoint = Lerp(drawPointsNew[j], drawPointsNew[j + 1], k / (float) steps);
+                drawingPoint = Lerp(drawPointsCopy1[j], drawPointsCopy1[j + 1], k / (float) steps);
                 k++;
                 drawPointsRed.Add(drawingPoint);
             }
             else {
-                drawPointsRed.Add(drawPointsNew[j]);
+                drawPointsRed.Add(drawPointsCopy1[j]);
             }
 
             if (k == steps) {
@@ -349,7 +351,7 @@ public class Wire : MonoBehaviour {
                     return;
                 }
 
-                distance = Vector2.Distance(drawPointsNew[j], drawPointsNew[j + 1]);
+                distance = Vector2.Distance(drawPointsCopy1[j], drawPointsCopy1[j + 1]);
                 steps = Mathf.RoundToInt(distance * propogateResolution);
                 k = 0;
             }
@@ -360,6 +362,7 @@ public class Wire : MonoBehaviour {
 
     private void GenerateDrawPoints() {
         drawPoints.Clear();
+
         drawPoints.Add(anchorPoints[0]);
 
         for (var i = 1; i < anchorPoints.Count - 1; i++) {

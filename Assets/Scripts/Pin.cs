@@ -25,6 +25,7 @@ public class Pin : MonoBehaviour {
     }
 
     private void Update() {
+        if(Time.timeScale == 0)return;
         var currentValue = value;
         if (currentValue != pastValue && gate != null) {
             //print("value changed!");
