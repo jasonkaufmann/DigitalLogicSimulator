@@ -213,9 +213,12 @@ public class Wire : MonoBehaviour {
         lineDrawn = false;
         timestep1 = 0;
         highOrLow = true;
+        
         rightPin.value = false;
+
         drawPointsRed = new List<Vector2>();
         lineRed.positionCount = 0;
+
         currentState = state.DRAWING;
     }
 
@@ -385,7 +388,7 @@ public class Wire : MonoBehaviour {
                 Vector2 b = Vector2.Lerp(targetPoint, curveEndPoint, t);
                 Vector2 p = Vector2.Lerp(a, b, t);
 
-                if ((p - drawPoints[drawPoints.Count - 1]).sqrMagnitude > 0.0005f) drawPoints.Add(p);
+                if ((p - drawPoints[drawPoints.Count - 1]).sqrMagnitude > 0.0001f) drawPoints.Add(p);
             }
         }
 

@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Button.cs" />
      <Compile Include="Assets\Scripts\ButtonManager.cs" />
+     <Compile Include="Assets\Scripts\Controls.cs" />
      <Compile Include="Assets\Scripts\ControlsManager.cs" />
      <Compile Include="Assets\Scripts\EndScreen.cs" />
      <Compile Include="Assets\Scripts\Gate.cs" />

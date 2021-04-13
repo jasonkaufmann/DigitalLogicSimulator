@@ -7,6 +7,8 @@ TagManager:
   - moveCam
   - startup
   - slider
+  - play
+  - pause
   layers:
   - Default
   - TransparentFX

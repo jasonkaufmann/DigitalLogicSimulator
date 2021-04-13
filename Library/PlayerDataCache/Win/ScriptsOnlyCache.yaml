@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - Button
     - ButtonManager
+    - Controls
     - ControlsManager
     - MoveCamera
     - Pin
@@ -74,9 +75,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14116}
     - Class: 114
-      Script: {instanceID: 19930}
+      Script: {instanceID: 18212}
     - Class: 114
-      Script: {instanceID: 19932}
+      Script: {instanceID: 18214}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -107,8 +108,6 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 58
-      Script: {instanceID: 0}
-    - Class: 60
       Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
@@ -145,9 +144,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14602}
     - Class: 114
-      Script: {instanceID: 14968}
+      Script: {instanceID: 14634}
     - Class: 114
-      Script: {instanceID: 26520}
+      Script: {instanceID: 14970}
+    - Class: 114
+      Script: {instanceID: 42522}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -304,7 +305,7 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 5abb9316ff5efe919c59a02b051d087a
+      Hash: 11fbc9e628ad83a49a99cd44f6cd193b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: IO
@@ -760,7 +761,7 @@ ScriptsOnlyBuild:
     className: EnvMapAnimator
   - hash:
       serializedVersion: 2
-      Hash: c9efa520deac75eddad9240330fafd3b
+      Hash: a9c8dadaaa072c6f575826b31a152a87
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Gate
@@ -898,6 +899,12 @@ ScriptsOnlyBuild:
     className: TMP_ExampleScript_01
   - hash:
       serializedVersion: 2
+      Hash: fb75603d806a8b4248dd029e3063a4bf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ControlsManager
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -970,16 +977,16 @@ ScriptsOnlyBuild:
     className: TMP_TextEventCheck
   - hash:
       serializedVersion: 2
-      Hash: 22be2a39e050129ef52db4a0cf382735
+      Hash: e9632bb80ffdea6addd54c8822218253
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ButtonManager
   - hash:
       serializedVersion: 2
-      Hash: bebcaf2940ef27321bbf04b992d9a9cc
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: ControlsManager
+    className: Controls
   platform: 5
   scenePathNames:
   - Assets/Scenes/StartScreen.unity

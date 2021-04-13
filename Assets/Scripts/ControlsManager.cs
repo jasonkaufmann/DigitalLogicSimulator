@@ -1,33 +1,32 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ControlsManager : MonoBehaviour {
+    public bool currentState = true;
+    public bool changeCommand = false;
 
-    public enum type {
-        PLAY,
-        PAUSE
-        
+    private void Start() {
+        GameObject.FindGameObjectWithTag("play").GetComponent<SpriteRenderer>().enabled = false;
+        GameObject.FindGameObjectWithTag("play").GetComponent<BoxCollider2D>().enabled = false;
     }
 
-    public type _type;
-
-    private void OnMouseEnter() {
-        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-    }
-    
-    private void OnMouseExit() {
-        gameObject.GetComponent<SpriteRenderer>().color = Color.black;
-    }
-
-    private void OnMouseDown() {
-        if (_type == type.PLAY) {
-            print("play button pressed");
-            Time.timeScale = 1;
-        } else if (_type == type.PAUSE) {
-            print("pause button pressed");
-            Time.timeScale = 0;
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.S) || changeCommand) {
+            if (changeCommand) changeCommand = false;
+            print("change timescale");
+            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+            currentState = !currentState;
+            if (currentState) {
+                GameObject.FindGameObjectWithTag("play").GetComponent<SpriteRenderer>().enabled = false;
+                GameObject.FindGameObjectWithTag("pause").GetComponent<SpriteRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("play").GetComponent<BoxCollider2D>().enabled = false;
+                GameObject.FindGameObjectWithTag("pause").GetComponent<BoxCollider2D>().enabled = true;
+            }
+            else {
+                GameObject.FindGameObjectWithTag("play").GetComponent<SpriteRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("pause").GetComponent<SpriteRenderer>().enabled = false;
+                GameObject.FindGameObjectWithTag("play").GetComponent<BoxCollider2D>().enabled = true;
+                GameObject.FindGameObjectWithTag("pause").GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
     }
 }

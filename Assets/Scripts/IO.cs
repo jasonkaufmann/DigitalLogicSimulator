@@ -19,6 +19,8 @@ public class IO : MonoBehaviour {
         OUT
     }
 
+    public bool snapIOToNearestPin = true;
+
     public List<GameObject> connectedWires;
     public WireManager manager;
     public Pin pin;
@@ -29,7 +31,7 @@ public class IO : MonoBehaviour {
     public logic log;
 
     public state currentState;
-    public bool createdFromCopy = false;
+    public bool createdFromCopy;
 
     // Start is called before the first frame update
     private void Start() {
@@ -51,12 +53,42 @@ public class IO : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
-        if(Time.timeScale == 0)return;
+        if (Time.timeScale == 0) return;
         if (currentState == state.PLACING) {
             Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
             Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
                 Mathf.Abs(moveCam.transform.position.z + 10)));
             transform.position = movePos;
+            if (Input.GetKeyDown(KeyCode.R)) {
+                transform.Rotate(Vector3.forward, 45);
+            }
+            if (snapIOToNearestPin) {
+                Pin closestPin = getClosestPin();
+                Transform pinObjectPosition = closestPin.gameObject.transform;
+                Vector3 diff = gameObject.transform.position - pinObjectPosition.position;
+                if (Mathf.Abs(diff.x) > Mathf.Abs(diff.y)) {
+                    if (gameObject.transform.position.y <
+                        pinObjectPosition.position.y + pinObjectPosition.localScale.y / 2 &&
+                        gameObject.transform.position.y >
+                        pinObjectPosition.position.y - pinObjectPosition.localScale.y / 2) {
+                        transform.position = new Vector3(transform.position.x, pinObjectPosition.position.y,
+                            transform.position.z);
+                    }
+                }
+                else {
+                    float pintoCenterDistance = pin.transform.position.x - transform.position.x;
+                    if (pin.transform.position.x <
+                        pinObjectPosition.position.x + pinObjectPosition.localScale.x / 2 &&
+                        pin.transform.position.x >
+                        pinObjectPosition.position.x - pinObjectPosition.localScale.x / 2) {
+                        print("snap it");
+                        transform.position = new Vector3(pinObjectPosition.position.x - pintoCenterDistance, transform.position.y, 
+                            transform.position.z);
+                    }
+                }
+
+            }
+
             if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
             if (IOType == type.IN) {
                 if (manager.getConnectedWireIO(this).Count == 0) pin.value = false;
@@ -86,7 +118,6 @@ public class IO : MonoBehaviour {
             }
             else {
                 if (manager.getConnectedWireIO(this).Count == 0) pin.value = false;
-                //print(pin.value);
                 if (pin.value)
                     log = logic.HIGH;
                 else
@@ -102,7 +133,6 @@ public class IO : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape) && currentState == state.PLACING) Destroy(gameObject);
     }
 
-
     private void OnMouseOver() {
         if (Input.GetMouseButtonDown(0) && currentState == state.INSCENE) {
             currentState = state.WAITING;
@@ -112,5 +142,22 @@ public class IO : MonoBehaviour {
             foreach (GameObject wire in connectedWires) manager.removeWire(wire);
             Destroy(gameObject);
         }
+    }
+
+    private Pin getClosestPin() {
+        var pins = new List<Pin>(FindObjectsOfType<Pin>());
+        Pin closestPin = this.pin;
+        var closestDistance = float.PositiveInfinity;
+        foreach (Pin pin in pins) {
+            //print(pin.name);
+            Vector3 position = pin.gameObject.transform.position;
+            var distance = Vector3.Distance(gameObject.transform.position, position);
+            if (distance < closestDistance && pin.IO_Type != this.pin.IO_Type) {
+                closestDistance = distance;
+                closestPin = pin;
+            }
+        }
+
+        return closestPin;
     }
 }

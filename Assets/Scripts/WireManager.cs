@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -11,25 +12,39 @@ public class WireManager : MonoBehaviour {
     }
 
     public void createWireFromClick(List<Vector2> anchorPoints, Vector3 mousePos, Pin leftPin, Pin startPin) {
-        List<Vector2> anchorCopy = new List<Vector2>(anchorPoints);
-        if (startPin.IO_Type == Pin.inOut.INPUT) {
-            anchorCopy.Reverse();
-        }
-        Vector2 closestPoint = new Vector2();
-        float closestDistance = float.PositiveInfinity;
-        for(int i = 0; i < anchorCopy.Count - 1; i++) {
-            float distance = Vector2.Distance(anchorCopy[i], new Vector2(mousePos.x, mousePos.y));
-            if (distance < closestDistance) {
-                closestDistance = distance;
-                closestPoint = anchorCopy[i];
+        float largestAngle = Single.NegativeInfinity;
+        List<Vector2> endPoints = new List<Vector2>(anchorPoints.Take(2));
+        foreach (var point1 in anchorPoints) {
+            foreach (var point2 in anchorPoints) {
+                Vector2 dist1 = new Vector2(mousePos.x, mousePos.y) - point1;
+                Vector2 dist2 = new Vector2(mousePos.x, mousePos.y) - point2;
+                float value = Vector2.Angle(dist1, dist2);
+                if (value > largestAngle) {
+                    largestAngle = value;
+                    endPoints[0] = point1;
+                    endPoints[1] = point2;
+                }
             }
         }
 
-        int index = anchorCopy.IndexOf(closestPoint);
+        int index1 = anchorPoints.IndexOf(endPoints[0]);
+        int index2 = anchorPoints.IndexOf(endPoints[1]);
+        var anchorCopy = new List<Vector2>(anchorPoints);
+        int index;
+        if (startPin.IO_Type == Pin.inOut.INPUT) {
+            //reverse it
+            print("reverse it");
+            anchorCopy.Reverse();
+            index = anchorCopy.IndexOf(index1>index2 ? endPoints[0] : endPoints[1]);
+        }
+        else {
+            index = anchorCopy.IndexOf(index1<index2 ? endPoints[0] : endPoints[1]);
+        }
+        
         GameObject newObj = new GameObject();
         newObj.name = "wire";
         newObj.AddComponent<Wire>();
-        newObj.GetComponent<Wire>().anchorPoints = new List<Vector2>(anchorCopy.Take(index+1));
+        newObj.GetComponent<Wire>().anchorPoints = new List<Vector2>(anchorCopy.Take(index + 1));
         newObj.GetComponent<Wire>().anchorPoints.Add(mousePos);
         newObj.GetComponent<Wire>().startPin = leftPin;
         if (!leftPin.gateOrIO)
@@ -39,7 +54,6 @@ public class WireManager : MonoBehaviour {
         newObj.GetComponent<Wire>().currentState = Wire.state.WAITING;
         newObj.GetComponent<Wire>().drawPoints = new List<Vector2>();
         addWire(newObj);
-
     }
 
     public GameObject connectionInProgress() {
@@ -62,7 +76,9 @@ public class WireManager : MonoBehaviour {
     public List<GameObject> getConnectedWiresPin(Pin pin) {
         var connectedWires = new List<GameObject>();
         foreach (GameObject wire in wires)
-            if (wire.GetComponent<Wire>().startPin == pin || wire.GetComponent<Wire>().endPin == pin)
+            if ((wire.GetComponent<Wire>().startPin == pin || wire.GetComponent<Wire>().endPin == pin) &&
+                wire.GetComponent<Wire>().currentState != Wire.state.WAITING &&
+                wire.GetComponent<Wire>().currentState != Wire.state.STARTED)
                 connectedWires.Add(wire);
 
         return connectedWires;
@@ -70,7 +86,10 @@ public class WireManager : MonoBehaviour {
 
     public void propogateHighToAllConnectedWires(Pin pin) {
         var wires = getConnectedWiresPin(pin);
-        foreach (GameObject wire in wires) wire.GetComponent<Wire>().propogateSignalHigh();
+        foreach (GameObject wire in wires)
+            if (wire.GetComponent<Wire>().currentState
+                != Wire.state.STARTED)
+                wire.GetComponent<Wire>().propogateSignalHigh();
     }
 
     public void propogateLowToAllConnectedWires(Pin pin) {
