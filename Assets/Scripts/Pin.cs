@@ -3,7 +3,8 @@
 public class Pin : MonoBehaviour {
     public enum highOrLow {
         HIGH,
-        LOW
+        LOW,
+        HIZ
     }
 
     public enum inOut {
@@ -17,6 +18,8 @@ public class Pin : MonoBehaviour {
     public Gate gate;
     public IO io;
     public bool gateOrIO;
+    public bool mouseOver;
+    public highOrLow actualValue;
     private bool pastValue;
 
     private void Awake() {
@@ -25,13 +28,14 @@ public class Pin : MonoBehaviour {
     }
 
     private void Update() {
-        if(Time.timeScale == 0)return;
+        if (Time.timeScale == 0) return;
         var currentValue = value;
         if (currentValue != pastValue && gate != null) {
             print("value changed!");
             gate.noChange = true;
-        } else if (currentValue != pastValue && io != null) {
-            print("value changed!");
+        }
+        else if (currentValue != pastValue && io != null) {
+            //print("value changed!");
             io.noChange = true;
         }
 
@@ -39,6 +43,7 @@ public class Pin : MonoBehaviour {
     }
 
     private void OnMouseEnter() {
+        mouseOver = true;
         if (gateOrIO) {
             if (gate.GetComponent<Gate>().currentState != Gate.state.PLACING)
                 GetComponent<SpriteRenderer>().color = Color.white;
@@ -50,6 +55,7 @@ public class Pin : MonoBehaviour {
     }
 
     private void OnMouseExit() {
+        mouseOver = false;
         GetComponent<SpriteRenderer>().color = Color.black;
     }
 
@@ -59,7 +65,6 @@ public class Pin : MonoBehaviour {
             if (wire) {
                 if (wire.GetComponent<Wire>().startPin.IO_Type != IO_Type) {
                     if (IO_Type == inOut.INPUT && manager.getConnectedWiresPin(this).Count > 0) {
-                        
                     }
                     else {
                         wire.GetComponent<Wire>().endWire(this);
@@ -71,7 +76,8 @@ public class Pin : MonoBehaviour {
                     if (io.IOType == IO.type.IN && manager.getConnectedWiresPin(this).Count > 0) {
                     }
                     else {
-                        manager.createWire(this);
+                        if(io.textField == null)
+                            manager.createWire(this);
                     }
                 }
                 else {

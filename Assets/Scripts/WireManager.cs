@@ -119,6 +119,6 @@ public class WireManager : MonoBehaviour {
 
     public void removeWire(GameObject wire) {
         wires.Remove(wire);
-        Destroy(wire);
+        DestroyImmediate(wire);
     }
 }

@@ -6,7 +6,8 @@ public class Gate : MonoBehaviour {
     public enum state {
         PLACING,
         INSCENE,
-        WAITING
+        WAITING,
+        COPYING
     }
 
     public enum type {
@@ -15,7 +16,12 @@ public class Gate : MonoBehaviour {
         AND,
         AND3,
         NAND,
-        NOR
+        NOR,
+        SR,
+        DLATCH,
+        FLIPFLOP,
+        TRISTATE,
+        XOR
     }
 
     public bool snapIOToNearestPin = true;
@@ -25,13 +31,27 @@ public class Gate : MonoBehaviour {
     public List<Pin> pins;
     public bool noChange;
     public bool createdFromCopy;
+    public bool loadedFromFile = false;
 
     public type gateType;
+    private Vector3 difference;
+    private bool firstFrame = true;
+    private Vector3 lastDragPoint, currentDragPoint;
+    private Camera moveCam;
+    private bool pastValue;
+    private Vector3 copyOffset;
 
     // Start is called before the first frame update
     private void Start() {
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
-        currentState = createdFromCopy ? state.INSCENE : state.PLACING;
+        currentState = createdFromCopy ? state.COPYING : state.PLACING;
+        if (loadedFromFile) {
+            currentState = state.INSCENE;
+        }
+        Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
+        Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+            Mathf.Abs(moveCam.transform.position.z + 10)));
+        copyOffset = transform.position - movePos;
         pins = new List<Pin>(gameObject.GetComponentsInChildren<Pin>());
         foreach (Pin pin in pins) {
             pin.gate = this;
@@ -49,36 +69,77 @@ public class Gate : MonoBehaviour {
             Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
                 Mathf.Abs(moveCam.transform.position.z + 10)));
             transform.position = movePos;
-            if (Input.GetKeyDown(KeyCode.R)) {
-                transform.Rotate(Vector3.forward, 45);
-            }
-            if (snapIOToNearestPin) {
+            if (Input.GetKeyDown(KeyCode.R)) transform.Rotate(Vector3.forward, 45);
+            if (GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().snapBool) {
                 var closestPins = getClosestPinGate();
-                if (closestPins.Item1 != null && closestPins.Item2 != null) {
-                    
-                    Transform pinObjectPosition = closestPins.Item2.gameObject.transform;
-                    Vector3 diff = closestPins.Item1.gameObject.transform.position - pinObjectPosition.position;
-                    //sDebug.DrawLine(pinObjectPosition.position, closestPins.Item1.gameObject.transform.position);
-                    if (Mathf.Abs(diff.x) > Mathf.Abs(diff.y)) {
-                        float pintoCenterDistance = closestPins.Item1.transform.position.y - transform.position.y;
-                        if (closestPins.Item1.gameObject.transform.position.y <
-                            pinObjectPosition.position.y + pinObjectPosition.localScale.y / 2 &&
-                            closestPins.Item1.gameObject.transform.position.y >
-                            pinObjectPosition.position.y - pinObjectPosition.localScale.y / 2)
-                            transform.position = new Vector3(transform.position.x,
-                                pinObjectPosition.position.y - pintoCenterDistance,
-                                transform.position.z);
-                    }
-                    else {
-                        float pintoCenterDistance = closestPins.Item1.transform.position.x - transform.position.x;
-                        if (closestPins.Item1.gameObject.transform.position.x <
-                            pinObjectPosition.position.x + pinObjectPosition.localScale.x / 2 &&
-                            closestPins.Item1.gameObject.transform.position.x >
-                            pinObjectPosition.position.x - pinObjectPosition.localScale.x / 2)
-                            transform.position = new Vector3(pinObjectPosition.position.x - pintoCenterDistance,
-                                transform.position.y,
-                                transform.position.z);
-                    }
+                if (closestPins.Item1.Item1 != null && closestPins.Item1.Item2 != null  && closestPins.Item2.Item1 != null && closestPins.Item2.Item2 != null) {
+                    Debug.DrawLine(closestPins.Item1.Item1.transform.position,
+                        closestPins.Item1.Item2.transform.position, Color.red);
+                    Debug.DrawLine(closestPins.Item2.Item1.transform.position,
+                        closestPins.Item2.Item2.transform.position, Color.blue);
+                    var pintoCenterDistanceY = closestPins.Item1.Item1.transform.position.y - transform.position.y;
+                    if (closestPins.Item1.Item1.gameObject.transform.position.y <
+                        closestPins.Item1.Item2.gameObject.transform.position.y +
+                        closestPins.Item1.Item2.gameObject.transform.localScale.y / 2 &&
+                        closestPins.Item1.Item1.gameObject.transform.position.y >
+                        closestPins.Item1.Item2.gameObject.transform.position.y -
+                        closestPins.Item1.Item2.gameObject.transform.localScale.y / 2)
+                        transform.position = new Vector3(transform.position.x,
+                            closestPins.Item1.Item2.gameObject.transform.position.y - pintoCenterDistanceY,
+                            transform.position.z);
+
+                    var pintoCenterDistanceX = closestPins.Item2.Item1.transform.position.x - transform.position.x;
+                    if (closestPins.Item2.Item1.gameObject.transform.position.x <
+                        closestPins.Item2.Item2.gameObject.transform.position.x +
+                        closestPins.Item2.Item2.gameObject.transform.localScale.x / 2 &&
+                        closestPins.Item2.Item1.gameObject.transform.position.x >
+                        closestPins.Item2.Item2.gameObject.transform.position.x -
+                        closestPins.Item2.Item2.gameObject.transform.localScale.x / 2)
+                        transform.position = new Vector3(
+                            closestPins.Item2.Item2.gameObject.transform.position.x - pintoCenterDistanceX,
+                            transform.position.y,
+                            transform.position.z);
+                }
+            }
+
+            if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
+        }
+        else if (currentState == state.COPYING) {
+            Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
+            Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+                Mathf.Abs(moveCam.transform.position.z + 10)));
+            transform.position = movePos + copyOffset;
+            if (Input.GetKeyDown(KeyCode.R)) transform.Rotate(Vector3.forward, 45);
+            if (GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().snapBool) {
+                var closestPins = getClosestPinGate();
+                Debug.DrawLine(closestPins.Item1.Item1.transform.position, closestPins.Item1.Item2.transform.position,
+                    Color.red);
+                Debug.DrawLine(closestPins.Item2.Item1.transform.position, closestPins.Item2.Item2.transform.position,
+                    Color.blue);
+                if (closestPins.Item1.Item1 != null && closestPins.Item1.Item2 != null &&
+                    closestPins.Item2.Item1 != null && closestPins.Item2.Item2 != null) {
+                    var pintoCenterDistanceY = closestPins.Item1.Item1.transform.position.y - transform.position.y;
+                    if (closestPins.Item1.Item1.gameObject.transform.position.y <
+                        closestPins.Item1.Item2.gameObject.transform.position.y +
+                        closestPins.Item1.Item2.gameObject.transform.localScale.y / 2 &&
+                        closestPins.Item1.Item1.gameObject.transform.position.y >
+                        closestPins.Item1.Item2.gameObject.transform.position.y -
+                        closestPins.Item1.Item2.gameObject.transform.localScale.y / 2)
+                        transform.position = new Vector3(transform.position.x,
+                            closestPins.Item1.Item2.gameObject.transform.position.y - pintoCenterDistanceY,
+                            transform.position.z);
+
+                    var pintoCenterDistanceX = closestPins.Item2.Item1.transform.position.x - transform.position.x;
+                    if (closestPins.Item2.Item1.gameObject.transform.position.x <
+                        closestPins.Item2.Item2.gameObject.transform.position.x +
+                        closestPins.Item2.Item2.gameObject.transform.localScale.x / 2 &&
+                        closestPins.Item2.Item1.gameObject.transform.position.x >
+                        closestPins.Item2.Item2.gameObject.transform.position.x -
+                        closestPins.Item2.Item2.gameObject.transform.localScale.x / 2)
+                        transform.position = new Vector3(
+                            closestPins.Item2.Item2.gameObject.transform.position.x - pintoCenterDistanceX,
+                            transform.position.y,
+                            transform.position.z);
                 }
             }
 
@@ -125,6 +186,21 @@ public class Gate : MonoBehaviour {
                 noChange = false;
             }
         }
+        else if (gateType == type.XOR) {
+            if ((pins[0].value && !pins[1].value || !pins[0].value && pins[1].value) && noChange && !pins[2].value) {
+                //print("go high");
+                pins[2].value = true;
+                manager.propogateHighToAllConnectedWires(pins[2]);
+                noChange = false;
+            }
+            else if ((!pins[0].value && !pins[1].value || pins[0].value && pins[1].value) && noChange &&
+                     pins[2].value) {
+                pins[2].value = false;
+                //print("go low");
+                manager.propogateLowToAllConnectedWires(pins[2]);
+                noChange = false;
+            }
+        }
         else if (gateType == type.NOR) {
             if (!(pins[0].value || pins[1].value) && noChange && !pins[2].value) {
                 pins[2].value = true;
@@ -161,9 +237,74 @@ public class Gate : MonoBehaviour {
                 noChange = false;
             }
         }
+        else if (gateType == type.SR) {
+            if (pins[0].value && !pins[1].value && !pins[2].value && noChange) {
+                pins[2].value = true;
+                pins[3].value = false;
+                manager.propogateHighToAllConnectedWires(pins[2]);
+                manager.propogateLowToAllConnectedWires(pins[3]);
+                noChange = false;
+            }
+            else if (!pins[0].value && pins[1].value && !pins[3].value && noChange) {
+                pins[3].value = true;
+                pins[2].value = false;
+                manager.propogateLowToAllConnectedWires(pins[2]);
+                manager.propogateHighToAllConnectedWires(pins[3]);
+                noChange = false;
+            }
+        }
+        else if (gateType == type.DLATCH) {
+            if (pins[0].value && pins[1].value && !pins[2].value && noChange) {
+                pins[2].value = true;
+                pins[3].value = false;
+                manager.propogateHighToAllConnectedWires(pins[2]);
+                manager.propogateLowToAllConnectedWires(pins[3]);
+                noChange = false;
+            }
+            else if (!pins[0].value && pins[1].value && !pins[3].value && noChange) {
+                pins[3].value = true;
+                pins[2].value = false;
+                manager.propogateLowToAllConnectedWires(pins[2]);
+                manager.propogateHighToAllConnectedWires(pins[3]);
+                noChange = false;
+            }
+        }
+        else if (gateType == type.FLIPFLOP) {
+            if (pins[1].value != pastValue && pins[1].value) {
+                if (pins[0].value && !pins[2].value)
+                    manager.propogateHighToAllConnectedWires(pins[2]);
+                else if (!pins[0].value && pins[2].value) manager.propogateLowToAllConnectedWires(pins[2]);
+                pins[2].value = pins[0].value;
+            }
+
+            pastValue = pins[1].value;
+        }
+        else if (gateType == type.TRISTATE) {
+            if (pins[1].value && noChange) {
+                //print(pins[0].value);
+                if (pins[0].value && !pins[2].value) {
+                    //print("propogate high");
+                    pins[2].value = true;
+                    print("got high command");
+                    manager.propogateHighToAllConnectedWires(pins[2]);
+                }
+                else if (!pins[0].value && pins[2].value) {
+                    //print("propogate low");
+                    pins[2].value = false;
+                    print("got low command");
+                    manager.propogateLowToAllConnectedWires(pins[2]);
+                }
+
+                pins[2].value = pins[0].value;
+                noChange = false;
+            }
+            else {
+                pins[2].actualValue = Pin.highOrLow.HIZ;
+            }
+        }
 
 
-        if (Input.GetKeyDown(KeyCode.Escape) && currentState == state.PLACING) Destroy(gameObject);
+        if (Input.GetKeyDown(KeyCode.Escape) && currentState == state.PLACING) DestroyImmediate(gameObject);
     }
 
     private void OnMouseOver() {
@@ -173,26 +314,32 @@ public class Gate : MonoBehaviour {
         else if (Input.GetMouseButtonDown(2)) {
             connectedWires = manager.getConnectedWiresGate(this);
             foreach (GameObject wire in connectedWires) manager.removeWire(wire);
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
         }
     }
 
-    private Tuple<Pin, Pin> getClosestPinGate() {
+    private Tuple<Tuple<Pin, Pin>, Tuple<Pin, Pin>> getClosestPinGate() {
+        var bestFriendsX = new Tuple<Pin, Pin>(null, null);
+        var bestFriendsY = new Tuple<Pin, Pin>(null, null);
         var otherPins = new List<Pin>(FindObjectsOfType<Pin>());
-        var bestFriends = new Tuple<Pin, Pin>(null, null);
-        var closestDistance = float.PositiveInfinity;
+        var closestDistanceX = float.PositiveInfinity;
+        var closestDistanceY = float.PositiveInfinity;
         foreach (Pin pin in pins)
-        foreach (Pin otherPin in otherPins) {
-            Vector3 position = pin.gameObject.transform.position;
-            var distance = Vector3.Distance(otherPin.transform.position, position);
-            if (distance < closestDistance && pin != otherPin && pin.IO_Type != otherPin.IO_Type &&
-                !pins.Contains(otherPin)) {
-                closestDistance = distance;
-                bestFriends = new Tuple<Pin, Pin>(pin, otherPin);
+        foreach (Pin pinInQuestion in otherPins)
+            if (!pins.Contains(pinInQuestion)) {
+                Vector3 position = pinInQuestion.gameObject.transform.position;
+                Vector3 diff = position - pin.transform.position;
+                if (Mathf.Abs(diff.x) < closestDistanceX) {
+                    closestDistanceX = Mathf.Abs(diff.x);
+                    bestFriendsX = Tuple.Create(pin, pinInQuestion);
+                }
+
+                if (Mathf.Abs(diff.y) < closestDistanceY) {
+                    closestDistanceY = Mathf.Abs(diff.y);
+                    bestFriendsY = Tuple.Create(pin, pinInQuestion);
+                }
             }
-        }
 
-
-        return bestFriends;
+        return Tuple.Create(bestFriendsY, bestFriendsX);
     }
 }

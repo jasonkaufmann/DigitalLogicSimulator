@@ -9,6 +9,12 @@ TagManager:
   - slider
   - play
   - pause
+  - manageCanvas
+  - start
+  - options
+  - load
+  - createTextField
+  - title
   layers:
   - Default
   - TransparentFX

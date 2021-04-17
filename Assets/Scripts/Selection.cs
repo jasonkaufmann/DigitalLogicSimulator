@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class Selection : MonoBehaviour {
     public GameObject selectionArea;
@@ -13,6 +12,8 @@ public class Selection : MonoBehaviour {
     private bool firstFrame = true;
     private float height;
     private Vector3 lastDragPoint, currentDragPoint;
+
+    private WireManager manager;
     private Camera moveCam;
 
     private Sprite rectangle;
@@ -21,16 +22,17 @@ public class Selection : MonoBehaviour {
 
     private void Start() {
         moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
+        manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
         currentState = state.WAITING;
     }
 
     // Update is called once per frame
     private void Update() {
-        if(Time.timeScale == 0)return;
+        if (Time.timeScale == 0) return;
         Vector3 newPos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             Mathf.Abs(moveCam.transform.position.z + 10)));
-        bool onScreen = (Input.mousePosition.y < Screen.height * 0.914f &&
-                         Input.mousePosition.y > Screen.height * 0.0894f);
+        var onScreen = Input.mousePosition.y < Screen.height * 0.914f &&
+                       Input.mousePosition.y > Screen.height * 0.0894f;
         if (Input.GetMouseButton(0) && currentState == state.STARTED) {
             height = newPos.y - startPos.y;
             width = newPos.x - startPos.x;
@@ -43,7 +45,7 @@ public class Selection : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0) && currentState == state.INSCENE) {
             currentState = state.WAITING;
-            Destroy(newArea);
+            DestroyImmediate(newArea);
         }
 
         if (Input.GetMouseButtonDown(0) && currentState == state.WAITING && onScreen) {
@@ -55,12 +57,14 @@ public class Selection : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.M) && currentState == state.INSCENE) {
-            currentState = state.COPYINGOBJECTS;
+            print("move object");
+            currentState = state.MOVINGOBJECTS;
             copiedObjects = GetObjectsInSelection();
-            Destroy(newArea);
+            DestroyImmediate(newArea);
             firstFrame = true;
         }
-        if (currentState == state.COPYINGOBJECTS) {
+
+        if (currentState == state.MOVINGOBJECTS) {
             Vector3 mousePos = Input.mousePosition;
             currentDragPoint =
                 moveCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y,
@@ -73,40 +77,57 @@ public class Selection : MonoBehaviour {
             difference = currentDragPoint - lastDragPoint;
             lastDragPoint = currentDragPoint;
             for (var i = 0; i < copiedObjects.Count; i++) {
-                copiedObjects[i].transform.position += new Vector3(difference.x, difference.y, 0);
-                //print(copiedObjects[i].name);
-                if (copiedObjects[i].GetComponent<Wire>() != null) {
-                    //print("changing anchor points");
+                copiedObjects[i].transform.position += difference;
+                if (copiedObjects[i].GetComponent<Wire>() != null)
                     for (var j = 0; j < copiedObjects[i].GetComponent<Wire>().anchorPoints.Count; j++)
                         copiedObjects[i].GetComponent<Wire>().anchorPoints[j] +=
                             new Vector2(difference.x, difference.y);
-                }
             }
         }
 
-        if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.LeftControl) && currentState == state.INSCENE) {
-            Destroy(newArea);
+        if (currentState == state.COPYINGOBJECTS) {
+            Vector3 mousePos = Input.mousePosition;
+            currentDragPoint =
+                moveCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y,
+                    Mathf.Abs(moveCam.transform.position.z + 10)));
+            if (firstFrame) {
+                lastDragPoint = currentDragPoint;
+                firstFrame = false;
+            }
+
+            difference = currentDragPoint - lastDragPoint;
+            lastDragPoint = currentDragPoint;
+            for (var i = 0; i < copiedObjects.Count; i++)
+                if (copiedObjects[i].GetComponent<Wire>() != null)
+                    for (var j = 0; j < copiedObjects[i].GetComponent<Wire>().anchorPoints.Count; j++)
+                        copiedObjects[i].GetComponent<Wire>().anchorPoints[j] +=
+                            new Vector2(difference.x, difference.y);
+        }
+
+        if (Input.GetKeyDown(KeyCode.C) && Input.GetKey(KeyCode.LeftControl) && currentState == state.INSCENE) {
             var dic = new Dictionary<GameObject, GameObject>();
             firstFrame = true;
             var objectsInSelection = GetObjectsInSelection();
             copiedObjects.Clear();
-            //print(objectsInSelection.Count);
-            foreach (GameObject obj in objectsInSelection) //print(obj.name);
-                if (obj.GetComponent<Wire>() == null) {
+            foreach (GameObject obj in objectsInSelection)
+                if (obj.GetComponent<Gate>() != null || obj.GetComponent<IO>() != null) {
                     GameObject newObj = Instantiate(obj, obj.transform.position, Quaternion.identity);
-                    if (newObj.GetComponent<IO>() != null) {
+                    if (newObj.GetComponent<IO>() != null)
                         if (obj.GetComponent<IO>().log == IO.logic.HIGH) {
                             print("make new high");
                             newObj.GetComponent<IO>().log = IO.logic.HIGH;
                         }
-                    }
+
                     newObj.name += newObj.GetInstanceID().ToString();
                     dic.Add(obj, newObj);
                     if (newObj.GetComponent<Gate>() != null)
                         newObj.GetComponent<Gate>().createdFromCopy = true;
                     else if (newObj.GetComponent<IO>() != null) newObj.GetComponent<IO>().createdFromCopy = true;
-                    copiedObjects.Add(newObj);
-                    //print(obj.name);
+                }
+                else if (obj.name.Contains("textFieldCanvas")) {
+                    print("FLAGG");
+                    GameObject newObj = Instantiate(obj, obj.transform.position, Quaternion.identity);
+                    newObj.transform.GetChild(0).gameObject.GetComponent<TextControls>().createdFromCopy = true;
                 }
 
             foreach (GameObject obj in objectsInSelection)
@@ -118,7 +139,7 @@ public class Selection : MonoBehaviour {
                     newObj.GetComponent<Wire>().startIO = null;
                     newObj.GetComponent<Wire>().endIO = null;
                     newObj.GetComponent<Wire>().createdFromCopy = true;
-               
+
                     if (obj.GetComponent<Wire>().startPin.gateOrIO) {
                         GameObject name = obj.GetComponent<Wire>().startPin.gate.gameObject;
                         newObj.GetComponent<Wire>().startPin =
@@ -164,34 +185,38 @@ public class Selection : MonoBehaviour {
                         newObj.GetComponent<Wire>().endIO =
                             GameObject.Find(dic[name].name).GetComponent<IO>();
                     }
-                    //print(obj.name);
+
                     copiedObjects.Add(newObj);
                 }
 
-            currentState = state.COPYINGOBJECTS;
+            if (copiedObjects.Count > 0) currentState = state.COPYINGOBJECTS;
+            DestroyImmediate(newArea);
         }
 
         if (Input.GetMouseButtonDown(2) && currentState == state.INSCENE) {
             var objectsInSelection = GetObjectsInSelection();
             foreach (GameObject obj in objectsInSelection) {
-                Destroy(obj);
-                Destroy(newArea);
+                print(obj.name);
+                if (obj.GetComponent<Wire>() != null) manager.removeWire(obj);
+                DestroyImmediate(obj);
+                DestroyImmediate(newArea);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.X) && currentState == state.INSCENE) Destroy(newArea);
+        if (Input.GetKeyDown(KeyCode.X) && currentState == state.INSCENE) DestroyImmediate(newArea);
     }
 
     private List<GameObject> GetObjectsInSelection() {
         var objectsInside = new List<GameObject>();
         var objects = new List<GameObject>(SceneManager.GetActiveScene().GetRootGameObjects());
-        for (var i = 0; i < objects.Count; i++)
+        var objectsCount = objects.Count;
+        for (var i = 0; i < objectsCount; i++)
             if (objects[i].GetComponent<Wire>() == null && objects[i].GetComponent<Gate>() == null &&
-                objects[i].GetComponent<IO>() == null) {
-                //print(objects[i].name);
-                objects.Remove(objects[i]);
+                objects[i].GetComponent<IO>() == null && !objects[i].name.Contains("textFieldCanvas")) {
             }
             else {
+                print(objects[i].name.Contains("textFieldCanvas"));
+                print(objects[i].name);
                 if (objects[i].GetComponent<Wire>() != null) {
                     var allInside = true;
                     foreach (Vector2 point in objects[i].GetComponent<Wire>().anchorPoints)
@@ -204,7 +229,6 @@ public class Selection : MonoBehaviour {
                         objectsInside.Add(objects[i]);
                 }
             }
-        //print(objectsInside.Count);
 
         return objectsInside;
     }
@@ -233,6 +257,7 @@ public class Selection : MonoBehaviour {
         STARTED,
         WAITING,
         INSCENE,
-        COPYINGOBJECTS
+        COPYINGOBJECTS,
+        MOVINGOBJECTS
     }
 }

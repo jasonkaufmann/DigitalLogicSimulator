@@ -12,7 +12,6 @@ public class MoveCamera : MonoBehaviour {
     private void Update() {
         //if(Time.timeScale == 0)return;
         Ray ray = moveCamera.ScreenPointToRay(Input.mousePosition);
-        //Debug.DrawRay(ray.origin, ray.direction, Color.green);
 
         if (moveCamera.transform.position.z < -10.5)
             moveCamera.transform.position +=  sensitivity * Input.GetAxis("Mouse ScrollWheel") * ray.direction;
