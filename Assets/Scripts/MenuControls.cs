@@ -12,6 +12,8 @@ public class MenuControls : MonoBehaviour {
     public GameObject newProjectMenu;
 
     public GameObject loadProjectMenu;
+    
+    public GameObject tutorialMenu;
 
     public GameObject projectNameField;
 
@@ -33,6 +35,11 @@ public class MenuControls : MonoBehaviour {
         Application.Quit();
     }
 
+    public void tutorialButtonClicked() {
+        mainMenu.SetActive(false);
+        tutorialMenu.SetActive(true);
+    }
+
     public void goButtonClicked() {
         var title = projectNameField.GetComponent<TMP_InputField>().text;
         if (title.Length != 0) {
@@ -51,7 +58,11 @@ public class MenuControls : MonoBehaviour {
 
     public void backButtonClicked() {
         mainMenu.SetActive(true);
-        loadProjectMenu.SetActive(false);
+        if (loadProjectMenu.activeSelf) {
+            loadProjectMenu.SetActive(false);
+        } else if (tutorialMenu.activeSelf) {
+            tutorialMenu.SetActive(false);
+        }
     }
 
     public void loadScene() {
@@ -72,11 +83,12 @@ public class MenuControls : MonoBehaviour {
             GameObject button = Instantiate(savedStateButton,
                 scrollView.transform.position + new Vector3(0, scrollView.transform.localScale.y/2, 0),
                 Quaternion.identity);
-            button.transform.SetParent(scrollView.transform.GetChild(0).GetChild(0));
-            button.transform.localScale = new Vector3(1f, 1f, 1f);
-            button.GetComponent<RectTransform>().position -= new Vector3(0, button.transform.localScale.y/2, 0) * i;
+            button.transform.SetParent(scrollView.transform.GetChild(0));
+            button.transform.localScale = new Vector3(1.1f, 1f, 1f);
+            button.GetComponent<RectTransform>().position -= new Vector3(0, button.transform.localScale.y/2 * i + button.transform.localScale.y/4, 0);
             button.transform.GetChild(0).GetComponent<TMP_Text>().text = str;
-            button.GetComponent<RectTransform>().Translate(Vector3.left/7.5f);
+            button.GetComponent<RectTransform>().anchoredPosition =
+                new Vector2(0,button.GetComponent<RectTransform>().anchoredPosition.y);
             button.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(loadScene);
             i++;
         }

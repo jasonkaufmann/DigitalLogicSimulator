@@ -87,9 +87,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14136}
     - Class: 114
-      Script: {instanceID: 22990}
+      Script: {instanceID: 18464}
     - Class: 114
-      Script: {instanceID: 22992}
+      Script: {instanceID: 18466}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -265,6 +265,8 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -613,7 +615,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 2211235bf159b54997d1fe455ee2a4fe
+      Hash: 2a1e158883d046adda7a0260953ee4af
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MenuControls
