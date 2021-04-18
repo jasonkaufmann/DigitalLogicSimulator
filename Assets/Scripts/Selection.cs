@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Selection : MonoBehaviour {
     public GameObject selectionArea;
@@ -126,8 +127,23 @@ public class Selection : MonoBehaviour {
                 }
                 else if (obj.name.Contains("textFieldCanvas")) {
                     print("FLAGG");
-                    GameObject newObj = Instantiate(obj, obj.transform.position, Quaternion.identity);
-                    newObj.transform.GetChild(0).gameObject.GetComponent<TextControls>().createdFromCopy = true;
+                    GameObject newobj = Instantiate(obj, obj.transform.position, Quaternion.identity);
+                    /*GameObject newCanvas = new GameObject();
+                    newCanvas.name = "textFieldCanvas";
+                    newCanvas.AddComponent<Canvas>();
+                    newCanvas.AddComponent<CanvasScaler>();
+                    newCanvas.AddComponent<GraphicRaycaster>();
+                    newobj.transform.SetParent(newCanvas.transform);
+                    newCanvas.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
+                    newCanvas.GetComponent<Canvas>().worldCamera =
+                        GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
+                    newobj.AddComponent<TextControls>();
+                    newobj.transform.localScale = new Vector3(0.00033f, 0.00033f, 0.00033f);
+                    newobj.AddComponent<BoxCollider2D>();
+                    newobj.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
+                    newobj.GetComponent<BoxCollider2D>().size = new Vector2(500, 250);*/
+                    newobj.name += newobj.GetInstanceID().ToString();
+                    newobj.transform.GetChild(0).gameObject.GetComponent<TextControls>().createdFromCopy = true;
                 }
 
             foreach (GameObject obj in objectsInSelection)

@@ -45,7 +45,7 @@ public class Gate : MonoBehaviour {
     private void Start() {
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
         currentState = createdFromCopy ? state.COPYING : state.PLACING;
-        if (loadedFromFile) {
+        if (loadedFromFile && !createdFromCopy) {
             currentState = state.INSCENE;
         }
         Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();

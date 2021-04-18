@@ -29,7 +29,7 @@ public class TextControls : MonoBehaviour
         Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             Mathf.Abs(moveCam.transform.position.z + 10)));
         copyOffset = transform.position - movePos;
-        if (createdFromFile) {
+        if (createdFromFile && !createdFromCopy) {
             this.transform.GetComponent<InputField>().text = createdFromFileString;
             currentState = state.INSCENE;
         }

@@ -170,7 +170,6 @@ public class SceneLoader : MonoBehaviour
         }
         
         foreach (var text in info["textFieldArray"]) {
-            print(text);
             float x = float.Parse(text["textPosition"]["x"].ToString());
             float y= float.Parse(text["textPosition"]["y"].ToString());
             float z = float.Parse(text["textPosition"]["z"].ToString());
@@ -194,17 +193,20 @@ public class SceneLoader : MonoBehaviour
             newText.name += newText.GetInstanceID().ToString();
         }
 
-        foreach (var wire in info["wireFieldArray"]) {
+        foreach (JToken wire in info["wireFieldArray"]) {
             GameObject newWire = new GameObject();
             newWire.name = "wire";
             Wire wireComp = newWire.AddComponent<Wire>();
             List<Vector2> aPoints = new List<Vector2>();
             List<Vector2> dPoints = new List<Vector2>();
-            foreach (var point in wire["anchorPoints"])
+            foreach (JToken point in wire["anchorPoints"]) {
                 aPoints.Add(new Vector2(float.Parse(point["x"].ToString()), float.Parse(point["y"].ToString())));
-            foreach (var point in wire["drawPoints"])
+            }
+
+            foreach (JToken point in wire["drawPoints"])
                 dPoints.Add(new Vector2(float.Parse(point["x"].ToString()), float.Parse(point["y"].ToString())));
             wireComp.anchorPoints = aPoints;
+            //print(aPoints);
             wireComp.drawPoints = dPoints;
             foreach (var thingInScene in SceneManager.GetActiveScene().GetRootGameObjects()) {
                 if (thingInScene.name.Contains(wire["leftPinGateIO"].ToString())) {

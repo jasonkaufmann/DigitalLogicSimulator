@@ -40,6 +40,7 @@ public class IO : MonoBehaviour {
     public float clockFrequency = 1; //in Hz
     public bool clockOn = false;
     public GameObject textField;
+    public GameObject textCanvas;
     public bool loadedFromFile = false;
 
     public logic log;
@@ -52,7 +53,7 @@ public class IO : MonoBehaviour {
         noChange = true;
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
         currentState = createdFromCopy ? state.COPYING : state.PLACING;
-        if (loadedFromFile) {
+        if (loadedFromFile && !createdFromCopy) {
             currentState = state.INSCENE;
         }
         Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
@@ -153,8 +154,19 @@ public class IO : MonoBehaviour {
         }
 
         if (textField != null) {
+            float xPosition;
+            float yPosition;
+            if ((int)transform.eulerAngles.z > 0 && (int)transform.eulerAngles.z < 135) {
+                print("rotated 90 degrees");
+                yPosition = -gameObject.transform.GetChild(0).transform.localScale.y;
+                xPosition = 0;
+            }
+            else {
+                yPosition = gameObject.transform.GetChild(0).transform.localScale.y;
+                xPosition = 0;
+            }
             textField.transform.position = gameObject.transform.GetChild(0).transform.position +
-                                           new Vector3(0, gameObject.transform.localScale.y/8, 0);
+                                           new Vector3(xPosition, yPosition, 0);
             if (Input.GetKeyDown(KeyCode.Return)) {
                 clockFrequency = float.Parse(textField.GetComponent<TMP_InputField>().text);
             }

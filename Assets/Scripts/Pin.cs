@@ -31,7 +31,7 @@ public class Pin : MonoBehaviour {
         if (Time.timeScale == 0) return;
         var currentValue = value;
         if (currentValue != pastValue && gate != null) {
-            print("value changed!");
+            //print("value changed!");
             gate.noChange = true;
         }
         else if (currentValue != pastValue && io != null) {

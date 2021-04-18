@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IOButton : MonoBehaviour {
     private IO.state currentState;
@@ -52,16 +53,28 @@ public class IOButton : MonoBehaviour {
                     Instantiate(
                         GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>()
                             .textFrequencyField,
-                        gameObject.transform.position + new Vector3(0, gameObject.transform.localScale.y, 0),
+                        gameObject.transform.position,
                         Quaternion.identity);
-                textObj.transform.SetParent(GameObject.FindGameObjectWithTag("manageCanvas").transform, false);
-                textObj.transform.localScale = new Vector3(0.25f, 0.25f, 1);
+                GameObject newCanvas = new GameObject();
+                newCanvas.name = "frequencyFieldCanvas";
+                newCanvas.AddComponent<Canvas>();
+                newCanvas.AddComponent<CanvasScaler>();
+                newCanvas.AddComponent<GraphicRaycaster>();
+                textObj.transform.SetParent(newCanvas.transform);
+                newCanvas.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
+                newCanvas.GetComponent<Canvas>().worldCamera =
+                    GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
+                textObj.transform.localScale = new Vector3(0.0025f, 0.0025f, 1);
                 gameObject.transform.parent.GetComponent<IO>().textField = textObj;
+                gameObject.transform.parent.GetComponent<IO>().textCanvas = newCanvas;
                 textObj.GetComponent<TMP_InputField>().text =
                     gameObject.transform.parent.GetComponent<IO>().clockFrequency.ToString();
+                textObj.AddComponent<BoxCollider2D>();
+                textObj.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
+                textObj.GetComponent<BoxCollider2D>().size = new Vector2(40, 30);
             }
             else {
-                DestroyImmediate(gameObject.transform.parent.GetComponent<IO>().textField);
+                DestroyImmediate(gameObject.transform.parent.GetComponent<IO>().textCanvas);
             }
 
         }

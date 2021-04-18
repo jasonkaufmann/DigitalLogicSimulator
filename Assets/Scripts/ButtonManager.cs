@@ -225,17 +225,23 @@ public class ButtonManager : MonoBehaviour {
                 else {
                     rightGateIONumber = sceneWire.rightPin.io.name.Split(')').Last();
                 }
-                
+
+                List<Vector2> points = sceneWire.anchorPoints;
+                if (sceneWire.leftPin != sceneWire.startPin) {
+                    points.Reverse();
+                }
                 wireSaveFields field = new wireSaveFields {
                     drawPoints = sceneWire.drawPoints,
-                    anchorPoints = sceneWire.anchorPoints,
+                    anchorPoints = points,
                     leftPinGateIO = leftGateIONumber,
                     leftPinNumber = sceneWire.leftPin.transform.GetSiblingIndex(),
                     rightPinGateIO = rightGateIONumber,
                     rightPinNumber = sceneWire.rightPin.transform.GetSiblingIndex(),
+                    startSameOrDiff = sceneWire.leftPin == sceneWire.startPin
                 };
                 wireFieldArray.Add(field);
             }
+        
 
         var textobj = JsonConvert.SerializeObject(new {gateFieldArray, ioFieldArray, textFieldArray, wireFieldArray},
             new JsonSerializerSettings {
@@ -279,5 +285,6 @@ public class ButtonManager : MonoBehaviour {
         public int leftPinNumber;
         public string rightPinGateIO;
         public int rightPinNumber;
+        public bool startSameOrDiff;
     }
 }
