@@ -84,8 +84,8 @@ public class MenuControls : MonoBehaviour {
                 scrollView.transform.position + new Vector3(0, scrollView.transform.localScale.y/2, 0),
                 Quaternion.identity);
             button.transform.SetParent(scrollView.transform.GetChild(0));
-            button.transform.localScale = new Vector3(1.1f, 1f, 1f);
-            button.GetComponent<RectTransform>().position -= new Vector3(0, button.transform.localScale.y/2 * i + button.transform.localScale.y/4, 0);
+            button.transform.localScale = new Vector3(1.1f, 1.1f, 1f);
+            button.GetComponent<RectTransform>().position -= new Vector3(0, button.transform.localScale.y/2f * i + button.transform.localScale.y/4, 0);
             button.transform.GetChild(0).GetComponent<TMP_Text>().text = str;
             button.GetComponent<RectTransform>().anchoredPosition =
                 new Vector2(0,button.GetComponent<RectTransform>().anchoredPosition.y);
