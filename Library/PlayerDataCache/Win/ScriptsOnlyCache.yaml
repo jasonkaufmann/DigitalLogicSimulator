@@ -87,9 +87,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14136}
     - Class: 114
-      Script: {instanceID: 19688}
+      Script: {instanceID: 27694}
     - Class: 114
-      Script: {instanceID: 19690}
+      Script: {instanceID: 27696}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -589,7 +589,7 @@ ScriptsOnlyBuild:
     className: BezierShape
   - hash:
       serializedVersion: 2
-      Hash: e90e74fd7ce4334449377e784eb9cae6
+      Hash: 724e435278865190405323634a563370
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Pin

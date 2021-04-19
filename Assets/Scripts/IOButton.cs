@@ -13,6 +13,8 @@ public class IOButton : MonoBehaviour {
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(236f / 255f, 34f / 255f, 56f / 255f, 1f);
             else if (gameObject.transform.parent.GetComponent<IO>().log == IO.logic.LOW)
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(82f / 255f, 80f / 255f, 80f / 255f, 1f);
+            else if (gameObject.transform.parent.GetComponent<IO>().log == IO.logic.HIZ)
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(0f / 255f, 0f / 255f, 0f / 255f, 1f);
         }
     }
 
@@ -40,7 +42,7 @@ public class IOButton : MonoBehaviour {
             else {
                 var wires = gameObject.transform.parent.GetComponent<IO>().manager.getConnectedWireIO(gameObject.transform.parent.GetComponent<IO>());
                 gameObject.transform.parent.GetComponent<IO>().log = IO.logic.LOW;
-                gameObject.transform.parent.GetComponent<IO>().pin.value = false;
+                gameObject.transform.parent.GetComponent<IO>().pin.actualValue = Pin.highOrLow.LOW;
                 foreach (GameObject wire in wires) wire.GetComponent<Wire>().propogateSignalLow();
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(82f / 255f, 80f / 255f, 80f / 255f, 1f);
             }

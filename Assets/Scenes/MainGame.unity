@@ -1140,7 +1140,7 @@ MonoBehaviour:
   snapBool: 1
   raBool: 0
   textFrequencyField: {fileID: 2438340476529180830, guid: 5d43b10f442373847b173fc76126f94c, type: 3}
-  immediateSim: 0
+  immediateSim: 1
   typing: 0
 --- !u!1 &225225775
 GameObject:
@@ -5563,7 +5563,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &1296432309
 GameObject:
   m_ObjectHideFlags: 0
@@ -6951,6 +6951,7 @@ MonoBehaviour:
   xorPF: {fileID: 5716762752070661844, guid: f25f4c7640b101e4a93f939708ee2cb9, type: 3}
   clockPF: {fileID: 1752493419044370728, guid: 1dcb4725953b40e46b3b6fe6e9b99ec0, type: 3}
   textPF: {fileID: 3161466473482078859, guid: 13776e3676a3e1742bccfac7ac13118e, type: 3}
+  manager: {fileID: 0}
 --- !u!1 &1868413125
 GameObject:
   m_ObjectHideFlags: 0

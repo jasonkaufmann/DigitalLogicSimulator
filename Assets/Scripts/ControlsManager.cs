@@ -14,7 +14,7 @@ public class ControlsManager : MonoBehaviour {
     public bool snapBool = true;
     public bool raBool = false;
     public GameObject textFrequencyField;
-    public bool immediateSim = false;
+    public bool immediateSim = true;
     public bool typing;
 
     private void Start() {

@@ -2,8 +2,8 @@
 
 public class Pin : MonoBehaviour {
     public enum highOrLow {
-        HIGH,
         LOW,
+        HIGH,
         HIZ
     }
 
@@ -20,26 +20,30 @@ public class Pin : MonoBehaviour {
     public bool gateOrIO;
     public bool mouseOver;
     public highOrLow actualValue;
-    private bool pastValue;
+    private highOrLow pastValue;
+    public bool firstFrame = true;
 
     private void Awake() {
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
-        value = false;
+        actualValue = highOrLow.LOW;
     }
 
     private void Update() {
         if (Time.timeScale == 0) return;
-        var currentValue = value;
-        if (currentValue != pastValue && gate != null) {
+        var currentValue = actualValue;
+        if ((firstFrame || currentValue != pastValue) && gate != null) {
             //print("value changed!");
             gate.noChange = true;
+            firstFrame = false;
         }
-        else if (currentValue != pastValue && io != null) {
+        else if ((firstFrame || currentValue != pastValue) && io != null) {
             //print("value changed!");
             io.noChange = true;
+            firstFrame = false;
         }
-
+        
         pastValue = currentValue;
+        
     }
 
     private void OnMouseEnter() {

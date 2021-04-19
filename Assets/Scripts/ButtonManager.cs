@@ -182,6 +182,7 @@ public class ButtonManager : MonoBehaviour {
         var ioFieldArray = new List<ioSaveFields>();
         var textFieldArray = new List<textSaveFields>();
         var wireFieldArray = new List<wireSaveFields>();
+        var camField = new camSaveFields();
         foreach (GameObject sceneObject in objects)
             if (sceneObject.GetComponent<Gate>() != null) {
                 gateSaveFields field = new gateSaveFields {
@@ -197,8 +198,10 @@ public class ButtonManager : MonoBehaviour {
                     ioPosition = sceneObject.transform.position,
                     ioNumber = sceneObject.name.Split(')').Last(),
                     type = sceneObject.GetComponent<IO>().IOType,
-                    rotation = sceneObject.transform.eulerAngles.z
+                    rotation = sceneObject.transform.eulerAngles.z,
+                    value = sceneObject.GetComponent<IO>().log
                 };
+                print(sceneObject.GetComponent<IO>().log);
                 ioFieldArray.Add(field);
             }
             else if (sceneObject.name.Contains("textFieldCanvas")) {
@@ -207,6 +210,12 @@ public class ButtonManager : MonoBehaviour {
                     text = sceneObject.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Text>().text
                 };
                 textFieldArray.Add(field);
+            }
+            else if (sceneObject.name.Contains("SceneCamera")) {
+                camSaveFields field = new camSaveFields {
+                   position = sceneObject.transform.position
+                };
+                camField = field;
             }
             else if (sceneObject.GetComponent<Wire>() != null) {
                 Wire sceneWire = sceneObject.GetComponent<Wire>();
@@ -237,13 +246,16 @@ public class ButtonManager : MonoBehaviour {
                     leftPinNumber = sceneWire.leftPin.transform.GetSiblingIndex(),
                     rightPinGateIO = rightGateIONumber,
                     rightPinNumber = sceneWire.rightPin.transform.GetSiblingIndex(),
-                    startSameOrDiff = sceneWire.leftPin == sceneWire.startPin
+                    startSameOrDiff = sceneWire.leftPin == sceneWire.startPin,
+                    lineDrawn = sceneWire.lineDrawn,
+                    lefPinValue = sceneWire.leftPin.actualValue,
+                    rightPinValue = sceneWire.rightPin.actualValue
                 };
                 wireFieldArray.Add(field);
             }
         
 
-        var textobj = JsonConvert.SerializeObject(new {gateFieldArray, ioFieldArray, textFieldArray, wireFieldArray},
+        var textobj = JsonConvert.SerializeObject(new {camField, gateFieldArray, ioFieldArray, textFieldArray, wireFieldArray},
             new JsonSerializerSettings {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
@@ -269,12 +281,17 @@ public class ButtonManager : MonoBehaviour {
         public string ioNumber;
         public IO.type type;
         public float rotation;
+        public IO.logic value;
     }
 
     [Serializable]
     public class textSaveFields {
         public Vector3 textPosition;
         public string text;
+    }
+    
+    public class camSaveFields {
+        public Vector3 position;
     }
 
     [Serializable]
@@ -283,8 +300,11 @@ public class ButtonManager : MonoBehaviour {
         public List<Vector2> anchorPoints;
         public string leftPinGateIO;
         public int leftPinNumber;
+        public Pin.highOrLow lefPinValue;
         public string rightPinGateIO;
         public int rightPinNumber;
+        public Pin.highOrLow rightPinValue;
         public bool startSameOrDiff;
+        public bool lineDrawn;
     }
 }

@@ -92,6 +92,22 @@ public class WireManager : MonoBehaviour {
                 wire.GetComponent<Wire>().propogateSignalHigh();
     }
 
+    public void setHIZToAllConnectedWires(Pin pin) {
+        var wires = getConnectedWiresPin(pin);
+        foreach (GameObject wire in wires)
+            if (wire.GetComponent<Wire>().currentState
+                != Wire.state.STARTED)
+                wire.GetComponent<Wire>().setHIZ();
+    }
+
+    public void removeHIZToAllConnectedWires(Pin pin) {
+        var wires = getConnectedWiresPin(pin);
+        foreach (GameObject wire in wires)
+            if (wire.GetComponent<Wire>().currentState
+                != Wire.state.STARTED)
+                wire.GetComponent<Wire>().removeHIZ();
+    }
+
     public void propogateLowToAllConnectedWires(Pin pin) {
         var wires = getConnectedWiresPin(pin);
         foreach (GameObject wire in wires) wire.GetComponent<Wire>().propogateSignalLow();

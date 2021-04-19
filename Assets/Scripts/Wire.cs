@@ -10,6 +10,7 @@ public class Wire : MonoBehaviour {
     public enum state {
         STARTED,
         FINISHED,
+        HIZ,
         DRAWING,
         UNDRAWING,
         WAITING,
@@ -45,7 +46,7 @@ public class Wire : MonoBehaviour {
     private float distance;
     private Vector3 drawingPoint;
     private bool highOrLow;
-    public bool immediateSim;
+    public bool immediateSim = true;
     
     private int j;
     private int k;
@@ -114,8 +115,8 @@ public class Wire : MonoBehaviour {
             lineRed.endWidth = 0.01f;
             manager.addWire(this.gameObject);
             updatePinInfo();
-            print(leftPin.value);
-            if (leftPin.value) propogateSignalHigh();
+            immediateSim = GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().immediateSim;
+            if (leftPin.actualValue == Pin.highOrLow.HIGH) propogateSignalHigh();
         }
         line.BakeMesh(mesh, GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>(), true);
         meshCollide.sharedMesh = mesh;
@@ -130,9 +131,6 @@ public class Wire : MonoBehaviour {
     }
     // Update is called once per frame
     private void Update() {
-        if (anchorPoints.Count == 4) {
-            print("hello");
-        }
         if(Time.timeScale == 0)return;
         propogateResolution = 105 - (int)GameObject.FindGameObjectWithTag("slider").GetComponent<Slider>().value;
         immediateSim = GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().immediateSim;
@@ -218,14 +216,21 @@ public class Wire : MonoBehaviour {
                 lineRed.SetPosition(i, new Vector3(drawPointsRed[i].x, drawPointsRed[i].y, -10));
         }
         else if (currentState == state.DRAWIMMEDIATE) {
-            rightPin.value = true;
+            rightPin.actualValue = Pin.highOrLow.HIGH;
             lineDrawn = true;
             currentState = state.FINISHED;
         } else if (currentState == state.UNDRAWIMMEDIATE) {
             lineDrawn = false;
-            rightPin.value = false;
+            rightPin.actualValue = Pin.highOrLow.LOW;
             lineRed.positionCount = 0;
             currentState = state.FINISHED;
+        } else if (currentState == state.HIZ) {
+            anchorPoints[0] = startPin.transform.position;
+            anchorPoints[anchorPoints.Count - 1] = endPin.transform.position;
+            GenerateDrawPoints();
+            line.positionCount = drawPoints.Count;
+            for (var i = 0; i < drawPoints.Count; i++)
+                line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && currentState == state.STARTED) manager.removeWire(gameObject);
@@ -249,12 +254,12 @@ public class Wire : MonoBehaviour {
 
     private void OnMouseOver() {
         if (Input.GetMouseButtonDown(2) && currentState != state.STARTED) {
-            rightPin.value = false;
+            rightPin.actualValue = Pin.highOrLow.LOW;
             if (!leftPin.gateOrIO) {
-                if (leftPin.io.IOType != IO.type.OUT) leftPin.value = false;
+                if (leftPin.io.IOType != IO.type.OUT) leftPin.actualValue = Pin.highOrLow.LOW;
             }
             else {
-                leftPin.value = false;
+                leftPin.actualValue = Pin.highOrLow.LOW;
             }
 
             manager.removeWire(gameObject);
@@ -271,7 +276,7 @@ public class Wire : MonoBehaviour {
         timestep1 = 0;
         highOrLow = true;
         
-        rightPin.value = false;
+        rightPin.actualValue = Pin.highOrLow.LOW;
 
         drawPointsRed = new List<Vector2>();
 
@@ -283,9 +288,34 @@ public class Wire : MonoBehaviour {
 
         currentState = state.DRAWING;
         if (immediateSim) {
-            print("draw immediate");
+            //print("draw immediate");
             currentState = state.DRAWIMMEDIATE;
         }
+    }
+
+    public void setHIZ() {
+        if (lineRed != null) {
+            lineRed.positionCount = 0;
+        }
+
+        if (line != null) {
+            line.material.color = Color.black;
+        }
+
+        lineDrawn = false;
+
+        rightPin.actualValue = Pin.highOrLow.HIZ;
+        currentState = state.HIZ;
+    }
+
+    public void removeHIZ() {
+        //print("remove HIZ");
+        if (line != null) {
+            line.material.color = new Color(82f / 255f, 81f / 255f, 81f / 255f, 1f);
+        }
+
+        rightPin.actualValue = leftPin.actualValue;
+        currentState = state.FINISHED;
     }
 
     public void propogateSignalLow() {
@@ -297,7 +327,7 @@ public class Wire : MonoBehaviour {
         currentState = state.UNDRAWING;
         
         if (immediateSim) {
-            print("undraw immediate");
+            //print("undraw immediate");
             currentState = state.UNDRAWIMMEDIATE;
         }
     }
@@ -350,7 +380,7 @@ public class Wire : MonoBehaviour {
         anchorPoints.Add(endPin.transform.position);
         currentState = state.FINISHED;
         line.material.color = new Color(82f / 255f, 81f / 255f, 81f / 255f, 1f);
-        if (leftPin.value) propogateSignalHigh();
+        if (leftPin.actualValue == Pin.highOrLow.HIGH) propogateSignalHigh();
     }
 
     private void GenerateUnDrawPointsRed() {
@@ -379,7 +409,7 @@ public class Wire : MonoBehaviour {
                     lineRed.positionCount = 0;
                     drawPointsRed.Clear();
                     currentState = state.FINISHED;
-                    rightPin.value = false;
+                    rightPin.actualValue = Pin.highOrLow.LOW;
                     return;
                 }
 
@@ -425,7 +455,7 @@ public class Wire : MonoBehaviour {
                         currentState = state.FINISHED;
                     }
                     //print(rightPin.name);
-                    rightPin.value = true;
+                    rightPin.actualValue = Pin.highOrLow.HIGH;
                     return;
                 }
 

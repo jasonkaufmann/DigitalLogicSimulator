@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class IO : MonoBehaviour {
     public enum logic {
+        LOW,
         HIGH,
-        LOW
+        HIZ
     }
 
     public enum state {
@@ -31,31 +31,29 @@ public class IO : MonoBehaviour {
     public type IOType;
     public bool noChange;
     public bool connectingWire;
-    private Vector3 lastDragPoint, currentDragPoint;
-    private Camera moveCam;
-    private bool firstFrame = true;
-    private Vector3 difference;
-    private Vector3 copyOffset;
-    private float lastTime = 0;
     public float clockFrequency = 1; //in Hz
-    public bool clockOn = false;
+    public bool clockOn;
     public GameObject textField;
     public GameObject textCanvas;
-    public bool loadedFromFile = false;
+    public bool loadedFromFile;
 
     public logic log;
 
     public state currentState;
     public bool createdFromCopy;
+    private Vector3 copyOffset;
+    private Vector3 difference;
+    private bool firstFrame = true;
+    private Vector3 lastDragPoint, currentDragPoint;
+    private float lastTime;
+    private Camera moveCam;
 
     // Start is called before the first frame update
     private void Start() {
         noChange = true;
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
         currentState = createdFromCopy ? state.COPYING : state.PLACING;
-        if (loadedFromFile && !createdFromCopy) {
-            currentState = state.INSCENE;
-        }
+        if (loadedFromFile && !createdFromCopy) currentState = state.INSCENE;
         Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
         Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             Mathf.Abs(moveCam.transform.position.z + 10)));
@@ -69,7 +67,19 @@ public class IO : MonoBehaviour {
             pin.IO_Type = Pin.inOut.OUTPUT;
         if (!createdFromCopy) {
             gameObject.transform.Find("circle").gameObject.AddComponent<IOButton>();
-            log = logic.LOW;
+            if (!loadedFromFile) {
+                log = logic.LOW;
+            }
+            else {
+                if (log == logic.HIGH) {
+                    pin.actualValue = Pin.highOrLow.HIGH;
+                    transform.GetChild(0).GetComponent<SpriteRenderer>().color =
+                        new Color(236f / 255f, 34f / 255f, 56f / 255f, 1f);
+                }
+                else {
+                    pin.actualValue = Pin.highOrLow.LOW;
+                }
+            }
         }
     }
 
@@ -107,11 +117,12 @@ public class IO : MonoBehaviour {
 
             if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
             if (IOType == type.IN) {
-                if (manager.getConnectedWireIO(this).Count == 0) pin.value = false;
-                if (pin.value)
+                if (manager.getConnectedWireIO(this).Count == 0) pin.actualValue = Pin.highOrLow.LOW;
+                if (pin.actualValue == Pin.highOrLow.HIGH)
                     log = logic.HIGH;
-                else
+                else if (pin.actualValue == Pin.highOrLow.LOW)
                     log = logic.LOW;
+                else log = logic.HIZ;
             }
         }
         else if (currentState == state.COPYING) {
@@ -145,18 +156,19 @@ public class IO : MonoBehaviour {
 
             if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
             if (IOType == type.IN) {
-                if (manager.getConnectedWireIO(this).Count == 0) pin.value = false;
-                if (pin.value)
+                if (manager.getConnectedWireIO(this).Count == 0) pin.actualValue = Pin.highOrLow.LOW;
+                if (pin.actualValue == Pin.highOrLow.HIGH)
                     log = logic.HIGH;
-                else
+                else if (pin.actualValue == Pin.highOrLow.LOW)
                     log = logic.LOW;
+                else log = logic.HIZ;
             }
         }
 
         if (textField != null) {
             float xPosition;
             float yPosition;
-            if ((int)transform.eulerAngles.z > 0 && (int)transform.eulerAngles.z < 135) {
+            if ((int) transform.eulerAngles.z > 0 && (int) transform.eulerAngles.z < 135) {
                 print("rotated 90 degrees");
                 yPosition = -gameObject.transform.GetChild(0).transform.localScale.y;
                 xPosition = 0;
@@ -165,47 +177,46 @@ public class IO : MonoBehaviour {
                 yPosition = gameObject.transform.GetChild(0).transform.localScale.y;
                 xPosition = 0;
             }
+
             textField.transform.position = gameObject.transform.GetChild(0).transform.position +
                                            new Vector3(xPosition, yPosition, 0);
-            if (Input.GetKeyDown(KeyCode.Return)) {
+            if (Input.GetKeyDown(KeyCode.Return))
                 clockFrequency = float.Parse(textField.GetComponent<TMP_InputField>().text);
-            }
         }
-        
+
         if (IOType == type.CLOCK && clockOn) {
             //print("clock running");
-            float currentTime = Time.time;
-            float timeDiff = currentTime - lastTime;
+            var currentTime = Time.time;
+            var timeDiff = currentTime - lastTime;
             if (timeDiff >= 1 / clockFrequency / 2) {
                 lastTime = currentTime;
                 var wires = manager.getConnectedWireIO(this);
                 if (log == logic.LOW) {
                     log = logic.HIGH;
-                    pin.value = true;
-                    foreach (GameObject wire in wires) {
-                        if(wire.GetComponent<Wire>().currentState != Wire.state.STARTED)
+                    pin.actualValue = Pin.highOrLow.HIGH;
+                    foreach (GameObject wire in wires)
+                        if (wire.GetComponent<Wire>().currentState != Wire.state.STARTED)
                             wire.GetComponent<Wire>().propogateSignalHigh();
-                    }
                 }
                 else {
                     log = logic.LOW;
-                    pin.value = false;
-                    foreach (GameObject wire in wires) {
-                        if(wire.GetComponent<Wire>().currentState != Wire.state.STARTED)
+                    pin.actualValue = Pin.highOrLow.LOW;
+                    foreach (GameObject wire in wires)
+                        if (wire.GetComponent<Wire>().currentState != Wire.state.STARTED)
                             wire.GetComponent<Wire>().propogateSignalLow();
-                    }
                 }
             }
         }
+
         if (IOType == type.OUT) {
             var wires = manager.getConnectedWireIO(this);
             if (log == logic.HIGH && wires.Count > 0 && !manager.connectionInProgress() && noChange) {
-                pin.value = true;
+                pin.actualValue = Pin.highOrLow.HIGH;
                 foreach (GameObject wire in wires) wire.GetComponent<Wire>().propogateSignalHigh();
                 noChange = false;
             }
             else if (log == logic.LOW && wires.Count > 0 && !manager.connectionInProgress() && noChange) {
-                pin.value = false;
+                pin.actualValue = Pin.highOrLow.LOW;
                 foreach (GameObject wire in wires) {
                     if (wire.GetComponent<Wire>().lineDrawn ||
                         wire.GetComponent<Wire>().currentState == Wire.state.DRAWING)
@@ -215,13 +226,14 @@ public class IO : MonoBehaviour {
             }
         }
         else {
-            if (manager.getConnectedWireIO(this).Count == 0) pin.value = false;
-            if (pin.value)
+            if (manager.getConnectedWireIO(this).Count == 0) pin.actualValue = Pin.highOrLow.LOW;
+            if (pin.actualValue == Pin.highOrLow.HIGH)
                 log = logic.HIGH;
-            else
+            else if (pin.actualValue == Pin.highOrLow.LOW)
                 log = logic.LOW;
+            else log = logic.HIZ;
         }
-        
+
         if (currentState == state.CHANGE) {
         }
         else if (currentState == state.WAITING) {
@@ -239,9 +251,7 @@ public class IO : MonoBehaviour {
             connectedWires = manager.getConnectedWireIO(this);
             foreach (GameObject wire in connectedWires) manager.removeWire(wire);
             DestroyImmediate(gameObject);
-            if (textField != null) {
-                DestroyImmediate(textField);
-            }
+            if (textField != null) DestroyImmediate(textField);
         }
     }
 
@@ -265,6 +275,7 @@ public class IO : MonoBehaviour {
                     closestPinY = pinInQuestion;
                 }
             }
+
         return (closestPinY, closestPinX);
     }
 }

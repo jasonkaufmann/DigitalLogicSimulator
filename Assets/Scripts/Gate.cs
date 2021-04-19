@@ -38,7 +38,7 @@ public class Gate : MonoBehaviour {
     private bool firstFrame = true;
     private Vector3 lastDragPoint, currentDragPoint;
     private Camera moveCam;
-    private bool pastValue;
+    private Pin.highOrLow pastactualValue;
     private Vector3 copyOffset;
 
     // Start is called before the first frame update
@@ -150,157 +150,175 @@ public class Gate : MonoBehaviour {
         }
 
         if (gateType == type.AND) {
-            if (pins[0].value && pins[1].value && noChange && !pins[2].value) {
-                pins[2].value = true;
+            if (pins[0].actualValue == Pin.highOrLow.HIGH && pins[1].actualValue == Pin.highOrLow.HIGH && noChange && pins[2].actualValue == Pin.highOrLow.LOW) {
+                pins[2].actualValue = Pin.highOrLow.HIGH;
                 manager.propogateHighToAllConnectedWires(pins[2]);
                 noChange = false;
             }
-            else if (!(pins[0].value && pins[1].value) && noChange && pins[2].value) {
-                pins[2].value = false;
+            else if (!(pins[0].actualValue == Pin.highOrLow.HIGH && pins[1].actualValue == Pin.highOrLow.HIGH) && noChange && pins[2].actualValue == Pin.highOrLow.HIGH) {
+                pins[2].actualValue = Pin.highOrLow.LOW;
                 manager.propogateLowToAllConnectedWires(pins[2]);
                 noChange = false;
             }
         }
         else if (gateType == type.NAND) {
-            if (!(pins[0].value && pins[1].value) && noChange && !pins[2].value) {
-                pins[2].value = true;
+            if (!(pins[0].actualValue == Pin.highOrLow.HIGH && pins[1].actualValue == Pin.highOrLow.HIGH) && noChange && pins[2].actualValue == Pin.highOrLow.LOW) {
+                pins[2].actualValue = Pin.highOrLow.HIGH;
                 if (manager.getConnectedWiresPin(pins[2]).Count > 0) manager.propogateHighToAllConnectedWires(pins[2]);
 
                 noChange = false;
             }
-            else if (pins[0].value && pins[1].value && noChange && pins[2].value) {
-                pins[2].value = false;
+            else if (pins[0].actualValue == Pin.highOrLow.HIGH && pins[1].actualValue == Pin.highOrLow.HIGH && noChange && pins[2].actualValue == Pin.highOrLow.HIGH) {
+                pins[2].actualValue = Pin.highOrLow.LOW;
                 if (manager.getConnectedWiresPin(pins[2]).Count > 0) manager.propogateLowToAllConnectedWires(pins[2]);
                 noChange = false;
             }
         }
         else if (gateType == type.OR) {
-            if ((pins[0].value || pins[1].value) && noChange && !pins[2].value) {
-                pins[2].value = true;
+            if ((pins[0].actualValue == Pin.highOrLow.HIGH || pins[1].actualValue == Pin.highOrLow.HIGH) && noChange && pins[2].actualValue == Pin.highOrLow.LOW) {
+                pins[2].actualValue = Pin.highOrLow.HIGH;
                 manager.propogateHighToAllConnectedWires(pins[2]);
                 noChange = false;
             }
-            else if (!(pins[0].value || pins[1].value) && noChange && pins[2].value) {
-                pins[2].value = false;
+            else if (!(pins[0].actualValue == Pin.highOrLow.HIGH || pins[1].actualValue == Pin.highOrLow.HIGH) && noChange && pins[2].actualValue == Pin.highOrLow.HIGH) {
+                pins[2].actualValue = Pin.highOrLow.LOW;
                 manager.propogateLowToAllConnectedWires(pins[2]);
                 noChange = false;
             }
         }
         else if (gateType == type.XOR) {
-            if ((pins[0].value && !pins[1].value || !pins[0].value && pins[1].value) && noChange && !pins[2].value) {
+            if (((pins[0].actualValue == Pin.highOrLow.HIGH && pins[1].actualValue == Pin.highOrLow.LOW) || (pins[0].actualValue == Pin.highOrLow.LOW && pins[1].actualValue == Pin.highOrLow.HIGH)) && noChange && pins[2].actualValue == Pin.highOrLow.LOW) {
                 //print("go high");
-                pins[2].value = true;
+                pins[2].actualValue = Pin.highOrLow.HIGH;
                 manager.propogateHighToAllConnectedWires(pins[2]);
                 noChange = false;
             }
-            else if ((!pins[0].value && !pins[1].value || pins[0].value && pins[1].value) && noChange &&
-                     pins[2].value) {
-                pins[2].value = false;
+            else if (((pins[0].actualValue == Pin.highOrLow.LOW && pins[1].actualValue == Pin.highOrLow.LOW) || pins[0].actualValue == Pin.highOrLow.HIGH && pins[1].actualValue == Pin.highOrLow.HIGH) && noChange &&
+                     pins[2].actualValue == Pin.highOrLow.HIGH) {
+                pins[2].actualValue = Pin.highOrLow.LOW;
                 //print("go low");
                 manager.propogateLowToAllConnectedWires(pins[2]);
                 noChange = false;
             }
         }
         else if (gateType == type.NOR) {
-            if (!(pins[0].value || pins[1].value) && noChange && !pins[2].value) {
-                pins[2].value = true;
+            if (!(pins[0].actualValue == Pin.highOrLow.HIGH || pins[1].actualValue == Pin.highOrLow.HIGH) && noChange && pins[2].actualValue == Pin.highOrLow.LOW) {
+                pins[2].actualValue = Pin.highOrLow.HIGH;
                 manager.propogateHighToAllConnectedWires(pins[2]);
                 noChange = false;
             }
-            else if ((pins[0].value || pins[1].value) && noChange && pins[2].value) {
-                pins[2].value = false;
+            else if ((pins[0].actualValue == Pin.highOrLow.HIGH || pins[1].actualValue == Pin.highOrLow.HIGH) && noChange && pins[2].actualValue == Pin.highOrLow.HIGH) {
+                pins[2].actualValue = Pin.highOrLow.LOW;
                 manager.propogateLowToAllConnectedWires(pins[2]);
                 noChange = false;
             }
         }
         else if (gateType == type.NOT) {
-            if (pins[0].value && noChange) {
-                pins[1].value = false;
+            if (pins[0].actualValue == Pin.highOrLow.HIGH && noChange) {
+                pins[1].actualValue = Pin.highOrLow.LOW;
                 manager.propogateLowToAllConnectedWires(pins[1]);
                 noChange = false;
             }
-            else if (!pins[0].value && noChange) {
-                pins[1].value = true;
+            else if (pins[0].actualValue == Pin.highOrLow.LOW && noChange) {
+                pins[1].actualValue = Pin.highOrLow.HIGH;
                 manager.propogateHighToAllConnectedWires(pins[1]);
                 noChange = false;
             }
         }
         else if (gateType == type.AND3) {
-            if (pins[0].value && pins[1].value && pins[2].value && noChange && !pins[3].value) {
-                pins[3].value = true;
+            if (pins[0].actualValue == Pin.highOrLow.HIGH && pins[1].actualValue == Pin.highOrLow.HIGH && pins[2].actualValue == Pin.highOrLow.HIGH && noChange && pins[3].actualValue == Pin.highOrLow.LOW) {
+                pins[3].actualValue = Pin.highOrLow.HIGH;
                 manager.propogateHighToAllConnectedWires(pins[3]);
                 noChange = false;
             }
-            else if (!(pins[0].value && pins[1].value && pins[2].value) && noChange && pins[3].value) {
-                pins[3].value = false;
+            else if (!(pins[0].actualValue == Pin.highOrLow.HIGH && pins[1].actualValue == Pin.highOrLow.HIGH && pins[2].actualValue == Pin.highOrLow.HIGH) && noChange && pins[3].actualValue == Pin.highOrLow.HIGH) {
+                pins[3].actualValue = Pin.highOrLow.LOW;
                 manager.propogateLowToAllConnectedWires(pins[3]);
                 noChange = false;
             }
         }
         else if (gateType == type.SR) {
-            if (pins[0].value && !pins[1].value && !pins[2].value && noChange) {
-                pins[2].value = true;
-                pins[3].value = false;
+            if (pins[0].actualValue == Pin.highOrLow.HIGH && pins[1].actualValue == Pin.highOrLow.LOW && pins[2].actualValue == Pin.highOrLow.LOW && noChange) {
+                pins[2].actualValue = Pin.highOrLow.HIGH;
+                pins[3].actualValue = Pin.highOrLow.LOW;
                 manager.propogateHighToAllConnectedWires(pins[2]);
                 manager.propogateLowToAllConnectedWires(pins[3]);
                 noChange = false;
             }
-            else if (!pins[0].value && pins[1].value && !pins[3].value && noChange) {
-                pins[3].value = true;
-                pins[2].value = false;
+            else if (pins[0].actualValue == Pin.highOrLow.LOW && pins[1].actualValue == Pin.highOrLow.HIGH && pins[3].actualValue == Pin.highOrLow.LOW && noChange) {
+                pins[3].actualValue = Pin.highOrLow.HIGH;
+                pins[2].actualValue = Pin.highOrLow.LOW;
                 manager.propogateLowToAllConnectedWires(pins[2]);
                 manager.propogateHighToAllConnectedWires(pins[3]);
                 noChange = false;
             }
         }
         else if (gateType == type.DLATCH) {
-            if (pins[0].value && pins[1].value && !pins[2].value && noChange) {
-                pins[2].value = true;
-                pins[3].value = false;
+            if (pins[0].actualValue == Pin.highOrLow.HIGH && pins[1].actualValue == Pin.highOrLow.HIGH && pins[2].actualValue == Pin.highOrLow.LOW && noChange) {
+                pins[2].actualValue = Pin.highOrLow.HIGH;
+                pins[3].actualValue = Pin.highOrLow.LOW;
                 manager.propogateHighToAllConnectedWires(pins[2]);
                 manager.propogateLowToAllConnectedWires(pins[3]);
                 noChange = false;
             }
-            else if (!pins[0].value && pins[1].value && !pins[3].value && noChange) {
-                pins[3].value = true;
-                pins[2].value = false;
+            else if (pins[0].actualValue == Pin.highOrLow.LOW && pins[1].actualValue == Pin.highOrLow.HIGH && pins[3].actualValue == Pin.highOrLow.LOW && noChange) {
+                pins[3].actualValue = Pin.highOrLow.HIGH;
+                pins[2].actualValue = Pin.highOrLow.LOW;
                 manager.propogateLowToAllConnectedWires(pins[2]);
                 manager.propogateHighToAllConnectedWires(pins[3]);
                 noChange = false;
             }
         }
         else if (gateType == type.FLIPFLOP) {
-            if (pins[1].value != pastValue && pins[1].value) {
-                if (pins[0].value && !pins[2].value)
+            if (pins[1].actualValue != pastactualValue  && pins[1].actualValue == Pin.highOrLow.HIGH) {
+                if (pins[0].actualValue == Pin.highOrLow.HIGH && pins[2].actualValue == Pin.highOrLow.LOW)
                     manager.propogateHighToAllConnectedWires(pins[2]);
-                else if (!pins[0].value && pins[2].value) manager.propogateLowToAllConnectedWires(pins[2]);
-                pins[2].value = pins[0].value;
+                else if (pins[0].actualValue == Pin.highOrLow.LOW && pins[2].actualValue == Pin.highOrLow.HIGH) manager.propogateLowToAllConnectedWires(pins[2]);
+                pins[2].actualValue = pins[0].actualValue;
             }
 
-            pastValue = pins[1].value;
+            pastactualValue = pins[1].actualValue;
         }
         else if (gateType == type.TRISTATE) {
-            if (pins[1].value && noChange) {
-                //print(pins[0].value);
-                if (pins[0].value && !pins[2].value) {
-                    //print("propogate high");
-                    pins[2].value = true;
-                    print("got high command");
+            if (pins[1].actualValue == Pin.highOrLow.HIGH && pins[0].actualValue != pins[2].actualValue) {
+                if (pins[0].actualValue == Pin.highOrLow.HIGH) {
+                    pins[2].actualValue = Pin.highOrLow.HIGH;
+                    manager.removeHIZToAllConnectedWires(pins[2]);
                     manager.propogateHighToAllConnectedWires(pins[2]);
                 }
-                else if (!pins[0].value && pins[2].value) {
-                    //print("propogate low");
-                    pins[2].value = false;
-                    print("got low command");
-                    manager.propogateLowToAllConnectedWires(pins[2]);
+            }
+            if (pins[1].actualValue == Pin.highOrLow.HIGH && noChange) {
+                print("got high change");
+                if (pins[0].actualValue == Pin.highOrLow.HIGH) {
+                    //print("tri state high");
+                    pins[2].actualValue = Pin.highOrLow.HIGH;
+                    manager.removeHIZToAllConnectedWires(pins[2]);
+                    manager.propogateHighToAllConnectedWires(pins[2]);
+                    
+                }
+                else if (pins[0].actualValue == Pin.highOrLow.LOW) {
+                    //print("tri state low");
+                    pins[2].actualValue = Pin.highOrLow.LOW;
+                    //print(pastactualValue);
+                    manager.removeHIZToAllConnectedWires(pins[2]);
+                    if (pastactualValue == Pin.highOrLow.HIGH) {
+                        manager.propogateLowToAllConnectedWires(pins[2]);
+                    }
                 }
 
-                pins[2].value = pins[0].value;
+                pins[2].actualValue = pins[0].actualValue;
+                pastactualValue = pins[2].actualValue;
                 noChange = false;
             }
-            else {
+            else if (pins[1].actualValue == Pin.highOrLow.LOW && noChange) {
+                print("got low change");
                 pins[2].actualValue = Pin.highOrLow.HIZ;
+                pastactualValue = pins[2].actualValue;
+                manager.setHIZToAllConnectedWires(pins[2]);
+                noChange = false;
             }
+
+            
         }
 
 
