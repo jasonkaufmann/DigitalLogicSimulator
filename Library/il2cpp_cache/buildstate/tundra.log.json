@@ -1,0 +1,4 @@
+{"msg":"init","dagFile":"C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/il2cpp_cache/buildstate/bee.dag","targets":["FinalProgram"]}
+{"msg":"enqueueNode","enqueuedNodeAnnotation":"FinalProgram","enqueuedNodeIndex":3}
+{"msg":"enqueueNode","enqueuedNodeAnnotation":"IL2CPP_CodeGenAndCompile C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/Il2cppBuildCache/WebGL/il2cppOutput/Data","enqueuedNodeIndex":2,"enqueueingNodeAnnotation":"FinalProgram","enqueueingNodeIndex":3}
+{"msg":"enqueueNode","enqueuedNodeAnnotation":"WriteResponseFile C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/il2cpp_cache/buildstate/artifacts/rsp/6158727006948326641.rsp","enqueuedNodeIndex":1,"enqueueingNodeAnnotation":"IL2CPP_CodeGenAndCompile C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/Il2cppBuildCache/WebGL/il2cppOutput/Data","enqueueingNodeIndex":2}
