@@ -74,7 +74,7 @@ public class MenuControls : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
     public void loadSavedStates() {
-        DirectoryInfo d = new DirectoryInfo(Application.persistentDataPath + "/SavedStates"); //Assuming Test is your Folder
+        DirectoryInfo d = new DirectoryInfo(Application.persistentDataPath); //Assuming Test is your Folder
         var Files = d.GetFiles("*.json"); //Getting Text files
         var str = "";
         var i = 1;

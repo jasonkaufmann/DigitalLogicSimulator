@@ -260,7 +260,7 @@ public class ButtonManager : MonoBehaviour {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
         File.WriteAllText(
-            Application.persistentDataPath + "/SavedStates/" + PlayerPrefs.GetString("currentProjectName") + ".json", textobj);
+            Application.persistentDataPath + "/" + PlayerPrefs.GetString("currentProjectName") + ".json", textobj);
     }
 
     public void changeSimSpeed() {

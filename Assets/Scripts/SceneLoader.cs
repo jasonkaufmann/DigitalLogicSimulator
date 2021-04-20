@@ -48,7 +48,7 @@ public class SceneLoader : MonoBehaviour {
     private void loadScene() {
         var nameToLoad = PlayerPrefs.GetString("loadRequestName");
         var savedState = File.ReadAllText(
-            Application.persistentDataPath + "/SavedStates/" + nameToLoad + ".json");
+            Application.persistentDataPath + "/" + nameToLoad + ".json");
         JObject info = JObject.Parse(savedState);
         if (info["camField"] != null) {
             Vector3 camPosition = new Vector3(float.Parse(info["camField"]["position"]["x"].ToString()),
