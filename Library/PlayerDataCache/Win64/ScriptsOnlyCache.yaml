@@ -87,9 +87,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3964}
     - Class: 114
-      Script: {instanceID: 21348}
+      Script: {instanceID: 21844}
     - Class: 114
-      Script: {instanceID: 21350}
+      Script: {instanceID: 21846}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -623,7 +623,7 @@ ScriptsOnlyBuild:
     className: Pin
   - hash:
       serializedVersion: 2
-      Hash: 4b21c11ac7baa302ad2fd3e9628867db
+      Hash: cfaeb162f251ccc93ae80f4daec30f71
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SceneLoader
@@ -1001,7 +1001,7 @@ ScriptsOnlyBuild:
     className: TMP_ExampleScript_01
   - hash:
       serializedVersion: 2
-      Hash: c7b470cde5feba50f15da7b36ce0a650
+      Hash: 477e2efb1a1bc84195f0ac1ad19b59a6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ControlsManager
@@ -1037,7 +1037,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: 18c453c8a10398961ed3cd73ac69b83d
+      Hash: d99b82d841adde419970ccb7c0cdffc7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Wire
@@ -1079,7 +1079,7 @@ ScriptsOnlyBuild:
     className: TMP_TextEventCheck
   - hash:
       serializedVersion: 2
-      Hash: 4f6ba4c71e6f0a559cc89a79300dca2b
+      Hash: c235b86aaac65d6ae87f6182c53b98f6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ButtonManager

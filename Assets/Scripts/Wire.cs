@@ -32,6 +32,7 @@ public class Wire : MonoBehaviour {
     public GameObject empty;
     public List<Vector2> anchorPoints;
     public int propogateResolution;
+    private bool preHiZvalue;
 
 
     public List<Vector2> drawPoints;
@@ -54,28 +55,24 @@ public class Wire : MonoBehaviour {
     private LineRenderer lineRed;
 
     private int steps;
-    private int timestep1;
-    private int timestep2;
+    public int timestep1;
+    public int timestep2;
     
     public bool loadedFromFile = false;
 
     public Camera moveCam; 
     public bool createdFromCopy = false;
     private Mesh mesh;
+    private bool rightAngleDrawDirection = false;
+    private List<Vector2> pastAnchorPoints;
 
     private void Start() {
         moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
+        pastAnchorPoints = new List<Vector2>(2);
+        pastAnchorPoints.Add(new Vector2(0, 0));
+        pastAnchorPoints.Add(new Vector2(0, 0));
         mesh = new Mesh();
-        if (loadedFromFile) {
-            if (!this.leftPin.gateOrIO)
-                this.startIO = this.leftPin.io;
-            else
-                this.startGate = this.leftPin.gate;
-            if (!this.rightPin.gateOrIO)
-                this.endIO = this.rightPin.io;
-            else
-                this.endGate = this.rightPin.gate;
-        }
+        
         if (!createdFromCopy) {
             line = gameObject.AddComponent<LineRenderer>();
             line.material = new Material(Shader.Find("Sprites/Default"));
@@ -88,7 +85,7 @@ public class Wire : MonoBehaviour {
             empty = new GameObject();
             empty.transform.parent = gameObject.transform;
             lineRed = empty.AddComponent<LineRenderer>();
-            lineRed.positionCount = 0;
+            //lineRed.positionCount = 0;
             lineRed.material = new Material(Shader.Find("Sprites/Default"));
             lineRed.material.color = new Color(236f / 255f, 34f / 255f, 56f / 255f, 1f);
             lineRed.sortingOrder = 1;
@@ -107,7 +104,7 @@ public class Wire : MonoBehaviour {
             meshCollide = gameObject.AddComponent<MeshCollider>();
             manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
             lineRed = empty.AddComponent<LineRenderer>();
-            lineRed.positionCount = 0;
+            //lineRed.positionCount = 0;
             lineRed.material = new Material(Shader.Find("Sprites/Default"));
             lineRed.material.color = new Color(236f / 255f, 34f / 255f, 56f / 255f, 1f);
             lineRed.sortingOrder = 1;
@@ -117,6 +114,20 @@ public class Wire : MonoBehaviour {
             updatePinInfo();
             immediateSim = GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().immediateSim;
             if (leftPin.actualValue == Pin.highOrLow.HIGH) propogateSignalHigh();
+        }
+        if (loadedFromFile && !createdFromCopy) {
+            if (!this.leftPin.gateOrIO)
+                this.startIO = this.leftPin.io;
+            else
+                this.startGate = this.leftPin.gate;
+            if (!this.rightPin.gateOrIO)
+                this.endIO = this.rightPin.io;
+            else
+                this.endGate = this.rightPin.gate;
+            GenerateDrawPoints();
+            line.positionCount = drawPoints.Count;
+            for (var i = 0; i < drawPoints.Count; i++)
+                line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
         }
         line.BakeMesh(mesh, GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>(), true);
         meshCollide.sharedMesh = mesh;
@@ -135,19 +146,27 @@ public class Wire : MonoBehaviour {
         propogateResolution = 105 - (int)GameObject.FindGameObjectWithTag("slider").GetComponent<Slider>().value;
         immediateSim = GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().immediateSim;
         if (currentState == state.STARTED) {
-            print("started");
             line.material.color = Color.black;
             Vector3 mousePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
                 Mathf.Abs(moveCam.transform.position.z + 10)));
-
-            Vector2 diff = new Vector2(mousePos.x, mousePos.y) - anchorPoints[anchorPoints.Count - 1];
             if (GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().raBool) {
-                if (Math.Abs(diff.x) > Mathf.Abs(diff.y)) {
+                if (anchorPoints.Count > 1) {
+                    anchorPoints.RemoveAt(anchorPoints.Count - 1);
+                }
+                Vector2 diff = new Vector2(mousePos.x, mousePos.y) - anchorPoints[anchorPoints.Count - 1];
+                if (rightAngleDrawDirection) {
                     anchorPoints.Add(new Vector2(mousePos.x, anchorPoints[anchorPoints.Count - 1].y));
+                    anchorPoints.Add(mousePos);
                 }
                 else {
                     anchorPoints.Add(new Vector2(anchorPoints[anchorPoints.Count - 1].x,mousePos.y));
+                    anchorPoints.Add(mousePos);
                 }
+
+                if (Input.GetKeyDown(KeyCode.Space)) {
+                    rightAngleDrawDirection = !rightAngleDrawDirection;
+                }
+                
             }
             else {
                 anchorPoints.Add(mousePos);
@@ -159,18 +178,11 @@ public class Wire : MonoBehaviour {
                 line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
             if (anchorPoints.Count > 0) anchorPoints.RemoveAt(anchorPoints.Count - 1);
             if (Input.GetMouseButtonDown(0)) {
-                diff = new Vector2(mousePos.x, mousePos.y) - anchorPoints[anchorPoints.Count - 1];
                 if (GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().raBool) {
-                    if (Math.Abs(diff.x) > Mathf.Abs(diff.y)) {
-                        anchorPoints.Add(new Vector2(mousePos.x, anchorPoints[anchorPoints.Count - 1].y));
-                    }
-                    else {
-                        anchorPoints.Add(new Vector2(anchorPoints[anchorPoints.Count - 1].x,mousePos.y));
-                    }
-                }
-                else {
                     anchorPoints.Add(mousePos);
+                    rightAngleDrawDirection = !rightAngleDrawDirection;
                 }
+                anchorPoints.Add(mousePos);
             }
             if (Input.GetMouseButtonDown(2)) manager.removeWire(gameObject);
         }
@@ -180,23 +192,28 @@ public class Wire : MonoBehaviour {
         else if (currentState == state.FINISHED) {
             anchorPoints[0] = startPin.transform.position;
             anchorPoints[anchorPoints.Count - 1] = endPin.transform.position;
-            GenerateDrawPoints();
-            line.positionCount = drawPoints.Count;
-            for (var i = 0; i < drawPoints.Count; i++)
-                line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
+            if (anchorPoints[0] != pastAnchorPoints[0] || anchorPoints[anchorPoints.Count - 1] != pastAnchorPoints[1]) {
+                GenerateDrawPoints();
+                line.positionCount = drawPoints.Count;
+                for (var i = 0; i < drawPoints.Count; i++)
+                    line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
+            }
             if (lineDrawn) {
                 lineRed.positionCount = drawPoints.Count;
                 for (var i = 0; i <= drawPoints.Count - 1; i++)
                     lineRed.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
             }
+           
         }
         else if (currentState == state.DRAWING) {
             anchorPoints[0] = startPin.transform.position;
             anchorPoints[anchorPoints.Count - 1] = endPin.transform.position;
-            GenerateDrawPoints();
-            line.positionCount = drawPoints.Count;
-            for (var i = 0; i <= drawPoints.Count - 1; i++)
-                line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
+            if (anchorPoints[0] != pastAnchorPoints[0] || anchorPoints[anchorPoints.Count - 1] != pastAnchorPoints[1]) {
+                GenerateDrawPoints();
+                line.positionCount = drawPoints.Count;
+                for (var i = 0; i < drawPoints.Count; i++)
+                    line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
+            }
             GenerateDrawPointsRed();
             lineRed.positionCount = drawPointsRed.Count;
             for (var i = 0; i <= drawPointsRed.Count - 1; i++)
@@ -205,10 +222,12 @@ public class Wire : MonoBehaviour {
         else if (currentState == state.UNDRAWING) {
             anchorPoints[0] = startPin.transform.position;
             anchorPoints[anchorPoints.Count - 1] = endPin.transform.position;
-            GenerateDrawPoints();
-            line.positionCount = drawPoints.Count;
-            for (var i = 0; i <= drawPoints.Count - 1; i++)
-                line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
+            if (anchorPoints[0] != pastAnchorPoints[0] || anchorPoints[anchorPoints.Count - 1] != pastAnchorPoints[1]) {
+                GenerateDrawPoints();
+                line.positionCount = drawPoints.Count;
+                for (var i = 0; i < drawPoints.Count; i++)
+                    line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
+            }
             GenerateDrawPointsRed();
             GenerateUnDrawPointsRed();
             lineRed.positionCount = drawPointsRed.Count;
@@ -218,20 +237,27 @@ public class Wire : MonoBehaviour {
         else if (currentState == state.DRAWIMMEDIATE) {
             rightPin.actualValue = Pin.highOrLow.HIGH;
             lineDrawn = true;
+            timestep1 = 1000;
             currentState = state.FINISHED;
-        } else if (currentState == state.UNDRAWIMMEDIATE) {
+        } 
+        else if (currentState == state.UNDRAWIMMEDIATE) {
             lineDrawn = false;
             rightPin.actualValue = Pin.highOrLow.LOW;
             lineRed.positionCount = 0;
             currentState = state.FINISHED;
-        } else if (currentState == state.HIZ) {
+        } 
+        else if (currentState == state.HIZ) {
             anchorPoints[0] = startPin.transform.position;
             anchorPoints[anchorPoints.Count - 1] = endPin.transform.position;
-            GenerateDrawPoints();
-            line.positionCount = drawPoints.Count;
-            for (var i = 0; i < drawPoints.Count; i++)
-                line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
+            if (anchorPoints[0] != pastAnchorPoints[0] || anchorPoints[anchorPoints.Count - 1] != pastAnchorPoints[1]) {
+                GenerateDrawPoints();
+                line.positionCount = drawPoints.Count;
+                for (var i = 0; i < drawPoints.Count; i++)
+                    line.SetPosition(i, new Vector3(drawPoints[i].x, drawPoints[i].y, -10));
+            }
         }
+        pastAnchorPoints[0] = anchorPoints[0];
+        pastAnchorPoints[1] = anchorPoints[anchorPoints.Count - 1];
 
         if (Input.GetKeyDown(KeyCode.Escape) && currentState == state.STARTED) manager.removeWire(gameObject);
     }
@@ -253,7 +279,7 @@ public class Wire : MonoBehaviour {
     }
 
     private void OnMouseOver() {
-        if (Input.GetMouseButtonDown(2) && currentState != state.STARTED) {
+        if ((Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Escape)) && currentState != state.STARTED) {
             rightPin.actualValue = Pin.highOrLow.LOW;
             if (!leftPin.gateOrIO) {
                 if (leftPin.io.IOType != IO.type.OUT) leftPin.actualValue = Pin.highOrLow.LOW;
@@ -285,11 +311,16 @@ public class Wire : MonoBehaviour {
         }
 
         //print("got high command");
+        //print(leftPin.name);
 
         currentState = state.DRAWING;
         if (immediateSim) {
             //print("draw immediate");
             currentState = state.DRAWIMMEDIATE;
+        } else if (leftPin.io != null) {
+            if (leftPin.io.IOType == IO.type.CLOCK) {
+                currentState = state.DRAWIMMEDIATE;
+            }
         }
     }
 
@@ -301,7 +332,7 @@ public class Wire : MonoBehaviour {
         if (line != null) {
             line.material.color = Color.black;
         }
-
+        
         lineDrawn = false;
 
         rightPin.actualValue = Pin.highOrLow.HIZ;
@@ -314,8 +345,10 @@ public class Wire : MonoBehaviour {
             line.material.color = new Color(82f / 255f, 81f / 255f, 81f / 255f, 1f);
         }
 
+        preHiZvalue = false;
         rightPin.actualValue = leftPin.actualValue;
         currentState = state.FINISHED;
+        if(leftPin.actualValue == Pin.highOrLow.HIGH) propogateSignalHigh();
     }
 
     public void propogateSignalLow() {
@@ -325,11 +358,17 @@ public class Wire : MonoBehaviour {
         lineDrawn = false;
         highOrLow = false;
         currentState = state.UNDRAWING;
-        
+        //print(immediateSim);
+
         if (immediateSim) {
-            //print("undraw immediate");
             currentState = state.UNDRAWIMMEDIATE;
+        } else if (leftPin.io != null) {
+            if (leftPin.io.IOType == IO.type.CLOCK) {
+                currentState = state.UNDRAWIMMEDIATE;
+            }
         }
+
+        //print(currentState);
     }
 
     private void updateMesh() {
@@ -346,7 +385,7 @@ public class Wire : MonoBehaviour {
         else
             startGate = pin.gate;
         anchorPoints.Add(pin.transform.position);
-        print("FLAG");
+        //print("FLAG");
         //print(anchorPoints);
         currentState = state.WAITING;
     }
@@ -376,7 +415,7 @@ public class Wire : MonoBehaviour {
         else {
             endIO = rightPin.io;
         }
-        print("FLAG");
+        //print("FLAG");
         anchorPoints.Add(endPin.transform.position);
         currentState = state.FINISHED;
         line.material.color = new Color(82f / 255f, 81f / 255f, 81f / 255f, 1f);

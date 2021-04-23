@@ -21,6 +21,7 @@ public class SceneLoader : MonoBehaviour {
     public GameObject xorPF;
     public GameObject clockPF;
     public GameObject textPF;
+    public GameObject reg4PF;
 
     public WireManager manager;
 
@@ -148,6 +149,14 @@ public class SceneLoader : MonoBehaviour {
                 newGate.transform.rotation = Quaternion.Euler(0, 0, float.Parse(gate["rotation"].ToString()));
                 newGate.GetComponent<Gate>().gateType = Gate.type.XOR;
                 newGate.name += gate["gateNumber"].ToString();
+            } 
+            else if (int.Parse(gate["type"].ToString()) == 11) {
+                GameObject newGate = Instantiate(reg4PF, new Vector3(x, y, z), Quaternion.identity);
+                newGate.AddComponent<Gate>();
+                newGate.GetComponent<Gate>().loadedFromFile = true;
+                newGate.transform.rotation = Quaternion.Euler(0, 0, float.Parse(gate["rotation"].ToString()));
+                newGate.GetComponent<Gate>().gateType = Gate.type.REG4;
+                newGate.name += gate["gateNumber"].ToString();
             }
         }
 
@@ -231,7 +240,6 @@ public class SceneLoader : MonoBehaviour {
             foreach (JToken point in wire["drawPoints"])
                 dPoints.Add(new Vector2(float.Parse(point["x"].ToString()), float.Parse(point["y"].ToString())));
             wireComp.anchorPoints = aPoints;
-            //print(aPoints);
             wireComp.drawPoints = dPoints;
             foreach (GameObject thingInScene in SceneManager.GetActiveScene().GetRootGameObjects()) {
                 if (thingInScene.name.Contains(wire["leftPinGateIO"].ToString())) {
@@ -251,6 +259,10 @@ public class SceneLoader : MonoBehaviour {
 
             if (wire["lineDrawn"] != null) wireComp.lineDrawn = bool.Parse(wire["lineDrawn"].ToString());
             if (wire["leftPinValue"] != null) {
+                print(wire["leftPinValue"].ToString());
+                if (wire["leftPinGateIO"].ToString() == "-812") {
+                    print(wire["leftPinValue"].ToString());
+                }
                 if (int.Parse(wire["leftPinValue"].ToString()) == 0) {
                     wireComp.leftPin.actualValue = Pin.highOrLow.LOW;
                 } else if (int.Parse(wire["leftPinValue"].ToString()) == 1) {
@@ -270,7 +282,13 @@ public class SceneLoader : MonoBehaviour {
                     wireComp.rightPin.actualValue = Pin.highOrLow.HIZ;
                 }
             }
-            if (wire["lineDrawn"] != null) wireComp.lineDrawn = bool.Parse(wire["lineDrawn"].ToString());
+
+            if (wire["lineDrawn"] != null) {
+                wireComp.lineDrawn = bool.Parse(wire["lineDrawn"].ToString());
+                if (wire["timestep1"] != null) {
+                    wireComp.timestep1 = int.Parse(wire["timestep1"].ToString());
+                }
+            }
             wireComp.loadedFromFile = true;
             wireComp.currentState = Wire.state.FINISHED;
             manager.addWire(newWire);

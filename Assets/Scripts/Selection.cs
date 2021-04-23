@@ -95,7 +95,6 @@ public class Selection : MonoBehaviour {
                 lastDragPoint = currentDragPoint;
                 firstFrame = false;
             }
-
             difference = currentDragPoint - lastDragPoint;
             lastDragPoint = currentDragPoint;
             for (var i = 0; i < copiedObjects.Count; i++)
@@ -112,7 +111,7 @@ public class Selection : MonoBehaviour {
             copiedObjects.Clear();
             foreach (GameObject obj in objectsInSelection)
                 if (obj.GetComponent<Gate>() != null || obj.GetComponent<IO>() != null) {
-                    GameObject newObj = Instantiate(obj, obj.transform.position, Quaternion.identity);
+                    GameObject newObj = Instantiate(obj, obj.transform.position, obj.transform.rotation);
                     if (newObj.GetComponent<IO>() != null)
                         if (obj.GetComponent<IO>().log == IO.logic.HIGH) {
                             print("make new high");
@@ -127,7 +126,7 @@ public class Selection : MonoBehaviour {
                 }
                 else if (obj.name.Contains("textFieldCanvas")) {
                     print("FLAGG");
-                    GameObject newobj = Instantiate(obj, obj.transform.position, Quaternion.identity);
+                    GameObject newobj = Instantiate(obj, obj.transform.position, obj.transform.rotation);
                     /*GameObject newCanvas = new GameObject();
                     newCanvas.name = "textFieldCanvas";
                     newCanvas.AddComponent<Canvas>();
@@ -143,6 +142,7 @@ public class Selection : MonoBehaviour {
                     newobj.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
                     newobj.GetComponent<BoxCollider2D>().size = new Vector2(500, 250);*/
                     newobj.name += newobj.GetInstanceID().ToString();
+                    DestroyImmediate(newobj.transform.GetChild(0).GetChild(0).gameObject);
                     newobj.transform.GetChild(0).gameObject.GetComponent<TextControls>().createdFromCopy = true;
                 }
 
@@ -205,11 +205,15 @@ public class Selection : MonoBehaviour {
                     copiedObjects.Add(newObj);
                 }
 
-            if (copiedObjects.Count > 0) currentState = state.COPYINGOBJECTS;
+            if (copiedObjects.Count > 0) {
+                currentState = state.COPYINGOBJECTS;
+                GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().snapBool = false;
+                GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().selectionInProgress = true;
+            }
             DestroyImmediate(newArea);
         }
 
-        if (Input.GetMouseButtonDown(2) && currentState == state.INSCENE) {
+        if ((Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Delete)) && currentState == state.INSCENE) {
             var objectsInSelection = GetObjectsInSelection();
             foreach (GameObject obj in objectsInSelection) {
                 print(obj.name);
@@ -231,7 +235,7 @@ public class Selection : MonoBehaviour {
                 objects[i].GetComponent<IO>() == null && !objects[i].name.Contains("textFieldCanvas")) {
             }
             else {
-                print(objects[i].name.Contains("textFieldCanvas"));
+                //print(objects[i].name.Contains("textFieldCanvas"));
                 print(objects[i].name);
                 if (objects[i].GetComponent<Wire>() != null) {
                     var allInside = true;
@@ -260,6 +264,10 @@ public class Selection : MonoBehaviour {
 
     private bool IsObjectInSquare(GameObject sceneObj) {
         Vector3 position = sceneObj.transform.position;
+        print(position);
+        if (sceneObj.name.Contains("textFieldCanvas")) {
+            position = sceneObj.transform.GetChild(0).transform.position;
+        }
         if (position.x < newArea.transform.position.x + Mathf.Abs(width) / 2 &&
             position.x > newArea.transform.position.x - Mathf.Abs(width) / 2 &&
             position.y < newArea.transform.position.y + Mathf.Abs(height) / 2 &&

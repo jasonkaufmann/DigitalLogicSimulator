@@ -23,6 +23,7 @@ public class ButtonManager : MonoBehaviour {
     public GameObject xorPF;
     public GameObject clockPF;
     public GameObject textPF;
+    public GameObject reg4PF;
 
 
     public void mouseEnter() {
@@ -140,6 +141,14 @@ public class ButtonManager : MonoBehaviour {
         newobj.GetComponent<Gate>().gateType = Gate.type.XOR;
         newobj.name += newobj.GetInstanceID().ToString();
     }
+    
+    public void REG4Button() {
+            GameObject newobj = Instantiate(reg4PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+                Quaternion.identity);
+            newobj.AddComponent<Gate>();
+            newobj.GetComponent<Gate>().gateType = Gate.type.REG4;
+            newobj.name += newobj.GetInstanceID().ToString();
+        }
 
     public void CLOCKButton() {
         GameObject newobj = Instantiate(clockPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
@@ -201,7 +210,7 @@ public class ButtonManager : MonoBehaviour {
                     rotation = sceneObject.transform.eulerAngles.z,
                     value = sceneObject.GetComponent<IO>().log
                 };
-                print(sceneObject.GetComponent<IO>().log);
+                //print(sceneObject.GetComponent<IO>().log);
                 ioFieldArray.Add(field);
             }
             else if (sceneObject.name.Contains("textFieldCanvas")) {
@@ -248,8 +257,9 @@ public class ButtonManager : MonoBehaviour {
                     rightPinNumber = sceneWire.rightPin.transform.GetSiblingIndex(),
                     startSameOrDiff = sceneWire.leftPin == sceneWire.startPin,
                     lineDrawn = sceneWire.lineDrawn,
-                    lefPinValue = sceneWire.leftPin.actualValue,
-                    rightPinValue = sceneWire.rightPin.actualValue
+                    leftPinValue = sceneWire.leftPin.actualValue,
+                    rightPinValue = sceneWire.rightPin.actualValue,
+                    timestep1 = sceneWire.timestep1
                 };
                 wireFieldArray.Add(field);
             }
@@ -300,11 +310,12 @@ public class ButtonManager : MonoBehaviour {
         public List<Vector2> anchorPoints;
         public string leftPinGateIO;
         public int leftPinNumber;
-        public Pin.highOrLow lefPinValue;
+        public Pin.highOrLow leftPinValue;
         public string rightPinGateIO;
         public int rightPinNumber;
         public Pin.highOrLow rightPinValue;
         public bool startSameOrDiff;
         public bool lineDrawn;
+        public int timestep1;
     }
 }

@@ -20,8 +20,8 @@ public class Pin : MonoBehaviour {
     public bool gateOrIO;
     public bool mouseOver;
     public highOrLow actualValue;
-    private highOrLow pastValue;
     public bool firstFrame = true;
+    private highOrLow pastValue;
 
     private void Awake() {
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
@@ -30,7 +30,7 @@ public class Pin : MonoBehaviour {
 
     private void Update() {
         if (Time.timeScale == 0) return;
-        var currentValue = actualValue;
+        highOrLow currentValue = actualValue;
         if ((firstFrame || currentValue != pastValue) && gate != null) {
             //print("value changed!");
             gate.noChange = true;
@@ -41,9 +41,8 @@ public class Pin : MonoBehaviour {
             io.noChange = true;
             firstFrame = false;
         }
-        
+
         pastValue = currentValue;
-        
     }
 
     private void OnMouseEnter() {
@@ -80,7 +79,7 @@ public class Pin : MonoBehaviour {
                     if (io.IOType == IO.type.IN && manager.getConnectedWiresPin(this).Count > 0) {
                     }
                     else {
-                        if(io.textField == null)
+                        if (io.textField == null)
                             manager.createWire(this);
                     }
                 }

@@ -16,6 +16,7 @@ public class ControlsManager : MonoBehaviour {
     public GameObject textFrequencyField;
     public bool immediateSim = true;
     public bool typing;
+    public bool selectionInProgress = false;
 
     private void Start() {
         GameObject.FindGameObjectWithTag("play").GetComponent<SpriteRenderer>().enabled = false;
@@ -57,6 +58,10 @@ public class ControlsManager : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("play").GetComponent<BoxCollider2D>().enabled = true;
                 GameObject.FindGameObjectWithTag("pause").GetComponent<BoxCollider2D>().enabled = false;
             }
+        }
+
+        if (selectionInProgress && Input.GetMouseButtonDown(0)) {
+            snapBool = true;
         }
 
         Vector3 position = mainCam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, -10));
