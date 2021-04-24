@@ -19,10 +19,6 @@
          <BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="1D6058900D05DD3D006BFB54" BuildableName="Unity-Target-New.app" BlueprintName="Unity-iPhone" ReferencedContainer="container:Unity-iPhone.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <CommandLineArguments>
-         <CommandLineArgument argument="-waitForPlayerConnection 30" isEnabled="YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

@@ -14,8 +14,7 @@
 #include "metadata/Il2CppGenericInstHash.h"
 #include "metadata/Il2CppGenericMethodCompare.h"
 #include "metadata/Il2CppGenericMethodHash.h"
-#include "metadata/Il2CppSignatureCompare.h"
-#include "metadata/Il2CppSignatureHash.h"
+#include "metadata/Il2CppSignature.h"
 #include "metadata/Il2CppTypeCompare.h"
 #include "metadata/Il2CppTypeHash.h"
 #include "metadata/Il2CppTypeVector.h"
@@ -33,9 +32,17 @@ namespace vm
         const Il2CppRGCTXDefinition* items;
     };
 
+    typedef struct Il2CppGenericMethodPointers
+    {
+        Il2CppMethodPointer methodPointer;
+        Il2CppMethodPointer virtualMethodPointer;
+        InvokerMethod invoker_method;
+    } Il2CppGenericMethodPointers;
+
+
     typedef Il2CppHashMap<const char*, Il2CppClass*, il2cpp::utils::StringUtils::StringHasher<const char*>, il2cpp::utils::VmStringUtils::CaseSensitiveComparer> WindowsRuntimeTypeNameToClassMap;
     typedef Il2CppHashMap<const Il2CppClass*, const char*, il2cpp::utils::PointerHash<Il2CppClass> > ClassToWindowsRuntimeTypeNameMap;
-    typedef Il2CppHashMap<il2cpp::utils::dynamic_array<const Il2CppType*>, Il2CppMethodPointer, il2cpp::metadata::Il2CppSignatureHash, il2cpp::metadata::Il2CppSignatureCompare> Il2CppUnresolvedSignatureMap;
+    typedef Il2CppHashMap<const il2cpp::metadata::Il2CppSignature, Il2CppMethodPointer, il2cpp::metadata::Il2CppSignatureHash, il2cpp::metadata::Il2CppSignatureCompare> Il2CppUnresolvedSignatureMap;
     typedef Il2CppHashMap<const Il2CppGenericMethod*, const Il2CppGenericMethodIndices*, il2cpp::metadata::Il2CppGenericMethodHash, il2cpp::metadata::Il2CppGenericMethodCompare> Il2CppMethodTableMap;
 
     class LIBIL2CPP_CODEGEN_API MetadataCache
@@ -49,6 +56,7 @@ namespace vm
 
         static void Clear();
 
+        static void ExecuteEagerStaticClassConstructors();
         static void ExecuteModuleInitializers();
 
         static Il2CppClass* GetGenericInstanceType(Il2CppClass* genericTypeDefinition, const il2cpp::metadata::Il2CppTypeVector& genericArgumentTypes);
@@ -67,17 +75,18 @@ namespace vm
         static const Il2CppGenericInst* GetGenericInst(const il2cpp::metadata::Il2CppTypeVector& types);
         static const Il2CppGenericMethod* GetGenericMethod(const MethodInfo* methodDefinition, const Il2CppGenericInst* classInst, const Il2CppGenericInst* methodInst);
 
-        static InvokerMethod GetInvokerMethodPointer(const MethodInfo* methodDefinition, const Il2CppGenericContext* context);
-        static Il2CppMethodPointer GetMethodPointer(const MethodInfo* methodDefinition, const Il2CppGenericContext* context);
+        static Il2CppGenericMethodPointers GetGenericMethodPointers(const MethodInfo* methodDefinition, const Il2CppGenericContext* context);
 
         static const MethodInfo* GetMethodInfoFromVTableSlot(const Il2CppClass* klass, int32_t vTableSlot);
 
         static const Il2CppType* GetTypeFromRgctxDefinition(const Il2CppRGCTXDefinition* rgctxDef);
         static const Il2CppGenericMethod* GetGenericMethodFromRgctxDefinition(const Il2CppRGCTXDefinition* rgctxDef);
+        static std::pair<const Il2CppType*, const MethodInfo*> GetConstrainedCallFromRgctxDefinition(const Il2CppRGCTXDefinition* rgctxDef);
 
         static void InitializeAllMethodMetadata();
-        static void InitializeMethodMetadata(const Il2CppCodeGenModule* module, uint32_t index);
+        static void* InitializeRuntimeMetadata(uintptr_t* metadataPointer);
 
+        static Il2CppMethodPointer GetAdjustorThunk(const Il2CppImage* image, uint32_t token);
         static Il2CppMethodPointer GetMethodPointer(const Il2CppImage* image, uint32_t token);
         static InvokerMethod GetMethodInvoker(const Il2CppImage* image, uint32_t token);
         static const Il2CppInteropData* GetInteropDataForType(const Il2CppType* type);
@@ -103,7 +112,7 @@ namespace vm
         static Il2CppInterfaceOffsetInfo GetInterfaceOffsetInfo(const Il2CppClass* klass, TypeInterfaceOffsetIndex index);
         static RGCTXCollection GetRGCTXs(const Il2CppImage* image, uint32_t token);
         static const uint8_t* GetFieldDefaultValue(const FieldInfo* field, const Il2CppType** type);
-        static const uint8_t* GetParameterDefaultValue(const MethodInfo* method, const ParameterInfo* parameter, const Il2CppType** type, bool* isExplicitySetNullDefaultValue);
+        static const uint8_t* GetParameterDefaultValue(const MethodInfo* method, int32_t parameterPosition, const Il2CppType** type, bool* isExplicitySetNullDefaultValue);
         static int GetFieldMarshaledSizeForField(const FieldInfo* field);
         static const MethodInfo* GetMethodInfoFromMethodHandle(Il2CppMetadataMethodDefinitionHandle handle);
 
@@ -126,6 +135,10 @@ namespace vm
         static Il2CppMetadataTypeHandle GetTypeHandleFromType(const Il2CppType* type);
         static bool TypeIsNested(Il2CppMetadataTypeHandle handle);
         static bool TypeIsValueType(Il2CppMetadataTypeHandle handle);
+        static bool StructLayoutPackIsDefault(Il2CppMetadataTypeHandle handle);
+        static int32_t StructLayoutPack(Il2CppMetadataTypeHandle handle);
+        static bool StructLayoutSizeIsDefault(Il2CppMetadataTypeHandle handle);
+
         static std::pair<const char*, const char*> GetTypeNamespaceAndName(Il2CppMetadataTypeHandle handle);
         static Il2CppMetadataTypeHandle GetNestedTypes(Il2CppClass* klass, void** iter);
         static Il2CppMetadataTypeHandle GetNestedTypes(Il2CppMetadataTypeHandle handle, void** iter);
@@ -142,7 +155,7 @@ namespace vm
         static const char* GetGenericParameterName(Il2CppMetadataGenericParameterHandle handle);
         static Il2CppGenericParameterInfo GetGenericParameterInfo(Il2CppMetadataGenericParameterHandle handle);
 
-        static uint16_t GetGenericParameterFlags(Il2CppMetadataGenericContainerHandle handle, GenericContainerParameterIndex index);
+        static uint16_t GetGenericParameterFlags(Il2CppMetadataGenericParameterHandle handle);
         static int16_t GetGenericConstraintCount(Il2CppMetadataGenericParameterHandle handle);
 
         static Il2CppClass* GetTypeInfoFromHandle(Il2CppMetadataTypeHandle handle);

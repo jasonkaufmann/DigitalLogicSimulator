@@ -1,7 +1,7 @@
 #pragma once
 
-// we allow to build with sdk 9.0 (and run on ios7) so we need to take an extra care about Metal support
-// it is expected to substitute Metal.h so only objc
+// we are still allowing to build with older sdk and run on simulator without metal support (pre MacOS 10.15)
+// it is expected to substitute Metal.h so we assume this is used only with objc
 
 #ifdef __cplusplus
 extern "C" typedef MTLDeviceRef (*MTLCreateSystemDefaultDeviceFunc)();
@@ -17,20 +17,7 @@ typedef MTLDeviceRef (*MTLCreateSystemDefaultDeviceFunc)();
 
 #else
 
-// everything below is to allow compilation of the code that uses metal interfaces for simulator
-// as protocols declarations should be available even if we do not call functions themselves
-
-#if !(TARGET_IPHONE_SIMULATOR && defined(__IPHONE_11_0)) && !(TARGET_TVOS_SIMULATOR && defined(__TVOS_11_0))
-
-typedef NSUInteger MTLPixelFormat;
-enum
-{
-    MTLPixelFormatBGRA8Unorm,
-    MTLPixelFormatBGRA8Unorm_sRGB,
-    MTLPixelFormatR16Float,
-};
-
-#endif
+// even if we cant use metal, we should be able to build it still: we need protocol declarations
 
 @interface CAMetalLayer : CALayer
 @property (readwrite) BOOL framebufferOnly;

@@ -51,18 +51,21 @@ typedef struct Il2CppType
     {
         // We have this dummy field first because pre C99 compilers (MSVC) can only initializer the first value in a union.
         void* dummy;
-        TypeDefinitionIndex __klassIndex; /* for VALUETYPE and CLASS */
+        TypeDefinitionIndex __klassIndex; /* for VALUETYPE and CLASS at startup */
+        Il2CppMetadataTypeHandle typeHandle; /* for VALUETYPE and CLASS at runtime */
         const Il2CppType *type;   /* for PTR and SZARRAY */
         Il2CppArrayType *array; /* for ARRAY */
         //MonoMethodSignature *method;
-        GenericParameterIndex __genericParameterIndex; /* for VAR and MVAR */
+        GenericParameterIndex __genericParameterIndex; /* for VAR and MVAR at startup */
+        Il2CppMetadataGenericParameterHandle genericParameterHandle; /* for VAR and MVAR at runtime */
         Il2CppGenericClass *generic_class; /* for GENERICINST */
     } data;
     unsigned int attrs    : 16; /* param attributes or field flags */
     Il2CppTypeEnum type     : 8;
-    unsigned int num_mods : 6;  /* max 64 modifiers follow at the end */
+    unsigned int num_mods : 5;  /* max 64 modifiers follow at the end */
     unsigned int byref    : 1;
     unsigned int pinned   : 1;  /* valid when included in a local var signature */
+    unsigned int valuetype : 1;
     //MonoCustomMod modifiers [MONO_ZERO_LEN_ARRAY]; /* this may grow */
 } Il2CppType;
 

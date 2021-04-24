@@ -192,8 +192,14 @@ extern "C" void UnityKeyboard_LayoutChanged(NSString* layout);
     CGRect srcRect  = [[notification.userInfo objectForKey: UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGRect rect     = [UnityGetGLView() convertRect: srcRect fromView: nil];
 
-    if (rect.origin.y >= [UnityGetGLView() bounds].size.height)
+    // there are several ways to hide keyboard:
+    // one, using the hide button on the keyboard, will move it outside view
+    // another, for ipad floating keyboard, will "minimize" it (making its height/width zero)
+
+    if (rect.origin.y >= [UnityGetGLView() bounds].size.height || rect.size.width < 1e-6 || rect.size.height < 1e-6)
+    {
         [self systemHideKeyboard];
+    }
     else
     {
         rect.origin.y = [UnityGetGLView() frame].size.height - rect.size.height; // iPhone X sometimes reports wrong y value for keyboard
@@ -265,8 +271,8 @@ extern "C" void UnityKeyboard_LayoutChanged(NSString* layout);
     // mind you, all of that is highly empirical.
     // we assume space between items to be 18 [both betwen buttons and on the sides]
     // we also assume that button width would be more less title width exactly (it should be quite close though)
-    const int doneW   = [doneStr sizeWithAttributes: @{NSFontAttributeName: font}].width;
-    const int cancelW = [cancelStr sizeWithAttributes: @{NSFontAttributeName: font}].width;
+    const int doneW   = (int)[doneStr sizeWithAttributes: @{NSFontAttributeName: font}].width;
+    const int cancelW = (int)[cancelStr sizeWithAttributes: @{NSFontAttributeName: font}].width;
     singleLineSystemButtonsSpace = doneW + cancelW + 3 * 18;
 }
 
@@ -324,7 +330,8 @@ extern "C" void UnityKeyboard_LayoutChanged(NSString* layout);
     traits.autocorrectionType = param.autocorrectionType;
     traits.keyboardAppearance = param.appearance;
     traits.autocapitalizationType = capitalization;
-    traits.secureTextEntry = param.secure;
+    if (!_inputHidden)
+        traits.secureTextEntry = param.secure;
 }
 
 - (void)setKeyboardParams:(KeyboardShowParam)param
@@ -480,6 +487,10 @@ extern "C" void UnityKeyboard_LayoutChanged(NSString* layout);
 
     editView.hidden     = _inputHidden ? YES : NO;
     inputView.hidden    = _inputHidden ? YES : NO;
+    if (_inputHidden)
+        textField.secureTextEntry = NO;
+    else
+        textField.secureTextEntry = cachedKeyboardParam.secure;
 }
 
 #if PLATFORM_IOS
@@ -691,7 +702,17 @@ static bool StringContainsEmoji(NSString *string);
         [textField setText: newText];
 #endif
 
-        return NO;
+        // If we're trying to exceed the max length of the field BUT the text can merge into
+        // precomposed characters then we should allow the input.
+        NSString* precomposedNewText = [currentText precomposedStringWithCompatibilityMapping];
+        __block int count = 0;
+        [precomposedNewText enumerateSubstringsInRange: NSMakeRange(0, [precomposedNewText length]) options: NSStringEnumerationByComposedCharacterSequences
+         usingBlock: ^(NSString *inSubstring, NSRange inSubstringRange, NSRange inEnclosingRange, BOOL *outStop) {
+             count++;
+         }];
+        // count of characters of precomposed string will equal the character limit
+        // if there has been characters merged bringing us under the limit.
+        return count <= _characterLimit;
     }
     else
     {

@@ -1,9 +1,13 @@
 #import "UnityViewControllerBase.h"
 #import "UnityAppController.h"
 #import "UnityAppController+ViewHandling.h"
-#import "PluginBase/UnityViewControllerListener.h"
+
+#include "OrientationSupport.h"
+
 
 @implementation UnityViewControllerBase
+
+@synthesize notificationDelegate = _notificationDelegate;
 
 - (id)init
 {
@@ -15,37 +19,72 @@
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    AppController_SendUnityViewControllerNotification(kUnityViewWillLayoutSubviews);
+    [_notificationDelegate onViewWillLayoutSubviews];
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    AppController_SendUnityViewControllerNotification(kUnityViewDidLayoutSubviews);
+    [_notificationDelegate onViewDidLayoutSubviews];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear: animated];
-    AppController_SendUnityViewControllerNotification(kUnityViewDidDisappear);
+    [_notificationDelegate onViewDidDisappear: animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear: animated];
-    AppController_SendUnityViewControllerNotification(kUnityViewWillDisappear);
+    [_notificationDelegate onViewWillDisappear: animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear: animated];
-    AppController_SendUnityViewControllerNotification(kUnityViewDidAppear);
+    [_notificationDelegate onViewDidAppear: animated];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-    AppController_SendUnityViewControllerNotification(kUnityViewWillAppear);
+    [_notificationDelegate onViewWillAppear: animated];
 }
 
 @end
+
+UnityViewControllerBase* AllocUnityDefaultViewController()
+{
+    return [UnityDefaultViewController alloc];
+}
+
+#if UNITY_SUPPORT_ROTATION
+UnityViewControllerBase* AllocUnitySingleOrientationViewController(UIInterfaceOrientation orient)
+{
+    switch (orient)
+    {
+        case UIInterfaceOrientationPortrait:            return [UnityPortraitOnlyViewController alloc];
+        case UIInterfaceOrientationPortraitUpsideDown:  return [UnityPortraitUpsideDownOnlyViewController alloc];
+        case UIInterfaceOrientationLandscapeLeft:       return [UnityLandscapeLeftOnlyViewController alloc];
+        case UIInterfaceOrientationLandscapeRight:      return [UnityLandscapeRightOnlyViewController alloc];
+
+        default:                                        assert(false && "bad UIInterfaceOrientation provided");
+    }
+    return nil;
+}
+
+#endif
+
+UnityViewControllerBase* AllocUnityViewController()
+{
+#if UNITY_SUPPORT_ROTATION
+    if (UnityShouldAutorotate())
+        return AllocUnityDefaultViewController();
+
+    UIInterfaceOrientation orient = ConvertToIosScreenOrientation((ScreenOrientation)UnityRequestedScreenOrientation());
+    return AllocUnitySingleOrientationViewController(orient);
+#else
+    return AllocUnityDefaultViewController();
+#endif
+}

@@ -1,7 +1,9 @@
+#include <sched.h>
+
 const CFIndex streamSize = 1024;
 static NSOperationQueue* webOperationQueue;
 static NSURLSession* unityWebRequestSession;
-
+static NSLock* unityWebRequestLock;
 
 @interface UnityURLRequest : NSMutableURLRequest
 
@@ -18,7 +20,6 @@ static NSURLSession* unityWebRequestSession;
 @end
 
 static NSMutableArray<UnityURLRequest*>* currentRequests;
-static NSLock* currentRequestsLock;
 
 @implementation UnityURLRequest
 {
@@ -39,39 +40,31 @@ static NSLock* currentRequestsLock;
 @synthesize redirecting = _redirecting;
 @synthesize isDone = _isDone;
 
-+ (void)storeRequest:(UnityURLRequest *)request taskID:(NSUInteger)taskId
-{
-    request.taskIdentifier = taskId;
-    [currentRequestsLock lock];
-    [currentRequests addObject: request];
-    [currentRequestsLock unlock];
-}
-
 + (UnityURLRequest*)requestForTask:(NSURLSessionTask*)task
 {
     UnityURLRequest* request = nil;
-    [currentRequestsLock lock];
+    [unityWebRequestLock lock];
     for (unsigned i = 0; i < currentRequests.count; ++i)
         if (currentRequests[i].taskIdentifier == task.taskIdentifier)
         {
             request = currentRequests[i];
             break;
         }
-    [currentRequestsLock unlock];
+    [unityWebRequestLock unlock];
     return request;
 }
 
 + (void)removeRequest:(UnityURLRequest*)request
 {
     // removeObject would remove all identical request, taskIdentifier is unique
-    [currentRequestsLock lock];
+    [unityWebRequestLock lock];
     for (unsigned i = 0; i < currentRequests.count; ++i)
         if (currentRequests[i].taskIdentifier == request.taskIdentifier)
         {
             [currentRequests removeObjectAtIndex: i];
             break;
         }
-    [currentRequestsLock unlock];
+    [unityWebRequestLock unlock];
 }
 
 + (void)writeBody:(NSOutputStream*)outputStream task:(NSURLSessionTask*)task udata:(void*)udata
@@ -84,9 +77,20 @@ static NSLock* currentRequestsLock;
         const UInt8* data = (const UInt8*)UnityWebRequestGetUploadData(udata, &dataSize);
         if (dataSize == 0)
             break;
-        NSInteger transmitted = [outputStream write: data maxLength: dataSize];
-        if (transmitted > 0)
-            UnityWebRequestConsumeUploadData(udata, (unsigned)transmitted);
+
+        if (outputStream.hasSpaceAvailable)
+        {
+            NSInteger transmitted = [outputStream write: data maxLength: dataSize];
+            if (transmitted > 0)
+                UnityWebRequestConsumeUploadData(udata, (unsigned)transmitted);
+            else if (transmitted < 0)
+                break;
+        }
+        else
+        {
+            sched_yield();
+        }
+
         switch (task.state)
         {
             case NSURLSessionTaskStateCanceling:
@@ -98,6 +102,7 @@ static NSLock* currentRequestsLock;
         }
     }
     [outputStream close];
+    UnityWebRequestRelease(udata);
 }
 
 - (id)init:(void*)udata
@@ -262,6 +267,14 @@ static NSLock* currentRequestsLock;
     if (error != nil)
         UnityReportWebRequestNetworkError(urequest.udata, (int)[error code]);
     UnityReportWebRequestFinishedLoadingData(urequest.udata);
+    UnityWebRequestRelease(urequest.udata);
+}
+
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error
+{
+    [unityWebRequestLock lock];
+    unityWebRequestSession = nil;
+    [unityWebRequestLock unlock];
 }
 
 @end
@@ -277,13 +290,10 @@ extern "C" void* UnityCreateWebRequestBackend(void* udata, const char* methodStr
             {
                 webOperationQueue = [[NSOperationQueue alloc] init];
                 webOperationQueue.name = @"com.unity3d.WebOperationQueue";
+                webOperationQueue.qualityOfService = NSQualityOfServiceUtility;
 
                 currentRequests = [[NSMutableArray<UnityURLRequest*> alloc] init];
-                currentRequestsLock = [[NSLock alloc] init];
-
-                NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
-                UnityWebRequestDelegate* delegate = [[UnityWebRequestDelegate alloc] init];
-                unityWebRequestSession = [NSURLSession sessionWithConfiguration: config delegate: delegate delegateQueue: webOperationQueue];
+                unityWebRequestLock = [[NSLock alloc] init];
             }
         });
 
@@ -314,8 +324,18 @@ extern "C" void UnitySendWebRequest(void* connection, unsigned length, unsigned 
             outputStream = (__bridge_transfer NSOutputStream*)writeStream;
             request.HTTPBodyStream = (__bridge_transfer NSInputStream*)readStream;
         }
+
+        [unityWebRequestLock lock];
+        if (unityWebRequestSession == nil)
+        {
+            NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+            UnityWebRequestDelegate* delegate = [[UnityWebRequestDelegate alloc] init];
+            unityWebRequestSession = [NSURLSession sessionWithConfiguration: config delegate: delegate delegateQueue: nil];
+        }
         NSURLSessionTask* task = [unityWebRequestSession dataTaskWithRequest: request];
-        [UnityURLRequest storeRequest: request taskID: task.taskIdentifier];
+        request.taskIdentifier = task.taskIdentifier;
+        [currentRequests addObject: request];
+        [unityWebRequestLock unlock];
         [task resume];
         if (length > 0)
             [webOperationQueue addOperationWithBlock:^{
@@ -347,6 +367,7 @@ extern "C" void UnityCancelWebRequest(void* connection)
     @autoreleasepool
     {
         UnityURLRequest* request = (__bridge UnityURLRequest*)connection;
+        [unityWebRequestLock lock];
         [unityWebRequestSession getAllTasksWithCompletionHandler:^(NSArray<NSURLSessionTask*>* _Nonnull tasks) {
             for (unsigned i = 0; i < tasks.count; ++i)
                 if (tasks[i].taskIdentifier == request.taskIdentifier)
@@ -355,6 +376,7 @@ extern "C" void UnityCancelWebRequest(void* connection)
                     break;
                 }
         }];
+        [unityWebRequestLock unlock];
     }
 }
 
@@ -383,4 +405,13 @@ extern "C" void UnityWebRequestClearCookieCache(const char* domain)
     NSUInteger cookieCount = [cookies count];
     for (int i = 0; i < cookieCount; ++i)
         [cookieStorage deleteCookie: cookies[i]];
+}
+
+extern "C" void UnityWebRequestCleanupSession()
+{
+    if (unityWebRequestLock == nil)
+        return;
+    [unityWebRequestLock lock];
+    [unityWebRequestSession invalidateAndCancel];
+    [unityWebRequestLock unlock];
 }

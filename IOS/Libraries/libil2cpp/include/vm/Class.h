@@ -45,7 +45,7 @@ namespace vm
     class LIBIL2CPP_CODEGEN_API Class
     {
     public:
-        static Il2CppClass* FromIl2CppType(const Il2CppType* type);
+        static Il2CppClass* FromIl2CppType(const Il2CppType* type, bool throwOnError = true);
         static Il2CppClass* FromName(const Il2CppImage* image, const char* namespaze, const char *name);
         static Il2CppClass* FromSystemType(Il2CppReflectionType *type);
         static Il2CppClass* FromGenericParameter(Il2CppMetadataGenericParameterHandle param);
@@ -99,7 +99,7 @@ namespace vm
 
     public:
 
-        static bool Init(Il2CppClass *klass);
+        static void Init(Il2CppClass *klass);
 
         static Il2CppClass* GetArrayClass(Il2CppClass *element_class, uint32_t rank);
         static Il2CppClass* GetBoundedArrayClass(Il2CppClass *element_class, uint32_t rank, bool bounded);
@@ -132,7 +132,9 @@ namespace vm
         static const Il2CppType* il2cpp_type_from_type_info(const TypeNameParseInfo& info, TypeSearchFlags searchFlags);
 
         static Il2CppClass* GetDeclaringType(Il2CppClass* klass);
+        static const MethodInfo* GetVirtualMethod(Il2CppClass* klass, const MethodInfo* method);
 
+        static void SetClassInitializationError(Il2CppClass* klass, Il2CppException* error);
         static void UpdateInitializedAndNoError(Il2CppClass *klass);
 
         static IL2CPP_FORCE_INLINE bool IsGenericClassAssignableFrom(const Il2CppClass* klass, const Il2CppClass* oklass, const Il2CppImage* genericContainerImage, Il2CppMetadataGenericContainerHandle genericContainer)
@@ -153,7 +155,7 @@ namespace vm
 
             for (int32_t i = 0; i < genericParameterCount; ++i)
             {
-                uint16_t flags = MetadataCache::GetGenericParameterFlags(genericContainer, i);
+                uint16_t flags = MetadataCache::GetGenericParameterFlags(MetadataCache::GetGenericParameterFromIndex(genericContainer, i));
                 const int32_t parameterVariance = flags & IL2CPP_GENERIC_PARAMETER_ATTRIBUTE_VARIANCE_MASK;
                 Il2CppClass* genericParameterType = Class::FromIl2CppType(genericInst->type_argv[i]);
                 Il2CppClass* oGenericParameterType = Class::FromIl2CppType(oGenericInst->type_argv[i]);

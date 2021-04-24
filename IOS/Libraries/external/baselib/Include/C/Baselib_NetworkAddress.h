@@ -14,7 +14,7 @@ BASELIB_C_INTERFACE
 #endif
 
 // Address family.
-typedef enum
+typedef enum Baselib_NetworkAddress_Family
 {
     Baselib_NetworkAddress_Family_Invalid = 0,
     Baselib_NetworkAddress_Family_IPv4 = 1,
@@ -33,17 +33,21 @@ typedef struct Baselib_NetworkAddress
     };
     BASELIB_ALIGN_AS(2) uint8_t port[2]; // in network byte order
     uint8_t family;
+    uint8_t _padding; // Explicit padding to allow for deterministic bitwise compare.
 
-    // This struct consists entirely of uint8_t and as such its size would be 19.
-    // Since we align the port to 2 though, padding is automatically added. However, right now our binding generator does not read this out.
-    // So to be a bit safer we add this manual padding.
-    uint8_t _padding;
+    // Scope zone index for IPv6 (ignored for IPv4)
+    // Defaults to zero if not specified.
+    // Note that unlike the other fields in this struct, this is *not* in network byte order!
+    uint32_t ipv6_scope_id;
 } Baselib_NetworkAddress;
 
 // Max length of any string representing an IP address
 static const uint32_t Baselib_NetworkAddress_IpMaxStringLength = 46;
 
 // Binary encode string representation of an address.
+//
+// Neither port not ipAddressBuffer scope id are parsed from the ip string.
+// dstAddress->ipv6_scope_id is set to zero and needs to be manually set if required.
 //
 // Possible error codes:
 //  - Baselib_ErrorCode_InvalidArgument - One or more of the input parameters are invalid
@@ -58,7 +62,8 @@ BASELIB_API void Baselib_NetworkAddress_Encode(
 // Decode binary representation of an address.
 //
 // family, ipAddressBuffer, and port are all optional arguments.
-// passing zero as  ipAddressBufferLen is the same as passing an ipAddressBuffer nullptr.
+// passing zero as ipAddressBufferLen is the same as passing an ipAddressBuffer nullptr.
+// Port and IPv6 scope id are not encodeded to ipAddressBuffer.
 //
 // Possible error codes:
 //  - Baselib_ErrorCode_InvalidArgument - srcAddress is null or otherwise invalid.
@@ -80,7 +85,7 @@ static inline Baselib_NetworkAddress Baselib_NetworkAddress_Empty(void)
     return address;
 }
 
-typedef enum
+typedef enum Baselib_NetworkAddress_AddressReuse
 {
     Baselib_NetworkAddress_AddressReuse_DoNotAllow = 0,
 

@@ -21,17 +21,12 @@ __attribute__ ((visibility("default")))
 
     DisplayConnection*  _mainDisplay;
 
-    // We will cache view controllers used for fixed orientation (indexed by UIInterfaceOrientation).
-    // Default view contoller goes to index 0. The default view controller is used when autorotation is enabled.
-    //
-    // There's no way to force iOS to change orientation when autorotation is enabled and the current orientation is disabled.
-    // [UIViewController attemptRotationToDeviceOrientation] is insufficient to force iOS to change orientation in this circumstance.
-    // We will recreate _viewControllerForOrientation[0] in that case immediately (see checkOrientationRequest for more comments)
+    // CODE ARCHEOLOGY: we were caching view controllers, both autorotation one and per-fixed-orientation ones
+    // CODE ARCHEOLOGY: we stopped doing this as the performance impact is negligible,
+    // CODE ARCHEOLOGY: yet it introduces corner cases and in general lots of code
+
 #if UNITY_SUPPORT_ROTATION
-    UIViewController*       _viewControllerForOrientation[5];
     UIInterfaceOrientation  _curOrientation;
-#else
-    UIViewController*       _viewControllerForOrientation[1];
 #endif
 
     id<RenderPluginDelegate>    _renderDelegate;
@@ -66,7 +61,7 @@ __attribute__ ((visibility("default")))
 #endif
 
 @property (nonatomic, retain) id                            renderDelegate;
-@property (nonatomic, copy)                                 void(^quitHandler)();
+@property (nonatomic, copy)                                 void (^quitHandler)(void);
 
 @end
 
@@ -76,7 +71,7 @@ extern "C" {
 #endif
 
 extern UnityAppController* _UnityAppController;
-extern UnityAppController* GetAppController();
+extern UnityAppController* GetAppController(void);
 
 #ifdef __cplusplus
 } // extern "C"

@@ -17,6 +17,27 @@
 - (void)interfaceDidChangeOrientation:(NSNotification*)notification;
 @end
 
+@protocol UnityViewControllerNotifications<NSObject>
+@optional
+- (void)onViewWillLayoutSubviews;
+- (void)onViewDidLayoutSubviews;
+- (void)onViewDidDisappear:(BOOL)animated;
+- (void)onViewWillDisappear:(BOOL)animated;
+- (void)onViewDidAppear:(BOOL)animated;
+- (void)onViewWillAppear:(BOOL)animated;
+@end
+
+// this default delegate will send notifications for UnityViewControllerListener
+@interface UnityViewControllerNotificationsDefaultSender : NSObject<UnityViewControllerNotifications>
+- (void)onViewWillLayoutSubviews;
+- (void)onViewDidLayoutSubviews;
+- (void)onViewDidDisappear:(BOOL)animated;
+- (void)onViewWillDisappear:(BOOL)animated;
+- (void)onViewDidAppear:(BOOL)animated;
+- (void)onViewWillAppear:(BOOL)animated;
+@end
+
+
 void UnityRegisterViewControllerListener(id<UnityViewControllerListener> obj);
 void UnityUnregisterViewControllerListener(id<UnityViewControllerListener> obj);
 

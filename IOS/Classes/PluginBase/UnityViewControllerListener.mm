@@ -43,3 +43,38 @@ void UnityUnregisterViewControllerListener(id<UnityViewControllerListener> obj)
     [[NSNotificationCenter defaultCenter] removeObserver: obj name: kUnityInterfaceWillChangeOrientation object: nil];
     [[NSNotificationCenter defaultCenter] removeObserver: obj name: kUnityInterfaceDidChangeOrientation object: nil];
 }
+
+extern void AppController_SendUnityViewControllerNotification(NSString* name);
+
+@implementation UnityViewControllerNotificationsDefaultSender
+- (void)onViewWillLayoutSubviews
+{
+    AppController_SendUnityViewControllerNotification(kUnityViewWillLayoutSubviews);
+}
+
+- (void)onViewDidLayoutSubviews
+{
+    AppController_SendUnityViewControllerNotification(kUnityViewDidLayoutSubviews);
+}
+
+- (void)onViewDidDisappear:(BOOL)animated
+{
+    AppController_SendUnityViewControllerNotification(kUnityViewDidDisappear);
+}
+
+- (void)onViewWillDisappear:(BOOL)animated
+{
+    AppController_SendUnityViewControllerNotification(kUnityViewWillDisappear);
+}
+
+- (void)onViewDidAppear:(BOOL)animated
+{
+    AppController_SendUnityViewControllerNotification(kUnityViewDidAppear);
+}
+
+- (void)onViewWillAppear:(BOOL)animated
+{
+    AppController_SendUnityViewControllerNotification(kUnityViewWillAppear);
+}
+
+@end

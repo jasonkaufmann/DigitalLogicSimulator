@@ -75,7 +75,7 @@
 // returns the topmost presentedViewController if there is one, or just rootViewController
 - (UIViewController*)topMostController;
 
-// will create or return from cache correct view controller for requested orientation
+// will create the correct view controller for requested orientation/autorotation
 - (UIViewController*)createRootViewController;
 
 // old deprecated methods: no longer used
@@ -91,7 +91,7 @@
 
 #if UNITY_SUPPORT_ROTATION
 @interface UnityAppController (OrientationSupport)
-// will create or return from cache correct view controller for given orientation
+// will create the correct view controller for given orientation
 - (UIViewController*)createRootViewControllerForOrientation:(UIInterfaceOrientation)orientation;
 
 // forcibly orient interface

@@ -11,7 +11,29 @@ BASELIB_C_INTERFACE
 // Max alignment that can be passed to Baselib_Memory_AlignedAlloc and Baselib_Memory_AlignedReallocate functions
 static const size_t Baselib_Memory_MaxAlignment = 64 * 1024;
 
+// We can't handle platform varying constants in the C# bindings right now.
+#if !defined(BASELIB_BINDING_GENERATION)
+
+// Minimum guaranteed alignment for Baselib_Memory_Allocate/Baselib_Memory_AlignedAlloc in bytes.
+//
+// Guaranteed to be at least 8.
+// Note that on some platforms it is possible to overwrite the internally used allocator in which case this guarantee may no longer be upheld.
+static const size_t Baselib_Memory_MinGuaranteedAlignment = PLATFORM_MEMORY_MALLOC_MIN_ALIGNMENT;
+
+#else
+
+// Minimum guaranteed alignment for Baselib_Memory_Allocate/Baselib_Memory_AlignedAlloc in bytes.
+//
+// Guaranteed to be at least 8.
+// Note that on some platforms it is possible to overwrite the internally used allocator in which case this guarantee may no longer be upheld.
+static const size_t Baselib_Memory_MinGuaranteedAlignment = 8;
+
+#endif // !defined(BASELIB_BINDING_GENERATION)
+
 // Information about available pages sizes.
+//
+// Page sizes do not reflect necessarily hardware ("physical") page sizes, but rather "virtual" page sizes that the OS is dealing with.
+// I.e. a virtual page may refer to several hardware pages, but the OS exposes only a single state for this group of pages.
 typedef struct Baselib_Memory_PageSizeInfo
 {
     // Commonly used page size on this platform.
@@ -36,58 +58,69 @@ static const Baselib_Memory_PageAllocation Baselib_Memory_PageAllocation_Invalid
 // \param outPagesSizeInfo:      Pointer to page size info struct. Passing 'nullptr' will return immediately.
 BASELIB_API void Baselib_Memory_GetPageSizeInfo(Baselib_Memory_PageSizeInfo* outPagesSizeInfo);
 
-
 // Allocates memory using a system allocator like malloc.
 //
-// Return value is guaranteed to be a unique pointer. This is true for zero sized allocations as well.
-// Allocation failures trigger process abort.
+// Allocation failures or invalid alignments will trigger process abort.
+//
+// \param size          Size of the allocation. Zero is valid.
+// \returns             Unique pointer to allocation. At least aligned to by Baselib_Memory_MinGuaranteedAlignment bytes.
+//                      This is true for zero sized allocations as well.
 BASELIB_API void* Baselib_Memory_Allocate(size_t size);
 
 // Reallocates memory previously allocated by Baselib_Memory_Allocate or Baselib_Memory_Reallocate.
 //
-// Reallocating an already freed pointer or a pointer that was not previously allocated by Baselib_Memory_Allocate or Baselib_Memory_Reallocate leads to undefined behavior.
+// Allocation failures or invalid alignments will trigger process abort.
 //
-// Passing `nullptr` yield the same result as calling Baselib_Memory_Allocate.
-//
-// Return value is guaranteed to be a unique pointer. This is true for zero sized allocations as well.
-// Allocation failures trigger process abort.
+// \param ptr         Pointer previously returned by Baselib_Memory_Allocate or Baselib_Memory_Reallocate.
+//                    Reallocating an already freed pointer or a pointer that was not previously allocated by Baselib_Memory_Allocate or
+//                    Baselib_Memory_Reallocate leads to undefined behavior.
+//                    Passing `nullptr` yield the same result as calling Baselib_Memory_Allocate.
+// \param size        Size of the allocation. No special restrictions apply, zero is valid.
+// \returns           Unique pointer to allocation. At least aligned to by Baselib_Memory_MinGuaranteedAlignment bytes.
+//                    This is true for zero sized allocations as well.
 BASELIB_API void* Baselib_Memory_Reallocate(void* ptr, size_t newSize);
 
 // Frees memory allocated by Baselib_Memory_Allocate Baselib_Memory_Reallocate.
 //
-// Passing `nullptr` result in a no-op.
-// Freeing an already freed pointer or a pointer that was not previously allocated by Baselib_Memory_Allocate or Baselib_Memory_Reallocate leads to undefined behavior.
+// \param ptr         Pointer previously returned by Baselib_Memory_Allocate or Baselib_Memory_Reallocate.
+//                    Freeing an already freed pointer or a pointer that was not previously allocated by Baselib_Memory_Allocate or Baselib_Memory_Reallocate leads to undefined behavior.
+//                    Passing `nullptr` result in a no-op.
 BASELIB_API void Baselib_Memory_Free(void* ptr);
 
 // Allocates memory using a system allocator like malloc and guarantees that the returned pointer is aligned to the specified alignment.
 //
-// Alignment needs to be a power of two which is also a multiple of sizeof(void *) but less or equal to Baselib_Memory_MaxAlignment.
-//
-// Return value is guaranteed to be a unique pointer. This is true for zero sized allocations as well.
 // Allocation failures or invalid alignments will trigger process abort.
+//
+// \param size        Size of the allocation. No special restrictions (like  multiples of alignment) apply, zero is valid.
+// \param alignment   Needs to be a power of two which is also a multiple of of pointer size (i.e. sizeof(void*)) but less or equal to Baselib_Memory_MaxAlignment.
+//                    Any alignment smaller than Baselib_Memory_MinGuaranteedAlignment, will be clamped to Baselib_Memory_MinGuaranteedAlignment.
+// \returns           Unique pointer to aligned allocation. This is true for zero sized allocations as well.
 BASELIB_API void* Baselib_Memory_AlignedAllocate(size_t size, size_t alignment);
 
 // Reallocates memory previously allocated by Baselib_Memory_AlignedAllocate or Baselib_Memory_AlignedReallocate.
 //
-// Alignment needs to be a power of two which is also a multiple of sizeof(void *) but less or equal to Baselib_Memory_MaxAlignment.
-// Reallocating an already freed pointer or a pointer that was not previously allocated by Baselib_Memory_AlignedAllocate or Baselib_Memory_AlignedReallocate leads to undefined behavior.
-//
-// Passing `nullptr` yield the same result as calling Baselib_Memory_AlignedAllocate.
-//
-// Return value is guaranteed to be a unique pointer. This is true for zero sized allocations as well.
 // Allocation failures or invalid alignments will trigger process abort.
+//
+// \param ptr         Pointer previously returned by Baselib_Memory_AlignedAllocate or Baselib_Memory_AlignedReallocate.
+//                    Reallocating an already freed pointer or a pointer that was not previously allocated by Baselib_Memory_AlignedAllocate or
+//                    Baselib_Memory_AlignedReallocate leads to undefined behavior.
+//                    Passing `nullptr` yield the same result as calling Baselib_Memory_AlignedAllocate.
+// \param size        Size of the allocation. No special restrictions apply, zero is valid.
+// \param alignment   Needs to be a power of two which is also a multiple of of pointer size (i.e. sizeof(void*)) but less or equal to Baselib_Memory_MaxAlignment.
+//                    Any alignment smaller than Baselib_Memory_MinGuaranteedAlignment, will be clamped to Baselib_Memory_MinGuaranteedAlignment.
+// \returns           Unique pointer to aligned allocation. This is true for zero sized allocations as well.
 BASELIB_API void* Baselib_Memory_AlignedReallocate(void* ptr, size_t newSize, size_t alignment);
 
 // Frees memory allocated by Baselib_Memory_AlignedAllocate or Baselib_Memory_AlignedReallocate.
 //
-// Freeing an already freed pointer or a pointer that was not previously allocated by Baselib_Memory_AlignedAllocate or Baselib_Memory_AlignedReallocate leads to undefined behavior.
-//
-// Passing `nullptr` result in a no-op.
+// \param ptr           Pointer previously returned by Baselib_Memory_AlignedAllocate or Baselib_Memory_AlignedReallocate.
+//                      Freeing an already freed pointer or a pointer that was not previously allocated by Baselib_Memory_AlignedAllocate or Baselib_Memory_AlignedReallocate leads to undefined behavior.
+//                      Passing `nullptr` result in a no-op.
 BASELIB_API void Baselib_Memory_AlignedFree(void* ptr);
 
 
 // Page state options
-typedef enum
+typedef enum Baselib_Memory_PageState
 {
     // The page are in a reserved state and any access will cause a seg-fault/access violation.
     // On some platforms that support this state this may be just a hint to the OS and there is no guarantee pages in this state behave differently from Baselib_Memory_PageState_NoAccess.
@@ -136,7 +169,9 @@ BASELIB_API Baselib_Memory_PageAllocation Baselib_Memory_AllocatePages(uint64_t 
 // Passing Baselib_Memory_PageAllocation with a nullptr or a zero page count result in a no-op.
 //
 // Possible error codes:
-// - Baselib_ErrorCode_InvalidAddressRange:     Address of the first page or number of pages doesn't match a previous allocation. This may also trigger undefined behavior.
+// - Baselib_ErrorCode_InvalidAddressRange:     Address range was detected to not match a valid allocation.
+//                                              CAUTION: Not all platforms are able to detect this and may either raise an error or cause undefined behavior.
+//                                              Note to implementors: Raising the error is strongly preferred as it helps identifying issues in user code.
 // - Baselib_ErrorCode_InvalidPageSize:         If page size doesn't match a previous allocation at `pageAllocation.ptr`.
 //
 // Implementation note:
@@ -150,7 +185,8 @@ BASELIB_API void Baselib_Memory_ReleasePages(Baselib_Memory_PageAllocation pageA
 // Passing `nullptr` or a zero page count result in a no-op.
 //
 // Possible error codes:
-// - Baselib_ErrorCode_InvalidAddressRange:     Address of the first page or number of pages doesn't match a previous allocation. This may also trigger undefined behavior.
+// - Baselib_ErrorCode_InvalidAddressRange:     Address range is not covered by a valid allocation.
+//                                              Platforms that emulate page allocations (e.g. Emscripten) are not able to present this error and will pass the function call silently.
 // - Baselib_ErrorCode_InvalidPageSize:         If page size doesn't match the previous allocation at `addressOfFirstPage`.
 // - Baselib_ErrorCode_UnsupportedPageState:    The underlying system doesn't support the requested page state (see Baselib_Memory_PageState).
 BASELIB_API void Baselib_Memory_SetPageState(void* addressOfFirstPage, uint64_t pageSize, uint64_t pageCount, Baselib_Memory_PageState pageState, Baselib_ErrorState* errorState);

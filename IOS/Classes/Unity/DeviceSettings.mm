@@ -68,6 +68,15 @@ extern "C" void UnitySetWantsSoftwareDimming(int enabled)
 #endif
 }
 
+extern "C" int UnityGetIosAppOnMac()
+{
+#if (PLATFORM_IOS && defined(__IPHONE_14_0)) || (PLATFORM_TVOS && defined(__TVOS_14_0))
+    if (@available(iOS 14, tvOS 14, *))
+        return [[NSProcessInfo processInfo] isiOSAppOnMac] ? 1 : 0;
+#endif
+    return 0;
+}
+
 extern "C" int UnityAdTrackingEnabled()
 {
     bool _AdTrackingEnabled = false;
@@ -161,7 +170,7 @@ extern "C" int UnityDeviceCPUCount()
 
 extern "C" int UnityGetPhysicalMemory()
 {
-    return ([[NSProcessInfo processInfo] physicalMemory]) / (1024 * 1024);
+    return (int)(NSProcessInfo.processInfo.physicalMemory / (1024ULL * 1024ULL));
 }
 
 // misc
@@ -227,6 +236,11 @@ DeviceTableEntry DeviceTable[] =
     { iPhone, 12, 1, 1, deviceiPhone11 },
     { iPhone, 12, 3, 3, deviceiPhone11Pro },
     { iPhone, 12, 5, 5, deviceiPhone11ProMax },
+    { iPhone, 12, 8, 8, deviceiPhoneSE2Gen },
+    { iPhone, 13, 1, 1, deviceiPhone12Mini },
+    { iPhone, 13, 2, 2, deviceiPhone12 },
+    { iPhone, 13, 3, 3, deviceiPhone12Pro },
+    { iPhone, 13, 4, 4, deviceiPhone12ProMax },
 
     { iPod, 4, 1, 1, deviceiPodTouch4Gen },
     { iPod, 5, 1, 1, deviceiPodTouch5Gen },
@@ -252,7 +266,11 @@ DeviceTableEntry DeviceTable[] =
     { iPad, 6, 3, 4, deviceiPadPro10Inch1Gen },
     { iPad, 7, 3, 4, deviceiPadPro10Inch2Gen },
     { iPad, 8, 1, 4, deviceiPadPro11Inch },
+    { iPad, 8, 9, 10, deviceiPadPro11Inch2Gen },
     { iPad, 8, 5, 8, deviceiPadPro3Gen },
+    { iPad, 8, 11, 12, deviceiPadPro4Gen },
+    { iPad, 11, 6, 7, deviceiPad8Gen },
+    { iPad, 13, 1, 2, deviceiPadAir4Gen },
 
     { AppleTV, 5, 3, 3, deviceAppleTV1Gen },
     { AppleTV, 6, 2, 2, deviceAppleTV2Gen }
@@ -338,12 +356,7 @@ extern "C" int UnityDeviceSupportsUpsideDown()
 
 extern "C" int UnityDeviceSupportedOrientations()
 {
-    int device = UnityDeviceGeneration();
-    int orientations = 0;
-
-    orientations |= (1 << portrait);
-    orientations |= (1 << landscapeLeft);
-    orientations |= (1 << landscapeRight);
+    int orientations = (1 << portrait) | (1 << landscapeLeft) | (1 << landscapeRight);
     if (UnityDeviceSupportsUpsideDown())
         orientations |= (1 << portraitUpsideDown);
 
@@ -352,7 +365,7 @@ extern "C" int UnityDeviceSupportedOrientations()
 
 extern "C" int UnityDeviceIsStylusTouchSupported()
 {
-    int deviceGen = UnityDeviceGeneration();
+    const int deviceGen = UnityDeviceGeneration();
     return (deviceGen == deviceiPadPro1Gen ||
         deviceGen == deviceiPadPro10Inch1Gen ||
         deviceGen == deviceiPadPro2Gen ||
@@ -390,6 +403,7 @@ extern "C" float UnityDeviceDPI()
             case deviceiPhone8:
             case deviceiPhoneXR:
             case deviceiPhone11:
+            case deviceiPhoneSE2Gen:
                 _DeviceDPI = 326.0f; break;
             case deviceiPhone6Plus:
             case deviceiPhone6SPlus:
@@ -401,7 +415,13 @@ extern "C" float UnityDeviceDPI()
             case deviceiPhoneXSMax:
             case deviceiPhone11Pro:
             case deviceiPhone11ProMax:
+            case deviceiPhone12ProMax:
                 _DeviceDPI = 458.0f; break;
+            case deviceiPhone12:
+            case deviceiPhone12Pro:
+                _DeviceDPI = 460.0f; break;
+            case deviceiPhone12Mini:
+                _DeviceDPI = 476.0f; break;
 
             // iPad
             case deviceiPad2Gen:
@@ -419,6 +439,10 @@ extern "C" float UnityDeviceDPI()
             case deviceiPad6Gen:
             case deviceiPadPro11Inch:
             case deviceiPadPro3Gen:
+            case deviceiPadPro11Inch2Gen:
+            case deviceiPadPro4Gen:
+            case deviceiPad8Gen:
+            case deviceiPadAir4Gen:
                 _DeviceDPI = 264.0f; break;
             case deviceiPad7Gen:
                 _DeviceDPI = 326.0f; break;
