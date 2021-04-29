@@ -44,7 +44,17 @@ public class TextControls : MonoBehaviour
             Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
                 Mathf.Abs(moveCam.transform.position.z + 10)));
             transform.position = movePos;
+            if (Input.GetKey(KeyCode.LeftControl)) {
+                print("make bigger");
+                transform.GetChild(1).transform.localScale += new Vector3(0.03f, 0.03f, 0f);
+            }
+            if (Input.GetKey(KeyCode.LeftAlt)) {
+                if (transform.GetChild(1).transform.localScale.x > 0) {
+                    transform.GetChild(1).transform.localScale -= new Vector3(0.03f, 0.03f, 0f);
+                }
+            }
             if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
+            if (Input.GetKeyDown(KeyCode.R)) transform.Rotate(Vector3.forward, 45);
         }
 
         if (currentState == state.COPYING) {
@@ -53,6 +63,7 @@ public class TextControls : MonoBehaviour
             Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
                 Mathf.Abs(moveCam.transform.position.z + 10)));
             transform.position = movePos + copyOffset;
+           
             if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
         }
         if (currentState == state.WAITING) {

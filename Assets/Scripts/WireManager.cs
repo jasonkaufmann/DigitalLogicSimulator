@@ -115,9 +115,14 @@ public class WireManager : MonoBehaviour {
 
     public List<GameObject> getConnectedWireIO(IO io) {
         var connectedWires = new List<GameObject>();
-        foreach (GameObject wire in wires)
+        foreach (GameObject wire in wires) {
+            if (io.IOType == IO.type.IN) {
+                Wire test = wire.GetComponent<Wire>();
+            }
+
             if (wire.GetComponent<Wire>().startIO == io || wire.GetComponent<Wire>().endIO == io)
                 connectedWires.Add(wire);
+        }
 
         return connectedWires;
     }

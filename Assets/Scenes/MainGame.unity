@@ -1144,6 +1144,7 @@ MonoBehaviour:
   textFrequencyField: {fileID: 2438340476529180830, guid: 5d43b10f442373847b173fc76126f94c, type: 3}
   immediateSim: 1
   typing: 0
+  selectionInProgress: 0
 --- !u!1 &225225775
 GameObject:
   m_ObjectHideFlags: 0
@@ -7211,6 +7212,7 @@ GameObject:
   - component: {fileID: 1832220253}
   - component: {fileID: 1832220252}
   - component: {fileID: 1832220254}
+  - component: {fileID: 1832220255}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: startup
@@ -7325,6 +7327,19 @@ MonoBehaviour:
   textPF: {fileID: 3161466473482078859, guid: 13776e3676a3e1742bccfac7ac13118e, type: 3}
   reg4PF: {fileID: 5097883968983191615, guid: 537b7c3176ebb8a489350be3b0ee5d0b, type: 3}
   manager: {fileID: 0}
+--- !u!114 &1832220255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832220248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3479d69e9d6cc9946ae2248f626fcf33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  box: {fileID: 7256239159171216191, guid: ea52a1c012c09cb47a34245c053dbbf3, type: 3}
 --- !u!1 &1868413125
 GameObject:
   m_ObjectHideFlags: 0

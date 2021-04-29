@@ -15,6 +15,7 @@ TagManager:
   - load
   - createTextField
   - title
+  - eventSys
   layers:
   - Default
   - TransparentFX

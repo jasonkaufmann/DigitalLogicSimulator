@@ -85,7 +85,7 @@ public class Wire : MonoBehaviour {
             empty = new GameObject();
             empty.transform.parent = gameObject.transform;
             lineRed = empty.AddComponent<LineRenderer>();
-            //lineRed.positionCount = 0;
+            lineRed.positionCount = 0;
             lineRed.material = new Material(Shader.Find("Sprites/Default"));
             lineRed.material.color = new Color(236f / 255f, 34f / 255f, 56f / 255f, 1f);
             lineRed.sortingOrder = 1;
@@ -104,7 +104,7 @@ public class Wire : MonoBehaviour {
             meshCollide = gameObject.AddComponent<MeshCollider>();
             manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
             lineRed = empty.AddComponent<LineRenderer>();
-            //lineRed.positionCount = 0;
+            lineRed.positionCount = 0;
             lineRed.material = new Material(Shader.Find("Sprites/Default"));
             lineRed.material.color = new Color(236f / 255f, 34f / 255f, 56f / 255f, 1f);
             lineRed.sortingOrder = 1;

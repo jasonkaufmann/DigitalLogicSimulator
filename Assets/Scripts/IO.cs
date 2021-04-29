@@ -117,7 +117,7 @@ public class IO : MonoBehaviour {
 
             if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
             if (IOType == type.IN) {
-                if (manager.getConnectedWireIO(this).Count == 0) pin.actualValue = Pin.highOrLow.LOW;
+                if (manager.getConnectedWiresPin(this.pin).Count == 0) pin.actualValue = Pin.highOrLow.LOW;
                 if (pin.actualValue == Pin.highOrLow.HIGH)
                     log = logic.HIGH;
                 else if (pin.actualValue == Pin.highOrLow.LOW)
@@ -226,7 +226,11 @@ public class IO : MonoBehaviour {
             }
         }
         else {
-            if (manager.getConnectedWireIO(this).Count == 0) pin.actualValue = Pin.highOrLow.LOW;
+            if (manager.getConnectedWiresPin(this.pin).Count == 0) {
+                print("No wires connected: " + name);
+                print(manager.wires.Count);
+                pin.actualValue = Pin.highOrLow.LOW;
+            }
             if (pin.actualValue == Pin.highOrLow.HIGH)
                 log = logic.HIGH;
             else if (pin.actualValue == Pin.highOrLow.LOW)

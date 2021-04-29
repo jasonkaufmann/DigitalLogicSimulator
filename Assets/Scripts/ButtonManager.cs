@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -192,6 +193,7 @@ public class ButtonManager : MonoBehaviour {
         var textFieldArray = new List<textSaveFields>();
         var wireFieldArray = new List<wireSaveFields>();
         var camField = new camSaveFields();
+        var b2dFieldArray = new List<binaryToDecimalFields>();
         foreach (GameObject sceneObject in objects)
             if (sceneObject.GetComponent<Gate>() != null) {
                 gateSaveFields field = new gateSaveFields {
@@ -203,20 +205,39 @@ public class ButtonManager : MonoBehaviour {
                 gateFieldArray.Add(field);
             }
             else if (sceneObject.GetComponent<IO>() != null) {
-                ioSaveFields field = new ioSaveFields {
-                    ioPosition = sceneObject.transform.position,
-                    ioNumber = sceneObject.name.Split(')').Last(),
-                    type = sceneObject.GetComponent<IO>().IOType,
-                    rotation = sceneObject.transform.eulerAngles.z,
-                    value = sceneObject.GetComponent<IO>().log
-                };
+                ioSaveFields field;
+                if (sceneObject.GetComponent<IO>().IOType == IO.type.CLOCK) {
+                    IO.logic saveValue = IO.logic.LOW;
+                    if (sceneObject.GetComponent<IO>().clockOn) {
+                        saveValue = IO.logic.HIGH;
+                    }
+                    field = new ioSaveFields {
+                        ioPosition = sceneObject.transform.position,
+                        ioNumber = sceneObject.name.Split(')').Last(),
+                        type = sceneObject.GetComponent<IO>().IOType,
+                        rotation = sceneObject.transform.eulerAngles.z,
+                        value = saveValue
+                    };
+                }
+                else {
+                    field = new ioSaveFields {
+                        ioPosition = sceneObject.transform.position,
+                        ioNumber = sceneObject.name.Split(')').Last(),
+                        type = sceneObject.GetComponent<IO>().IOType,
+                        rotation = sceneObject.transform.eulerAngles.z,
+                        value = sceneObject.GetComponent<IO>().log
+                    };
+                }
+
                 //print(sceneObject.GetComponent<IO>().log);
                 ioFieldArray.Add(field);
             }
             else if (sceneObject.name.Contains("textFieldCanvas")) {
                 textSaveFields field = new textSaveFields {
                     textPosition = sceneObject.transform.GetChild(0).position,
-                    text = sceneObject.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Text>().text
+                    text = sceneObject.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Text>().text,
+                    rotation = sceneObject.transform.GetChild(0).eulerAngles.z,
+                    scale = sceneObject.transform.GetChild(0).GetChild(1).localScale.x
                 };
                 textFieldArray.Add(field);
             }
@@ -225,6 +246,16 @@ public class ButtonManager : MonoBehaviour {
                    position = sceneObject.transform.position
                 };
                 camField = field;
+            }
+            else if (sceneObject.GetComponent<BinaryToDecimalGroup>() != null) {
+                List<string> names = new List<string>();
+                foreach (var obj in sceneObject.GetComponent<BinaryToDecimalGroup>().IOForConversion) {
+                    names.Add(obj.name);
+                }
+                binaryToDecimalFields field = new binaryToDecimalFields {
+                    ioNumbers = names,
+                };
+                b2dFieldArray.Add(field);
             }
             else if (sceneObject.GetComponent<Wire>() != null) {
                 Wire sceneWire = sceneObject.GetComponent<Wire>();
@@ -265,7 +296,7 @@ public class ButtonManager : MonoBehaviour {
             }
         
 
-        var textobj = JsonConvert.SerializeObject(new {camField, gateFieldArray, ioFieldArray, textFieldArray, wireFieldArray},
+        var textobj = JsonConvert.SerializeObject(new {camField, gateFieldArray, b2dFieldArray, ioFieldArray, textFieldArray, wireFieldArray},
             new JsonSerializerSettings {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
@@ -298,10 +329,18 @@ public class ButtonManager : MonoBehaviour {
     public class textSaveFields {
         public Vector3 textPosition;
         public string text;
+        public float rotation;
+        public float scale;
     }
     
+    [Serializable]
     public class camSaveFields {
         public Vector3 position;
+    }
+
+    [Serializable]
+    public class binaryToDecimalFields {
+        public List<string> ioNumbers;
     }
 
     [Serializable]

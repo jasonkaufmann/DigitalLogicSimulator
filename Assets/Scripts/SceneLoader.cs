@@ -52,7 +52,7 @@ public class SceneLoader : MonoBehaviour {
             Application.persistentDataPath + "/" + nameToLoad + ".json");
         JObject info = JObject.Parse(savedState);
         if (info["camField"] != null) {
-            Vector3 camPosition = new Vector3(float.Parse(info["camField"]["position"]["x"].ToString()),
+            Vector3 camPosition = new(float.Parse(info["camField"]["position"]["x"].ToString()),
                 float.Parse(info["camField"]["position"]["y"].ToString()),
                 float.Parse(info["camField"]["position"]["z"].ToString()));
             GameObject.FindGameObjectWithTag("moveCam").transform.position = camPosition;
@@ -149,7 +149,7 @@ public class SceneLoader : MonoBehaviour {
                 newGate.transform.rotation = Quaternion.Euler(0, 0, float.Parse(gate["rotation"].ToString()));
                 newGate.GetComponent<Gate>().gateType = Gate.type.XOR;
                 newGate.name += gate["gateNumber"].ToString();
-            } 
+            }
             else if (int.Parse(gate["type"].ToString()) == 11) {
                 GameObject newGate = Instantiate(reg4PF, new Vector3(x, y, z), Quaternion.identity);
                 newGate.AddComponent<Gate>();
@@ -164,7 +164,7 @@ public class SceneLoader : MonoBehaviour {
             var x = float.Parse(io["ioPosition"]["x"].ToString());
             var y = float.Parse(io["ioPosition"]["y"].ToString());
             var z = float.Parse(io["ioPosition"]["z"].ToString());
-            GameObject newIO = new GameObject();
+            GameObject newIO = new();
             if (int.Parse(io["type"].ToString()) == 0) {
                 newIO = Instantiate(outPF, new Vector3(x, y, z), Quaternion.identity);
                 newIO.AddComponent<IO>();
@@ -194,9 +194,7 @@ public class SceneLoader : MonoBehaviour {
                 if (int.Parse(io["value"].ToString()) == 1) {
                     //print("set high");
                     newIO.GetComponent<IO>().log = IO.logic.HIGH;
-                    if (int.Parse(io["type"].ToString()) == 2) {
-                        newIO.GetComponent<IO>().clockOn = true;
-                    }
+                    if (int.Parse(io["type"].ToString()) == 2) newIO.GetComponent<IO>().clockOn = true;
                 }
             }
             else {
@@ -209,7 +207,10 @@ public class SceneLoader : MonoBehaviour {
             var y = float.Parse(text["textPosition"]["y"].ToString());
             var z = float.Parse(text["textPosition"]["z"].ToString());
             GameObject newText = Instantiate(textPF, new Vector3(x, y, z), Quaternion.identity);
-            GameObject newCanvas = new GameObject();
+            if (text["rotation"] != null)
+                newText.transform.rotation = Quaternion.Euler(0, 0, float.Parse(text["rotation"].ToString()));
+
+            GameObject newCanvas = new();
             newCanvas.name = "textFieldCanvas";
             newCanvas.AddComponent<Canvas>();
             newCanvas.AddComponent<CanvasScaler>();
@@ -226,10 +227,13 @@ public class SceneLoader : MonoBehaviour {
             newText.GetComponent<TextControls>().createdFromFile = true;
             newText.GetComponent<TextControls>().createdFromFileString = text["text"].ToString();
             newText.name += newText.GetInstanceID().ToString();
+            if (text["scale"] != null)
+                newText.transform.GetChild(0).localScale = new Vector3(float.Parse(text["scale"].ToString()),
+                    float.Parse(text["scale"].ToString()), 1);
         }
 
         foreach (JToken wire in info["wireFieldArray"]) {
-            GameObject newWire = new GameObject();
+            GameObject newWire = new();
             newWire.name = "wire";
             Wire wireComp = newWire.AddComponent<Wire>();
             var aPoints = new List<Vector2>();
@@ -259,39 +263,48 @@ public class SceneLoader : MonoBehaviour {
 
             if (wire["lineDrawn"] != null) wireComp.lineDrawn = bool.Parse(wire["lineDrawn"].ToString());
             if (wire["leftPinValue"] != null) {
-                print(wire["leftPinValue"].ToString());
-                if (wire["leftPinGateIO"].ToString() == "-812") {
-                    print(wire["leftPinValue"].ToString());
-                }
-                if (int.Parse(wire["leftPinValue"].ToString()) == 0) {
+                if (wire["leftPinGateIO"].ToString() == "-812") print(wire["leftPinValue"].ToString());
+                if (int.Parse(wire["leftPinValue"].ToString()) == 0)
                     wireComp.leftPin.actualValue = Pin.highOrLow.LOW;
-                } else if (int.Parse(wire["leftPinValue"].ToString()) == 1) {
+                else if (int.Parse(wire["leftPinValue"].ToString()) == 1)
                     wireComp.leftPin.actualValue = Pin.highOrLow.HIGH;
-                }
-                else {
+                else
                     wireComp.leftPin.actualValue = Pin.highOrLow.HIZ;
-                }
             }
+
             if (wire["rightPinValue"] != null) {
-                if (int.Parse(wire["rightPinValue"].ToString()) == 0) {
+                if (int.Parse(wire["rightPinValue"].ToString()) == 0)
                     wireComp.rightPin.actualValue = Pin.highOrLow.LOW;
-                } else if (int.Parse(wire["rightPinValue"].ToString()) == 1) {
+                else if (int.Parse(wire["rightPinValue"].ToString()) == 1)
                     wireComp.rightPin.actualValue = Pin.highOrLow.HIGH;
-                }
-                else {
+                else
                     wireComp.rightPin.actualValue = Pin.highOrLow.HIZ;
-                }
             }
 
             if (wire["lineDrawn"] != null) {
                 wireComp.lineDrawn = bool.Parse(wire["lineDrawn"].ToString());
-                if (wire["timestep1"] != null) {
-                    wireComp.timestep1 = int.Parse(wire["timestep1"].ToString());
-                }
+                if (wire["timestep1"] != null) wireComp.timestep1 = int.Parse(wire["timestep1"].ToString());
             }
+
             wireComp.loadedFromFile = true;
             wireComp.currentState = Wire.state.FINISHED;
             manager.addWire(newWire);
         }
+
+        if (info["b2dFieldArray"] != null)
+            foreach (JToken b2dField in info["b2dFieldArray"]) {
+                GameObject binToDec = new() {name = "binaryToDecimal"};
+                binToDec.AddComponent<BinaryToDecimalGroup>();
+                binToDec.GetComponent<BinaryToDecimalGroup>().IOForConversion = new List<GameObject>();
+                foreach (GameObject thingInScene in SceneManager.GetActiveScene().GetRootGameObjects()) {
+                    foreach (var token in b2dField["ioNumbers"]) {
+                        if (thingInScene.name.Contains(token.ToString())) {
+                            print("add io to b2d");
+                            binToDec.GetComponent<BinaryToDecimalGroup>().IOForConversion.Add(thingInScene);
+                        }
+                    }
+                }
+                binToDec.GetComponent<BinaryToDecimalGroup>().createdFromCopy = true;
+            }
     }
 }

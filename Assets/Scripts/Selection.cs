@@ -58,7 +58,6 @@ public class Selection : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.M) && currentState == state.INSCENE) {
-            print("move object");
             currentState = state.MOVINGOBJECTS;
             copiedObjects = GetObjectsInSelection();
             DestroyImmediate(newArea);
@@ -127,20 +126,6 @@ public class Selection : MonoBehaviour {
                 else if (obj.name.Contains("textFieldCanvas")) {
                     print("FLAGG");
                     GameObject newobj = Instantiate(obj, obj.transform.position, obj.transform.rotation);
-                    /*GameObject newCanvas = new GameObject();
-                    newCanvas.name = "textFieldCanvas";
-                    newCanvas.AddComponent<Canvas>();
-                    newCanvas.AddComponent<CanvasScaler>();
-                    newCanvas.AddComponent<GraphicRaycaster>();
-                    newobj.transform.SetParent(newCanvas.transform);
-                    newCanvas.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
-                    newCanvas.GetComponent<Canvas>().worldCamera =
-                        GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
-                    newobj.AddComponent<TextControls>();
-                    newobj.transform.localScale = new Vector3(0.00033f, 0.00033f, 0.00033f);
-                    newobj.AddComponent<BoxCollider2D>();
-                    newobj.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
-                    newobj.GetComponent<BoxCollider2D>().size = new Vector2(500, 250);*/
                     newobj.name += newobj.GetInstanceID().ToString();
                     DestroyImmediate(newobj.transform.GetChild(0).GetChild(0).gameObject);
                     newobj.transform.GetChild(0).gameObject.GetComponent<TextControls>().createdFromCopy = true;
@@ -223,6 +208,14 @@ public class Selection : MonoBehaviour {
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.D) && currentState == state.INSCENE) {
+            var objectsInSelection = GetObjectsInSelection();
+            GameObject binToDec = new GameObject();
+            binToDec.name = "binaryToDecimal";
+            binToDec.AddComponent<BinaryToDecimalGroup>();
+            binToDec.GetComponent<BinaryToDecimalGroup>().objectsInSelection = objectsInSelection;
+        }
+
         if (Input.GetKeyDown(KeyCode.X) && currentState == state.INSCENE) DestroyImmediate(newArea);
     }
 
@@ -236,7 +229,6 @@ public class Selection : MonoBehaviour {
             }
             else {
                 //print(objects[i].name.Contains("textFieldCanvas"));
-                print(objects[i].name);
                 if (objects[i].GetComponent<Wire>() != null) {
                     var allInside = true;
                     foreach (Vector2 point in objects[i].GetComponent<Wire>().anchorPoints)
@@ -264,7 +256,6 @@ public class Selection : MonoBehaviour {
 
     private bool IsObjectInSquare(GameObject sceneObj) {
         Vector3 position = sceneObj.transform.position;
-        print(position);
         if (sceneObj.name.Contains("textFieldCanvas")) {
             position = sceneObj.transform.GetChild(0).transform.position;
         }

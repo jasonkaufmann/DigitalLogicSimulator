@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BoundingBoxControls
     - Button
     - ButtonManager
     - Controls
@@ -71,25 +72,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2144}
     - Class: 114
-      Script: {instanceID: 2460}
+      Script: {instanceID: 2462}
     - Class: 114
-      Script: {instanceID: 2582}
+      Script: {instanceID: 2584}
     - Class: 114
-      Script: {instanceID: 2626}
+      Script: {instanceID: 2628}
     - Class: 114
-      Script: {instanceID: 2752}
+      Script: {instanceID: 2754}
     - Class: 114
-      Script: {instanceID: 2962}
+      Script: {instanceID: 2964}
     - Class: 114
-      Script: {instanceID: 3078}
+      Script: {instanceID: 3080}
     - Class: 114
-      Script: {instanceID: 3676}
+      Script: {instanceID: 3678}
     - Class: 114
-      Script: {instanceID: 3964}
+      Script: {instanceID: 3970}
     - Class: 114
-      Script: {instanceID: 21844}
+      Script: {instanceID: 29094}
     - Class: 114
-      Script: {instanceID: 21846}
+      Script: {instanceID: 29096}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -144,41 +145,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2144}
     - Class: 114
-      Script: {instanceID: 2460}
+      Script: {instanceID: 2198}
     - Class: 114
-      Script: {instanceID: 2582}
+      Script: {instanceID: 2462}
     - Class: 114
-      Script: {instanceID: 2626}
+      Script: {instanceID: 2584}
     - Class: 114
-      Script: {instanceID: 2752}
+      Script: {instanceID: 2628}
     - Class: 114
-      Script: {instanceID: 2790}
+      Script: {instanceID: 2754}
     - Class: 114
-      Script: {instanceID: 2800}
+      Script: {instanceID: 2792}
     - Class: 114
-      Script: {instanceID: 2962}
+      Script: {instanceID: 2802}
     - Class: 114
-      Script: {instanceID: 3000}
+      Script: {instanceID: 2964}
     - Class: 114
-      Script: {instanceID: 3004}
+      Script: {instanceID: 3002}
     - Class: 114
-      Script: {instanceID: 3078}
+      Script: {instanceID: 3006}
     - Class: 114
-      Script: {instanceID: 3154}
+      Script: {instanceID: 3080}
     - Class: 114
-      Script: {instanceID: 3266}
+      Script: {instanceID: 3156}
     - Class: 114
-      Script: {instanceID: 3494}
+      Script: {instanceID: 3268}
     - Class: 114
-      Script: {instanceID: 3670}
+      Script: {instanceID: 3496}
     - Class: 114
-      Script: {instanceID: 4134}
+      Script: {instanceID: 3672}
     - Class: 114
-      Script: {instanceID: 4482}
+      Script: {instanceID: 4140}
     - Class: 114
-      Script: {instanceID: 4514}
+      Script: {instanceID: 4488}
     - Class: 114
-      Script: {instanceID: 4872}
+      Script: {instanceID: 4520}
+    - Class: 114
+      Script: {instanceID: 4878}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -229,37 +232,37 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2138}
     - Class: 114
-      Script: {instanceID: 2460}
+      Script: {instanceID: 2462}
     - Class: 114
-      Script: {instanceID: 2582}
+      Script: {instanceID: 2584}
     - Class: 114
-      Script: {instanceID: 2626}
+      Script: {instanceID: 2628}
     - Class: 114
-      Script: {instanceID: 2752}
+      Script: {instanceID: 2754}
     - Class: 114
-      Script: {instanceID: 2962}
+      Script: {instanceID: 2964}
     - Class: 114
-      Script: {instanceID: 2974}
+      Script: {instanceID: 2976}
     - Class: 114
-      Script: {instanceID: 3052}
+      Script: {instanceID: 3054}
     - Class: 114
-      Script: {instanceID: 3078}
+      Script: {instanceID: 3080}
     - Class: 114
-      Script: {instanceID: 3266}
+      Script: {instanceID: 3268}
     - Class: 114
-      Script: {instanceID: 3676}
+      Script: {instanceID: 3678}
     - Class: 114
-      Script: {instanceID: 3902}
+      Script: {instanceID: 3908}
     - Class: 114
-      Script: {instanceID: 4044}
+      Script: {instanceID: 4050}
     - Class: 114
-      Script: {instanceID: 4060}
+      Script: {instanceID: 4066}
     - Class: 114
-      Script: {instanceID: 4134}
+      Script: {instanceID: 4140}
     - Class: 114
-      Script: {instanceID: 4144}
+      Script: {instanceID: 4150}
     - Class: 114
-      Script: {instanceID: 4414}
+      Script: {instanceID: 4420}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -435,6 +438,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: 3aa24cc128ebabf19f69e6eacec4adf8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BoundingBoxControls
   - hash:
       serializedVersion: 2
       Hash: f1d735cc1a21c3704ab52568f4fbfcf8
@@ -839,6 +848,12 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
+      Hash: 9153aa2de0f40b4d635f5de2227fbb81
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BinaryToDecimalGroup
+  - hash:
+      serializedVersion: 2
       Hash: f6633ace6e530c0000f2ac6da4269c52
     assemblyName: Unity.ProBuilder.dll
     namespaceName: UnityEngine.ProBuilder
@@ -861,6 +876,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnvMapAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: d70f0717d6bedf65946968f2e046f625
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Box
   - hash:
       serializedVersion: 2
       Hash: 48f2fff9cd5412308ef096c55f589d0a
