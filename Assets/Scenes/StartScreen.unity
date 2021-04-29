@@ -1535,6 +1535,7 @@ MonoBehaviour:
   scrollView: {fileID: 1475348151}
   statesLoaded: 0
   savedStateButton: {fileID: 2129028462544415191, guid: 9173a448a906b3e47afe58136c664662, type: 3}
+  deleteButton: {fileID: 5514977506267054697, guid: 266fdd2b6441f38439f4feda136efe40, type: 3}
 --- !u!1 &773920884
 GameObject:
   m_ObjectHideFlags: 0
@@ -4419,7 +4420,7 @@ GameObject:
   - component: {fileID: 2016145455}
   m_Layer: 5
   m_Name: Content
-  m_TagString: Untagged
+  m_TagString: content
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

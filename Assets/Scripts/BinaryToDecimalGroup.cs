@@ -35,7 +35,7 @@ public class BinaryToDecimalGroup : MonoBehaviour {
         numToShow.AddComponent<TextMeshPro>();
         numToShow.GetComponent<TextMeshPro>().alignment = TextAlignmentOptions.Center;
         numToShow.GetComponent<TextMeshPro>().fontSize = 1;
-        numToShow.GetComponent<TextMeshPro>().color = new Color(82f / 255f, 81f / 255f, 81f / 255f, 1f);
+        numToShow.GetComponent<TextMeshPro>().color = new Color(0f / 255f, 0f / 255f, 0f / 255f, 1f);
         //numToShow.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
         gameObject.AddComponent<Canvas>();
         gameObject.AddComponent<CanvasScaler>();
