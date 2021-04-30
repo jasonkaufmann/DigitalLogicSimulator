@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637545677966660868
-    m_Hash: 1132269575
+      ticks: 637553990686698180
+    m_Hash: 239325472
   m_LockFileStatus:
     m_FilePath: C:/Users/JPKSP/projects/DigitalLogicSimulator/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637544925430276409
-    m_Hash: 100891591
+      ticks: 637553990686937586
+    m_Hash: 2449446380
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -85,6 +85,114 @@ m_ResolvedPackages:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
     revision: 82ee1598c2f1270bc1081c1f908364e528335bd5
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+- packageId: com.unity.adaptiveperformance@2.1.1
+  testable: 0
+  isDirectDependency: 1
+  version: 2.1.1
+  source: 1
+  resolvedPath: C:\Users\JPKSP\projects\DigitalLogicSimulator\Library\PackageCache\com.unity.adaptiveperformance@2.1.1
+  assetPath: Packages/com.unity.adaptiveperformance
+  name: com.unity.adaptiveperformance
+  displayName: Adaptive Performance
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: 'The Adaptive Performance package provides an API to get feedback
+    about the thermal and power state of mobile devices, enabling applications to
+    make performance-relevant adaptions at runtime.
+
+
+    For instruction on how
+    to use samples, please read the documentation.
+
+
+    By installing this package,
+    you agree to the terms and conditions of the Unity End User License Agreement
+    found under "View licenses" above.'
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 0.2.0-preview.1
+    - 1.0.0
+    - 1.0.1
+    - 1.1.0-preview.2
+    - 1.1.0-preview.3
+    - 1.1.0-preview.4
+    - 1.1.0-preview.5
+    - 1.1.0-preview.7
+    - 1.1.0
+    - 1.1.6
+    - 1.1.9
+    - 1.1.10
+    - 1.2.0
+    - 1.2.2
+    - 2.0.0-preview.1
+    - 2.0.0-preview.2
+    - 2.0.0-preview.4
+    - 2.0.0-preview.7
+    - 2.0.0-preview.8
+    - 2.0.0-preview.9
+    - 2.0.0-preview.10
+    - 2.0.0-preview.11
+    - 2.0.0
+    - 2.0.1
+    - 2.0.2
+    - 2.1.0
+    - 2.1.1
+    compatible:
+    - 2.1.1
+    verified: 2.1.1
+  dependencies:
+  - name: com.unity.subsystemregistration
+    version: 1.1.0
+  resolvedDependencies:
+  - name: com.unity.subsystemregistration
+    version: 1.1.0
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  keywords:
+  - mobile
+  - adaptive
+  - performance
+  - utility
+  - utilities
+  - core
+  - samsung
+  - ap
+  - provider
+  - subsystem
+  - indexer
+  - scaler
+  - vrr
+  - indexer
+  - scaler
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hasRegistry: 1
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637509023070000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.adaptiveperformance.git
+    revision: 6a340dcc6a6b123e45b16e5b753d75bc8f2331f5
     path: 
   unityLifecycle:
     version: 
@@ -230,9 +338,11 @@ m_ResolvedPackages:
     - 3.0.3
     - 3.0.4
     - 3.0.5
+    - 3.0.6
     compatible:
     - 3.0.5
-    verified: 3.0.5
+    - 3.0.6
+    verified: 3.0.6
   dependencies: []
   resolvedDependencies: []
   keywords: []
@@ -2980,6 +3090,68 @@ m_ResolvedPackages:
     type: git
     url: git+https://github.com/Unity-Technologies/com.unity.settings-manager.git
     revision: 473664ccba1496294b741cf169740a5d54b3d0b6
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+- packageId: com.unity.subsystemregistration@1.1.0
+  testable: 0
+  isDirectDependency: 0
+  version: 1.1.0
+  source: 1
+  resolvedPath: C:\Users\JPKSP\projects\DigitalLogicSimulator\Library\PackageCache\com.unity.subsystemregistration@1.1.0
+  assetPath: Packages/com.unity.subsystemregistration
+  name: com.unity.subsystemregistration
+  displayName: Subsystem Registration
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Provides internal registration mechanism for standalone subsystems. 
+    It allows a standalone subsystem to inform the Subsystem Manager of its existence.
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 1.0.0-preview.4
+    - 1.0.4
+    - 1.0.5
+    - 1.0.6
+    - 1.1.0
+    compatible:
+    - 1.1.0
+    verified: 1.1.0
+  dependencies:
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.modules.subsystems
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  keywords:
+  - subsystem
+  - registration
+  - internal
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hasRegistry: 1
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637314426150000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.subsystemregistration.git
+    revision: 72584ba5248fbe79e560e795ad819f876954fceb
     path: 
   unityLifecycle:
     version: 

@@ -42,12 +42,14 @@ public class Gate : MonoBehaviour {
     private Camera moveCam;
     private Pin.highOrLow pastactualValue;
     private List<Pin.highOrLow> previousPinValues;
+    public bool importedFromFile = false;
 
     // Start is called before the first frame update
     private void Start() {
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
         currentState = createdFromCopy ? state.COPYING : state.PLACING;
         if (loadedFromFile && !createdFromCopy) currentState = state.INSCENE;
+        if (importedFromFile && !createdFromCopy) currentState = state.COPYING;
         Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
         Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             Mathf.Abs(moveCam.transform.position.z + 10)));
@@ -314,7 +316,6 @@ public class Gate : MonoBehaviour {
             }
             else if (pins[5].actualValue != previousPinValues[5] && pins[5].actualValue == Pin.highOrLow.HIGH &&
                      pins[4].actualValue == Pin.highOrLow.HIGH) {
-                print("got go event");
                 foreach (Pin pin in pins.GetRange(0, 4))
                     if (pin.actualValue == Pin.highOrLow.HIGH &&
                         pins[pins.IndexOf(pin) + 6].actualValue == Pin.highOrLow.LOW) {

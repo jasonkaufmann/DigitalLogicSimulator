@@ -13,6 +13,13 @@ ScriptsOnlyBuild:
     - SceneLoader
     - Selection
     - WireManager
+    Unity.AdaptivePerformance.Editor.dll:
+    - UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceGeneralSettingsPerBuildTarget
+    Unity.AdaptivePerformance.Simulator.Editor.dll:
+    - UnityEditor.AdaptivePerformance.Simulator.Editor.SimulatorProviderSettings
+    Unity.AdaptivePerformance.dll:
+    - UnityEngine.AdaptivePerformance.AdaptivePerformanceGeneralSettings
+    - UnityEngine.AdaptivePerformance.AdaptivePerformanceManagerSettings
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.RiderScriptEditorData
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -66,31 +73,31 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1562}
+      Script: {instanceID: 1572}
     - Class: 114
-      Script: {instanceID: 1858}
+      Script: {instanceID: 1882}
     - Class: 114
-      Script: {instanceID: 2146}
+      Script: {instanceID: 2188}
     - Class: 114
-      Script: {instanceID: 2464}
+      Script: {instanceID: 2522}
     - Class: 114
-      Script: {instanceID: 2586}
+      Script: {instanceID: 2652}
     - Class: 114
-      Script: {instanceID: 2630}
+      Script: {instanceID: 2700}
     - Class: 114
-      Script: {instanceID: 2756}
+      Script: {instanceID: 2832}
     - Class: 114
-      Script: {instanceID: 2966}
+      Script: {instanceID: 3062}
     - Class: 114
-      Script: {instanceID: 3082}
+      Script: {instanceID: 3188}
     - Class: 114
-      Script: {instanceID: 3680}
+      Script: {instanceID: 3820}
     - Class: 114
-      Script: {instanceID: 3972}
+      Script: {instanceID: 4116}
     - Class: 114
-      Script: {instanceID: 21542}
+      Script: {instanceID: 22926}
     - Class: 114
-      Script: {instanceID: 21544}
+      Script: {instanceID: 22928}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -120,6 +127,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
     - Class: 58
       Script: {instanceID: 0}
     - Class: 61
@@ -129,59 +138,65 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1562}
+      Script: {instanceID: 1572}
     - Class: 114
-      Script: {instanceID: 1564}
+      Script: {instanceID: 1574}
     - Class: 114
-      Script: {instanceID: 1648}
+      Script: {instanceID: 1664}
     - Class: 114
-      Script: {instanceID: 1724}
+      Script: {instanceID: 1742}
     - Class: 114
-      Script: {instanceID: 1734}
+      Script: {instanceID: 1754}
     - Class: 114
-      Script: {instanceID: 1778}
+      Script: {instanceID: 1800}
     - Class: 114
-      Script: {instanceID: 1858}
+      Script: {instanceID: 1882}
     - Class: 114
-      Script: {instanceID: 2146}
+      Script: {instanceID: 2188}
     - Class: 114
-      Script: {instanceID: 2200}
+      Script: {instanceID: 2242}
     - Class: 114
-      Script: {instanceID: 2464}
+      Script: {instanceID: 2522}
     - Class: 114
-      Script: {instanceID: 2586}
+      Script: {instanceID: 2652}
     - Class: 114
-      Script: {instanceID: 2630}
+      Script: {instanceID: 2700}
     - Class: 114
-      Script: {instanceID: 2756}
+      Script: {instanceID: 2832}
     - Class: 114
-      Script: {instanceID: 2794}
+      Script: {instanceID: 2876}
     - Class: 114
-      Script: {instanceID: 2804}
+      Script: {instanceID: 2888}
     - Class: 114
-      Script: {instanceID: 2966}
+      Script: {instanceID: 3062}
     - Class: 114
-      Script: {instanceID: 3004}
+      Script: {instanceID: 3076}
     - Class: 114
-      Script: {instanceID: 3008}
+      Script: {instanceID: 3102}
     - Class: 114
-      Script: {instanceID: 3082}
+      Script: {instanceID: 3106}
     - Class: 114
-      Script: {instanceID: 3158}
+      Script: {instanceID: 3188}
     - Class: 114
-      Script: {instanceID: 3270}
+      Script: {instanceID: 3266}
     - Class: 114
-      Script: {instanceID: 3498}
+      Script: {instanceID: 3388}
     - Class: 114
-      Script: {instanceID: 3674}
+      Script: {instanceID: 3628}
     - Class: 114
-      Script: {instanceID: 4142}
+      Script: {instanceID: 3814}
     - Class: 114
-      Script: {instanceID: 4490}
+      Script: {instanceID: 4050}
     - Class: 114
-      Script: {instanceID: 4522}
+      Script: {instanceID: 4214}
     - Class: 114
-      Script: {instanceID: 4880}
+      Script: {instanceID: 4294}
+    - Class: 114
+      Script: {instanceID: 4660}
+    - Class: 114
+      Script: {instanceID: 4698}
+    - Class: 114
+      Script: {instanceID: 5066}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -222,51 +237,51 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1562}
+      Script: {instanceID: 1572}
     - Class: 114
-      Script: {instanceID: 1564}
+      Script: {instanceID: 1574}
     - Class: 114
-      Script: {instanceID: 1648}
+      Script: {instanceID: 1664}
     - Class: 114
-      Script: {instanceID: 1734}
+      Script: {instanceID: 1754}
     - Class: 114
-      Script: {instanceID: 1858}
+      Script: {instanceID: 1882}
     - Class: 114
-      Script: {instanceID: 2140}
+      Script: {instanceID: 2182}
     - Class: 114
-      Script: {instanceID: 2464}
+      Script: {instanceID: 2522}
     - Class: 114
-      Script: {instanceID: 2586}
+      Script: {instanceID: 2652}
     - Class: 114
-      Script: {instanceID: 2630}
+      Script: {instanceID: 2700}
     - Class: 114
-      Script: {instanceID: 2756}
+      Script: {instanceID: 2832}
     - Class: 114
-      Script: {instanceID: 2966}
+      Script: {instanceID: 3062}
     - Class: 114
-      Script: {instanceID: 2978}
+      Script: {instanceID: 3076}
     - Class: 114
-      Script: {instanceID: 3056}
+      Script: {instanceID: 3160}
     - Class: 114
-      Script: {instanceID: 3082}
+      Script: {instanceID: 3188}
     - Class: 114
-      Script: {instanceID: 3270}
+      Script: {instanceID: 3388}
     - Class: 114
-      Script: {instanceID: 3674}
+      Script: {instanceID: 3814}
     - Class: 114
-      Script: {instanceID: 3680}
+      Script: {instanceID: 3820}
     - Class: 114
-      Script: {instanceID: 3910}
+      Script: {instanceID: 4050}
     - Class: 114
-      Script: {instanceID: 4052}
+      Script: {instanceID: 4198}
     - Class: 114
-      Script: {instanceID: 4068}
+      Script: {instanceID: 4214}
     - Class: 114
-      Script: {instanceID: 4142}
+      Script: {instanceID: 4294}
     - Class: 114
-      Script: {instanceID: 4152}
+      Script: {instanceID: 4306}
     - Class: 114
-      Script: {instanceID: 4422}
+      Script: {instanceID: 4590}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -298,6 +313,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveLut
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -397,6 +418,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveShadowmapResolution
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: IOButton
@@ -414,10 +441,22 @@ ScriptsOnlyBuild:
     className: SimpleScript
   - hash:
       serializedVersion: 2
+      Hash: a0bfd04b77824c07d9435ef76eafb204
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptivePerformanceGeneralSettings
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro
     className: TMP_DigitValidator
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveShadowCascade
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -546,6 +585,12 @@ ScriptsOnlyBuild:
     className: TMP_TextSelector_A
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveSorting
+  - hash:
+      serializedVersion: 2
       Hash: d6a8e9bec3160a152b9b2710593d3caa
     assemblyName: Unity.ProBuilder.dll
     namespaceName: UnityEngine.ProBuilder
@@ -564,6 +609,12 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveResolution
+  - hash:
+      serializedVersion: 2
       Hash: f40fedccd4adbc76605bea6d67537e4b
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -574,6 +625,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Controls
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveShadowDistance
   - hash:
       serializedVersion: 2
       Hash: 8fbc134fd506d97c845cf2b715231396
@@ -604,6 +661,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: Benchmark03
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveBatching
   - hash:
       serializedVersion: 2
       Hash: 748dd2a2a28da4e618912da5ac45684b
@@ -666,6 +729,12 @@ ScriptsOnlyBuild:
     className: MenuControls
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveFramerate
+  - hash:
+      serializedVersion: 2
       Hash: 0fd6822f6177297bd0eb4d83cc7a9030
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -700,6 +769,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.ProBuilder.dll
     namespaceName: UnityEngine.ProBuilder
     className: TriggerBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveShadowQuality
   - hash:
       serializedVersion: 2
       Hash: bd3f0ca738703903e759f77536ed74fd
@@ -811,6 +886,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptivePerformanceManager
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
@@ -852,7 +933,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: 9153aa2de0f40b4d635f5de2227fbb81
+      Hash: 2136679c2f3a075724699fc69f3d1e40
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BinaryToDecimalGroup
@@ -882,7 +963,7 @@ ScriptsOnlyBuild:
     className: EnvMapAnimator
   - hash:
       serializedVersion: 2
-      Hash: d70f0717d6bedf65946968f2e046f625
+      Hash: 90c341302782dff3321410797de78ca2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Box
@@ -942,6 +1023,18 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveLOD
+  - hash:
+      serializedVersion: 2
+      Hash: 7fe6952d0a5840a1aca386fdd0b6c67a
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: IAdaptivePerformanceSettings
+  - hash:
+      serializedVersion: 2
       Hash: 0fb27be807aa299702f28ad0bcad1f46
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -954,10 +1047,22 @@ ScriptsOnlyBuild:
     className: RectMask2D
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveMSAA
+  - hash:
+      serializedVersion: 2
       Hash: 87ad3705a58f19c47136728d4a6e9c47
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Settings
+  - hash:
+      serializedVersion: 2
+      Hash: 023e1c84ff33489e45cfcca9e19c242b
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptivePerformanceManagerSettings
   - hash:
       serializedVersion: 2
       Hash: 3375c3d749f8f4cad889721b431bdc27
@@ -1015,6 +1120,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.AdaptivePerformance.dll
+    namespaceName: UnityEngine.AdaptivePerformance
+    className: AdaptiveTransparency
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: TeleType
@@ -1026,7 +1137,7 @@ ScriptsOnlyBuild:
     className: TMP_ExampleScript_01
   - hash:
       serializedVersion: 2
-      Hash: 477e2efb1a1bc84195f0ac1ad19b59a6
+      Hash: 9ffe51957d4495e30279fae6f6a45cc7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ControlsManager

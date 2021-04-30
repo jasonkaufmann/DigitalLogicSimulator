@@ -9,32 +9,53 @@ public class Box : MonoBehaviour {
     public Vector3 origin;
 
     public MeshCollider meshCollide;
-    private readonly int _curveDiameter = 0;
-    private readonly int _curveRes = 5;
     private readonly float _lineWidth = 0.01f;
 
     private readonly int resolution = 10;
 
-    private bool _drawing = true;
+    public bool _drawing = true;
     private Camera _moveCam;
     private Mesh mesh;
+    public bool createdFromCopy = false;
 
     private void Start() {
-        _drawPoints = new List<Vector2>();
         box = gameObject.AddComponent<LineRenderer>();
         box.material =
             new Material(Shader.Find("Sprites/Default")) {color = new Color(0f / 255f, 0f / 255f, 0f / 255f, 1f)};
         box.GetComponent<LineRenderer>().startWidth = 1;
         box.GetComponent<LineRenderer>().endWidth = 1;
         box.GetComponent<LineRenderer>().widthMultiplier = _lineWidth;
+        
         box.loop = true;
         _moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
         box.positionCount = 0;
         meshCollide = gameObject.AddComponent<MeshCollider>();
         mesh = new Mesh();
-        _drawPoints.Clear();
-        _drawPoints.Add(origin);
         StartCoroutine(meshUpdater());
+        if (!createdFromCopy) {
+            _drawPoints = new List<Vector2>();
+            _drawPoints.Clear();
+            _drawPoints.Add(origin);
+        }
+        else {
+            box.positionCount = 0;
+            var count = 0;
+            for (var i = 0; i < _drawPoints.Count; i++) //make the curve portion
+                //make the line portion
+                for (var j = 0; j < resolution; j++) {
+                    Vector2 point;
+                    if (i == _drawPoints.Count - 1)
+                        point = Lerp(_drawPoints[_drawPoints.Count - 1], _drawPoints[0], (float) j / resolution);
+                    else
+                        point = Lerp(_drawPoints[i], _drawPoints[i + 1], (float) j / resolution);
+
+                    box.positionCount++;
+                    box.SetPosition(count,
+                        new Vector3(point.x, point.y, -10));
+                    count++;
+                }
+        }
+       
     }
 
 
@@ -50,48 +71,27 @@ public class Box : MonoBehaviour {
             box.positionCount = 0;
             var count = 0;
             for (var i = 0; i < _drawPoints.Count; i++) //make the curve portion
-                /*for (var j = 0; j < _curveRes; j++) {
-                    Vector2 point1;
-                    if (i == 3)
-                        point1 = Lerp(_drawPoints[_drawPoints.Count - 1], _drawPoints[0],
-                            (float) _curveDiameter / resolution);
+                //make the line portion
+                for (var j = 0; j < resolution; j++) {
+                    Vector2 point;
+                    if (i == _drawPoints.Count - 1)
+                        point = Lerp(_drawPoints[_drawPoints.Count - 1], _drawPoints[0], (float) j / resolution);
                     else
-                        point1 = Lerp(_drawPoints[i], _drawPoints[i + 1], (float) _curveDiameter / resolution);
+                        point = Lerp(_drawPoints[i], _drawPoints[i + 1], (float) j / resolution);
 
-                    Vector2 point2;
-                    if (i == 0)
-                        point2 = Lerp(_drawPoints[i], _drawPoints[_drawPoints.Count - 1],
-                            (float) _curveDiameter / resolution);
-                    else
-                        point2 = Lerp(_drawPoints[i], _drawPoints[i - 1], (float) _curveDiameter / resolution);
-
-                    Vector2 point = GetCurvePoint(point2, point1, (float) j / _curveRes);
                     box.positionCount++;
                     box.SetPosition(count,
                         new Vector3(point.x, point.y, -10));
                     count++;
-                }*/
-
-                //make the line portion
-            for (var j = _curveDiameter; j < resolution - _curveDiameter; j++) {
-                Vector2 point;
-                if (i == _drawPoints.Count - 1)
-                    point = Lerp(_drawPoints[_drawPoints.Count - 1], _drawPoints[0], (float) j / resolution);
-                else
-                    point = Lerp(_drawPoints[i], _drawPoints[i + 1], (float) j / resolution);
-
-                box.positionCount++;
-                box.SetPosition(count,
-                    new Vector3(point.x, point.y, -10));
-                count++;
-            }
-
-            _drawPoints.RemoveRange(1, 3);
-
+                }
+            
             if (Input.GetKeyDown(KeyCode.B)) {
                 _drawing = false;
                 GameObject.FindWithTag("startup").GetComponent<BoundingBoxControls>().drawing = false;
+                return;
             }
+
+            _drawPoints.RemoveRange(1, 3);
         }
     }
 
@@ -104,9 +104,8 @@ public class Box : MonoBehaviour {
     }
 
     private void OnMouseOver() {
-        if ((Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Escape)) && !_drawing) {
+        if ((Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Escape)) && !_drawing)
             DestroyImmediate(gameObject);
-        }
     }
 
     private IEnumerator meshUpdater() {

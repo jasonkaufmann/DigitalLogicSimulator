@@ -140,7 +140,9 @@
         130,
         131,
         132,
-        133
+        133,
+        134,
+        135
       ],
       "ToUseDependencies": [],
       "OverwriteOutputs": true,
@@ -587,6 +589,20 @@
       "DebugActionIndex": 31
     },
     {
+      "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.AdaptivePerformance.dll",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/Unity.AdaptivePerformance.dll"
+      ],
+      "Outputs": [
+        "C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.AdaptivePerformance.dll"
+      ],
+      "PassIndex": 0,
+      "ToBuildDependencies": [],
+      "OverwriteOutputs": true,
+      "DebugActionIndex": 32
+    },
+    {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.InternalAPIEngineBridge.003.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
@@ -598,7 +614,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 32
+      "DebugActionIndex": 33
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Csg.dll",
@@ -612,7 +628,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 33
+      "DebugActionIndex": 34
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.dll",
@@ -626,7 +642,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 34
+      "DebugActionIndex": 35
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.KdTree.dll",
@@ -640,7 +656,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 35
+      "DebugActionIndex": 36
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Poly2Tri.dll",
@@ -654,7 +670,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 36
+      "DebugActionIndex": 37
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Stl.dll",
@@ -668,7 +684,21 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 37
+      "DebugActionIndex": 38
+    },
+    {
+      "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.Subsystem.Registration.dll",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Temp/StagingArea/Data/Managed/Unity.Subsystem.Registration.dll"
+      ],
+      "Outputs": [
+        "C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.Subsystem.Registration.dll"
+      ],
+      "PassIndex": 0,
+      "ToBuildDependencies": [],
+      "OverwriteOutputs": true,
+      "DebugActionIndex": 39
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.TextMeshPro.dll",
@@ -682,7 +712,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 38
+      "DebugActionIndex": 40
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.Timeline.dll",
@@ -696,7 +726,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 39
+      "DebugActionIndex": 41
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/Unity.VectorGraphics.dll",
@@ -710,7 +740,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 40
+      "DebugActionIndex": 42
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.AccessibilityModule.dll",
@@ -724,7 +754,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 41
+      "DebugActionIndex": 43
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.AIModule.dll",
@@ -738,7 +768,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 42
+      "DebugActionIndex": 44
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.AndroidJNIModule.dll",
@@ -752,7 +782,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 43
+      "DebugActionIndex": 45
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.AnimationModule.dll",
@@ -766,7 +796,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 44
+      "DebugActionIndex": 46
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.ARModule.dll",
@@ -780,7 +810,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 45
+      "DebugActionIndex": 47
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.AssetBundleModule.dll",
@@ -794,7 +824,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 46
+      "DebugActionIndex": 48
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.AudioModule.dll",
@@ -808,7 +838,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 47
+      "DebugActionIndex": 49
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.ClothModule.dll",
@@ -822,7 +852,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 48
+      "DebugActionIndex": 50
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.ClusterInputModule.dll",
@@ -836,7 +866,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 49
+      "DebugActionIndex": 51
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.ClusterRendererModule.dll",
@@ -850,7 +880,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 50
+      "DebugActionIndex": 52
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.CoreModule.dll",
@@ -864,7 +894,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 51
+      "DebugActionIndex": 53
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.CrashReportingModule.dll",
@@ -878,7 +908,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 52
+      "DebugActionIndex": 54
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.DirectorModule.dll",
@@ -892,7 +922,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 53
+      "DebugActionIndex": 55
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.dll",
@@ -906,7 +936,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 54
+      "DebugActionIndex": 56
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.DSPGraphModule.dll",
@@ -920,7 +950,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 55
+      "DebugActionIndex": 57
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.GameCenterModule.dll",
@@ -934,7 +964,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 56
+      "DebugActionIndex": 58
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.GIModule.dll",
@@ -948,7 +978,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 57
+      "DebugActionIndex": 59
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.GridModule.dll",
@@ -962,7 +992,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 58
+      "DebugActionIndex": 60
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.HotReloadModule.dll",
@@ -976,7 +1006,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 59
+      "DebugActionIndex": 61
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.ImageConversionModule.dll",
@@ -990,7 +1020,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 60
+      "DebugActionIndex": 62
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.IMGUIModule.dll",
@@ -1004,7 +1034,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 61
+      "DebugActionIndex": 63
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.InputLegacyModule.dll",
@@ -1018,7 +1048,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 62
+      "DebugActionIndex": 64
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.InputModule.dll",
@@ -1032,7 +1062,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 63
+      "DebugActionIndex": 65
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.JSONSerializeModule.dll",
@@ -1046,7 +1076,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 64
+      "DebugActionIndex": 66
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.LocalizationModule.dll",
@@ -1060,7 +1090,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 65
+      "DebugActionIndex": 67
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.ParticleSystemModule.dll",
@@ -1074,7 +1104,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 66
+      "DebugActionIndex": 68
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.PerformanceReportingModule.dll",
@@ -1088,7 +1118,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 67
+      "DebugActionIndex": 69
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.Physics2DModule.dll",
@@ -1102,7 +1132,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 68
+      "DebugActionIndex": 70
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.PhysicsModule.dll",
@@ -1116,7 +1146,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 69
+      "DebugActionIndex": 71
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.ProfilerModule.dll",
@@ -1130,7 +1160,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 70
+      "DebugActionIndex": 72
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
@@ -1144,7 +1174,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 71
+      "DebugActionIndex": 73
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.ScreenCaptureModule.dll",
@@ -1158,7 +1188,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 72
+      "DebugActionIndex": 74
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.SharedInternalsModule.dll",
@@ -1172,7 +1202,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 73
+      "DebugActionIndex": 75
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.SpriteMaskModule.dll",
@@ -1186,7 +1216,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 74
+      "DebugActionIndex": 76
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.SpriteShapeModule.dll",
@@ -1200,7 +1230,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 75
+      "DebugActionIndex": 77
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.StreamingModule.dll",
@@ -1214,7 +1244,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 76
+      "DebugActionIndex": 78
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.SubstanceModule.dll",
@@ -1228,7 +1258,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 77
+      "DebugActionIndex": 79
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.SubsystemsModule.dll",
@@ -1242,7 +1272,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 78
+      "DebugActionIndex": 80
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.TerrainModule.dll",
@@ -1256,7 +1286,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 79
+      "DebugActionIndex": 81
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.TerrainPhysicsModule.dll",
@@ -1270,7 +1300,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 80
+      "DebugActionIndex": 82
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll",
@@ -1284,7 +1314,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 81
+      "DebugActionIndex": 83
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll",
@@ -1298,7 +1328,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 82
+      "DebugActionIndex": 84
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.TextRenderingModule.dll",
@@ -1312,7 +1342,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 83
+      "DebugActionIndex": 85
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.TilemapModule.dll",
@@ -1326,7 +1356,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 84
+      "DebugActionIndex": 86
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.TLSModule.dll",
@@ -1340,7 +1370,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 85
+      "DebugActionIndex": 87
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UI.dll",
@@ -1354,7 +1384,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 86
+      "DebugActionIndex": 88
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UIElementsModule.dll",
@@ -1368,7 +1398,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 87
+      "DebugActionIndex": 89
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UIElementsNativeModule.dll",
@@ -1382,7 +1412,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 88
+      "DebugActionIndex": 90
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UIModule.dll",
@@ -1396,7 +1426,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 89
+      "DebugActionIndex": 91
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UmbraModule.dll",
@@ -1410,7 +1440,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 90
+      "DebugActionIndex": 92
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UNETModule.dll",
@@ -1424,7 +1454,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 91
+      "DebugActionIndex": 93
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
@@ -1438,7 +1468,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 92
+      "DebugActionIndex": 94
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityConnectModule.dll",
@@ -1452,7 +1482,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 93
+      "DebugActionIndex": 95
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityCurlModule.dll",
@@ -1466,7 +1496,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 94
+      "DebugActionIndex": 96
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityTestProtocolModule.dll",
@@ -1480,7 +1510,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 95
+      "DebugActionIndex": 97
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll",
@@ -1494,7 +1524,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 96
+      "DebugActionIndex": 98
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll",
@@ -1508,7 +1538,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 97
+      "DebugActionIndex": 99
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestModule.dll",
@@ -1522,7 +1552,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 98
+      "DebugActionIndex": 100
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll",
@@ -1536,7 +1566,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 99
+      "DebugActionIndex": 101
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll",
@@ -1550,7 +1580,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 100
+      "DebugActionIndex": 102
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.VehiclesModule.dll",
@@ -1564,7 +1594,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 101
+      "DebugActionIndex": 103
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.VFXModule.dll",
@@ -1578,7 +1608,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 102
+      "DebugActionIndex": 104
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.VideoModule.dll",
@@ -1592,7 +1622,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 103
+      "DebugActionIndex": 105
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.VirtualTexturingModule.dll",
@@ -1606,7 +1636,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 104
+      "DebugActionIndex": 106
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.VRModule.dll",
@@ -1620,7 +1650,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 105
+      "DebugActionIndex": 107
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.WindModule.dll",
@@ -1634,7 +1664,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 106
+      "DebugActionIndex": 108
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Managed/UnityEngine.XRModule.dll",
@@ -1648,7 +1678,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 107
+      "DebugActionIndex": 109
     },
     {
       "Annotation": "WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Features/FeatureCheckList.txt",
@@ -1663,7 +1693,7 @@
       "ToUseDependencies": [],
       "OverwriteOutputs": true,
       "AllowUnwrittenOutputFiles": true,
-      "DebugActionIndex": 108
+      "DebugActionIndex": 110
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator_Data/Resources/unity default resources",
@@ -1677,7 +1707,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 109
+      "DebugActionIndex": 111
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/DigitalLogicSimulator.exe",
@@ -1691,7 +1721,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 110
+      "DebugActionIndex": 112
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/UnityCrashHandler64.exe",
@@ -1705,7 +1735,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 111
+      "DebugActionIndex": 113
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/UnityPlayer.dll",
@@ -1719,7 +1749,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 112
+      "DebugActionIndex": 114
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -1733,7 +1763,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 113
+      "DebugActionIndex": 115
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll",
@@ -1747,7 +1777,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 114
+      "DebugActionIndex": 116
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/browscap.ini",
@@ -1761,7 +1791,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 115
+      "DebugActionIndex": 117
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/config",
@@ -1775,7 +1805,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 116
+      "DebugActionIndex": 118
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
@@ -1789,7 +1819,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 117
+      "DebugActionIndex": 119
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/2.0/machine.config",
@@ -1803,7 +1833,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 118
+      "DebugActionIndex": 120
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/2.0/settings.map",
@@ -1817,7 +1847,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 119
+      "DebugActionIndex": 121
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/2.0/web.config",
@@ -1831,7 +1861,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 120
+      "DebugActionIndex": 122
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
@@ -1845,7 +1875,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 121
+      "DebugActionIndex": 123
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
@@ -1859,7 +1889,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 122
+      "DebugActionIndex": 124
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/4.0/machine.config",
@@ -1873,7 +1903,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 123
+      "DebugActionIndex": 125
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/4.0/settings.map",
@@ -1887,7 +1917,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 124
+      "DebugActionIndex": 126
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/4.0/web.config",
@@ -1901,7 +1931,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 125
+      "DebugActionIndex": 127
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
@@ -1915,7 +1945,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 126
+      "DebugActionIndex": 128
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
@@ -1929,7 +1959,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 127
+      "DebugActionIndex": 129
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/4.5/machine.config",
@@ -1943,7 +1973,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 128
+      "DebugActionIndex": 130
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/4.5/settings.map",
@@ -1957,7 +1987,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 129
+      "DebugActionIndex": 131
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/4.5/web.config",
@@ -1971,7 +2001,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 130
+      "DebugActionIndex": 132
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
@@ -1985,7 +2015,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 131
+      "DebugActionIndex": 133
     },
     {
       "Annotation": "CopyFiles C:/Users/JPKSP/OneDrive/Desktop/MonoBleedingEdge/etc/mono/mconfig/config.xml",
@@ -1999,7 +2029,7 @@
       "PassIndex": 0,
       "ToBuildDependencies": [],
       "OverwriteOutputs": true,
-      "DebugActionIndex": 132
+      "DebugActionIndex": 134
     },
     {
       "Annotation": "Player",
@@ -2115,8 +2145,8 @@
         105,
         106,
         107,
+        108,
         109,
-        110,
         111,
         112,
         113,
@@ -2138,14 +2168,16 @@
         129,
         130,
         131,
-        132
+        132,
+        133,
+        134
       ],
       "ToUseDependencies": [],
       "OverwriteOutputs": true,
       "FrontendResponseFiles": [],
       "AllowUnexpectedOutput": true,
       "AllowedOutputSubstrings": [],
-      "DebugActionIndex": 133
+      "DebugActionIndex": 135
     }
   ],
   "FileSignatures": [
@@ -2360,7 +2392,7 @@
   "DirectoriesCausingImplicitDependencies": [],
         "NamedNodes": {
           "all_tundra_nodes": 0,
-          "Player": 133
+          "Player": 135
         }
 ,  "DefaultNodes": [
     0

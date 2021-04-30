@@ -194,6 +194,7 @@ public class ButtonManager : MonoBehaviour {
         var wireFieldArray = new List<wireSaveFields>();
         var camField = new camSaveFields();
         var b2dFieldArray = new List<binaryToDecimalFields>();
+        var boxFieldArray = new List<boxFields>();
         foreach (GameObject sceneObject in objects)
             if (sceneObject.GetComponent<Gate>() != null) {
                 gateSaveFields field = new gateSaveFields {
@@ -254,8 +255,17 @@ public class ButtonManager : MonoBehaviour {
                 }
                 binaryToDecimalFields field = new binaryToDecimalFields {
                     ioNumbers = names,
+                    position = sceneObject.transform.GetChild(0).transform.position,
+                    inverted =  sceneObject.GetComponent<BinaryToDecimalGroup>().invert,
+                    scale =  sceneObject.transform.GetChild(0).transform.localScale.x
                 };
                 b2dFieldArray.Add(field);
+            }
+            else if (sceneObject.GetComponent<Box>() != null) {
+                boxFields field = new boxFields {
+                    drawPoints = sceneObject.GetComponent<Box>()._drawPoints,
+                };
+                boxFieldArray.Add(field);
             }
             else if (sceneObject.GetComponent<Wire>() != null) {
                 Wire sceneWire = sceneObject.GetComponent<Wire>();
@@ -296,7 +306,7 @@ public class ButtonManager : MonoBehaviour {
             }
         
 
-        var textobj = JsonConvert.SerializeObject(new {camField, gateFieldArray, b2dFieldArray, ioFieldArray, textFieldArray, wireFieldArray},
+        var textobj = JsonConvert.SerializeObject(new {camField, boxFieldArray, gateFieldArray, b2dFieldArray, ioFieldArray, textFieldArray, wireFieldArray},
             new JsonSerializerSettings {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
@@ -341,6 +351,14 @@ public class ButtonManager : MonoBehaviour {
     [Serializable]
     public class binaryToDecimalFields {
         public List<string> ioNumbers;
+        public Vector3 position;
+        public bool inverted;
+        public float scale;
+    }
+    
+    [Serializable]
+    public class boxFields {
+        public List<Vector2> drawPoints;
     }
 
     [Serializable]

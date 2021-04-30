@@ -13,9 +13,9 @@ public class MoveCamera : MonoBehaviour {
         //if(Time.timeScale == 0)return;
         Ray ray = moveCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (moveCamera.transform.position.z < -10.5)
+        if (moveCamera.transform.position.z < -10.5 && !GameObject.FindWithTag("manageCanvas").GetComponent<ControlsManager>().stopScroll)
             moveCamera.transform.position +=  sensitivity * Input.GetAxis("Mouse ScrollWheel") * ray.direction;
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !GameObject.FindWithTag("manageCanvas").GetComponent<ControlsManager>().stopScroll)
             moveCamera.transform.position +=  sensitivity * Input.GetAxis("Mouse ScrollWheel") * ray.direction;
         if (Input.GetMouseButton(1)) {
             Vector3 camPos = moveCamera.transform.position;

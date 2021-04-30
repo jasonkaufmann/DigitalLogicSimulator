@@ -20,6 +20,7 @@ public class TextControls : MonoBehaviour
     public bool createdFromCopy;
     public bool createdFromFile = false;
     public string createdFromFileString;
+    public bool importedFromFile = false;
 
     private Vector3 copyOffset;
     // Start is called before the first frame update
@@ -32,6 +33,9 @@ public class TextControls : MonoBehaviour
         if (createdFromFile && !createdFromCopy) {
             this.transform.GetComponent<InputField>().text = createdFromFileString;
             currentState = state.INSCENE;
+        } else if (importedFromFile) {
+            this.transform.GetComponent<InputField>().text = createdFromFileString;
+            currentState = state.COPYING;
         }
     }
 
@@ -58,7 +62,6 @@ public class TextControls : MonoBehaviour
         }
 
         if (currentState == state.COPYING) {
-            print("copying");
             Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
             Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
                 Mathf.Abs(moveCam.transform.position.z + 10)));

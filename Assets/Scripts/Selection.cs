@@ -9,8 +9,8 @@ public class Selection : MonoBehaviour {
     public List<GameObject> copiedObjects;
     public Vector3 difference;
 
-    private state currentState;
-    private bool firstFrame = true;
+    public state currentState;
+    public bool firstFrame = true;
     private float height;
     private Vector3 lastDragPoint, currentDragPoint;
 
@@ -24,7 +24,9 @@ public class Selection : MonoBehaviour {
     private void Start() {
         moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
-        currentState = state.WAITING;
+        if(currentState !=  state.IMPORTEDFROMFILE)
+            currentState = state.WAITING;
+        
     }
 
     // Update is called once per frame
@@ -41,8 +43,39 @@ public class Selection : MonoBehaviour {
             newArea.transform.localScale = new Vector3(width, height, 1);
         }
 
-        if (Input.GetMouseButtonUp(0)) //print("finished making");
+
+
+        if (Input.GetMouseButtonUp(0) && (currentState != state.IMPORTEDFROMFILE)) {
+            print("finished making");
             currentState = state.INSCENE;
+        }
+
+        if (currentState == state.IMPORTEDFROMFILE) {
+            print("got import");
+            Vector3 mousePos = Input.mousePosition;
+            currentDragPoint =
+                moveCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y,
+                    Mathf.Abs(moveCam.transform.position.z + 10)));
+            if (firstFrame) {
+                lastDragPoint = currentDragPoint;
+                firstFrame = false;
+            }
+
+            difference = currentDragPoint - lastDragPoint;
+            lastDragPoint = currentDragPoint;
+            for (var i = 0; i < copiedObjects.Count; i++) {
+                if (copiedObjects[i].GetComponent<Wire>() != null) {
+                    copiedObjects[i].transform.position += difference;
+                    for (var j = 0; j < copiedObjects[i].GetComponent<Wire>().anchorPoints.Count; j++)
+                        copiedObjects[i].GetComponent<Wire>().anchorPoints[j] +=
+                            new Vector2(difference.x, difference.y);
+                }
+            }
+            if (Input.GetMouseButtonDown(0)) {
+                currentState = state.INSCENE;
+                DestroyImmediate(newArea);
+            }
+        }
 
         if (Input.GetMouseButtonDown(0) && currentState == state.INSCENE) {
             currentState = state.WAITING;
@@ -214,6 +247,7 @@ public class Selection : MonoBehaviour {
             binToDec.name = "binaryToDecimal";
             binToDec.AddComponent<BinaryToDecimalGroup>();
             binToDec.GetComponent<BinaryToDecimalGroup>().objectsInSelection = objectsInSelection;
+            DestroyImmediate(newArea);
         }
 
         if (Input.GetKeyDown(KeyCode.X) && currentState == state.INSCENE) DestroyImmediate(newArea);
@@ -268,11 +302,12 @@ public class Selection : MonoBehaviour {
         return false;
     }
 
-    private enum state {
+    public enum state {
         STARTED,
         WAITING,
         INSCENE,
         COPYINGOBJECTS,
-        MOVINGOBJECTS
+        MOVINGOBJECTS,
+        IMPORTEDFROMFILE
     }
 }

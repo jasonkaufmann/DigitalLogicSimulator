@@ -40,13 +40,14 @@ public class IO : MonoBehaviour {
     public logic log;
 
     public state currentState;
-    public bool createdFromCopy;
+    public bool createdFromCopy = false;
     private Vector3 copyOffset;
     private Vector3 difference;
     private bool firstFrame = true;
     private Vector3 lastDragPoint, currentDragPoint;
     private float lastTime;
     private Camera moveCam;
+    public bool importedFromFile = false;
 
     // Start is called before the first frame update
     private void Start() {
@@ -54,6 +55,7 @@ public class IO : MonoBehaviour {
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
         currentState = createdFromCopy ? state.COPYING : state.PLACING;
         if (loadedFromFile && !createdFromCopy) currentState = state.INSCENE;
+        if (importedFromFile && !createdFromCopy) currentState = state.COPYING;
         Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
         Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             Mathf.Abs(moveCam.transform.position.z + 10)));
@@ -67,7 +69,7 @@ public class IO : MonoBehaviour {
             pin.IO_Type = Pin.inOut.OUTPUT;
         if (!createdFromCopy) {
             gameObject.transform.Find("circle").gameObject.AddComponent<IOButton>();
-            if (!loadedFromFile) {
+            if (!loadedFromFile && !importedFromFile) {
                 log = logic.LOW;
             }
             else {
@@ -169,7 +171,7 @@ public class IO : MonoBehaviour {
             float xPosition;
             float yPosition;
             if ((int) transform.eulerAngles.z > 0 && (int) transform.eulerAngles.z < 135) {
-                print("rotated 90 degrees");
+                //print("rotated 90 degrees");
                 yPosition = -gameObject.transform.GetChild(0).transform.localScale.y;
                 xPosition = 0;
             }
@@ -227,8 +229,7 @@ public class IO : MonoBehaviour {
         }
         else {
             if (manager.getConnectedWiresPin(this.pin).Count == 0) {
-                print("No wires connected: " + name);
-                print(manager.wires.Count);
+               
                 pin.actualValue = Pin.highOrLow.LOW;
             }
             if (pin.actualValue == Pin.highOrLow.HIGH)

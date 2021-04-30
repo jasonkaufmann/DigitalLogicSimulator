@@ -14,22 +14,30 @@ public class BinaryToDecimalGroup : MonoBehaviour {
     private bool error = false;
     public List<GameObject> IOForConversion;
     private GameObject numToShow;
-    public bool createdFromCopy = false;
+    public bool loadedFromFile = false;
+    
+    public enum state {
+        PLACING,
+        INSCENE,
+        WAITING,
+        COPYING
+    }
 
+    public state currentState;
+    public bool invert;
+    public Vector3 loadedLocation;
+    public float loadedScale;
 
     // Start is called before the first frame update
     private void Start() {
-        if (!createdFromCopy) {
-            IOForConversion = new List<GameObject>();
-            GetIOInSelection();
-        }
-        bracket = gameObject.AddComponent<LineRenderer>();
+        bracketPoints = new List<Vector2>();
+        currentState = state.INSCENE;
+        /*bracket = gameObject.AddComponent<LineRenderer>();
         bracket.material =
             new Material(Shader.Find("Sprites/Default")) {color = new Color(0f / 255f, 0f / 255f, 0f / 255f, 1f)};
         bracket.startWidth = 1;
         bracket.endWidth = 1;
-        bracket.widthMultiplier = _lineWidth;
-        bracketPoints = new List<Vector2>();
+        bracket.widthMultiplier = _lineWidth;*/
         numToShow = new GameObject();
         numToShow.name = "Text";
         numToShow.AddComponent<TextMeshPro>();
@@ -46,16 +54,46 @@ public class BinaryToDecimalGroup : MonoBehaviour {
             GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
         gameObject.name += gameObject.GetInstanceID().ToString();
         gameObject.transform.SetParent(gameObject.transform);
+        gameObject.AddComponent<Rigidbody2D>();
+        gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        numToShow.AddComponent<BoxCollider2D>();
+        numToShow.GetComponent<BoxCollider2D>().isTrigger = true;
+        if (!loadedFromFile) {
+            IOForConversion = new List<GameObject>();
+            GetIOInSelection();
+            UpdateBracket();
+            Vector2 averagePos = (bracketPoints[0] + bracketPoints[1]) / 2f;
+            numToShow.transform.position = new Vector3(averagePos.x/0.95f, averagePos.y, -10);
+        }
+        else {
+            numToShow.transform.position = loadedLocation;
+            numToShow.transform.localScale = new Vector3(loadedScale, loadedScale, loadedScale);
+        }
     }
 
     // Update is called once per frame
     private void Update() {
         if (!error) {
-            UpdateBracket();
             var number = GetDecimalNumber();
             numToShow.GetComponent<TextMeshPro>().text = number.ToString();
-            Vector2 averagePos = (bracketPoints[0] + bracketPoints[1]) / 2f;
-            numToShow.transform.position = new Vector3(averagePos.x/0.95f, averagePos.y, -10);
+            numToShow.GetComponent<BoxCollider2D>().size = numToShow.GetComponent<TextMeshPro>().GetPreferredValues() * 1.25f;
+            if (currentState == state.PLACING) {
+                Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
+                Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+                    Mathf.Abs(moveCam.transform.position.z + 10)));
+                numToShow.transform.position = movePos;
+                if (Input.GetKey(KeyCode.LeftControl)) {
+                    print("make bigger");
+                    numToShow.transform.localScale += new Vector3(0.03f, 0.03f, 0f);
+                }
+                if (Input.GetKey(KeyCode.LeftAlt)) {
+                    if (numToShow.transform.localScale.x > 0) {
+                        numToShow.transform.localScale -= new Vector3(0.03f, 0.03f, 0f);
+                    }
+                }
+                if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
+                if (Input.GetKeyDown(KeyCode.Escape)) DestroyImmediate(gameObject);
+            }
         }
         else {
             print("Destroy Object");
@@ -66,6 +104,9 @@ public class BinaryToDecimalGroup : MonoBehaviour {
     private int GetDecimalNumber() {
         var binaryNumber = 0;
         var placeNum = 0;
+        if (invert) {
+            IOForConversion.Reverse();
+        }
         foreach (GameObject io in IOForConversion) {
             IO.logic value = io.GetComponent<IO>().log;
             if (value == IO.logic.HIGH) {
@@ -73,6 +114,9 @@ public class BinaryToDecimalGroup : MonoBehaviour {
                 binaryNumber |= shift;
             }
             placeNum++;
+        }
+        if (invert) {
+            IOForConversion.Reverse();
         }
 
         return binaryNumber;
@@ -92,7 +136,10 @@ public class BinaryToDecimalGroup : MonoBehaviour {
 
         var distX = Math.Abs(longestPair.Item1.transform.position.x - longestPair.Item2.transform.position.x);
         var distY = Math.Abs(longestPair.Item1.transform.position.y - longestPair.Item2.transform.position.y);
-
+        if (longestPair.Item1 == gameObject || longestPair.Item2 == gameObject) {
+            error = true;
+            return;
+        }
         bracketPoints.Clear();
         if (distY > distX) {
             if (longestPair.Item1.GetComponent<IO>().IOType == IO.type.OUT) {
@@ -113,12 +160,34 @@ public class BinaryToDecimalGroup : MonoBehaviour {
             }
         }
 
-        bracket.positionCount = 0;
+        /*bracket.positionCount = 0;
         var count = 0;
         foreach (Vector2 point in bracketPoints) {
             bracket.positionCount++;
             bracket.SetPosition(count, new Vector3(point.x, point.y, -10));
             count++;
+        }*/
+    }
+    
+    private void OnMouseOver() {
+        if (Input.GetMouseButtonDown(2) && currentState == state.INSCENE) {
+            currentState = state.PLACING;
+        }
+        if (Input.GetKeyDown(KeyCode.I) && currentState == state.INSCENE) {
+            invert = !invert;
+        }
+
+    }
+
+    private void OnMouseEnter() {
+        foreach (var io in IOForConversion) {
+            io.transform.localScale *= 1.1f;
+        }
+    }
+    
+    private void OnMouseExit() {
+        foreach (var io in IOForConversion) {
+            io.transform.localScale /= 1.1f;
         }
     }
 
@@ -142,9 +211,6 @@ public class BinaryToDecimalGroup : MonoBehaviour {
             else {
                 if (io.GetComponent<IO>().IOType == IO.type.IN) IOForConversion.Remove(io);
             }
-
-        print("INS: " + ins);
-        print("OUTS: " + outs);
         if (ins == 0 && outs == 0) error = true;
     }
 }

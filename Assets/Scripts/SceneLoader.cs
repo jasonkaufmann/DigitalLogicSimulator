@@ -299,12 +299,29 @@ public class SceneLoader : MonoBehaviour {
                 foreach (GameObject thingInScene in SceneManager.GetActiveScene().GetRootGameObjects()) {
                     foreach (var token in b2dField["ioNumbers"]) {
                         if (thingInScene.name.Contains(token.ToString())) {
-                            print("add io to b2d");
                             binToDec.GetComponent<BinaryToDecimalGroup>().IOForConversion.Add(thingInScene);
                         }
                     }
                 }
-                binToDec.GetComponent<BinaryToDecimalGroup>().createdFromCopy = true;
+                binToDec.GetComponent<BinaryToDecimalGroup>().loadedFromFile = true;
+                binToDec.GetComponent<BinaryToDecimalGroup>().invert = bool.Parse(b2dField["inverted"].ToString());
+                binToDec.GetComponent<BinaryToDecimalGroup>().loadedLocation = new Vector3(float.Parse(b2dField["position"]["x"].ToString()),
+                    float.Parse(b2dField["position"]["y"].ToString()), -10);
+                binToDec.GetComponent<BinaryToDecimalGroup>().loadedScale = float.Parse(b2dField["scale"].ToString());
             }
+
+        if (info["boxFieldArray"] != null) {
+            foreach (JToken boxField in info["boxFieldArray"]) {
+                GameObject newBox = new GameObject();
+                newBox.AddComponent<Box>();
+                newBox.GetComponent<Box>()._drawPoints = new List<Vector2>();
+                foreach (var point in boxField["drawPoints"]) {
+                    newBox.GetComponent<Box>()._drawPoints.Add(new Vector2(float.Parse(point["x"].ToString()), float.Parse(point["y"].ToString())));
+                }
+
+                newBox.GetComponent<Box>()._drawing = false;
+                newBox.GetComponent<Box>().createdFromCopy = true;
+            }
+        }
     }
 }
