@@ -15,8 +15,6 @@ ScriptsOnlyBuild:
     - WireManager
     Unity.AdaptivePerformance.Editor.dll:
     - UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceGeneralSettingsPerBuildTarget
-    Unity.AdaptivePerformance.Simulator.Editor.dll:
-    - UnityEditor.AdaptivePerformance.Simulator.Editor.SimulatorProviderSettings
     Unity.AdaptivePerformance.dll:
     - UnityEngine.AdaptivePerformance.AdaptivePerformanceGeneralSettings
     - UnityEngine.AdaptivePerformance.AdaptivePerformanceManagerSettings
@@ -95,9 +93,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4116}
     - Class: 114
-      Script: {instanceID: 22926}
+      Script: {instanceID: 21850}
     - Class: 114
-      Script: {instanceID: 22928}
+      Script: {instanceID: 21852}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -393,7 +391,7 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: ec0ce7a2f24395b6342740e328623fb5
+      Hash: dfb8c41210caeb7c98a426e1e614b1e0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: IO
@@ -753,7 +751,7 @@ ScriptsOnlyBuild:
     className: Benchmark04
   - hash:
       serializedVersion: 2
-      Hash: bf307e02385fc9485e09f2e0595c7650
+      Hash: a572ce18a96ce45224e5be249c049506
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Selection
@@ -915,7 +913,7 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 08bb09ef675305708a09b51caa083de1
+      Hash: db0071ce16ff7942bc37b31de2365759
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TextControls
@@ -933,7 +931,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: 2136679c2f3a075724699fc69f3d1e40
+      Hash: b07208bf4f5e68e40478954bd1529c64
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BinaryToDecimalGroup
@@ -969,7 +967,7 @@ ScriptsOnlyBuild:
     className: Box
   - hash:
       serializedVersion: 2
-      Hash: 48f2fff9cd5412308ef096c55f589d0a
+      Hash: a083c8e0c039bea1f257289e0ac5bda0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Gate

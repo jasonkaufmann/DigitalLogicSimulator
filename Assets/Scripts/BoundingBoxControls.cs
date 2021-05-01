@@ -14,7 +14,7 @@ public class BoundingBoxControls : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.B) && drawing == false) {
+        if (Input.GetKeyDown(KeyCode.B) && Input.GetKey(KeyCode.LeftControl) && drawing == false) {
             Vector3 movePos = _moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
                 Mathf.Abs(_moveCam.transform.position.z + 10)));
             GameObject newBox = new GameObject();

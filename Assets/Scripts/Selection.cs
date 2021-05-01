@@ -43,15 +43,13 @@ public class Selection : MonoBehaviour {
             newArea.transform.localScale = new Vector3(width, height, 1);
         }
 
-
-
         if (Input.GetMouseButtonUp(0) && (currentState != state.IMPORTEDFROMFILE)) {
             print("finished making");
+            GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().snapBool = true;
             currentState = state.INSCENE;
         }
 
         if (currentState == state.IMPORTEDFROMFILE) {
-            print("got import");
             Vector3 mousePos = Input.mousePosition;
             currentDragPoint =
                 moveCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y,
@@ -234,7 +232,6 @@ public class Selection : MonoBehaviour {
         if ((Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Delete)) && currentState == state.INSCENE) {
             var objectsInSelection = GetObjectsInSelection();
             foreach (GameObject obj in objectsInSelection) {
-                print(obj.name);
                 if (obj.GetComponent<Wire>() != null) manager.removeWire(obj);
                 DestroyImmediate(obj);
                 DestroyImmediate(newArea);

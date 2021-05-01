@@ -117,7 +117,9 @@ public class IO : MonoBehaviour {
                         transform.position.z);
             }
 
-            if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
+            if (Input.GetMouseButtonDown(0)) {
+                currentState = state.INSCENE;
+            }
             if (IOType == type.IN) {
                 if (manager.getConnectedWiresPin(this.pin).Count == 0) pin.actualValue = Pin.highOrLow.LOW;
                 if (pin.actualValue == Pin.highOrLow.HIGH)
@@ -134,6 +136,7 @@ public class IO : MonoBehaviour {
             transform.position = movePos + copyOffset;
             if (Input.GetKeyDown(KeyCode.R)) transform.Rotate(Vector3.forward, 45);
             if (GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().snapBool) {
+                print("snap is OONNNNN!!!");
                 (Pin, Pin) closestPins = getClosestPinXY();
                 Debug.DrawLine(pin.transform.position, closestPins.Item1.transform.position, Color.red);
                 Debug.DrawLine(pin.transform.position, closestPins.Item2.transform.position, Color.blue);
@@ -156,7 +159,9 @@ public class IO : MonoBehaviour {
                         transform.position.z);
             }
 
-            if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
+            if (Input.GetMouseButtonDown(0)) {
+                currentState = state.INSCENE;
+            }
             if (IOType == type.IN) {
                 if (manager.getConnectedWireIO(this).Count == 0) pin.actualValue = Pin.highOrLow.LOW;
                 if (pin.actualValue == Pin.highOrLow.HIGH)

@@ -85,7 +85,7 @@ public class Box : MonoBehaviour {
                     count++;
                 }
             
-            if (Input.GetKeyDown(KeyCode.B)) {
+            if (Input.GetKeyDown(KeyCode.B) && Input.GetKey(KeyCode.LeftControl)) {
                 _drawing = false;
                 GameObject.FindWithTag("startup").GetComponent<BoundingBoxControls>().drawing = false;
                 return;

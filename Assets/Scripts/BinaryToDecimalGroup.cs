@@ -27,6 +27,8 @@ public class BinaryToDecimalGroup : MonoBehaviour {
     public bool invert;
     public Vector3 loadedLocation;
     public float loadedScale;
+    public bool importedFromFile = false;
+    private Vector3 copyOffset;
 
     // Start is called before the first frame update
     private void Start() {
@@ -69,6 +71,14 @@ public class BinaryToDecimalGroup : MonoBehaviour {
             numToShow.transform.position = loadedLocation;
             numToShow.transform.localScale = new Vector3(loadedScale, loadedScale, loadedScale);
         }
+
+        if (importedFromFile) {
+            currentState = state.COPYING;
+            Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
+            Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+                Mathf.Abs(moveCam.transform.position.z + 10)));
+            copyOffset = numToShow.transform.position - movePos;
+        }
     }
 
     // Update is called once per frame
@@ -93,6 +103,14 @@ public class BinaryToDecimalGroup : MonoBehaviour {
                 }
                 if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
                 if (Input.GetKeyDown(KeyCode.Escape)) DestroyImmediate(gameObject);
+            } else if (currentState == state.COPYING) {
+                Camera moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
+                Vector3 movePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+                    Mathf.Abs(moveCam.transform.position.z + 10)));
+                numToShow.transform.position = movePos + copyOffset;
+                if (Input.GetMouseButtonDown(0)) {
+                    currentState = state.INSCENE;
+                }
             }
         }
         else {
@@ -108,6 +126,10 @@ public class BinaryToDecimalGroup : MonoBehaviour {
             IOForConversion.Reverse();
         }
         foreach (GameObject io in IOForConversion) {
+            if (io == null) {
+                error = true;
+                return 0;
+            }
             IO.logic value = io.GetComponent<IO>().log;
             if (value == IO.logic.HIGH) {
                 int shift = 0b1 << placeNum;
@@ -175,6 +197,10 @@ public class BinaryToDecimalGroup : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.I) && currentState == state.INSCENE) {
             invert = !invert;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Delete)) {
+            error = true;
         }
 
     }

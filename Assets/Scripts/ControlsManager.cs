@@ -72,8 +72,6 @@ public class ControlsManager : MonoBehaviour {
             }
         }
 
-        if (selectionInProgress && Input.GetMouseButtonDown(0)) snapBool = true;
-
         Vector3 position = mainCam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, -10));
         if (Input.GetKey(KeyCode.RightArrow)) {
             if (gates.transform.position.x + gates.transform.localScale.x / 2 < -position.x)
@@ -133,6 +131,7 @@ public class ControlsManager : MonoBehaviour {
         selectionInProgress = true;
         snapBool = false;
         mainPort.SetActive(false);
+        GameObject.Find("grabFromFileButton").GetComponent<Toggle>().isOn = false;
         importActivated = false;
     }
 
@@ -430,6 +429,8 @@ public class ControlsManager : MonoBehaviour {
                     float.Parse(b2dField["position"]["x"].ToString()),
                     float.Parse(b2dField["position"]["y"].ToString()), -10);
                 binToDec.GetComponent<BinaryToDecimalGroup>().loadedScale = float.Parse(b2dField["scale"].ToString());
+                binToDec.GetComponent<BinaryToDecimalGroup>().loadedFromFile = true;
+                binToDec.GetComponent<BinaryToDecimalGroup>().importedFromFile = true;
             }
 
         if (info["boxFieldArray"] != null)

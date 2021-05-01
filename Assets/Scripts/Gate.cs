@@ -146,7 +146,9 @@ public class Gate : MonoBehaviour {
                 }
             }
 
-            if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
+            if (Input.GetMouseButtonDown(0)) {
+                currentState = state.INSCENE;
+            }
         }
         else if (currentState == state.WAITING) {
             currentState = state.PLACING;
