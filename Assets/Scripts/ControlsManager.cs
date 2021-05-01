@@ -356,6 +356,7 @@ public class ControlsManager : MonoBehaviour {
 
         foreach (JToken wire in info["wireFieldArray"]) {
             GameObject newWire = new();
+            newWire.transform.position = Vector3.zero;
             newWire.name = "wire";
             Wire wireComp = newWire.AddComponent<Wire>();
             var aPoints = new List<Vector2>();

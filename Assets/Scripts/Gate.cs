@@ -351,6 +351,17 @@ public class Gate : MonoBehaviour {
             foreach (Pin pin in pins) previousPinValues.Add(pin.actualValue);
         }
         else if (gateType == type.TRISTATE) {
+            
+            if(pins[0].actualValue != pins[2].actualValue && pins[1].actualValue == Pin.highOrLow.HIGH)
+            {
+                if (pins[0].actualValue == Pin.highOrLow.HIGH) {
+                    manager.propogateHighToAllConnectedWires(pins[2]);
+                    pins[2].actualValue = Pin.highOrLow.HIGH;
+                } else if (pins[0].actualValue == Pin.highOrLow.LOW) {
+                    manager.propogateLowToAllConnectedWires(pins[2]);
+                    pins[2].actualValue = Pin.highOrLow.LOW;
+                }
+            }
 
             if (pins[1].actualValue == Pin.highOrLow.HIGH && pins[0].actualValue != previousPinValues[0]) {
                 if (pins[0].actualValue == Pin.highOrLow.HIGH) {
@@ -391,7 +402,9 @@ public class Gate : MonoBehaviour {
         }
         else if (Input.GetMouseButtonDown(2)) {
             connectedWires = manager.getConnectedWiresGate(this);
-            foreach (GameObject wire in connectedWires) manager.removeWire(wire);
+            foreach (GameObject wire in connectedWires) {
+                manager.removeWire(wire);
+            }
             DestroyImmediate(gameObject);
         }
     }

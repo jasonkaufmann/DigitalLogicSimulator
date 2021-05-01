@@ -164,7 +164,7 @@ public class SceneLoader : MonoBehaviour {
             var x = float.Parse(io["ioPosition"]["x"].ToString());
             var y = float.Parse(io["ioPosition"]["y"].ToString());
             var z = float.Parse(io["ioPosition"]["z"].ToString());
-            GameObject newIO = new();
+            GameObject newIO = null;
             if (int.Parse(io["type"].ToString()) == 0) {
                 newIO = Instantiate(outPF, new Vector3(x, y, z), Quaternion.identity);
                 newIO.AddComponent<IO>();
@@ -193,8 +193,10 @@ public class SceneLoader : MonoBehaviour {
             if (io["value"] != null) {
                 if (int.Parse(io["value"].ToString()) == 1) {
                     //print("set high");
-                    newIO.GetComponent<IO>().log = IO.logic.HIGH;
-                    if (int.Parse(io["type"].ToString()) == 2) newIO.GetComponent<IO>().clockOn = true;
+                    if (newIO is not null) {
+                        newIO.GetComponent<IO>().log = IO.logic.HIGH;
+                        if (int.Parse(io["type"].ToString()) == 2) newIO.GetComponent<IO>().clockOn = true;
+                    }
                 }
             }
             else {

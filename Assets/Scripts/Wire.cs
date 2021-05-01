@@ -263,6 +263,7 @@ public class Wire : MonoBehaviour {
     }
 
     private void OnMouseEnter() {
+        print("over wire");
         if (currentState == state.FINISHED || currentState == state.DRAWING || currentState == state.UNDRAWING) {
             line.startWidth = 0.02f;
             line.endWidth = 0.02f;

@@ -259,7 +259,10 @@ public class IO : MonoBehaviour {
         }
         else if (Input.GetMouseButtonDown(2)) {
             connectedWires = manager.getConnectedWireIO(this);
-            foreach (GameObject wire in connectedWires) manager.removeWire(wire);
+            foreach (GameObject wire in connectedWires) {
+                manager.removeWire(wire);
+            }
+            
             DestroyImmediate(gameObject);
             if (textField != null) DestroyImmediate(textField);
         }
