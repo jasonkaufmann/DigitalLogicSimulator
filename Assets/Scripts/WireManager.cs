@@ -139,8 +139,10 @@ public class WireManager : MonoBehaviour {
     }
 
     public void removeWire(GameObject wire) {
+        if (wire.GetComponent<Wire>().rightPin != null) {
+            wire.GetComponent<Wire>().rightPin.actualValue = Pin.highOrLow.LOW;
+        }
         wires.Remove(wire);
-        wire.GetComponent<Wire>().rightPin.actualValue = Pin.highOrLow.LOW;
         DestroyImmediate(wire);
     }
 }

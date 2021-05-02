@@ -111,11 +111,15 @@ public class Selection : MonoBehaviour {
             difference = currentDragPoint - lastDragPoint;
             lastDragPoint = currentDragPoint;
             for (var i = 0; i < copiedObjects.Count; i++) {
-                copiedObjects[i].transform.position += difference;
-                if (copiedObjects[i].GetComponent<Wire>() != null)
+
+                if (copiedObjects[i].GetComponent<Wire>() != null) {
                     for (var j = 0; j < copiedObjects[i].GetComponent<Wire>().anchorPoints.Count; j++)
                         copiedObjects[i].GetComponent<Wire>().anchorPoints[j] +=
                             new Vector2(difference.x, difference.y);
+                }
+                else {
+                    copiedObjects[i].transform.position += difference;
+                }
             }
         }
 

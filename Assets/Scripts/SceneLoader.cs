@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -248,14 +249,14 @@ public class SceneLoader : MonoBehaviour {
             wireComp.anchorPoints = aPoints;
             wireComp.drawPoints = dPoints;
             foreach (GameObject thingInScene in SceneManager.GetActiveScene().GetRootGameObjects()) {
-                if (thingInScene.name.Contains(wire["leftPinGateIO"].ToString())) {
+                if (thingInScene.name.Split(')').Last() == wire["leftPinGateIO"].ToString()) {
                     wireComp.leftPin = thingInScene.transform.Find("pins")
                         .GetChild(int.Parse(wire["leftPinNumber"].ToString())).GetComponent<Pin>();
                     wireComp.startPin = thingInScene.transform.Find("pins")
                         .GetChild(int.Parse(wire["leftPinNumber"].ToString())).GetComponent<Pin>();
                 }
 
-                if (thingInScene.name.Contains(wire["rightPinGateIO"].ToString())) {
+                if (thingInScene.name.Split(')').Last() == wire["rightPinGateIO"].ToString()) {
                     wireComp.rightPin = thingInScene.transform.Find("pins")
                         .GetChild(int.Parse(wire["rightPinNumber"].ToString())).GetComponent<Pin>();
                     wireComp.endPin = thingInScene.transform.Find("pins")

@@ -184,7 +184,11 @@ public class Wire : MonoBehaviour {
                 }
                 anchorPoints.Add(mousePos);
             }
-            if (Input.GetMouseButtonDown(2)) manager.removeWire(gameObject);
+
+            if (Input.GetMouseButtonDown(2)) {
+                print("remove wire");
+                manager.removeWire(gameObject);
+            }
         }
         else if (currentState == state.WAITING) {
             currentState = state.STARTED;
@@ -263,7 +267,6 @@ public class Wire : MonoBehaviour {
     }
 
     private void OnMouseEnter() {
-        print("over wire");
         if (currentState == state.FINISHED || currentState == state.DRAWING || currentState == state.UNDRAWING) {
             line.startWidth = 0.02f;
             line.endWidth = 0.02f;
@@ -281,14 +284,7 @@ public class Wire : MonoBehaviour {
 
     private void OnMouseOver() {
         if ((Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Escape)) && currentState != state.STARTED) {
-            rightPin.actualValue = Pin.highOrLow.LOW;
-            if (!leftPin.gateOrIO) {
-                if (leftPin.io.IOType != IO.type.OUT) leftPin.actualValue = Pin.highOrLow.LOW;
-            }
-            else {
-                leftPin.actualValue = Pin.highOrLow.LOW;
-            }
-
+            print("hello");
             manager.removeWire(gameObject);
         } else if (Input.GetMouseButtonDown(0) && currentState != state.STARTED && !manager.connectionInProgress()) {
             Vector3 mousePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,

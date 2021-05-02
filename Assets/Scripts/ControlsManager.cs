@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using TMPro;
 using UnityEngine;
@@ -283,7 +284,7 @@ public class ControlsManager : MonoBehaviour {
             var x = float.Parse(io["ioPosition"]["x"].ToString());
             var y = float.Parse(io["ioPosition"]["y"].ToString());
             var z = float.Parse(io["ioPosition"]["z"].ToString());
-            GameObject newIO = new();
+            GameObject newIO = null;
             if (int.Parse(io["type"].ToString()) == 0) {
                 newIO = Instantiate(outPF, new Vector3(x, y, z), Quaternion.identity);
                 newIO.AddComponent<IO>();
@@ -369,14 +370,15 @@ public class ControlsManager : MonoBehaviour {
             wireComp.anchorPoints = aPoints;
             wireComp.drawPoints = dPoints;
             foreach (GameObject thingInScene in SceneManager.GetActiveScene().GetRootGameObjects()) {
-                if (thingInScene.name.Contains(wire["leftPinGateIO"].ToString())) {
+                if (thingInScene.name.Split(')').Last() == wire["leftPinGateIO"].ToString()) {
+                    print(thingInScene.name);
                     wireComp.leftPin = thingInScene.transform.Find("pins")
                         .GetChild(int.Parse(wire["leftPinNumber"].ToString())).GetComponent<Pin>();
                     wireComp.startPin = thingInScene.transform.Find("pins")
                         .GetChild(int.Parse(wire["leftPinNumber"].ToString())).GetComponent<Pin>();
                 }
 
-                if (thingInScene.name.Contains(wire["rightPinGateIO"].ToString())) {
+                if (thingInScene.name.Split(')').Last() == wire["rightPinGateIO"].ToString()) {
                     wireComp.rightPin = thingInScene.transform.Find("pins")
                         .GetChild(int.Parse(wire["rightPinNumber"].ToString())).GetComponent<Pin>();
                     wireComp.endPin = thingInScene.transform.Find("pins")
@@ -386,7 +388,6 @@ public class ControlsManager : MonoBehaviour {
 
             if (wire["lineDrawn"] != null) wireComp.lineDrawn = bool.Parse(wire["lineDrawn"].ToString());
             if (wire["leftPinValue"] != null) {
-                if (wire["leftPinGateIO"].ToString() == "-812") print(wire["leftPinValue"].ToString());
                 if (int.Parse(wire["leftPinValue"].ToString()) == 0)
                     wireComp.leftPin.actualValue = Pin.highOrLow.LOW;
                 else if (int.Parse(wire["leftPinValue"].ToString()) == 1)
@@ -447,7 +448,7 @@ public class ControlsManager : MonoBehaviour {
                 newBox.GetComponent<Box>().createdFromCopy = true;
             }
 
-        foreach (GameObject obj in createdObjects) obj.name += obj.GetInstanceID().ToString();
+        //foreach (GameObject obj in createdObjects) obj.name += obj.GetInstanceID().ToString();
 
         GameObject startup = GameObject.FindWithTag("startup");
         startup.GetComponent<Selection>().currentState = Selection.state.IMPORTEDFROMFILE;

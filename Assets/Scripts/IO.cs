@@ -136,7 +136,6 @@ public class IO : MonoBehaviour {
             transform.position = movePos + copyOffset;
             if (Input.GetKeyDown(KeyCode.R)) transform.Rotate(Vector3.forward, 45);
             if (GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().snapBool) {
-                print("snap is OONNNNN!!!");
                 (Pin, Pin) closestPins = getClosestPinXY();
                 Debug.DrawLine(pin.transform.position, closestPins.Item1.transform.position, Color.red);
                 Debug.DrawLine(pin.transform.position, closestPins.Item2.transform.position, Color.blue);
