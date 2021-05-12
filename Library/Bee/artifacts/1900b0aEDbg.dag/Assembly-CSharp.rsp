@@ -344,6 +344,7 @@
 "Assets/Scripts/Controls.cs"
 "Assets/Scripts/ControlsManager.cs"
 "Assets/Scripts/EndScreen.cs"
+"Assets/Scripts/FullscreenCheck.cs"
 "Assets/Scripts/Gate.cs"
 "Assets/Scripts/IO.cs"
 "Assets/Scripts/IOButton.cs"

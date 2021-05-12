@@ -25,6 +25,7 @@ public class ButtonManager : MonoBehaviour {
     public GameObject clockPF;
     public GameObject textPF;
     public GameObject reg4PF;
+    public GameObject add4PF;
 
 
     public void mouseEnter() {
@@ -150,6 +151,14 @@ public class ButtonManager : MonoBehaviour {
             newobj.GetComponent<Gate>().gateType = Gate.type.REG4;
             newobj.name += newobj.GetInstanceID().ToString();
         }
+    
+    public void ADD4Button() {
+        GameObject newobj = Instantiate(add4PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+            Quaternion.identity);
+        newobj.AddComponent<Gate>();
+        newobj.GetComponent<Gate>().gateType = Gate.type.ADD4;
+        newobj.name += newobj.GetInstanceID().ToString();
+    }
 
     public void CLOCKButton() {
         GameObject newobj = Instantiate(clockPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),

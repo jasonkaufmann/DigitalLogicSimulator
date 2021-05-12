@@ -22,7 +22,8 @@ public class Gate : MonoBehaviour {
         FLIPFLOP,
         TRISTATE,
         XOR,
-        REG4
+        REG4,
+        ADD4
     }
 
     public bool snapIOToNearestPin = true;
@@ -35,6 +36,7 @@ public class Gate : MonoBehaviour {
     public bool loadedFromFile;
 
     public type gateType;
+    public bool importedFromFile;
     private Vector3 copyOffset;
     private Vector3 difference;
     private bool firstFrame = true;
@@ -42,7 +44,6 @@ public class Gate : MonoBehaviour {
     private Camera moveCam;
     private Pin.highOrLow pastactualValue;
     private List<Pin.highOrLow> previousPinValues;
-    public bool importedFromFile = false;
 
     // Start is called before the first frame update
     private void Start() {
@@ -59,6 +60,7 @@ public class Gate : MonoBehaviour {
             pin.gate = this;
             pin.gateOrIO = true;
         }
+
         previousPinValues = new List<Pin.highOrLow>(new Pin.highOrLow[pins.Count]);
         noChange = true;
     }
@@ -146,9 +148,7 @@ public class Gate : MonoBehaviour {
                 }
             }
 
-            if (Input.GetMouseButtonDown(0)) {
-                currentState = state.INSCENE;
-            }
+            if (Input.GetMouseButtonDown(0)) currentState = state.INSCENE;
         }
         else if (currentState == state.WAITING) {
             currentState = state.PLACING;
@@ -334,12 +334,11 @@ public class Gate : MonoBehaviour {
                             manager.propogateLowToAllConnectedWires(pins[pins.IndexOf(pin) + 6]);
                     }
             }
+
             if (pins[11].actualValue != previousPinValues[11] && pins[11].actualValue == Pin.highOrLow.HIGH) {
                 print("set hiz");
-                foreach (Pin pin in pins.GetRange(0, 4)) {
-                    manager.setHIZToAllConnectedWires(pins[pins.IndexOf(pin) + 6]);
-                    //pins[pins.IndexOf(pin) + 6].actualValue = Pin.highOrLow.HIZ;
-                }
+                foreach (Pin pin in pins.GetRange(0, 4)) manager.setHIZToAllConnectedWires(pins[pins.IndexOf(pin) + 6]);
+                //pins[pins.IndexOf(pin) + 6].actualValue = Pin.highOrLow.HIZ;
             }
             else if (pins[11].actualValue != previousPinValues[11] && pins[11].actualValue == Pin.highOrLow.LOW) {
                 print("remove hiz");
@@ -350,14 +349,65 @@ public class Gate : MonoBehaviour {
             previousPinValues.Clear();
             foreach (Pin pin in pins) previousPinValues.Add(pin.actualValue);
         }
+        else if (gateType == type.ADD4) {
+            var aNumber = 0;
+                var bNumber = 0;
+                var placeNum = 0;
+                for (var i = 0; i < 4; i++) {
+                    Pin.highOrLow value = pins[i].actualValue;
+                    if (value == Pin.highOrLow.HIGH) {
+                        var shift = 0b1 << placeNum;
+                        aNumber |= shift;
+                    }
+
+                    placeNum++;
+                }
+
+                placeNum = 0;
+
+                for (var i = 4; i < 8; i++) {
+                    Pin.highOrLow value = pins[i].actualValue;
+                    if (value == Pin.highOrLow.HIGH) {
+                        var shift = 0b1 << placeNum;
+                        bNumber |= shift;
+                    }
+
+                    placeNum++;
+                }
+
+                var cin = pins[8].actualValue == Pin.highOrLow.HIGH ? 1 : 0;
+                print("A NUMBER: " + aNumber);
+                print("B NUMBER: " + bNumber);
+                var sum = aNumber + bNumber + cin;
+                print("SUM NUMBER: " + sum);
+                placeNum = 0;
+                for (var i = 9; i < 14; i++) {
+                    var shift = 0b1 << placeNum;
+                    if ((sum & shift) != 0) {
+                        if (pins[i].actualValue != Pin.highOrLow.HIGH) {
+                            pins[i].actualValue = Pin.highOrLow.HIGH;
+                            manager.propogateHighToAllConnectedWires(pins[i]);
+                        }
+                    }
+                    else {
+                        if (pins[i].actualValue != Pin.highOrLow.LOW) {
+                            pins[i].actualValue = Pin.highOrLow.LOW;
+                            manager.propogateLowToAllConnectedWires(pins[i]);
+                        }
+                    }
+                    placeNum++;
+                }
+
+                previousPinValues.Clear();
+            foreach (Pin pin in pins) previousPinValues.Add(pin.actualValue);
+        }
         else if (gateType == type.TRISTATE) {
-            
-            if(pins[0].actualValue != pins[2].actualValue && pins[1].actualValue == Pin.highOrLow.HIGH)
-            {
+            if (pins[0].actualValue != pins[2].actualValue && pins[1].actualValue == Pin.highOrLow.HIGH) {
                 if (pins[0].actualValue == Pin.highOrLow.HIGH) {
                     manager.propogateHighToAllConnectedWires(pins[2]);
                     pins[2].actualValue = Pin.highOrLow.HIGH;
-                } else if (pins[0].actualValue == Pin.highOrLow.LOW) {
+                }
+                else if (pins[0].actualValue == Pin.highOrLow.LOW) {
                     manager.propogateLowToAllConnectedWires(pins[2]);
                     pins[2].actualValue = Pin.highOrLow.LOW;
                 }
@@ -367,11 +417,13 @@ public class Gate : MonoBehaviour {
                 if (pins[0].actualValue == Pin.highOrLow.HIGH) {
                     manager.propogateHighToAllConnectedWires(pins[2]);
                     pins[2].actualValue = Pin.highOrLow.HIGH;
-                } else if (pins[0].actualValue == Pin.highOrLow.LOW) {
+                }
+                else if (pins[0].actualValue == Pin.highOrLow.LOW) {
                     manager.propogateLowToAllConnectedWires(pins[2]);
                     pins[2].actualValue = Pin.highOrLow.LOW;
                 }
             }
+
             if (pins[1].actualValue == Pin.highOrLow.HIGH && pins[1].actualValue != previousPinValues[1]) {
                 if (pins[0].actualValue == Pin.highOrLow.HIGH) {
                     pins[2].actualValue = Pin.highOrLow.HIGH;
@@ -388,6 +440,7 @@ public class Gate : MonoBehaviour {
                 pins[2].actualValue = Pin.highOrLow.HIZ;
                 manager.setHIZToAllConnectedWires(pins[2]);
             }
+
             previousPinValues.Clear();
             foreach (Pin pin in pins) previousPinValues.Add(pin.actualValue);
         }
@@ -402,9 +455,7 @@ public class Gate : MonoBehaviour {
         }
         else if (Input.GetMouseButtonDown(2)) {
             connectedWires = manager.getConnectedWiresGate(this);
-            foreach (GameObject wire in connectedWires) {
-                manager.removeWire(wire);
-            }
+            foreach (GameObject wire in connectedWires) manager.removeWire(wire);
             DestroyImmediate(gameObject);
         }
     }

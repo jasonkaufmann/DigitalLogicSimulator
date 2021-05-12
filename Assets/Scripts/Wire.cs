@@ -210,6 +210,8 @@ public class Wire : MonoBehaviour {
            
         }
         else if (currentState == state.DRAWING) {
+            lineRed.widthMultiplier = 3;
+            line.widthMultiplier = 3;
             anchorPoints[0] = startPin.transform.position;
             anchorPoints[anchorPoints.Count - 1] = endPin.transform.position;
             if (anchorPoints[0] != pastAnchorPoints[0] || anchorPoints[anchorPoints.Count - 1] != pastAnchorPoints[1]) {
@@ -224,6 +226,8 @@ public class Wire : MonoBehaviour {
                 lineRed.SetPosition(i, new Vector3(drawPointsRed[i].x, drawPointsRed[i].y, -10));
         }
         else if (currentState == state.UNDRAWING) {
+            lineRed.widthMultiplier = 3;
+            line.widthMultiplier = 3;
             anchorPoints[0] = startPin.transform.position;
             anchorPoints[anchorPoints.Count - 1] = endPin.transform.position;
             if (anchorPoints[0] != pastAnchorPoints[0] || anchorPoints[anchorPoints.Count - 1] != pastAnchorPoints[1]) {
@@ -267,24 +271,19 @@ public class Wire : MonoBehaviour {
     }
 
     private void OnMouseEnter() {
-        if (currentState == state.FINISHED || currentState == state.DRAWING || currentState == state.UNDRAWING) {
-            line.startWidth = 0.02f;
-            line.endWidth = 0.02f;
-            lineRed.startWidth = 0.02f;
-            lineRed.endWidth = 0.02f;
+        if (currentState is state.FINISHED or state.DRAWING or state.UNDRAWING) {
+            lineRed.widthMultiplier = 2;
+            line.widthMultiplier = 2;
         }
     }
 
     private void OnMouseExit() {
-        line.startWidth = 0.01f;
-        line.endWidth = 0.01f;
-        lineRed.startWidth = 0.01f;
-        lineRed.endWidth = 0.01f;
+        lineRed.widthMultiplier = 1;
+        line.widthMultiplier = 1;
     }
 
     private void OnMouseOver() {
         if ((Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Escape)) && currentState != state.STARTED) {
-            print("hello");
             manager.removeWire(gameObject);
         } else if (Input.GetMouseButtonDown(0) && currentState != state.STARTED && !manager.connectionInProgress()) {
             Vector3 mousePos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
@@ -444,6 +443,8 @@ public class Wire : MonoBehaviour {
                     lineDrawn = false;
                     lineRed.positionCount = 0;
                     drawPointsRed.Clear();
+                    lineRed.widthMultiplier = 1;
+                    line.widthMultiplier = 1;
                     currentState = state.FINISHED;
                     rightPin.actualValue = Pin.highOrLow.LOW;
                     return;
@@ -488,6 +489,8 @@ public class Wire : MonoBehaviour {
                     //drawPointsRed.Add(rightPin.transform.position);
                     if (currentState != state.UNDRAWING) {
                         lineDrawn = true;
+                        lineRed.widthMultiplier = 1;
+                        line.widthMultiplier = 1;
                         currentState = state.FINISHED;
                     }
                     //print(rightPin.name);

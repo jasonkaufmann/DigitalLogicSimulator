@@ -23,6 +23,7 @@ public class SceneLoader : MonoBehaviour {
     public GameObject clockPF;
     public GameObject textPF;
     public GameObject reg4PF;
+    public GameObject add4PF;
 
     public WireManager manager;
 
@@ -157,6 +158,14 @@ public class SceneLoader : MonoBehaviour {
                 newGate.GetComponent<Gate>().loadedFromFile = true;
                 newGate.transform.rotation = Quaternion.Euler(0, 0, float.Parse(gate["rotation"].ToString()));
                 newGate.GetComponent<Gate>().gateType = Gate.type.REG4;
+                newGate.name += gate["gateNumber"].ToString();
+            }
+            else if (int.Parse(gate["type"].ToString()) == 12) {
+                GameObject newGate = Instantiate(add4PF, new Vector3(x, y, z), Quaternion.identity);
+                newGate.AddComponent<Gate>();
+                newGate.GetComponent<Gate>().loadedFromFile = true;
+                newGate.transform.rotation = Quaternion.Euler(0, 0, float.Parse(gate["rotation"].ToString()));
+                newGate.GetComponent<Gate>().gateType = Gate.type.ADD4;
                 newGate.name += gate["gateNumber"].ToString();
             }
         }

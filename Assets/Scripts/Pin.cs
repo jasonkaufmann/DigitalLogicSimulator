@@ -70,6 +70,7 @@ public class Pin : MonoBehaviour {
                     if (IO_Type == inOut.INPUT && manager.getConnectedWiresPin(this).Count > 0) {
                     }
                     else {
+                        print("end wire");
                         wire.GetComponent<Wire>().endWire(this);
                     }
                 }
