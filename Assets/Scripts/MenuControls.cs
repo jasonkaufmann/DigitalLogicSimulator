@@ -30,7 +30,7 @@ public class MenuControls : MonoBehaviour
 
     public void Start()
     {
-        string text = File.ReadAllText( Application.dataPath + "version.txt");  
+        string text = File.ReadAllText( Application.dataPath + "/version.txt");  
         print(text);
         programVersion = text;
     }
@@ -92,6 +92,8 @@ public class MenuControls : MonoBehaviour
     {
         loadingDuo.SetActive(true); //start animation
         string mostUpToDateVersion = checkGithubCurrentVersion();
+        print("Current Version: " + programVersion);
+        print("Server Version: " + mostUpToDateVersion);
         if (mostUpToDateVersion != programVersion)
         {
             print("get the update!");
@@ -201,9 +203,7 @@ public class MenuControls : MonoBehaviour
         var url =
             "https://raw.githubusercontent.com/jasonkaufmann/projects/master/DigitalLogicSimulator/Assets/version.txt";
         using(WebClient client = new WebClient()) {
-            string s = client.DownloadString(url);
-            print(s);
-            return s;
+            return client.DownloadString(url);
         }
     }
 }
