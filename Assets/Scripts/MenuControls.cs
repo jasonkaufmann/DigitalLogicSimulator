@@ -1,11 +1,12 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class MenuControls : MonoBehaviour {
+public class MenuControls : MonoBehaviour
+{
     public GameObject mainMenu;
 
     public GameObject newProjectMenu;
@@ -13,6 +14,8 @@ public class MenuControls : MonoBehaviour {
     public GameObject loadProjectMenu;
 
     public GameObject tutorialMenu;
+    
+    public GameObject updateMenu;
 
     public GameObject projectNameField;
 
@@ -20,29 +23,57 @@ public class MenuControls : MonoBehaviour {
     public bool statesLoaded;
     public GameObject savedStateButton;
     public GameObject deleteButton;
+    public GameObject loadingDuo;
 
-    public void startButtonClicked() {
+    public string programVersion;
+
+    public void Start()
+    {
+        if (PlayerPrefs.GetString("version") != null)
+        {
+            programVersion = PlayerPrefs.GetString("version"); //get the current version of the application
+        }
+    }
+
+    public void Update()
+    {
+       loadingDuo.transform.GetChild(0).Rotate(new Vector3(0,0, 5f)); 
+    }
+
+    public void startButtonClicked()
+    {
         mainMenu.SetActive(false);
         newProjectMenu.SetActive(true);
     }
 
-    public void cancelButtonClicked() {
+    public void cancelButtonClicked()
+    {
         mainMenu.SetActive(true);
         newProjectMenu.SetActive(false);
     }
 
-    public void quitButtonClicked() {
+    public void quitButtonClicked()
+    {
         Application.Quit();
     }
 
-    public void tutorialButtonClicked() {
+    public void tutorialButtonClicked()
+    {
         mainMenu.SetActive(false);
         tutorialMenu.SetActive(true);
     }
+    
+    public void updateButtonClicked()
+    {
+        mainMenu.SetActive(false);
+        updateMenu.SetActive(true);
+    }
 
-    public void goButtonClicked() {
+    public void goButtonClicked()
+    {
         var title = projectNameField.GetComponent<TMP_InputField>().text;
-        if (title.Length != 0) {
+        if (title.Length != 0)
+        {
             PlayerPrefs.SetString("currentProjectName", title);
             PlayerPrefs.SetInt("loadOrNewStatus", 0);
             PlayerPrefs.Save();
@@ -50,20 +81,49 @@ public class MenuControls : MonoBehaviour {
         }
     }
 
-    public void loadButtonClicked() {
+    public void loadButtonClicked()
+    {
         mainMenu.SetActive(false);
         loadProjectMenu.SetActive(true);
         if (!statesLoaded) loadSavedStates();
     }
+    
+    public void checkUpdateStatusButtonClicked()
+    {
+        loadingDuo.SetActive(true); //start animation
+        string mostUpToDateVersion = checkGithubCurrentVersion();
+        if (mostUpToDateVersion != programVersion)
+        {
+            print("get the update!");
+        }
+        else
+        {
+            print("you have the most up to date version");
+            loadingDuo.SetActive(false); //end animation
+        }
+    }
 
-    public void backButtonClicked() {
+    public void restartProgram()
+    {
+        System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe")); //new program
+        Application.Quit(); //kill current process
+    }
+
+    public void backButtonClicked()
+    {
         mainMenu.SetActive(true);
         if (loadProjectMenu.activeSelf)
             loadProjectMenu.SetActive(false);
         else if (tutorialMenu.activeSelf) tutorialMenu.SetActive(false);
+        else if (updateMenu.activeSelf)
+        {
+            updateMenu.SetActive(false);
+            loadingDuo.SetActive(false);
+        }
     }
 
-    public void loadScene() {
+    public void loadScene()
+    {
         var name = EventSystem.current.currentSelectedGameObject.transform.GetChild(0).GetComponent<TMP_Text>().text;
         PlayerPrefs.SetString("loadRequestName", name);
         PlayerPrefs.SetString("currentProjectName", name);
@@ -73,48 +133,51 @@ public class MenuControls : MonoBehaviour {
     }
 
 
-    public void deleteFile() {
-        var name = EventSystem.current.currentSelectedGameObject.transform.parent.GetChild(0).GetComponent<TMP_Text>().text;
+    public void deleteFile()
+    {
+        var name = EventSystem.current.currentSelectedGameObject.transform.parent.GetChild(0).GetComponent<TMP_Text>()
+            .text;
         File.Delete(Application.persistentDataPath + "./" + name + ".json");
         loadSavedStates();
     }
 
-    public void loadSavedStates() {
+    public void loadSavedStates()
+    {
         DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
         var Files = d.GetFiles("*.json"); //Getting Text files
         var str = "";
         var i = 1;
-        GameObject content = GameObject.FindGameObjectWithTag("content");
-        foreach (Transform child in content.transform) {
-            GameObject.Destroy(child.gameObject);
-        }
-        foreach (FileInfo file in Files) {
-            
+        var content = GameObject.FindGameObjectWithTag("content");
+        foreach (Transform child in content.transform) Destroy(child.gameObject);
+        foreach (var file in Files)
+        {
             str = file.Name.Split('.')[0];
-            GameObject button = Instantiate(savedStateButton,
+            var button = Instantiate(savedStateButton,
                 scrollView.transform.position + new Vector3(0, scrollView.transform.localScale.y / 2, 0),
                 Quaternion.identity);
 
-            GameObject deleteButtonObj = Instantiate(deleteButton,
+            var deleteButtonObj = Instantiate(deleteButton,
                 button.transform.position,
                 Quaternion.identity);
             deleteButtonObj.transform.SetParent(button.transform);
-            EventTrigger trigger = deleteButtonObj.GetComponent<EventTrigger>();
-            EventTrigger.Entry entry = new EventTrigger.Entry();
+            var trigger = deleteButtonObj.GetComponent<EventTrigger>();
+            var entry = new EventTrigger.Entry();
             entry.eventID = EventTriggerType.PointerEnter;
-            entry.callback.AddListener((eventData) => {
-                ColorBlock colorVar = deleteButtonObj.transform.parent.GetComponent<UnityEngine.UI.Button>().colors;
+            entry.callback.AddListener(eventData =>
+            {
+                var colorVar = deleteButtonObj.transform.parent.GetComponent<UnityEngine.UI.Button>().colors;
                 colorVar.highlightedColor = Color.white;
                 deleteButtonObj.transform.parent.GetComponent<UnityEngine.UI.Button>().colors = colorVar;
-            } );
+            });
             trigger.triggers.Add(entry);
             entry = new EventTrigger.Entry();
             entry.eventID = EventTriggerType.PointerExit;
-            entry.callback.AddListener((eventData) => {
-                ColorBlock colorVar = deleteButtonObj.transform.parent.GetComponent<UnityEngine.UI.Button>().colors;
-                colorVar.highlightedColor = new Color(137/255f, 137/255f, 137/255f, 1.0f);
+            entry.callback.AddListener(eventData =>
+            {
+                var colorVar = deleteButtonObj.transform.parent.GetComponent<UnityEngine.UI.Button>().colors;
+                colorVar.highlightedColor = new Color(137 / 255f, 137 / 255f, 137 / 255f, 1.0f);
                 deleteButtonObj.transform.parent.GetComponent<UnityEngine.UI.Button>().colors = colorVar;
-            } );
+            });
             trigger.triggers.Add(entry);
             button.transform.SetParent(scrollView.transform.GetChild(0));
             button.transform.localScale = new Vector3(1.1f, 1.1f, 1f);
@@ -131,5 +194,10 @@ public class MenuControls : MonoBehaviour {
         }
 
         statesLoaded = true;
+    }
+
+    public string checkGithubCurrentVersion()
+    {
+        return "hello";
     }
 }

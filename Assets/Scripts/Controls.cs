@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Controls : MonoBehaviour {
+public class Controls : MonoBehaviour
+{
     private ControlsManager manager;
 
-    private void Start() {
-        manager = GameObject.FindObjectOfType<ControlsManager>();
+    private void Start()
+    {
+        manager = FindObjectOfType<ControlsManager>();
     }
 
-    private void OnMouseDown() {
+    private void OnMouseDown()
+    {
         manager.changeCommand = true;
     }
 
-    private void OnMouseEnter() {
+    private void OnMouseEnter()
+    {
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
-    private void OnMouseExit() {
+    private void OnMouseExit()
+    {
         gameObject.GetComponent<SpriteRenderer>().color = Color.black;
     }
 }

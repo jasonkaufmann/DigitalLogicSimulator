@@ -1,47 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class WireManager : MonoBehaviour {
+public class WireManager : MonoBehaviour
+{
     public List<GameObject> wires;
     public GameObject wire;
 
-    public void Awake() {
+    public void Awake()
+    {
         wires = new List<GameObject>();
     }
 
-    public void createWireFromClick(List<Vector2> anchorPoints, Vector3 mousePos, Pin leftPin, Pin startPin) {
-        float largestAngle = Single.NegativeInfinity;
-        List<Vector2> endPoints = new List<Vector2>(anchorPoints.Take(2));
-        foreach (var point1 in anchorPoints) {
-            foreach (var point2 in anchorPoints) {
-                Vector2 dist1 = new Vector2(mousePos.x, mousePos.y) - point1;
-                Vector2 dist2 = new Vector2(mousePos.x, mousePos.y) - point2;
-                float value = Vector2.Angle(dist1, dist2);
-                if (value > largestAngle) {
-                    largestAngle = value;
-                    endPoints[0] = point1;
-                    endPoints[1] = point2;
-                }
+    public void createWireFromClick(List<Vector2> anchorPoints, Vector3 mousePos, Pin leftPin, Pin startPin)
+    {
+        var largestAngle = float.NegativeInfinity;
+        var endPoints = new List<Vector2>(anchorPoints.Take(2));
+        foreach (var point1 in anchorPoints)
+        foreach (var point2 in anchorPoints)
+        {
+            var dist1 = new Vector2(mousePos.x, mousePos.y) - point1;
+            var dist2 = new Vector2(mousePos.x, mousePos.y) - point2;
+            var value = Vector2.Angle(dist1, dist2);
+            if (value > largestAngle)
+            {
+                largestAngle = value;
+                endPoints[0] = point1;
+                endPoints[1] = point2;
             }
         }
 
-        int index1 = anchorPoints.IndexOf(endPoints[0]);
-        int index2 = anchorPoints.IndexOf(endPoints[1]);
+        var index1 = anchorPoints.IndexOf(endPoints[0]);
+        var index2 = anchorPoints.IndexOf(endPoints[1]);
         var anchorCopy = new List<Vector2>(anchorPoints);
         int index;
-        if (startPin.IO_Type == Pin.inOut.INPUT) {
+        if (startPin.IO_Type == Pin.inOut.INPUT)
+        {
             //reverse it
             print("reverse it");
             anchorCopy.Reverse();
-            index = anchorCopy.IndexOf(index1>index2 ? endPoints[0] : endPoints[1]);
+            index = anchorCopy.IndexOf(index1 > index2 ? endPoints[0] : endPoints[1]);
         }
-        else {
-            index = anchorCopy.IndexOf(index1<index2 ? endPoints[0] : endPoints[1]);
+        else
+        {
+            index = anchorCopy.IndexOf(index1 < index2 ? endPoints[0] : endPoints[1]);
         }
-        
-        GameObject newObj = new GameObject();
+
+        var newObj = new GameObject();
         newObj.name = "wire";
         newObj.AddComponent<Wire>();
         newObj.GetComponent<Wire>().anchorPoints = new List<Vector2>(anchorCopy.Take(index + 1));
@@ -56,26 +61,29 @@ public class WireManager : MonoBehaviour {
         addWire(newObj);
     }
 
-    public GameObject connectionInProgress() {
+    public GameObject connectionInProgress()
+    {
         if (wires != null)
-            foreach (GameObject wire in wires)
+            foreach (var wire in wires)
                 if (wire.GetComponent<Wire>().currentState == Wire.state.STARTED)
                     return wire;
         return null;
     }
 
-    public List<GameObject> getConnectedWiresGate(Gate gate) {
+    public List<GameObject> getConnectedWiresGate(Gate gate)
+    {
         var connectedWires = new List<GameObject>();
-        foreach (GameObject wire in wires)
+        foreach (var wire in wires)
             if (wire.GetComponent<Wire>().startGate == gate || wire.GetComponent<Wire>().endGate == gate)
                 connectedWires.Add(wire);
         print(connectedWires);
         return connectedWires;
     }
 
-    public List<GameObject> getConnectedWiresPin(Pin pin) {
+    public List<GameObject> getConnectedWiresPin(Pin pin)
+    {
         var connectedWires = new List<GameObject>();
-        foreach (GameObject wire in wires)
+        foreach (var wire in wires)
             if ((wire.GetComponent<Wire>().startPin == pin || wire.GetComponent<Wire>().endPin == pin) &&
                 wire.GetComponent<Wire>().currentState != Wire.state.WAITING &&
                 wire.GetComponent<Wire>().currentState != Wire.state.STARTED)
@@ -84,40 +92,47 @@ public class WireManager : MonoBehaviour {
         return connectedWires;
     }
 
-    public void propogateHighToAllConnectedWires(Pin pin) {
+    public void propogateHighToAllConnectedWires(Pin pin)
+    {
         var wires = getConnectedWiresPin(pin);
-        foreach (GameObject wire in wires)
+        foreach (var wire in wires)
             if (wire.GetComponent<Wire>().currentState
                 != Wire.state.STARTED)
                 wire.GetComponent<Wire>().propogateSignalHigh();
     }
 
-    public void setHIZToAllConnectedWires(Pin pin) {
+    public void setHIZToAllConnectedWires(Pin pin)
+    {
         var wires = getConnectedWiresPin(pin);
-        foreach (GameObject wire in wires)
+        foreach (var wire in wires)
             if (wire.GetComponent<Wire>().currentState
                 != Wire.state.STARTED)
                 wire.GetComponent<Wire>().setHIZ();
     }
 
-    public void removeHIZToAllConnectedWires(Pin pin) {
+    public void removeHIZToAllConnectedWires(Pin pin)
+    {
         var wires = getConnectedWiresPin(pin);
-        foreach (GameObject wire in wires)
+        foreach (var wire in wires)
             if (wire.GetComponent<Wire>().currentState
                 != Wire.state.STARTED)
                 wire.GetComponent<Wire>().removeHIZ();
     }
 
-    public void propogateLowToAllConnectedWires(Pin pin) {
+    public void propogateLowToAllConnectedWires(Pin pin)
+    {
         var wires = getConnectedWiresPin(pin);
-        foreach (GameObject wire in wires) wire.GetComponent<Wire>().propogateSignalLow();
+        foreach (var wire in wires) wire.GetComponent<Wire>().propogateSignalLow();
     }
 
-    public List<GameObject> getConnectedWireIO(IO io) {
+    public List<GameObject> getConnectedWireIO(IO io)
+    {
         var connectedWires = new List<GameObject>();
-        foreach (GameObject wire in wires) {
-            if (io.IOType == IO.type.IN) {
-                Wire test = wire.GetComponent<Wire>();
+        foreach (var wire in wires)
+        {
+            if (io.IOType == IO.type.IN)
+            {
+                var test = wire.GetComponent<Wire>();
             }
 
             if (wire.GetComponent<Wire>().startIO == io || wire.GetComponent<Wire>().endIO == io)
@@ -127,21 +142,23 @@ public class WireManager : MonoBehaviour {
         return connectedWires;
     }
 
-    public void createWire(Pin pin) {
-        GameObject wireObject = new GameObject("wire");
+    public void createWire(Pin pin)
+    {
+        var wireObject = new GameObject("wire");
         wireObject.AddComponent<Wire>();
         wireObject.GetComponent<Wire>().startWire(pin);
         addWire(wireObject);
     }
 
-    public void addWire(GameObject wire) {
+    public void addWire(GameObject wire)
+    {
         wires.Add(wire);
     }
 
-    public void removeWire(GameObject wire) {
-        if (wire.GetComponent<Wire>().rightPin != null) {
+    public void removeWire(GameObject wire)
+    {
+        if (wire.GetComponent<Wire>().rightPin != null)
             wire.GetComponent<Wire>().rightPin.actualValue = Pin.highOrLow.LOW;
-        }
         wires.Remove(wire);
         DestroyImmediate(wire);
     }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
-using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ButtonManager : MonoBehaviour {
+public class ButtonManager : MonoBehaviour
+{
     public GameObject notPF;
     public GameObject andPF;
     public GameObject nandPF;
@@ -26,13 +26,17 @@ public class ButtonManager : MonoBehaviour {
     public GameObject textPF;
     public GameObject reg4PF;
     public GameObject add4PF;
+    public GameObject bcount4PF;
+    public GameObject tristate8PF;
 
 
-    public void mouseEnter() {
+    public void mouseEnter()
+    {
         gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.75f);
     }
 
-    public void mouseExit() {
+    public void mouseExit()
+    {
         if (gameObject.name != "ExitButton")
             gameObject.GetComponent<Image>().color = new Color(38f / 255f, 38f / 255f, 38f / 255f, 1f);
         else
@@ -40,138 +44,173 @@ public class ButtonManager : MonoBehaviour {
     }
 
 
-    public void NOTButton() {
-        GameObject newobj = Instantiate(notPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void NOTButton()
+    {
+        var newobj = Instantiate(notPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.NOT;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void ANDButton() {
-        GameObject newobj = Instantiate(andPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void ANDButton()
+    {
+        var newobj = Instantiate(andPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.AND;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void NANDButton() {
-        GameObject newobj = Instantiate(nandPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void NANDButton()
+    {
+        var newobj = Instantiate(nandPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.NAND;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void AND3Button() {
-        GameObject newobj = Instantiate(and3PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void AND3Button()
+    {
+        var newobj = Instantiate(and3PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.AND3;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void ORButton() {
-        GameObject newobj = Instantiate(orPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void ORButton()
+    {
+        var newobj = Instantiate(orPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.OR;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void NORButton() {
-        GameObject newobj = Instantiate(norPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void NORButton()
+    {
+        var newobj = Instantiate(norPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.NOR;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void INButton() {
-        GameObject newobj = Instantiate(inPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void INButton()
+    {
+        var newobj = Instantiate(inPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<IO>();
         newobj.GetComponent<IO>().IOType = IO.type.OUT;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void OUTButton() {
-        GameObject newobj = Instantiate(outPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void OUTButton()
+    {
+        var newobj = Instantiate(outPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<IO>();
         newobj.GetComponent<IO>().IOType = IO.type.IN;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void SRButton() {
-        GameObject newobj = Instantiate(srPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void SRButton()
+    {
+        var newobj = Instantiate(srPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.SR;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void DLATCHButton() {
-        GameObject newobj = Instantiate(dLatchPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void DLATCHButton()
+    {
+        var newobj = Instantiate(dLatchPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.DLATCH;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void FFButton() {
-        GameObject newobj = Instantiate(ffPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void FFButton()
+    {
+        var newobj = Instantiate(ffPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.FLIPFLOP;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void TRIButton() {
-        GameObject newobj = Instantiate(triStatePF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void TRIButton()
+    {
+        var newobj = Instantiate(triStatePF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.TRISTATE;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void XORButton() {
-        GameObject newobj = Instantiate(xorPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void TRI8Button()
+    {
+        var newobj = Instantiate(tristate8PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+            Quaternion.identity);
+        newobj.AddComponent<Gate>();
+        newobj.GetComponent<Gate>().gateType = Gate.type.TRISTATE8;
+        newobj.name += newobj.GetInstanceID().ToString();
+    }
+
+    public void XORButton()
+    {
+        var newobj = Instantiate(xorPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.XOR;
         newobj.name += newobj.GetInstanceID().ToString();
     }
-    
-    public void REG4Button() {
-            GameObject newobj = Instantiate(reg4PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
-                Quaternion.identity);
-            newobj.AddComponent<Gate>();
-            newobj.GetComponent<Gate>().gateType = Gate.type.REG4;
-            newobj.name += newobj.GetInstanceID().ToString();
-        }
-    
-    public void ADD4Button() {
-        GameObject newobj = Instantiate(add4PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+
+    public void REG4Button()
+    {
+        var newobj = Instantiate(reg4PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+            Quaternion.identity);
+        newobj.AddComponent<Gate>();
+        newobj.GetComponent<Gate>().gateType = Gate.type.REG4;
+        newobj.name += newobj.GetInstanceID().ToString();
+    }
+
+    public void ADD4Button()
+    {
+        var newobj = Instantiate(add4PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.ADD4;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void CLOCKButton() {
-        GameObject newobj = Instantiate(clockPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+    public void BCOUNT4Button()
+    {
+        var newobj = Instantiate(bcount4PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+            Quaternion.identity);
+        newobj.AddComponent<Gate>();
+        newobj.GetComponent<Gate>().gateType = Gate.type.BCOUNT4;
+        newobj.name += newobj.GetInstanceID().ToString();
+    }
+
+    public void CLOCKButton()
+    {
+        var newobj = Instantiate(clockPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
             Quaternion.identity);
         newobj.AddComponent<IO>();
         newobj.GetComponent<IO>().IOType = IO.type.CLOCK;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void TextButton() {
-        GameObject newobj = Instantiate(textPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10),
+    public void TextButton()
+    {
+        var newobj = Instantiate(textPF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10),
             Quaternion.identity);
-        GameObject newCanvas = new GameObject();
+        var newCanvas = new GameObject();
         newCanvas.name = "textFieldCanvas";
         newCanvas.AddComponent<Canvas>();
         newCanvas.AddComponent<CanvasScaler>();
@@ -188,13 +227,15 @@ public class ButtonManager : MonoBehaviour {
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
-    public void ExitButton() {
+    public void ExitButton()
+    {
         //save the current state somehow
         saveAllGameData();
         SceneManager.LoadScene(0);
     }
 
-    private void saveAllGameData() {
+    private void saveAllGameData()
+    {
         var objects = new List<GameObject>(SceneManager.GetActiveScene().GetRootGameObjects());
         var sceneObjects = new List<GameObject>();
         var gateFieldArray = new List<gateSaveFields>();
@@ -204,9 +245,11 @@ public class ButtonManager : MonoBehaviour {
         var camField = new camSaveFields();
         var b2dFieldArray = new List<binaryToDecimalFields>();
         var boxFieldArray = new List<boxFields>();
-        foreach (GameObject sceneObject in objects)
-            if (sceneObject.GetComponent<Gate>() != null) {
-                gateSaveFields field = new gateSaveFields {
+        foreach (var sceneObject in objects)
+            if (sceneObject.GetComponent<Gate>() != null)
+            {
+                var field = new gateSaveFields
+                {
                     gatePosition = sceneObject.transform.position,
                     gateNumber = sceneObject.name.Split(')').Last(),
                     type = sceneObject.GetComponent<Gate>().gateType,
@@ -214,14 +257,15 @@ public class ButtonManager : MonoBehaviour {
                 };
                 gateFieldArray.Add(field);
             }
-            else if (sceneObject.GetComponent<IO>() != null) {
+            else if (sceneObject.GetComponent<IO>() != null)
+            {
                 ioSaveFields field;
-                if (sceneObject.GetComponent<IO>().IOType == IO.type.CLOCK) {
-                    IO.logic saveValue = IO.logic.LOW;
-                    if (sceneObject.GetComponent<IO>().clockOn) {
-                        saveValue = IO.logic.HIGH;
-                    }
-                    field = new ioSaveFields {
+                if (sceneObject.GetComponent<IO>().IOType == IO.type.CLOCK)
+                {
+                    var saveValue = IO.logic.LOW;
+                    if (sceneObject.GetComponent<IO>().clockOn) saveValue = IO.logic.HIGH;
+                    field = new ioSaveFields
+                    {
                         ioPosition = sceneObject.transform.position,
                         ioNumber = sceneObject.name.Split(')').Last(),
                         type = sceneObject.GetComponent<IO>().IOType,
@@ -229,8 +273,10 @@ public class ButtonManager : MonoBehaviour {
                         value = saveValue
                     };
                 }
-                else {
-                    field = new ioSaveFields {
+                else
+                {
+                    field = new ioSaveFields
+                    {
                         ioPosition = sceneObject.transform.position,
                         ioNumber = sceneObject.name.Split(')').Last(),
                         type = sceneObject.GetComponent<IO>().IOType,
@@ -242,8 +288,10 @@ public class ButtonManager : MonoBehaviour {
                 //print(sceneObject.GetComponent<IO>().log);
                 ioFieldArray.Add(field);
             }
-            else if (sceneObject.name.Contains("textFieldCanvas")) {
-                textSaveFields field = new textSaveFields {
+            else if (sceneObject.name.Contains("textFieldCanvas"))
+            {
+                var field = new textSaveFields
+                {
                     textPosition = sceneObject.transform.GetChild(0).position,
                     text = sceneObject.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Text>().text,
                     rotation = sceneObject.transform.GetChild(0).eulerAngles.z,
@@ -251,54 +299,55 @@ public class ButtonManager : MonoBehaviour {
                 };
                 textFieldArray.Add(field);
             }
-            else if (sceneObject.name.Contains("SceneCamera")) {
-                camSaveFields field = new camSaveFields {
-                   position = sceneObject.transform.position
+            else if (sceneObject.name.Contains("SceneCamera"))
+            {
+                var field = new camSaveFields
+                {
+                    position = sceneObject.transform.position
                 };
                 camField = field;
             }
-            else if (sceneObject.GetComponent<BinaryToDecimalGroup>() != null) {
-                List<string> names = new List<string>();
-                foreach (var obj in sceneObject.GetComponent<BinaryToDecimalGroup>().IOForConversion) {
+            else if (sceneObject.GetComponent<BinaryToDecimalGroup>() != null)
+            {
+                var names = new List<string>();
+                foreach (var obj in sceneObject.GetComponent<BinaryToDecimalGroup>().IOForConversion)
                     names.Add(obj.name);
-                }
-                binaryToDecimalFields field = new binaryToDecimalFields {
+                var field = new binaryToDecimalFields
+                {
                     ioNumbers = names,
                     position = sceneObject.transform.GetChild(0).transform.position,
-                    inverted =  sceneObject.GetComponent<BinaryToDecimalGroup>().invert,
-                    scale =  sceneObject.transform.GetChild(0).transform.localScale.x
+                    inverted = sceneObject.GetComponent<BinaryToDecimalGroup>().invert,
+                    scale = sceneObject.transform.GetChild(0).transform.localScale.x
                 };
                 b2dFieldArray.Add(field);
             }
-            else if (sceneObject.GetComponent<Box>() != null) {
-                boxFields field = new boxFields {
-                    drawPoints = sceneObject.GetComponent<Box>()._drawPoints,
+            else if (sceneObject.GetComponent<Box>() != null)
+            {
+                var field = new boxFields
+                {
+                    drawPoints = sceneObject.GetComponent<Box>()._drawPoints
                 };
                 boxFieldArray.Add(field);
             }
-            else if (sceneObject.GetComponent<Wire>() != null) {
-                Wire sceneWire = sceneObject.GetComponent<Wire>();
+            else if (sceneObject.GetComponent<Wire>() != null)
+            {
+                var sceneWire = sceneObject.GetComponent<Wire>();
                 string leftGateIONumber;
                 string rightGateIONumber;
-                if (sceneWire.leftPin.gateOrIO) {
+                if (sceneWire.leftPin.gateOrIO)
                     leftGateIONumber = sceneWire.leftPin.gate.name.Split(')').Last();
-                }
-                else {
+                else
                     leftGateIONumber = sceneWire.leftPin.io.name.Split(')').Last();
-                }
-                
-                if (sceneWire.rightPin.gateOrIO) {
-                    rightGateIONumber = sceneWire.rightPin.gate.name.Split(')').Last();
-                }
-                else {
-                    rightGateIONumber = sceneWire.rightPin.io.name.Split(')').Last();
-                }
 
-                List<Vector2> points = sceneWire.anchorPoints;
-                if (sceneWire.leftPin != sceneWire.startPin) {
-                    points.Reverse();
-                }
-                wireSaveFields field = new wireSaveFields {
+                if (sceneWire.rightPin.gateOrIO)
+                    rightGateIONumber = sceneWire.rightPin.gate.name.Split(')').Last();
+                else
+                    rightGateIONumber = sceneWire.rightPin.io.name.Split(')').Last();
+
+                var points = sceneWire.anchorPoints;
+                if (sceneWire.leftPin != sceneWire.startPin) points.Reverse();
+                var field = new wireSaveFields
+                {
                     drawPoints = sceneWire.drawPoints,
                     anchorPoints = points,
                     leftPinGateIO = leftGateIONumber,
@@ -313,22 +362,26 @@ public class ButtonManager : MonoBehaviour {
                 };
                 wireFieldArray.Add(field);
             }
-        
 
-        var textobj = JsonConvert.SerializeObject(new {camField, boxFieldArray, gateFieldArray, b2dFieldArray, ioFieldArray, textFieldArray, wireFieldArray},
-            new JsonSerializerSettings {
+
+        var textobj = JsonConvert.SerializeObject(
+            new {camField, boxFieldArray, gateFieldArray, b2dFieldArray, ioFieldArray, textFieldArray, wireFieldArray},
+            new JsonSerializerSettings
+            {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
         File.WriteAllText(
             Application.persistentDataPath + "/" + PlayerPrefs.GetString("currentProjectName") + ".json", textobj);
     }
 
-    public void changeSimSpeed() {
-        GameObject slide = GameObject.FindGameObjectWithTag("slider");
+    public void changeSimSpeed()
+    {
+        var slide = GameObject.FindGameObjectWithTag("slider");
     }
 
     [Serializable]
-    public class gateSaveFields {
+    public class gateSaveFields
+    {
         public Vector3 gatePosition;
         public string gateNumber;
         public Gate.type type;
@@ -336,7 +389,8 @@ public class ButtonManager : MonoBehaviour {
     }
 
     [Serializable]
-    public class ioSaveFields {
+    public class ioSaveFields
+    {
         public Vector3 ioPosition;
         public string ioNumber;
         public IO.type type;
@@ -345,33 +399,38 @@ public class ButtonManager : MonoBehaviour {
     }
 
     [Serializable]
-    public class textSaveFields {
+    public class textSaveFields
+    {
         public Vector3 textPosition;
         public string text;
         public float rotation;
         public float scale;
     }
-    
+
     [Serializable]
-    public class camSaveFields {
+    public class camSaveFields
+    {
         public Vector3 position;
     }
 
     [Serializable]
-    public class binaryToDecimalFields {
+    public class binaryToDecimalFields
+    {
         public List<string> ioNumbers;
         public Vector3 position;
         public bool inverted;
         public float scale;
     }
-    
+
     [Serializable]
-    public class boxFields {
+    public class boxFields
+    {
         public List<Vector2> drawPoints;
     }
 
     [Serializable]
-    public class wireSaveFields {
+    public class wireSaveFields
+    {
         public List<Vector2> drawPoints;
         public List<Vector2> anchorPoints;
         public string leftPinGateIO;

@@ -193,7 +193,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5097883968503359993}
-  - {fileID: 7291035096636715119}
+  - {fileID: 1571779044379146556}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1565,7 +1565,7 @@ CircleCollider2D:
   m_Offset: {x: -0.00000011920929, y: 0}
   serializedVersion: 2
   m_Radius: 0.50000006
---- !u!1001 &8715101832190501707
+--- !u!1001 &580018282294340120
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1598,15 +1598,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2151796187802227492, guid: 8ed23bc8639faeb4fac74e4529ca0b9f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2151796187802227492, guid: 8ed23bc8639faeb4fac74e4529ca0b9f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2151796187802227492, guid: 8ed23bc8639faeb4fac74e4529ca0b9f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2151796187802227492, guid: 8ed23bc8639faeb4fac74e4529ca0b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1622,8 +1622,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 7243324766535440047, guid: 8ed23bc8639faeb4fac74e4529ca0b9f, type: 3}
---- !u!4 &7291035096636715119 stripped
+--- !u!4 &1571779044379146556 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2151796187802227492, guid: 8ed23bc8639faeb4fac74e4529ca0b9f, type: 3}
-  m_PrefabInstance: {fileID: 8715101832190501707}
+  m_PrefabInstance: {fileID: 580018282294340120}
   m_PrefabAsset: {fileID: 0}

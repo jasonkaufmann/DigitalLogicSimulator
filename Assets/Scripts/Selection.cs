@@ -2,8 +2,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Selection : MonoBehaviour {
-    public enum state {
+public class Selection : MonoBehaviour
+{
+    public enum state
+    {
         STARTED,
         WAITING,
         INSCENE,
@@ -29,7 +31,8 @@ public class Selection : MonoBehaviour {
     private Vector3 startPos;
     private float width;
 
-    private void Start() {
+    private void Start()
+    {
         moveCam = GameObject.FindGameObjectWithTag("moveCam").GetComponent<Camera>();
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
         if (currentState != state.IMPORTEDFROMFILE)
@@ -37,30 +40,35 @@ public class Selection : MonoBehaviour {
     }
 
     // Update is called once per frame
-    private void Update() {
+    private void Update()
+    {
         if (Time.timeScale == 0) return;
-        Vector3 newPos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+        var newPos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             Mathf.Abs(moveCam.transform.position.z + 10)));
         var onScreen = Input.mousePosition.y < Screen.height * 0.914f &&
                        Input.mousePosition.y > Screen.height * 0.0894f;
-        if (Input.GetMouseButton(0) && currentState == state.STARTED) {
+        if (Input.GetMouseButton(0) && currentState == state.STARTED)
+        {
             height = newPos.y - startPos.y;
             width = newPos.x - startPos.x;
             newArea.transform.position = new Vector3(startPos.x + width / 2, startPos.y + height / 2, -10);
             newArea.transform.localScale = new Vector3(width, height, 1);
         }
 
-        if (Input.GetMouseButtonUp(0) && currentState != state.IMPORTEDFROMFILE) {
+        if (Input.GetMouseButtonUp(0) && currentState != state.IMPORTEDFROMFILE)
+        {
             GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().snapBool = true;
             currentState = state.INSCENE;
         }
 
-        if (currentState == state.IMPORTEDFROMFILE) {
-            Vector3 mousePos = Input.mousePosition;
+        if (currentState == state.IMPORTEDFROMFILE)
+        {
+            var mousePos = Input.mousePosition;
             currentDragPoint =
                 moveCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y,
                     Mathf.Abs(moveCam.transform.position.z + 10)));
-            if (firstFrame) {
+            if (firstFrame)
+            {
                 lastDragPoint = currentDragPoint;
                 firstFrame = false;
             }
@@ -72,18 +80,21 @@ public class Selection : MonoBehaviour {
                     for (var j = 0; j < copiedObjects[i].GetComponent<Wire>().anchorPoints.Count; j++)
                         copiedObjects[i].GetComponent<Wire>().anchorPoints[j] +=
                             new Vector2(difference.x, difference.y);
-            if (Input.GetMouseButtonDown(0)) {
+            if (Input.GetMouseButtonDown(0))
+            {
                 currentState = state.INSCENE;
                 DestroyImmediate(newArea);
             }
         }
 
-        if (Input.GetMouseButtonDown(0) && currentState == state.INSCENE) {
+        if (Input.GetMouseButtonDown(0) && currentState == state.INSCENE)
+        {
             currentState = state.WAITING;
             DestroyImmediate(newArea);
         }
 
-        if (Input.GetMouseButtonDown(0) && currentState == state.WAITING && onScreen) {
+        if (Input.GetMouseButtonDown(0) && currentState == state.WAITING && onScreen)
+        {
             startPos = moveCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
                 Mathf.Abs(moveCam.transform.position.z + 10)));
             newArea = Instantiate(selectionArea, new Vector3(startPos.x, startPos.y, -10), Quaternion.identity);
@@ -91,44 +102,45 @@ public class Selection : MonoBehaviour {
             currentState = state.STARTED;
         }
 
-        if (Input.GetKeyDown(KeyCode.M) && currentState == state.INSCENE) {
+        if (Input.GetKeyDown(KeyCode.M) && currentState == state.INSCENE)
+        {
             currentState = state.MOVINGOBJECTS;
             copiedObjects = GetObjectsInSelection();
             DestroyImmediate(newArea);
             firstFrame = true;
         }
 
-        if (currentState == state.MOVINGOBJECTS) {
-            Vector3 mousePos = Input.mousePosition;
+        if (currentState == state.MOVINGOBJECTS)
+        {
+            var mousePos = Input.mousePosition;
             currentDragPoint =
                 moveCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y,
                     Mathf.Abs(moveCam.transform.position.z + 10)));
-            if (firstFrame) {
+            if (firstFrame)
+            {
                 lastDragPoint = currentDragPoint;
                 firstFrame = false;
             }
 
             difference = currentDragPoint - lastDragPoint;
             lastDragPoint = currentDragPoint;
-            for (var i = 0; i < copiedObjects.Count; i++) {
-
-                if (copiedObjects[i].GetComponent<Wire>() != null) {
+            for (var i = 0; i < copiedObjects.Count; i++)
+                if (copiedObjects[i].GetComponent<Wire>() != null)
                     for (var j = 0; j < copiedObjects[i].GetComponent<Wire>().anchorPoints.Count; j++)
                         copiedObjects[i].GetComponent<Wire>().anchorPoints[j] +=
                             new Vector2(difference.x, difference.y);
-                }
-                else {
+                else
                     copiedObjects[i].transform.position += difference;
-                }
-            }
         }
 
-        if (currentState == state.COPYINGOBJECTS) {
-            Vector3 mousePos = Input.mousePosition;
+        if (currentState == state.COPYINGOBJECTS)
+        {
+            var mousePos = Input.mousePosition;
             currentDragPoint =
                 moveCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y,
                     Mathf.Abs(moveCam.transform.position.z + 10)));
-            if (firstFrame) {
+            if (firstFrame)
+            {
                 lastDragPoint = currentDragPoint;
                 firstFrame = false;
             }
@@ -142,16 +154,19 @@ public class Selection : MonoBehaviour {
                             new Vector2(difference.x, difference.y);
         }
 
-        if (Input.GetKeyDown(KeyCode.C) && Input.GetKey(KeyCode.LeftControl) && currentState == state.INSCENE) {
+        if (Input.GetKeyDown(KeyCode.C) && Input.GetKey(KeyCode.LeftControl) && currentState == state.INSCENE)
+        {
             var dic = new Dictionary<GameObject, GameObject>();
             firstFrame = true;
             var objectsInSelection = GetObjectsInSelection();
             copiedObjects.Clear();
-            foreach (GameObject obj in objectsInSelection)
-                if (obj.GetComponent<Gate>() != null || obj.GetComponent<IO>() != null) {
-                    GameObject newObj = Instantiate(obj, obj.transform.position, obj.transform.rotation);
+            foreach (var obj in objectsInSelection)
+                if (obj.GetComponent<Gate>() != null || obj.GetComponent<IO>() != null)
+                {
+                    var newObj = Instantiate(obj, obj.transform.position, obj.transform.rotation);
                     if (newObj.GetComponent<IO>() != null)
-                        if (obj.GetComponent<IO>().log == IO.logic.HIGH) {
+                        if (obj.GetComponent<IO>().log == IO.logic.HIGH)
+                        {
                             print("make new high");
                             newObj.GetComponent<IO>().log = IO.logic.HIGH;
                         }
@@ -162,17 +177,19 @@ public class Selection : MonoBehaviour {
                         newObj.GetComponent<Gate>().createdFromCopy = true;
                     else if (newObj.GetComponent<IO>() != null) newObj.GetComponent<IO>().createdFromCopy = true;
                 }
-                else if (obj.name.Contains("textFieldCanvas")) {
+                else if (obj.name.Contains("textFieldCanvas"))
+                {
                     print("FLAGG");
-                    GameObject newobj = Instantiate(obj, obj.transform.position, obj.transform.rotation);
+                    var newobj = Instantiate(obj, obj.transform.position, obj.transform.rotation);
                     newobj.name += newobj.GetInstanceID().ToString();
                     DestroyImmediate(newobj.transform.GetChild(0).GetChild(0).gameObject);
                     newobj.transform.GetChild(0).gameObject.GetComponent<TextControls>().createdFromCopy = true;
                 }
 
-            foreach (GameObject obj in objectsInSelection)
-                if (obj.GetComponent<Wire>() != null) {
-                    GameObject newObj = Instantiate(obj, obj.transform.position, Quaternion.identity);
+            foreach (var obj in objectsInSelection)
+                if (obj.GetComponent<Wire>() != null)
+                {
+                    var newObj = Instantiate(obj, obj.transform.position, Quaternion.identity);
                     newObj.name += newObj.GetInstanceID().ToString();
                     newObj.GetComponent<Wire>().startGate = null;
                     newObj.GetComponent<Wire>().endGate = null;
@@ -180,8 +197,9 @@ public class Selection : MonoBehaviour {
                     newObj.GetComponent<Wire>().endIO = null;
                     newObj.GetComponent<Wire>().createdFromCopy = true;
 
-                    if (obj.GetComponent<Wire>().startPin.gateOrIO) {
-                        GameObject name = obj.GetComponent<Wire>().startPin.gate.gameObject;
+                    if (obj.GetComponent<Wire>().startPin.gateOrIO)
+                    {
+                        var name = obj.GetComponent<Wire>().startPin.gate.gameObject;
                         newObj.GetComponent<Wire>().startPin =
                             GameObject.Find(dic[name].name).transform.Find("pins").transform
                                 .Find(obj.GetComponent<Wire>().startPin.name)
@@ -191,8 +209,9 @@ public class Selection : MonoBehaviour {
                         newObj.GetComponent<Wire>().startGate =
                             GameObject.Find(dic[name].name).GetComponent<Gate>();
                     }
-                    else {
-                        GameObject name = obj.GetComponent<Wire>().startPin.io.gameObject;
+                    else
+                    {
+                        var name = obj.GetComponent<Wire>().startPin.io.gameObject;
                         newObj.GetComponent<Wire>().startPin =
                             GameObject.Find(dic[name].name).transform.Find("pins").transform
                                 .Find(obj.GetComponent<Wire>().startPin.name)
@@ -203,8 +222,9 @@ public class Selection : MonoBehaviour {
                             GameObject.Find(dic[name].name).GetComponent<IO>();
                     }
 
-                    if (obj.GetComponent<Wire>().endPin.gateOrIO) {
-                        GameObject name = obj.GetComponent<Wire>().endPin.gate.gameObject;
+                    if (obj.GetComponent<Wire>().endPin.gateOrIO)
+                    {
+                        var name = obj.GetComponent<Wire>().endPin.gate.gameObject;
                         newObj.GetComponent<Wire>().endPin =
                             GameObject.Find(dic[name].name).transform.Find("pins").transform
                                 .Find(obj.GetComponent<Wire>().endPin.name)
@@ -214,8 +234,9 @@ public class Selection : MonoBehaviour {
                         newObj.GetComponent<Wire>().endGate =
                             GameObject.Find(dic[name].name).GetComponent<Gate>();
                     }
-                    else {
-                        GameObject name = obj.GetComponent<Wire>().endPin.io.gameObject;
+                    else
+                    {
+                        var name = obj.GetComponent<Wire>().endPin.io.gameObject;
                         newObj.GetComponent<Wire>().endPin =
                             GameObject.Find(dic[name].name).transform.Find("pins").transform
                                 .Find(obj.GetComponent<Wire>().endPin.name)
@@ -229,7 +250,8 @@ public class Selection : MonoBehaviour {
                     copiedObjects.Add(newObj);
                 }
 
-            if (copiedObjects.Count > 0) {
+            if (copiedObjects.Count > 0)
+            {
                 currentState = state.COPYINGOBJECTS;
                 GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().snapBool = false;
                 GameObject.FindGameObjectWithTag("manageCanvas").GetComponent<ControlsManager>().selectionInProgress =
@@ -239,29 +261,38 @@ public class Selection : MonoBehaviour {
             DestroyImmediate(newArea);
         }
 
-        if ((Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Delete)) && currentState == state.INSCENE) {
+        if ((Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Delete)) && currentState == state.INSCENE)
+        {
             var objectsInSelection = GetObjectsInSelection();
-            foreach (GameObject obj in objectsInSelection) {
-                if (obj.GetComponent<Gate>() != null) {
-                    foreach (GameObject wire in manager.getConnectedWiresGate(obj.GetComponent<Gate>()))
+            foreach (var obj in objectsInSelection)
+            {
+                if (obj.GetComponent<Gate>() != null)
+                {
+                    foreach (var wire in manager.getConnectedWiresGate(obj.GetComponent<Gate>()))
                         manager.removeWire(wire);
                     DestroyImmediate(obj);
                 }
-                else if (obj.GetComponent<IO>() != null) {
-                    foreach (GameObject wire in manager.getConnectedWireIO(obj.GetComponent<IO>()))
+                else if (obj.GetComponent<IO>() != null)
+                {
+                    foreach (var wire in manager.getConnectedWireIO(obj.GetComponent<IO>()))
                         manager.removeWire(wire);
                     DestroyImmediate(obj);
                 }
                 else if (obj.GetComponent<Wire>() != null)
+                {
                     manager.removeWire(obj);
+                }
                 else
+                {
                     DestroyImmediate(obj);
+                }
 
                 DestroyImmediate(newArea);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && currentState == state.INSCENE) {
+        if (Input.GetKeyDown(KeyCode.D) && currentState == state.INSCENE)
+        {
             var objectsInSelection = GetObjectsInSelection();
             GameObject binToDec = new();
             binToDec.name = "binaryToDecimal";
@@ -273,24 +304,29 @@ public class Selection : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.X) && currentState == state.INSCENE) DestroyImmediate(newArea);
     }
 
-    private List<GameObject> GetObjectsInSelection() {
+    private List<GameObject> GetObjectsInSelection()
+    {
         var objectsInside = new List<GameObject>();
         var objects = new List<GameObject>(SceneManager.GetActiveScene().GetRootGameObjects());
         var objectsCount = objects.Count;
         for (var i = 0; i < objectsCount; i++)
             if (objects[i].GetComponent<Wire>() == null && objects[i].GetComponent<Gate>() == null &&
-                objects[i].GetComponent<IO>() == null && !objects[i].name.Contains("textFieldCanvas")) {
+                objects[i].GetComponent<IO>() == null && !objects[i].name.Contains("textFieldCanvas"))
+            {
             }
-            else {
+            else
+            {
                 //print(objects[i].name.Contains("textFieldCanvas"));
-                if (objects[i].GetComponent<Wire>() != null) {
+                if (objects[i].GetComponent<Wire>() != null)
+                {
                     var allInside = true;
-                    foreach (Vector2 point in objects[i].GetComponent<Wire>().anchorPoints)
+                    foreach (var point in objects[i].GetComponent<Wire>().anchorPoints)
                         if (!IsPointInSquare(point))
                             allInside = false;
                     if (allInside) objectsInside.Add(objects[i]);
                 }
-                else {
+                else
+                {
                     if (IsObjectInSquare(objects[i]))
                         objectsInside.Add(objects[i]);
                 }
@@ -299,7 +335,8 @@ public class Selection : MonoBehaviour {
         return objectsInside;
     }
 
-    private bool IsPointInSquare(Vector3 point) {
+    private bool IsPointInSquare(Vector3 point)
+    {
         if (point.x < newArea.transform.position.x + Mathf.Abs(width) / 2 &&
             point.x > newArea.transform.position.x - Mathf.Abs(width) / 2 &&
             point.y < newArea.transform.position.y + Mathf.Abs(height) / 2 &&
@@ -308,8 +345,9 @@ public class Selection : MonoBehaviour {
         return false;
     }
 
-    private bool IsObjectInSquare(GameObject sceneObj) {
-        Vector3 position = sceneObj.transform.position;
+    private bool IsObjectInSquare(GameObject sceneObj)
+    {
+        var position = sceneObj.transform.position;
         if (sceneObj.name.Contains("textFieldCanvas")) position = sceneObj.transform.GetChild(0).transform.position;
         if (position.x < newArea.transform.position.x + Mathf.Abs(width) / 2 &&
             position.x > newArea.transform.position.x - Mathf.Abs(width) / 2 &&

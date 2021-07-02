@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class MoveCamera : MonoBehaviour {
+public class MoveCamera : MonoBehaviour
+{
     public Camera moveCamera;
     public Vector3 difference;
 
@@ -9,16 +10,20 @@ public class MoveCamera : MonoBehaviour {
     private Vector3 lastDragPoint, currentDragPoint;
 
     // Update is called once per frame
-    private void Update() {
+    private void Update()
+    {
         //if(Time.timeScale == 0)return;
-        Ray ray = moveCamera.ScreenPointToRay(Input.mousePosition);
+        var ray = moveCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (moveCamera.transform.position.z < -10.5 && !GameObject.FindWithTag("manageCanvas").GetComponent<ControlsManager>().stopScroll)
-            moveCamera.transform.position +=  sensitivity * Input.GetAxis("Mouse ScrollWheel") * ray.direction;
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !GameObject.FindWithTag("manageCanvas").GetComponent<ControlsManager>().stopScroll)
-            moveCamera.transform.position +=  sensitivity * Input.GetAxis("Mouse ScrollWheel") * ray.direction;
-        if (Input.GetMouseButton(1)) {
-            Vector3 camPos = moveCamera.transform.position;
+        if (moveCamera.transform.position.z < -10.5 &&
+            !GameObject.FindWithTag("manageCanvas").GetComponent<ControlsManager>().stopScroll)
+            moveCamera.transform.position += sensitivity * Input.GetAxis("Mouse ScrollWheel") * ray.direction;
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 &&
+                 !GameObject.FindWithTag("manageCanvas").GetComponent<ControlsManager>().stopScroll)
+            moveCamera.transform.position += sensitivity * Input.GetAxis("Mouse ScrollWheel") * ray.direction;
+        if (Input.GetMouseButton(1))
+        {
+            var camPos = moveCamera.transform.position;
             currentDragPoint =
                 moveCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
                     Mathf.Abs(camPos.z + 10)));

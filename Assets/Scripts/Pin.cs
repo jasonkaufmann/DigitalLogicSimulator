@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
-public class Pin : MonoBehaviour {
-    public enum highOrLow {
+public class Pin : MonoBehaviour
+{
+    public enum highOrLow
+    {
         LOW,
         HIGH,
         HIZ
     }
 
-    public enum inOut {
+    public enum inOut
+    {
         INPUT,
         OUTPUT
     }
@@ -22,21 +25,26 @@ public class Pin : MonoBehaviour {
     public highOrLow actualValue;
     public bool firstFrame = true;
     private highOrLow pastValue;
+    //public string name  = 
 
-    private void Awake() {
+    private void Awake()
+    {
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
         actualValue = highOrLow.LOW;
     }
 
-    private void Update() {
+    private void Update()
+    {
         if (Time.timeScale == 0) return;
-        highOrLow currentValue = actualValue;
-        if ((firstFrame || currentValue != pastValue) && gate != null) {
+        var currentValue = actualValue;
+        if ((firstFrame || currentValue != pastValue) && gate != null)
+        {
             //print("value changed!");
             gate.noChange = true;
             firstFrame = false;
         }
-        else if ((firstFrame || currentValue != pastValue) && io != null) {
+        else if ((firstFrame || currentValue != pastValue) && io != null)
+        {
             //print("value changed!");
             io.noChange = true;
             firstFrame = false;
@@ -45,49 +53,66 @@ public class Pin : MonoBehaviour {
         pastValue = currentValue;
     }
 
-    private void OnMouseEnter() {
+    private void OnMouseEnter()
+    {
         mouseOver = true;
-        if (gateOrIO) {
+        if (gateOrIO)
+        {
             if (gate.GetComponent<Gate>().currentState != Gate.state.PLACING)
                 GetComponent<SpriteRenderer>().color = Color.white;
         }
-        else {
+        else
+        {
             if (io.GetComponent<IO>().currentState != IO.state.PLACING)
                 GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 
-    private void OnMouseExit() {
+    private void OnMouseExit()
+    {
         mouseOver = false;
         GetComponent<SpriteRenderer>().color = Color.black;
     }
 
-    private void OnMouseOver() {
-        if (Input.GetMouseButtonDown(0)) {
-            GameObject wire = manager.connectionInProgress();
-            if (wire) {
-                if (wire.GetComponent<Wire>().startPin.IO_Type != IO_Type) {
-                    if (IO_Type == inOut.INPUT && manager.getConnectedWiresPin(this).Count > 0) {
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            var wire = manager.connectionInProgress();
+            if (wire)
+            {
+                if (wire.GetComponent<Wire>().startPin.IO_Type != IO_Type)
+                {
+                    if (IO_Type == inOut.INPUT && manager.getConnectedWiresPin(this).Count > 0)
+                    {
                     }
-                    else {
+                    else
+                    {
                         print("end wire");
                         wire.GetComponent<Wire>().endWire(this);
                     }
                 }
             }
-            else {
-                if (!gateOrIO) {
-                    if (io.IOType == IO.type.IN && manager.getConnectedWiresPin(this).Count > 0) {
+            else
+            {
+                if (!gateOrIO)
+                {
+                    if (io.IOType == IO.type.IN && manager.getConnectedWiresPin(this).Count > 0)
+                    {
                     }
-                    else {
+                    else
+                    {
                         if (io.textField == null)
                             manager.createWire(this);
                     }
                 }
-                else {
-                    if (IO_Type == inOut.INPUT && manager.getConnectedWiresPin(this).Count > 0) {
+                else
+                {
+                    if (IO_Type == inOut.INPUT && manager.getConnectedWiresPin(this).Count > 0)
+                    {
                     }
-                    else {
+                    else
+                    {
                         manager.createWire(this);
                     }
                 }

@@ -17,6 +17,7 @@ TagManager:
   - title
   - eventSys
   - content
+  - loading
   layers:
   - Default
   - TransparentFX
