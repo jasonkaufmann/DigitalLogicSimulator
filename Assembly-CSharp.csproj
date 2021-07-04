@@ -738,9 +738,6 @@
      <Reference Include="Unity.TextMeshPro">
      <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.AdaptivePerformance.Simulator.Extension">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.AdaptivePerformance.Simulator.Extension.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.InternalAPIEngineBridge.003">
      <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.003.dll</HintPath>
      </Reference>
@@ -752,9 +749,6 @@
      </Reference>
      <Reference Include="Unity.2D.Path.Editor">
      <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Subsystem.Registration">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
      </Reference>
      <Reference Include="Unity.ProBuilder.Editor">
      <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
@@ -768,23 +762,14 @@
      <Reference Include="UnityEngine.UI">
      <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.AdaptivePerformance.Simulator.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.AdaptivePerformance.Simulator.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
      <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.AdaptivePerformance.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.AdaptivePerformance.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline.Editor">
      <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VectorGraphics.Editor">
      <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VectorGraphics.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.AdaptivePerformance">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.AdaptivePerformance.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

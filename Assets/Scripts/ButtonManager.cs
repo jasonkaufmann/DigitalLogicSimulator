@@ -38,9 +38,9 @@ public class ButtonManager : MonoBehaviour
     public void mouseExit()
     {
         if (gameObject.name != "ExitButton")
-            gameObject.GetComponent<Image>().color = new Color(38f / 255f, 38f / 255f, 38f / 255f, 1f);
+            gameObject.GetComponent<Image>().color = new Color(38f / 255f, 38f / 255f, 38f / 255f, 81f/255f);
         else
-            gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+            gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 81f/255f);
     }
 
 

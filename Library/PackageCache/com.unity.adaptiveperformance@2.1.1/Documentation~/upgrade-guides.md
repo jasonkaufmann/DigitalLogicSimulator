@@ -1,5 +1,0 @@
-# Upgrade guides
-
-This section contains information about upgrading from an older version of Adaptive Performance to a more recent version.
-
-* [Upgrading to Adaptive Performance 2.0.1](upgrade-guide-2-0-1.md)
