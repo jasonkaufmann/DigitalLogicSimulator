@@ -18,6 +18,8 @@ TagManager:
   - eventSys
   - content
   - loading
+  - downloadUpdate
+  - upToDate
   layers:
   - Default
   - TransparentFX

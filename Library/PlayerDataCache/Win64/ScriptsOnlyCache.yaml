@@ -15,8 +15,6 @@ ScriptsOnlyBuild:
     - WireManager
     Unity.AdaptivePerformance.Editor.dll:
     - UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceGeneralSettingsPerBuildTarget
-    Unity.AdaptivePerformance.Simulator.Editor.dll:
-    - UnityEditor.AdaptivePerformance.Simulator.Editor.SimulatorProviderSettings
     Unity.AdaptivePerformance.dll:
     - UnityEngine.AdaptivePerformance.AdaptivePerformanceGeneralSettings
     - UnityEngine.AdaptivePerformance.AdaptivePerformanceManagerSettings
@@ -31,8 +29,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
-    Unity.Timeline.Editor.dll:
-    - TimelineProjectSettings
     Unity.VectorGraphics.dll:
     - SVGImage
     UnityEditor.TestRunner.dll:
@@ -99,9 +95,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4118}
     - Class: 114
-      Script: {instanceID: 38092}
+      Script: {instanceID: 23538}
     - Class: 114
-      Script: {instanceID: 38094}
+      Script: {instanceID: 23540}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -735,7 +731,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 7c5f24b95dd1744d215e32e984fe2229
+      Hash: 03189043795ebfe2da1addc22002b971
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MenuControls
@@ -1236,4 +1232,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/StartScreen.unity
   - Assets/Scenes/MainGame.unity
   - Assets/Scenes/EndScreen.unity
-  playerPath: C:/Users/jakaufmann/Desktop/DigitalLogicSimulator.exe
+  playerPath: C:/repos/projects/DigitalLogicSimulator/DigitalLogicSimulator.exe

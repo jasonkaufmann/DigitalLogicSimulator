@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using TMPro;
 using UnityEngine;
@@ -25,14 +26,14 @@ public class MenuControls : MonoBehaviour
     public GameObject savedStateButton;
     public GameObject deleteButton;
     public GameObject loadingDuo;
+    public GameObject downloadUpdate;
+    public GameObject upToDate;
 
     public string programVersion;
 
     public void Start()
     {
-        string text = File.ReadAllText( Application.dataPath + "/version.txt");  
-        print(text);
-        programVersion = text;
+        programVersion = File.ReadAllText( Application.dataPath + "/version.txt");
     }
 
     public void Update()
@@ -94,15 +95,26 @@ public class MenuControls : MonoBehaviour
         string mostUpToDateVersion = checkGithubCurrentVersion();
         print("Current Version: " + programVersion);
         print("Server Version: " + mostUpToDateVersion);
+        
         if (mostUpToDateVersion != programVersion)
         {
-            print("get the update!");
+            downloadUpdate.SetActive(true);
+            print("get the update");
         }
         else
         {
+            upToDate.SetActive(true);
             print("you have the most up to date version");
-            loadingDuo.SetActive(false); //end animation
+           
         }
+        loadingDuo.SetActive(false); //end animation
+    }
+
+    public void downloadButtonClicked()
+    {
+        //Repository.Clone("https://github.com/EdiWang/EnvSetup.git", @"C:/repos/projec");
+        using WebClient client = new WebClient();
+        //client.DownloadFile();
     }
 
     public void restartProgram()
@@ -202,8 +214,7 @@ public class MenuControls : MonoBehaviour
     {
         var url =
             "https://raw.githubusercontent.com/jasonkaufmann/projects/master/DigitalLogicSimulator/Assets/version.txt";
-        using(WebClient client = new WebClient()) {
-            return client.DownloadString(url);
-        }
+        using WebClient client = new WebClient();
+        return client.DownloadString(url);
     }
 }
