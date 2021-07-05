@@ -90,9 +90,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3976}
     - Class: 114
-      Script: {instanceID: 22756}
+      Script: {instanceID: 22762}
     - Class: 114
-      Script: {instanceID: 22758}
+      Script: {instanceID: 22764}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1131,4 +1131,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/StartScreen.unity
   - Assets/Scenes/MainGame.unity
   - Assets/Scenes/EndScreen.unity
-  playerPath: C:/repos/projects/DigitalLogicSimulatorUpdater/DigitalLogicSimulatorUpdater/bin/Debug/net5.0-windows/DigitalLogicSimulator.exe
+  playerPath: C:/repos/projects/DigitalLogicSimulatorUpdater/DigitalLogicSimulatorUpdater/bin/Debug/net5.0-windows/Build/DigitalLogicSimulator.exe
