@@ -1,9 +1,5 @@
 Library\Bee\artifacts\mvdfrm\Unity.2D.Path.Editor.ref.dll_55D603C2735E3B81.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.2D.Sprite.Editor.ref.dll_0169DD889AE82A51.mvfrm
-Library\Bee\artifacts\mvdfrm\Unity.AdaptivePerformance.Editor.ref.dll_EF3BE2E7D16DCC48.mvfrm
-Library\Bee\artifacts\mvdfrm\Unity.AdaptivePerformance.Simulator.Editor.ref.dll_0C9585C96C7C5A92.mvfrm
-Library\Bee\artifacts\mvdfrm\Unity.AdaptivePerformance.Simulator.Extension.ref.dll_5C0BA588A6B413F0.mvfrm
-Library\Bee\artifacts\mvdfrm\Unity.AdaptivePerformance.ref.dll_BD6BCB78384F1DF9.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.InternalAPIEditorBridge.003.ref.dll_CCCB290B91128767.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.InternalAPIEngineBridge.003.ref.dll_BF45E1B5F6216EAC.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.ProBuilder.AddOns.Editor.ref.dll_2BB0992EA7CE9E4F.mvfrm
@@ -11,7 +7,6 @@ Library\Bee\artifacts\mvdfrm\Unity.ProBuilder.AssetIdRemapUtility.ref.dll_9A4910
 Library\Bee\artifacts\mvdfrm\Unity.ProBuilder.Editor.ref.dll_C1BD6BF01715933C.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.ProBuilder.ref.dll_18B36DF7373A77C5.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Rider.Editor.ref.dll_07D7D7B7487B1198.mvfrm
-Library\Bee\artifacts\mvdfrm\Unity.Subsystem.Registration.ref.dll_E45021852246D57F.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.TextMeshPro.Editor.ref.dll_37E92434B2D8A6CF.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.TextMeshPro.ref.dll_A4B478B3CE6E8702.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Timeline.Editor.ref.dll_0DA365A2C678CBF9.mvfrm
