@@ -90,9 +90,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4202}
     - Class: 114
-      Script: {instanceID: 24842}
+      Script: {instanceID: 24840}
     - Class: 114
-      Script: {instanceID: 24844}
+      Script: {instanceID: 24842}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1131,4 +1131,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/StartScreen.unity
   - Assets/Scenes/MainGame.unity
   - Assets/Scenes/EndScreen.unity
-  playerPath: C:/Users/JPKSP/projects/DLSBuildLocation/Build/DigitalLogicSimulator.exe
+  playerPath: C:/repos/projects/DLSBuildLocation/DigitalLogicSimulator.exe
