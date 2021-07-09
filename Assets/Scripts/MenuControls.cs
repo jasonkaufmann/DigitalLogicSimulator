@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -112,9 +113,8 @@ public class MenuControls : MonoBehaviour
 
     public void downloadButtonClicked()
     {
-        //Repository.Clone("https://github.com/EdiWang/EnvSetup.git", @"C:/repos/projec");
-        using WebClient client = new WebClient();
-        //client.DownloadFile();
+        Process.Start("../DLS.exe");
+        Application.Quit(); //kill current process
     }
 
     public void restartProgram()
@@ -213,7 +213,7 @@ public class MenuControls : MonoBehaviour
     public string checkGithubCurrentVersion()
     {
         var url =
-            "https://raw.githubusercontent.com/jasonkaufmann/projects/master/DigitalLogicSimulator/Assets/version.txt";
+            "https://raw.githubusercontent.com/jasonkaufmann/projects/master/DLSBuildLocation/version.txt";
         using WebClient client = new WebClient();
         return client.DownloadString(url);
     }
