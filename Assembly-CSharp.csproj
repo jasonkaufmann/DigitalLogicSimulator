@@ -363,7 +363,13 @@
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.2.0a13/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
      </Reference>
      <Reference Include="Newtonsoft.Json">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+     <HintPath>C:/Program Files/Unity/Hub/Editor/2021.2.0a13/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.iOS.Extensions.Common">
+     <HintPath>C:/Program Files/Unity/Hub/Editor/2021.2.0a13/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.2.0a13/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -714,61 +720,61 @@
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.2.0a13/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VSCode.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.InternalAPIEditorBridge.003">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.003.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.003.dll</HintPath>
      </Reference>
      <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualStudio.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.ProBuilder.AddOns.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VectorGraphics.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VectorGraphics.Editor.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VectorGraphics.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.InternalAPIEngineBridge.003">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.003.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.003.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VectorGraphics">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VectorGraphics.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.VectorGraphics.dll</HintPath>
      </Reference>
      <Reference Include="Unity.2D.Sprite.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.2D.Path.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.ProBuilder">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
      </Reference>
      <Reference Include="Unity.ProBuilder.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.UI">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Rider.Editor">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.UI">
-     <HintPath>C:/repos/projects/DigitalLogicSimulator/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+     <HintPath>C:/Users/JPKSP/projects/DigitalLogicSimulator/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>
