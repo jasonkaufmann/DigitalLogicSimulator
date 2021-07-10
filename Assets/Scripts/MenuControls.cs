@@ -113,7 +113,7 @@ public class MenuControls : MonoBehaviour
 
     public void downloadButtonClicked()
     {
-        Process.Start("../DLS.exe");
+        Process.Start(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "DLS.exe"));
         Application.Quit(); //kill current process
     }
 
