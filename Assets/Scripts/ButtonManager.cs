@@ -32,15 +32,25 @@ public class ButtonManager : MonoBehaviour
 
     public void mouseEnter()
     {
-        gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.75f);
+        if (gameObject.name == "INButton" || gameObject.name == "OUTButton" || gameObject.name == "TextButton")
+        {
+            gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.75f);
+        }
+        else
+        {
+            gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.75f);
+        }
     }
 
     public void mouseExit()
     {
-        if (gameObject.name != "ExitButton")
-            gameObject.GetComponent<Image>().color = new Color(38f / 255f, 38f / 255f, 38f / 255f, 81f/255f);
+        
+        if (gameObject.name == "INButton" || gameObject.name == "OUTButton" || gameObject.name == "TextButton")
+            gameObject.GetComponent<Image>().color = new Color(38f / 255f, 38f / 255f, 38f / 255f, 1f);
+        else if (gameObject.name != "ExitButton")
+            gameObject.GetComponent<Image>().color = new Color(38f / 255f, 38f / 255f, 38f / 255f, 1f);
         else
-            gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 81f/255f);
+            gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
     }
 
 

@@ -16,11 +16,13 @@ public class Controls : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        print("entered");
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     private void OnMouseExit()
     {
+        print("exited");
         gameObject.GetComponent<SpriteRenderer>().color = Color.black;
     }
 }
