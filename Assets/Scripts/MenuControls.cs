@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -103,14 +105,14 @@ public class MenuControls : MonoBehaviour
         loadProjectMenu.SetActive(true);
         if (!statesLoaded) loadSavedStates();
     }
-    
-    public void checkUpdateStatusButtonClicked()
+
+    IEnumerator DelayForASec()
     {
         loadingDuo.SetActive(true); //start animation
         string mostUpToDateVersion = checkGithubCurrentVersion();
         print("Current Version: " + programVersion);
         print("Server Version: " + mostUpToDateVersion);
-        
+        yield return new WaitForSeconds(1);
         if (mostUpToDateVersion != programVersion)
         {
             downloadUpdate.SetActive(true);
@@ -122,7 +124,12 @@ public class MenuControls : MonoBehaviour
             print("you have the most up to date version");
            
         }
-        loadingDuo.SetActive(false); //end animation
+        loadingDuo.SetActive(false);//end animation
+    }
+    
+    public void checkUpdateStatusButtonClicked()
+    {
+        StartCoroutine(DelayForASec());
     }
 
     public void downloadButtonClicked()
