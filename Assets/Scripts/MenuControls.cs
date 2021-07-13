@@ -34,7 +34,7 @@ public class MenuControls : MonoBehaviour
 
     public void Start()
     {
-        programVersion = File.ReadAllText( Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
+        programVersion = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
     }
 
     public void Update()
@@ -134,6 +134,8 @@ public class MenuControls : MonoBehaviour
         {
             updateMenu.SetActive(false);
             loadingDuo.SetActive(false);
+            upToDate.SetActive(false);
+            downloadUpdate.SetActive(false);
         }
     }
 
