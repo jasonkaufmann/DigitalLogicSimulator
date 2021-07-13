@@ -112,7 +112,7 @@ public class MenuControls : MonoBehaviour
         string mostUpToDateVersion = checkGithubCurrentVersion();
         print("Current Version: " + programVersion);
         print("Server Version: " + mostUpToDateVersion);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1); //delay so we can see loading animation so it looks like something is happening
         if (mostUpToDateVersion != programVersion)
         {
             downloadUpdate.SetActive(true);
