@@ -34,7 +34,7 @@ public class MenuControls : MonoBehaviour
 
     public void Start()
     {
-        programVersion = File.ReadAllText( Application.dataPath + "/version.txt");
+        programVersion = File.ReadAllText( Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
     }
 
     public void Update()
@@ -121,6 +121,7 @@ public class MenuControls : MonoBehaviour
     {
         System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe")); //new program
         Application.Quit(); //kill current process
+        //comment added
     }
 
     public void backButtonClicked()
