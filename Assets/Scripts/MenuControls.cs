@@ -35,6 +35,20 @@ public class MenuControls : MonoBehaviour
     public void Start()
     {
         programVersion = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
+        DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
+        if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "JSON")))
+        {
+            string rootFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "JSON");
+            string destinationPath = Application.persistentDataPath;
+            string[] fileList = System.IO.Directory.GetFiles(rootFolderPath);
+            foreach (string file in fileList)
+            {
+                string fileToMove = rootFolderPath + file;
+                string moveTo = destinationPath + file;
+                //moving file
+                File.Move(fileToMove, moveTo);
+            }
+        }
     }
 
     public void Update()
