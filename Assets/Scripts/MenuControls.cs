@@ -4,11 +4,14 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+//using Application = UnityEngine.Application;
+
 
 public class MenuControls : MonoBehaviour
 {
@@ -149,7 +152,8 @@ public class MenuControls : MonoBehaviour
         loadingDuo.SetActive(true);
         upToDate.SetActive(false);
         downloadUpdate.SetActive(false);//start animation
-        string mostUpToDateVersion = checkGithubCurrentVersion();
+        checkGithubCurrentVersion();
+        var mostUpToDateVersion = "";
         print("Current Version: " + programVersion);
         print("Server Version: " + mostUpToDateVersion);
         string[] lines =
@@ -279,12 +283,16 @@ public class MenuControls : MonoBehaviour
 
         statesLoaded = true;
     }
+    
 
     private string checkGithubCurrentVersion()
     {
         const String url =
-            "https://raw.githubusercontent.com/jasonkaufmann/projects/master/DLSBuildLocation/version.txt";
-        var client = new WebClient();
-        return client.DownloadString(url);
+            "https://api.github.com/repos/jasonkaufmann/projects/contents/DLSBuildLocation/version.txt";
+        WebRequest webRequest = WebRequest.Create(url);
+        webRequest.Headers["Authorization"] = "token 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";
+        WebResponse webResp = webRequest.GetResponse();
+        print(webResp);
+        return String.Empty;
     }
 }
