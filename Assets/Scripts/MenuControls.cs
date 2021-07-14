@@ -122,7 +122,7 @@ public class MenuControls : MonoBehaviour
         };
         File.WriteAllLines("check.txt", lines);
         yield return new WaitForSeconds(1); //delay so we can see loading animation so it looks like something is happening
-        if (mostUpToDateVersion != programVersion)
+        if (programVersion.Equals(mostUpToDateVersion, StringComparison.OrdinalIgnoreCase))
         {
             downloadUpdate.SetActive(true);
             downloadUpdate.transform.GetChild(2).GetComponent<TMP_Text>().text = "Version " + mostUpToDateVersion;
