@@ -120,7 +120,7 @@ public class MenuControls : MonoBehaviour
         {
             programVersion, "SPACE", mostUpToDateVersion 
         };
-        File.WriteAllLines("version.txt", lines);
+        File.WriteAllLines("check.txt", lines);
         yield return new WaitForSeconds(1); //delay so we can see loading animation so it looks like something is happening
         if (mostUpToDateVersion != programVersion)
         {
