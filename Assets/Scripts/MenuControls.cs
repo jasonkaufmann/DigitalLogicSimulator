@@ -155,10 +155,16 @@ public class MenuControls : MonoBehaviour
         upToDate.SetActive(false);
         downloadUpdate.SetActive(false);//start animation
         var mostUpToDateVersion =  checkGithubCurrentVersion();
+        string[] lines =
+        {
+            mostUpToDateVersion, "     ", programVersion 
+        };
+
+        File.WriteAllLines("WriteLines.txt", lines);
         print("Current Version: " + programVersion);
         print("Server Version: " + mostUpToDateVersion);
         yield return new WaitForSeconds(1); //delay so we can see loading animation so it looks like something is happening
-        if (programVersion.Equals(mostUpToDateVersion, StringComparison.OrdinalIgnoreCase))
+        if (!programVersion.Equals(mostUpToDateVersion, StringComparison.OrdinalIgnoreCase))
         {
             downloadUpdate.SetActive(true);
             downloadUpdate.transform.GetChild(2).GetComponent<TMP_Text>().text = "Version " + mostUpToDateVersion;
