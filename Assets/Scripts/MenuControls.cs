@@ -109,7 +109,9 @@ public class MenuControls : MonoBehaviour
 
     IEnumerator DelayForASec()
     {
-        loadingDuo.SetActive(true); //start animation
+        loadingDuo.SetActive(true);
+        upToDate.SetActive(false);
+        downloadUpdate.SetActive(false);//start animation
         string mostUpToDateVersion = checkGithubCurrentVersion();
         print("Current Version: " + programVersion);
         print("Server Version: " + mostUpToDateVersion);
