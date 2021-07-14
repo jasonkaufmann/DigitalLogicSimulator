@@ -39,7 +39,7 @@ public class MenuControls : MonoBehaviour
     public void Start()
     {
         programVersion = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
-        Screen.SetResolution((int) (Display.main.systemWidth*0.9), (int) (Display.main.systemHeight*0.75), false, 0);;
+        Screen.SetResolution((int) (Display.main.systemWidth*0.8), (int) (Display.main.systemHeight*0.7), false, 0);;
         print(Display.main.systemWidth);
         print(Display.main.systemHeight);
         StartCoroutine(RefreshWindow());
@@ -81,9 +81,13 @@ public class MenuControls : MonoBehaviour
                 Screen.SetResolution((int) Mathf.Round(widthAccordingToHeight), height, false, 0);
             }
 
+            if (height / Display.main.systemHeight > 0.9)
+            {
+                Screen.SetResolution(Screen.width, (int) (0.9 * Display.main.systemHeight), false, 0);
+            }
             lastWidth = width;
             lastHeight = height;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
         }
     }
 
