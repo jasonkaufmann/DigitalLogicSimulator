@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.ProBuilder;
 using UnityEngine.SceneManagement;
 
 public class MenuControls : MonoBehaviour
@@ -119,7 +120,7 @@ public class MenuControls : MonoBehaviour
         if (mostUpToDateVersion != programVersion)
         {
             downloadUpdate.SetActive(true);
-            GameObject.FindWithTag("version").GetComponent<TMP_Text>().text = "Version " + mostUpToDateVersion;
+            downloadUpdate.transform.GetChild(2).GetComponent<TMP_Text>().text = "Version " + mostUpToDateVersion;
             print("get the update");
         }
         else
