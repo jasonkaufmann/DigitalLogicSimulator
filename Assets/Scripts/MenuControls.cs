@@ -37,6 +37,7 @@ public class MenuControls : MonoBehaviour
     public void Start()
     {
         programVersion = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
+        
         GameObject.FindWithTag("version").GetComponent<TMP_Text>().text = "Version " + programVersion;
         DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
         if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "JSON")))
@@ -115,6 +116,11 @@ public class MenuControls : MonoBehaviour
         string mostUpToDateVersion = checkGithubCurrentVersion();
         print("Current Version: " + programVersion);
         print("Server Version: " + mostUpToDateVersion);
+        string[] lines =
+        {
+            programVersion, "SPACE", mostUpToDateVersion 
+        };
+        File.WriteAllLines("version.txt", lines);
         yield return new WaitForSeconds(1); //delay so we can see loading animation so it looks like something is happening
         if (mostUpToDateVersion != programVersion)
         {
