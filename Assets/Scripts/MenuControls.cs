@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -152,15 +154,9 @@ public class MenuControls : MonoBehaviour
         loadingDuo.SetActive(true);
         upToDate.SetActive(false);
         downloadUpdate.SetActive(false);//start animation
-        checkGithubCurrentVersion();
-        var mostUpToDateVersion = "";
+        var mostUpToDateVersion =  checkGithubCurrentVersion();
         print("Current Version: " + programVersion);
         print("Server Version: " + mostUpToDateVersion);
-        string[] lines =
-        {
-            programVersion, "SPACE", mostUpToDateVersion 
-        };
-        File.WriteAllLines("check.txt", lines);
         yield return new WaitForSeconds(1); //delay so we can see loading animation so it looks like something is happening
         if (programVersion.Equals(mostUpToDateVersion, StringComparison.OrdinalIgnoreCase))
         {
@@ -289,10 +285,26 @@ public class MenuControls : MonoBehaviour
     {
         const String url =
             "https://api.github.com/repos/jasonkaufmann/projects/contents/DLSBuildLocation/version.txt";
-        WebRequest webRequest = WebRequest.Create(url);
-        webRequest.Headers["Authorization"] = "token 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";
-        WebResponse webResp = webRequest.GetResponse();
-        print(webResp);
-        return String.Empty;
+        
+        var output = string.Empty;
+        HttpWebRequest request = (HttpWebRequest)System.Net.WebRequest.Create(url);
+
+        request.Headers.Add("Authorization", "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");
+        request.AllowAutoRedirect = true;
+        request.UserAgent = "jasonkaufmann";
+
+        var response = (HttpWebResponse)request.GetResponse();
+
+        using (var stream = new System.IO.MemoryStream())
+        {
+            response.GetResponseStream().CopyTo(stream);
+            output = System.Text.Encoding.ASCII.GetString(stream.ToArray());
+        }
+
+        var details = JObject.Parse(output);
+        var decodedString = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(details["content"].ToString()));
+        response.Close();
+
+        return decodedString;
     }
 }
