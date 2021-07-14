@@ -39,11 +39,12 @@ public class MenuControls : MonoBehaviour
     private int lastWidth = 0;
     private int lastHeight = 0;
 
-    public string programVersion;
+    private Version programVersion;
 
     public void Start()
     {
-        programVersion = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
+        string programVersionText = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
+        programVersion = new Version(programVersionText);
         Screen.SetResolution((int) (Display.main.systemWidth*0.8), (int) (Display.main.systemHeight*0.7), false, 0);;
         print(Display.main.systemWidth);
         print(Display.main.systemHeight);
@@ -155,16 +156,11 @@ public class MenuControls : MonoBehaviour
         upToDate.SetActive(false);
         downloadUpdate.SetActive(false);//start animation
         var mostUpToDateVersion =  checkGithubCurrentVersion();
-        string[] lines =
-        {
-            mostUpToDateVersion, "     ", programVersion 
-        };
-
-        File.WriteAllLines("WriteLines.txt", lines);
+        Version onlineVersion = new Version(mostUpToDateVersion);
         print("Current Version: " + programVersion);
         print("Server Version: " + mostUpToDateVersion);
         yield return new WaitForSeconds(1); //delay so we can see loading animation so it looks like something is happening
-        if (!programVersion.Equals(mostUpToDateVersion, StringComparison.OrdinalIgnoreCase))
+        if (onlineVersion.IsDifferentThan(programVersion))
         {
             downloadUpdate.SetActive(true);
             downloadUpdate.transform.GetChild(2).GetComponent<TMP_Text>().text = "Version " + mostUpToDateVersion;
@@ -312,5 +308,64 @@ public class MenuControls : MonoBehaviour
         response.Close();
 
         return decodedString;
+    }
+    
+    struct Version
+    {
+        internal static Version zero = new Version(0, 0, 0);
+
+        private short major;
+        private short minor;
+        private short subMinor;
+
+        internal Version(short _major, short _minor, short _subMinor)
+        {
+            major = _major;
+            minor = _minor;
+            subMinor = _subMinor;
+        }
+
+        internal Version(string _version)
+        {
+            string[] _versionStrings = _version.Split('.');
+            if (_versionStrings.Length != 3)
+            {
+                major = 0;
+                minor = 0;
+                subMinor = 0;
+                return;
+            }
+
+            major = short.Parse(_versionStrings[0]);
+            minor = short.Parse(_versionStrings[1]);
+            subMinor = short.Parse(_versionStrings[2]);
+        }
+        internal bool IsDifferentThan(Version _otherVersion)
+        {
+            if (major != _otherVersion.major)
+            {
+                return true;
+            }
+            else
+            {
+                if (minor != _otherVersion.minor)
+                {
+                    return true;
+                }
+                else
+                {
+                    if (subMinor != _otherVersion.subMinor)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return $"{major}.{minor}.{subMinor}";
+        }
     }
 }
