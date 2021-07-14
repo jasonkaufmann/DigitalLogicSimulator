@@ -39,7 +39,7 @@ public class MenuControls : MonoBehaviour
     public void Start()
     {
         programVersion = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
-        Screen.SetResolution((int) (Display.main.systemWidth*0.9), (int) (Display.main.systemHeight*0.9), false, 0);;
+        Screen.SetResolution((int) (Display.main.systemWidth*0.9), (int) (Display.main.systemHeight*0.75), false, 0);;
         print(Display.main.systemWidth);
         print(Display.main.systemHeight);
         StartCoroutine(RefreshWindow());
