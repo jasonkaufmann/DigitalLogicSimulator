@@ -37,6 +37,7 @@ public class MenuControls : MonoBehaviour
     public void Start()
     {
         programVersion = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
+        GameObject.FindWithTag("version").GetComponent<TMP_Text>().text = "Version " + programVersion;
         DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
         if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "JSON")))
         {
@@ -116,6 +117,7 @@ public class MenuControls : MonoBehaviour
         if (mostUpToDateVersion != programVersion)
         {
             downloadUpdate.SetActive(true);
+            GameObject.FindWithTag("version").GetComponent<TMP_Text>().text = "Version " + mostUpToDateVersion;
             print("get the update");
         }
         else

@@ -20,6 +20,7 @@ TagManager:
   - loading
   - downloadUpdate
   - upToDate
+  - version
   layers:
   - Default
   - TransparentFX
