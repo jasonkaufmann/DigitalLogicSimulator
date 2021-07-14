@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
@@ -45,6 +46,8 @@ public class ControlsManager : MonoBehaviour
     public GameObject textPF;
     public GameObject reg4PF;
     private readonly int speed = 10;
+    private int lastWidth = 0;
+    private int lastHeight = 0;
 
     private void Start()
     {
@@ -53,6 +56,34 @@ public class ControlsManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("title").GetComponent<TMP_Text>().text =
             PlayerPrefs.GetString("currentProjectName");
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
+        //StartCoroutine(refreshWindow());
+    }
+
+    IEnumerator refreshWindow()
+    {
+        while (true)
+        {
+            print("flag");
+            int width = Screen.width;
+            int height = Screen.height;
+
+            if (lastWidth != width) // if the user is changing the width
+            {
+                // update the height
+                float heightAccordingToWidth = width / 16.0f * 9.0f;
+                Screen.SetResolution(width, (int) Mathf.Round(heightAccordingToWidth), false, 0);
+            }
+            else if (lastHeight != height) // if the user is changing the height
+            {
+                // update the width
+                float widthAccordingToHeight = height / 9.0f * 16.0f;
+                Screen.SetResolution((int) Mathf.Round(widthAccordingToHeight), height, false, 0);
+            }
+
+            lastWidth = width;
+            lastHeight = height;
+            yield return new WaitForSeconds(0.25f);
+        }
     }
 
     private void Update()

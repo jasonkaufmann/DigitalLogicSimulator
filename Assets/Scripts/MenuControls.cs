@@ -31,13 +31,18 @@ public class MenuControls : MonoBehaviour
     public GameObject loadingDuo;
     public GameObject downloadUpdate;
     public GameObject upToDate;
+    private int lastWidth = 0;
+    private int lastHeight = 0;
 
     public string programVersion;
 
     public void Start()
     {
         programVersion = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
-        
+        Screen.SetResolution((int) (Display.main.systemWidth*0.9), (int) (Display.main.systemHeight*0.9), false, 0);;
+        print(Display.main.systemWidth);
+        print(Display.main.systemHeight);
+        StartCoroutine(RefreshWindow());
         GameObject.FindWithTag("version").GetComponent<TMP_Text>().text = "Version " + programVersion;
         DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
         if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "JSON")))
@@ -54,10 +59,37 @@ public class MenuControls : MonoBehaviour
             }
         }
     }
+    
+    IEnumerator RefreshWindow()
+    {
+        while (true)
+        {
+            print("flag");
+            var width = Screen.width;
+            var height = Screen.height;
+
+            if (lastWidth != width) // if the user is changing the width
+            {
+                // update the height
+                var heightAccordingToWidth = width / 16.0f * 9.0f;
+                Screen.SetResolution(width, (int) Mathf.Round(heightAccordingToWidth), false, 0);
+            }
+            else if (lastHeight != height) // if the user is changing the height
+            {
+                // update the width
+                var widthAccordingToHeight = height / 9.0f * 16.0f;
+                Screen.SetResolution((int) Mathf.Round(widthAccordingToHeight), height, false, 0);
+            }
+
+            lastWidth = width;
+            lastHeight = height;
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
 
     public void Update()
     {
-       loadingDuo.transform.GetChild(0).Rotate(new Vector3(0,0, 5f)); 
+       loadingDuo.transform.GetChild(0).Rotate(new Vector3(0,0, 5f));
     }
 
     public void startButtonClicked()
