@@ -280,11 +280,11 @@ public class MenuControls : MonoBehaviour
         statesLoaded = true;
     }
 
-    public string checkGithubCurrentVersion()
+    private string checkGithubCurrentVersion()
     {
-        var url =
+        const String url =
             "https://raw.githubusercontent.com/jasonkaufmann/projects/master/DLSBuildLocation/version.txt";
-        using WebClient client = new WebClient();
+        var client = new WebClient();
         return client.DownloadString(url);
     }
 }
