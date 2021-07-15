@@ -44,12 +44,9 @@ public class MenuControls : MonoBehaviour
 
     public void Start()
     {
-
         Screen.SetResolution((int) (Display.main.systemWidth*0.8), (int) (Display.main.systemHeight*0.7), false, 0);;
-        print(Display.main.systemWidth);
-        print(Display.main.systemHeight);
         StartCoroutine(RefreshWindow());
-        DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
+        /*DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
         if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "JSON")))
         {
             string rootFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "JSON");
@@ -62,15 +59,16 @@ public class MenuControls : MonoBehaviour
                 //moving file
                 File.Move(fileToMove, moveTo);
             }
-        }
-        print(AppDomain.CurrentDomain.BaseDirectory);
+        }*/
+       
+        string programVersionText = File.ReadAllText(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).ToString(), "version.txt"));
+        programVersion = new Version(programVersionText);
+        GameObject.FindWithTag("version").GetComponent<TMP_Text>().text = "Version " + programVersionText;
+        
         if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "autorun.txt")))
         {
             autoStart.GetComponent<Toggle>().isOn = true;
         }
-        string programVersionText = File.ReadAllText(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).ToString(), "version.txt"));
-        programVersion = new Version(programVersionText);
-        GameObject.FindWithTag("version").GetComponent<TMP_Text>().text = "Version " + programVersionText;
     }
     
     IEnumerator RefreshWindow()
