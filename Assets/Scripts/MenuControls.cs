@@ -45,6 +45,16 @@ public class MenuControls : MonoBehaviour
 
     public void Start()
     {
+        
+        string programVersionText = File.ReadAllText(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).ToString(), "version.txt"));
+        programVersion = new Version(programVersionText);
+        GameObject.FindWithTag("version").GetComponent<TMP_Text>().text = "Version " + programVersionText;
+        
+        if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "autorun.txt")))
+        {
+            autoStart.GetComponent<Toggle>().isOn = true;
+        }
+        
         Screen.SetResolution((int) (Display.main.systemWidth*0.8), (int) (Display.main.systemHeight*0.7), false, 0);;
         StartCoroutine(RefreshWindow());
         DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
@@ -74,14 +84,7 @@ public class MenuControls : MonoBehaviour
             }
         }
        
-        string programVersionText = File.ReadAllText(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).ToString(), "version.txt"));
-        programVersion = new Version(programVersionText);
-        GameObject.FindWithTag("version").GetComponent<TMP_Text>().text = "Version " + programVersionText;
         
-        if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "autorun.txt")))
-        {
-            autoStart.GetComponent<Toggle>().isOn = true;
-        }
     }
     
     IEnumerator RefreshWindow()
