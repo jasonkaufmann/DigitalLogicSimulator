@@ -14,8 +14,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-//using Application = UnityEngine.Application;
-
 
 public class MenuControls : MonoBehaviour
 {
@@ -51,7 +49,6 @@ public class MenuControls : MonoBehaviour
         print(Display.main.systemWidth);
         print(Display.main.systemHeight);
         StartCoroutine(RefreshWindow());
-        GameObject.FindWithTag("version").GetComponent<TMP_Text>().text = "Version " + programVersion;
         DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
         if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "JSON")))
         {
@@ -71,8 +68,9 @@ public class MenuControls : MonoBehaviour
         {
             autoStart.GetComponent<Toggle>().isOn = true;
         }
-        string programVersionText = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
+        string programVersionText = File.ReadAllText(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).ToString(), "version.txt"));
         programVersion = new Version(programVersionText);
+        GameObject.FindWithTag("version").GetComponent<TMP_Text>().text = "Version " + programVersionText;
     }
     
     IEnumerator RefreshWindow()
