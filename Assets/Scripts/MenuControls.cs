@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TMPro;
 using UnityEngine;
@@ -46,20 +47,32 @@ public class MenuControls : MonoBehaviour
     {
         Screen.SetResolution((int) (Display.main.systemWidth*0.8), (int) (Display.main.systemHeight*0.7), false, 0);;
         StartCoroutine(RefreshWindow());
-        /*DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
-        if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "JSON")))
+        DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
+        if (Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JSON")))
         {
-            string rootFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "JSON");
+            print("directory exists");
+            string rootFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JSON");
             string destinationPath = Application.persistentDataPath;
+            
             string[] fileList = System.IO.Directory.GetFiles(rootFolderPath);
             foreach (string file in fileList)
             {
-                string fileToMove = rootFolderPath + file;
-                string moveTo = destinationPath + file;
+                print(file);
+                int pos = file.LastIndexOf("\\");
+                string onlyFile = file.Substring(pos, file.Length - pos);
+                onlyFile = onlyFile.Remove(0, 1);
+                var savedState = File.ReadAllText(file);
+                print(savedState);
+                var info = JObject.Parse(savedState);
+                string moveTo = destinationPath + "/" + onlyFile;
                 //moving file
-                File.Move(fileToMove, moveTo);
+                File.WriteAllText(
+                    moveTo, JsonConvert.SerializeObject(info, new JsonSerializerSettings
+                    {
+                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                    }));
             }
-        }*/
+        }
        
         string programVersionText = File.ReadAllText(Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).ToString(), "version.txt"));
         programVersion = new Version(programVersionText);
@@ -75,7 +88,6 @@ public class MenuControls : MonoBehaviour
     {
         while (true)
         {
-            print("flag");
             var width = Screen.width;
             var height = Screen.height;
 
