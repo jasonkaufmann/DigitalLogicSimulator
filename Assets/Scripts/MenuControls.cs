@@ -12,6 +12,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 //using Application = UnityEngine.Application;
 
 
@@ -36,6 +38,7 @@ public class MenuControls : MonoBehaviour
     public GameObject loadingDuo;
     public GameObject downloadUpdate;
     public GameObject upToDate;
+    public GameObject autoStart;
     private int lastWidth = 0;
     private int lastHeight = 0;
 
@@ -43,8 +46,7 @@ public class MenuControls : MonoBehaviour
 
     public void Start()
     {
-        string programVersionText = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
-        programVersion = new Version(programVersionText);
+
         Screen.SetResolution((int) (Display.main.systemWidth*0.8), (int) (Display.main.systemHeight*0.7), false, 0);;
         print(Display.main.systemWidth);
         print(Display.main.systemHeight);
@@ -64,6 +66,13 @@ public class MenuControls : MonoBehaviour
                 File.Move(fileToMove, moveTo);
             }
         }
+        print(AppDomain.CurrentDomain.BaseDirectory);
+        if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "autorun.txt")))
+        {
+            autoStart.GetComponent<Toggle>().isOn = true;
+        }
+        string programVersionText = File.ReadAllText(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString(), "version.txt"));
+        programVersion = new Version(programVersionText);
     }
     
     IEnumerator RefreshWindow()
@@ -218,7 +227,17 @@ public class MenuControls : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-
+    public void autoRunOnStart()
+    {
+        if (autoStart.GetComponent<Toggle>().isOn)
+        {
+            File.Create(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "autorun.txt"));
+        }
+        else
+        {
+            File.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "autorun.txt"));
+        }
+    }
     public void deleteFile()
     {
         var name = EventSystem.current.currentSelectedGameObject.transform.parent.GetChild(0).GetComponent<TMP_Text>()
