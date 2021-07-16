@@ -58,7 +58,7 @@ public class MenuControls : MonoBehaviour
         Screen.SetResolution((int) (Display.main.systemWidth*0.8), (int) (Display.main.systemHeight*0.7), false, 0);;
         StartCoroutine(RefreshWindow());
         DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
-        if (Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JSON")) && !File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JSON","read.txt")))
+        if (Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JSON")))
         {
             print("directory exists");
             string rootFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JSON");
@@ -76,13 +76,16 @@ public class MenuControls : MonoBehaviour
                 var info = JObject.Parse(savedState);
                 string moveTo = destinationPath + "/" + onlyFile;
                 //moving file
-                File.WriteAllText(
-                    moveTo, JsonConvert.SerializeObject(info, new JsonSerializerSettings
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    }));
+                if (!File.Exists(moveTo))
+                {
+                    File.WriteAllText(
+                        moveTo, JsonConvert.SerializeObject(info, new JsonSerializerSettings
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        }));
+                }
             }
-            File.Create(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JSON", "read.txt"));
+            //File.Create(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JSON", "read.txt"));
         }
        
         
