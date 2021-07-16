@@ -304,6 +304,7 @@ public class MenuControls : MonoBehaviour
             button.GetComponent<RectTransform>().position -= new Vector3(0,
                 button.transform.localScale.y / 2f * i + button.transform.localScale.y / 4, 0);
             button.transform.GetChild(0).GetComponent<TMP_Text>().text = str;
+            button.transform.GetChild(0).GetComponent<TMP_Text>().enableAutoSizing = true;
             button.GetComponent<RectTransform>().anchoredPosition =
                 new Vector2(0, button.GetComponent<RectTransform>().anchoredPosition.y);
             button.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(loadScene);
