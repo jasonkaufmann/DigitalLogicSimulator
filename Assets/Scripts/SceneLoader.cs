@@ -25,6 +25,7 @@ public class SceneLoader : MonoBehaviour
     public GameObject textPF;
     public GameObject reg4PF;
     public GameObject add4PF;
+    public GameObject ram4PF;
     public GameObject tri8PF;
     public GameObject bcount4PF;
 
@@ -204,6 +205,14 @@ public class SceneLoader : MonoBehaviour
                 newGate.GetComponent<Gate>().loadedFromFile = true;
                 newGate.transform.rotation = Quaternion.Euler(0, 0, float.Parse(gate["rotation"].ToString()));
                 newGate.GetComponent<Gate>().gateType = Gate.type.TRISTATE8;
+                newGate.name += gate["gateNumber"].ToString();
+            } else if (int.Parse(gate["type"].ToString()) == 15)
+            {
+                var newGate = Instantiate(ram4PF, new Vector3(x, y, z), Quaternion.identity);
+                newGate.AddComponent<Gate>();
+                newGate.GetComponent<Gate>().loadedFromFile = true;
+                newGate.transform.rotation = Quaternion.Euler(0, 0, float.Parse(gate["rotation"].ToString()));
+                newGate.GetComponent<Gate>().gateType = Gate.type.RAM4;
                 newGate.name += gate["gateNumber"].ToString();
             }
         }

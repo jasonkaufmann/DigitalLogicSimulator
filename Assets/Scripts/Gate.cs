@@ -28,7 +28,8 @@ public class Gate : MonoBehaviour
         REG4,
         ADD4,
         BCOUNT4,
-        TRISTATE8
+        TRISTATE8,
+        RAM4
     }
 
     public bool snapIOToNearestPin = true;
@@ -49,6 +50,7 @@ public class Gate : MonoBehaviour
     private Camera moveCam;
     private Pin.highOrLow pastactualValue;
     private List<Pin.highOrLow> previousPinValues;
+    private Dictionary<int, int> ramDictionary; //used for the RAM module
     
     //gate specific variables
     private int bCountValue = 0;
@@ -56,6 +58,11 @@ public class Gate : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        ramDictionary = new Dictionary<int, int>();
+        for (int i = 1;  i < 17; i++)
+        {
+            ramDictionary.Add(i, 0);
+        }
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
         currentState = createdFromCopy ? state.COPYING : state.PLACING;
         if (loadedFromFile && !createdFromCopy) currentState = state.INSCENE;
@@ -70,7 +77,6 @@ public class Gate : MonoBehaviour
             pin.gate = this;
             pin.gateOrIO = true;
         }
-
         previousPinValues = new List<Pin.highOrLow>(new Pin.highOrLow[pins.Count]);
         noChange = true;
     }
@@ -436,10 +442,7 @@ public class Gate : MonoBehaviour
             }
 
             var cin = pins[8].actualValue == Pin.highOrLow.HIGH ? 1 : 0;
-            print("A NUMBER: " + aNumber);
-            print("B NUMBER: " + bNumber);
             var sum = aNumber + bNumber + cin;
-            print("SUM NUMBER: " + sum);
             placeNum = 0;
             for (var i = 9; i < 14; i++)
             {
@@ -638,7 +641,91 @@ public class Gate : MonoBehaviour
             previousPinValues.Clear();
             foreach (var pin in pins) previousPinValues.Add(pin.actualValue);
         }
+        else if (gateType == type.RAM4)
+        {
+            var numberToSave = 0;
+            var address = 0;
+            var placeNum = 0;
+            for (var i = 0; i < 4; i++)
+            {
+                var value = pins[i].actualValue;
+                if (value == Pin.highOrLow.HIGH)
+                {
+                    var shift = 0b1 << placeNum;
+                    numberToSave |= shift;
+                }
 
+                placeNum++;
+            }
+
+            placeNum = 0;
+
+            for (var i = 4; i < 8; i++)
+            {
+                var value = pins[i].actualValue;
+                if (value == Pin.highOrLow.HIGH)
+                {
+                    var shift = 0b1 << placeNum;
+                    address |= shift;
+                }
+
+                placeNum++;
+            }
+
+            if (pins[8].actualValue == Pin.highOrLow.HIGH && pins[8].actualValue != previousPinValues[8])
+            {
+                if (ramDictionary.ContainsKey(address))
+                {
+                    ramDictionary.Remove(address);
+                }
+                ramDictionary.Add(address, numberToSave);
+                print(ramDictionary[address]);
+            }
+
+            if (pins[13].actualValue == Pin.highOrLow.HIGH )
+            {
+                if (pins[13].actualValue != previousPinValues[13])
+                {
+                    foreach (var pin in pins.GetRange(9, 4))
+                        manager.removeHIZToAllConnectedWires(pins[pins.IndexOf(pin)]);
+                }
+
+                if(ramDictionary.ContainsKey(address)) {
+                    var outputCurrentValue = ramDictionary[address];
+                    placeNum = 0;
+                    for (var i = 9; i < 13; i++)
+                    {
+                        var shift = 0b1 << placeNum;
+                        if ((outputCurrentValue & shift) != 0)
+                        {
+                            if (pins[i].actualValue != Pin.highOrLow.HIGH)
+                            {
+                                pins[i].actualValue = Pin.highOrLow.HIGH;
+                                manager.propogateHighToAllConnectedWires(pins[i]);
+                            }
+                        }
+                        else
+                        {
+                            if (pins[i].actualValue != Pin.highOrLow.LOW)
+                            {
+                                pins[i].actualValue = Pin.highOrLow.LOW;
+                                manager.propogateLowToAllConnectedWires(pins[i]);
+                            }
+                        }
+
+                        placeNum++;
+                    }
+                }
+            }
+            else if (pins[13].actualValue == Pin.highOrLow.LOW && (pins[13].actualValue != previousPinValues[13] || firstFrame))
+            {
+                firstFrame = false;
+                print("set hiz");
+                foreach (var pin in pins.GetRange(9, 4)) manager.setHIZToAllConnectedWires(pins[pins.IndexOf(pin)]);
+            }
+            previousPinValues.Clear();
+            foreach (var pin in pins) previousPinValues.Add(pin.actualValue);
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape) && currentState == state.PLACING) DestroyImmediate(gameObject);
     }

@@ -63,7 +63,6 @@ public class ControlsManager : MonoBehaviour
     {
         while (true)
         {
-            print("flag");
             var width = Screen.width;
             var height = Screen.height;
 
@@ -86,7 +85,7 @@ public class ControlsManager : MonoBehaviour
             }
             lastWidth = width;
             lastHeight = height;
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 

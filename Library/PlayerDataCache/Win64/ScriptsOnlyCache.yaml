@@ -90,9 +90,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3976}
     - Class: 114
-      Script: {instanceID: 22518}
+      Script: {instanceID: 44838}
     - Class: 114
-      Script: {instanceID: 22520}
+      Script: {instanceID: 44840}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -654,7 +654,7 @@ ScriptsOnlyBuild:
     className: Pin
   - hash:
       serializedVersion: 2
-      Hash: 617b44888e019b69596b856d340b589d
+      Hash: a3a9955ada4c835f06ec2062d8807365
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SceneLoader
@@ -1122,7 +1122,7 @@ ScriptsOnlyBuild:
     className: TMP_TextEventCheck
   - hash:
       serializedVersion: 2
-      Hash: 4152651b2d8dd29383a0ae937e75cfee
+      Hash: e3095b2c8df0718449d3c5a13c83ce54
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ButtonManager

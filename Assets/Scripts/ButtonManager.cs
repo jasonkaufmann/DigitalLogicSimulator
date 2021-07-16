@@ -26,6 +26,7 @@ public class ButtonManager : MonoBehaviour
     public GameObject textPF;
     public GameObject reg4PF;
     public GameObject add4PF;
+    public GameObject ram4PF;
     public GameObject bcount4PF;
     public GameObject tristate8PF;
 
@@ -204,6 +205,15 @@ public class ButtonManager : MonoBehaviour
             Quaternion.identity);
         newobj.AddComponent<Gate>();
         newobj.GetComponent<Gate>().gateType = Gate.type.BCOUNT4;
+        newobj.name += newobj.GetInstanceID().ToString();
+    }
+    
+    public void RAM4Button()
+    {
+        var newobj = Instantiate(ram4PF, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10),
+            Quaternion.identity);
+        newobj.AddComponent<Gate>();
+        newobj.GetComponent<Gate>().gateType = Gate.type.RAM4;
         newobj.name += newobj.GetInstanceID().ToString();
     }
 
