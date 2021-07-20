@@ -90,9 +90,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3976}
     - Class: 114
-      Script: {instanceID: 27156}
+      Script: {instanceID: 29022}
     - Class: 114
-      Script: {instanceID: 27158}
+      Script: {instanceID: 29024}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1044,7 +1044,7 @@ ScriptsOnlyBuild:
     className: TMP_ExampleScript_01
   - hash:
       serializedVersion: 2
-      Hash: 9ffe51957d4495e30279fae6f6a45cc7
+      Hash: 7e32d11b6b58949c58b7d49b61d216df
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ControlsManager

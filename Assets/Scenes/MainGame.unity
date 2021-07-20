@@ -1802,6 +1802,10 @@ MonoBehaviour:
   clockPF: {fileID: 1752493419044370728, guid: 1dcb4725953b40e46b3b6fe6e9b99ec0, type: 3}
   textPF: {fileID: 3161466473482078859, guid: 13776e3676a3e1742bccfac7ac13118e, type: 3}
   reg4PF: {fileID: 5097883968983191615, guid: 537b7c3176ebb8a489350be3b0ee5d0b, type: 3}
+  add4PF: {fileID: 2827916100507635440, guid: 96e5f3e56fcf46c4caff9d229284d5bf, type: 3}
+  bcount4PF: {fileID: 8613316554879349489, guid: b107e757a6e0deb43ace7985e6bd5e40, type: 3}
+  tri8PF: {fileID: 1335718088004850478, guid: 0bf5082d309d0944ca059163c8b53ab3, type: 3}
+  ram4PF: {fileID: 3379590366320102501, guid: b93b8d18838bd804c9456159635353f8, type: 3}
 --- !u!1 &225225775
 GameObject:
   m_ObjectHideFlags: 0
