@@ -168,15 +168,20 @@ namespace UnityEditor.U2D.Sprites
 
         public long internalID
         {
-            get => m_InternalId;
+            get
+            {
+                if (m_InternalId == 0L)
+                    m_InternalId = GetFileGUID().GetHashCode();
+                return m_InternalId;
+            }
             set => m_InternalId = value;
         }
 
-        static public SpriteNameFileIdPairExt GetValue(SerializedProperty sp)
+        public static SpriteNameFileIdPairExt GetValue(SerializedProperty sp)
         {
             var name = sp.FindPropertyRelative(k_NameField).stringValue;
             var id = sp.FindPropertyRelative(k_FileIdField).longValue;
-            return new SpriteNameFileIdPairExt(name, GUID.CreateGUIDFromSInt64(id), id);
+            return new SpriteNameFileIdPairExt(name, GUID.Generate(), id);
         }
 
         public void Apply(SerializedProperty sp)

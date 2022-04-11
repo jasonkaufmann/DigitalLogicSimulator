@@ -74,7 +74,15 @@ namespace UnityEditor.UI
                 }
 
                 EditorGUILayout.PropertyField(m_WholeNumbers);
+
+                bool areMinMaxEqual = (m_MinValue.floatValue == m_MaxValue.floatValue);
+
+                if (areMinMaxEqual)
+                    EditorGUILayout.HelpBox("Min Value and Max Value cannot be equal.", MessageType.Warning);
+
+                EditorGUI.BeginDisabledGroup(areMinMaxEqual);
                 EditorGUILayout.Slider(m_Value, m_MinValue.floatValue, m_MaxValue.floatValue);
+                EditorGUI.EndDisabledGroup();
 
                 bool warning = false;
                 foreach (var obj in serializedObject.targetObjects)

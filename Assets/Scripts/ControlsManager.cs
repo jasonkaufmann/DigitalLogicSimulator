@@ -60,7 +60,7 @@ public class ControlsManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("title").GetComponent<TMP_Text>().text =
             PlayerPrefs.GetString("currentProjectName");
         manager = GameObject.FindGameObjectWithTag("startup").GetComponent<WireManager>();
-        StartCoroutine(refreshWindow());
+        //StartCoroutine(refreshWindow());
     }
 
     IEnumerator refreshWindow()

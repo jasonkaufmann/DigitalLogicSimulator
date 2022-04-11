@@ -56,7 +56,7 @@ public class MenuControls : MonoBehaviour
         }
         
         Screen.SetResolution((int) (Display.main.systemWidth*0.8), (int) (Display.main.systemHeight*0.7), false, 0);;
-        StartCoroutine(RefreshWindow());
+        //StartCoroutine(RefreshWindow());
         DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
         if (Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JSON")))
         {

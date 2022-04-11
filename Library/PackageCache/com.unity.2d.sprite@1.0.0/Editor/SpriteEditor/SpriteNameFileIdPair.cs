@@ -35,7 +35,7 @@ namespace UnityEditor
             set
             {
                 m_FileId = value;
-                m_GUID = GUID.CreateGUIDFromSInt64(m_FileId);
+                SetFileGUID(GUID.CreateGUIDFromSInt64(m_FileId));
             }
         }
 
@@ -54,6 +54,8 @@ namespace UnityEditor
         /// <param name="value">GUID value to set.</param>
         public void SetFileGUID(GUID value)
         {
+            if (value.Empty())
+                value = GUID.Generate();
             m_GUID = value;
         }
 
@@ -94,7 +96,7 @@ namespace UnityEditor
         /// <summary>
         /// Override Equal operator.
         /// </summary>
-        /// <param name="obj">Object to compare.</param>
+        /// <param name="pair">Object to compare.</param>
         /// <returns>True if the same. False otherwise.</returns>
         public bool Equals(SpriteNameFileIdPair pair)
         {

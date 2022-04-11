@@ -197,7 +197,7 @@ namespace UnityEditor.U2D.Sprites
             foreach (var pair in pairs)
             {
                 var guid = pair.GetFileGUID();
-                long internalId = guid.GetHashCode();
+                var internalId = (long)guid.GetHashCode();
                 //check if guid is in current name id table
                 var idPair = m_NameFileIdPairs.FirstOrDefault(x => x.GetFileGUID() == guid);
                 if (idPair != null)

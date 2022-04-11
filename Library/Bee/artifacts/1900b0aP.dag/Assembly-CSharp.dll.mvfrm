@@ -1,3 +1,5 @@
+SVGImage
+
 NavMeshPathStatus
 UnityEngine
 NavMeshPath
@@ -78,6 +80,14 @@ SpriteShapeMetaData
 ShapeControlPoint
 AngleRangeInfo
 SpriteShapeUtility
+TerrainCallbacks
+UnityEngine
+Experimental
+TerrainAPI
+TerrainUtility
+BrushTransform
+PaintContext
+TerrainPaintUtility
 ProgressBar
 UnityEditor
 UIElements
