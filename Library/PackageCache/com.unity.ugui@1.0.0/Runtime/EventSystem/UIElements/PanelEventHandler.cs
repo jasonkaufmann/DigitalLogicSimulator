@@ -2,8 +2,6 @@ using UnityEngine.EventSystems;
 
 namespace UnityEngine.UIElements
 {
-    // This code is disabled unless the UI Toolkit package or the com.unity.modules.uielements module are present.
-    // The UIElements module is always present in the Editor but it can be stripped from a project build if unused.
 #if PACKAGE_UITOOLKIT
     /// <summary>
     /// Use this class to handle input and send events to UI Toolkit runtime panels.
@@ -185,9 +183,6 @@ namespace UnityEngine.UIElements
             if (m_Panel == null)
                 return;
 
-            // Allow KeyDown/KeyUp events to be processed before navigation events.
-            ProcessImguiEvents(true);
-
             using (var e = NavigationSubmitEvent.GetPooled())
             {
                 SendEvent(e, eventData);
@@ -199,9 +194,6 @@ namespace UnityEngine.UIElements
             if (m_Panel == null)
                 return;
 
-            // Allow KeyDown/KeyUp events to be processed before navigation events.
-            ProcessImguiEvents(true);
-
             using (var e = NavigationCancelEvent.GetPooled())
             {
                 SendEvent(e, eventData);
@@ -212,9 +204,6 @@ namespace UnityEngine.UIElements
         {
             if (m_Panel == null)
                 return;
-
-            // Allow KeyDown/KeyUp events to be processed before navigation events.
-            ProcessImguiEvents(true);
 
             using (var e = NavigationMoveEvent.GetPooled(eventData.moveVector))
             {
@@ -396,8 +385,6 @@ namespace UnityEngine.UIElements
             public float altitudeAngle { get; private set; }
             public float azimuthAngle { get; private set; }
             public float twist { get; private set; }
-            public Vector2 tilt { get; private set; }
-            public PenStatus penStatus { get; private set; }
             public Vector2 radius { get; private set; }
             public Vector2 radiusVariance { get; private set; }
             public EventModifiers modifiers { get; private set; }
@@ -426,6 +413,9 @@ namespace UnityEngine.UIElements
                 isPrimary = pointerId == PointerId.mousePointerId ||
                     pointerId == PointerId.touchPointerIdBase ||
                     pointerId == PointerId.penPointerIdBase;
+
+                button = (int)eventData.button;
+                clickCount = eventData.clickCount;
 
                 // Flip Y axis between input and UITK
                 var h = Screen.height;
@@ -457,8 +447,6 @@ namespace UnityEngine.UIElements
                 altitudeAngle = eventData.altitudeAngle;
                 azimuthAngle = eventData.azimuthAngle;
                 twist = eventData.twist;
-                tilt = eventData.tilt;
-                penStatus = eventData.penStatus;
                 radius = eventData.radius;
                 radiusVariance = eventData.radiusVariance;
 
@@ -471,22 +459,13 @@ namespace UnityEngine.UIElements
                 }
                 else
                 {
-                    button = Mathf.Max(0, (int)eventData.button);
-                    clickCount = eventData.clickCount;
+                    button = button >= 0 ? button : 0;
+                    clickCount = Mathf.Max(1, clickCount);
 
                     if (eventType == PointerEventType.Down)
-                    {
-                        // Case 1379054: UIToolkit assumes clickCount is increased before PointerDown, but UGUI does it after.
-                        clickCount++;
-
                         PointerDeviceState.PressButton(pointerId, button);
-                    }
                     else if (eventType == PointerEventType.Up)
-                    {
                         PointerDeviceState.ReleaseButton(pointerId, button);
-                    }
-
-                    clickCount = Mathf.Max(1, clickCount);
                 }
 
                 pressedButtons = PointerDeviceState.GetPressedButtons(pointerId);
