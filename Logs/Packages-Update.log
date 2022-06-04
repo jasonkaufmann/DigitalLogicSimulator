@@ -75,3 +75,15 @@ The following packages were updated:
   com.unity.test-framework from version 1.1.24 to 1.1.29
   com.unity.textmeshpro from version 3.0.4 to 3.0.6
   com.unity.timeline from version 1.6.0-pre.3 to 1.6.3
+
+=== Sat Jun  4 00:43:36 2022
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.collab-proxy from version 1.15.13 to 1.15.15
+  com.unity.purchasing.udp from version 2.2.4 to 2.2.5
+  com.unity.timeline from version 1.6.4 to 1.7.1
+The following packages were removed:
+  com.unity.2d.path@5.0.1
