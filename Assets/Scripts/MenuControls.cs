@@ -55,7 +55,7 @@ public class MenuControls : MonoBehaviour
             autoStart.GetComponent<Toggle>().isOn = true;
         }
         
-        Screen.SetResolution((int) (Display.main.systemWidth*0.8), (int) (Display.main.systemHeight*0.7), false, 0);;
+        //Screen.SetResolution((int) (Display.main.systemWidth*0.8), (int) (Display.main.systemHeight*0.7), false, 0);;
         //StartCoroutine(RefreshWindow());
         DirectoryInfo d = new(Application.persistentDataPath); //Assuming Test is your Folder
         if (Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JSON")))

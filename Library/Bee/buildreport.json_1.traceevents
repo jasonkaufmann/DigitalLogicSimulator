@@ -1,578 +1,412 @@
 { "pid": 0, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "BeeDriver" } },
 { "pid": 0, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-2" } },
 { "pid": 0, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
-{ "pid": 0, "tid": 1, "ts": 1654332346918072, "dur": 5137193, "ph": "X", "name": "Build ScriptAssemblies", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332346919263, "dur": 23331, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332346942826, "dur": 56800, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332346999647, "dur": 292880, "ph": "X", "name": "BuildProgram", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332347292528, "dur": 4752458, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332352045003, "dur": 10261, "ph": "X", "name": "Finish", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332362219016, "dur": 646956, "ph": "X", "name": "Build Player", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332362219211, "dur": 3626, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332362222842, "dur": 44692, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332362267536, "dur": 252973, "ph": "X", "name": "BuildProgram", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332362520510, "dur": 343248, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332362863761, "dur": 2210, "ph": "X", "name": "Finish", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332418880586, "dur": 127783, "ph": "X", "name": "Build ScriptAssemblies", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332418880604, "dur": 11139, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332418891744, "dur": 106419, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332418998165, "dur": 10203, "ph": "X", "name": "Finish", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332423226078, "dur": 661386, "ph": "X", "name": "Build Player", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332423226098, "dur": 2045, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332423228145, "dur": 45328, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332423273475, "dur": 254140, "ph": "X", "name": "BuildProgram", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332423527617, "dur": 358533, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332423886151, "dur": 1312, "ph": "X", "name": "Finish", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332423888011, "dur": 44, "ph": "X", "name": "", "args": {} },
-{ "pid": 35942, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "netcorerun.dll" } },
-{ "pid": 35942, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-1" } },
-{ "pid": 35942, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
-{ "pid": 35942, "tid": 1, "ts": 1654332423403050, "dur": 110355, "ph": "X", "name": "BuildProgram", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1654332423403991, "dur": 42948, "ph": "X", "name": "BuildProgramContextConstructor", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1654332423496919, "dur": 5071, "ph": "X", "name": "OutputData.Write", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1654332423501994, "dur": 11404, "ph": "X", "name": "Backend.Write", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1654332423502666, "dur": 9054, "ph": "X", "name": "JsonToString", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1654332423517948, "dur": 1502, "ph": "X", "name": "", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1654332423517087, "dur": 2387, "ph": "X", "name": "Write chrome-trace events", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332423888135, "dur": 294, "ph": "X", "name": "buildprogram0.traceevents", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1654367703491100, "dur": 632010, "ph": "X", "name": "Build ScriptAssemblies", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1654367703492314, "dur": 22741, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1654367703515260, "dur": 597452, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1654367704112730, "dur": 10380, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1654367708832426, "dur": 112559, "ph": "X", "name": "Build Player", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1654367708832635, "dur": 1427, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1654367708834063, "dur": 109506, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1654367708943570, "dur": 1415, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1654367708945624, "dur": 14, "ph": "X", "name": "", "args": {} },
 { "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
-,{ "pid":12345, "tid":0, "ts":1654332423589047, "dur":1613, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423590669, "dur":55, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
-,{ "pid":12345, "tid":0, "ts":1654332423590739, "dur":17, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
-,{ "pid":12345, "tid":0, "ts":1654332423590757, "dur":1139, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
-,{ "pid":12345, "tid":0, "ts":1654332423592005, "dur":925, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423592930, "dur":1, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874360, "dur":202, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874562, "dur":17, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874579, "dur":336, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874915, "dur":8, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874923, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874924, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874929, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874930, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874935, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874936, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874940, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874941, "dur":21, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874962, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874963, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874967, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874968, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874972, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874973, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874977, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874978, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874983, "dur":0, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874984, "dur":3, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874987, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874988, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423874994, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423875009, "dur":2, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423875045, "dur":2619, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
-,{ "pid":12345, "tid":1, "ts":1654332423592497, "dur":441, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423592940, "dur":6178, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423599130, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
-,{ "pid":12345, "tid":1, "ts":1654332423599131, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423599206, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/app.info" }}
-,{ "pid":12345, "tid":1, "ts":1654332423599246, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423604164, "dur":2437, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/app.info" }}
-,{ "pid":12345, "tid":1, "ts":1654332423606602, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/config" }}
-,{ "pid":12345, "tid":1, "ts":1654332423606660, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423606667, "dur":3842, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/config" }}
-,{ "pid":12345, "tid":1, "ts":1654332423610556, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Resources/unity default resources" }}
-,{ "pid":12345, "tid":1, "ts":1654332423610606, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423610726, "dur":7775, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Resources/unity default resources" }}
-,{ "pid":12345, "tid":1, "ts":1654332423618554, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423618607, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423618614, "dur":3868, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423622532, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UIModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423622586, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423622592, "dur":3854, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UIModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423626513, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TilemapModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423626569, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423626576, "dur":4362, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TilemapModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423630984, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SubstanceModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423631035, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423631042, "dur":4555, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SubstanceModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423635645, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.PhysicsModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423635697, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423635703, "dur":4448, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.PhysicsModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423640197, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423640249, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423640256, "dur":3195, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423643501, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.DirectorModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423643553, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423643560, "dur":3006, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.DirectorModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423646612, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ARModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423646660, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423646666, "dur":2885, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ARModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423649602, "dur":570, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.VectorGraphics.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423650175, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423650181, "dur":6518, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.VectorGraphics.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423656768, "dur":1995, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Device.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423658783, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423658790, "dur":2940, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Device.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423661780, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UDP.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423661832, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423661838, "dur":3821, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UDP.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423665706, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Net.Http.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423665755, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423665761, "dur":4312, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Net.Http.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423670121, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Data.DataSetExtensions.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423670173, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423670179, "dur":3189, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Data.DataSetExtensions.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423673414, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Newtonsoft.Json.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423673461, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423673468, "dur":11787, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Newtonsoft.Json.dll" }}
-,{ "pid":12345, "tid":1, "ts":1654332423685308, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets1.assets.resS" }}
-,{ "pid":12345, "tid":1, "ts":1654332423685358, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423685364, "dur":2271, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets1.assets.resS" }}
-,{ "pid":12345, "tid":1, "ts":1654332423687679, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/resources.assets.resS" }}
-,{ "pid":12345, "tid":1, "ts":1654332423687724, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423687730, "dur":5325, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/resources.assets.resS" }}
-,{ "pid":12345, "tid":1, "ts":1654332423693101, "dur":222, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/boot.config" }}
-,{ "pid":12345, "tid":1, "ts":1654332423693327, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1654332423693332, "dur":2311, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/boot.config" }}
-,{ "pid":12345, "tid":1, "ts":1654332423695687, "dur":178673, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423592526, "dur":420, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423592946, "dur":6180, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423599130, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":2, "ts":1654332423599220, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423600998, "dur":5531, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":2, "ts":1654332423606582, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":2, "ts":1654332423606633, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423606640, "dur":5057, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":2, "ts":1654332423611760, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.WindModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423611820, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423611827, "dur":3663, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.WindModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423615538, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423615597, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423615603, "dur":5192, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423620850, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423620900, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423620907, "dur":6791, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423627749, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423627798, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423627804, "dur":8791, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423636660, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423636716, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423636723, "dur":4002, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423640779, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.HotReloadModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423640830, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423640837, "dur":3158, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.HotReloadModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423644036, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.CoreModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423644077, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423644082, "dur":19792, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.CoreModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423663915, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.ServiceModel.Internals.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423663957, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423663963, "dur":7022, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.ServiceModel.Internals.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423671036, "dur":68, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Core.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423671107, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423671114, "dur":15560, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Core.dll" }}
-,{ "pid":12345, "tid":2, "ts":1654332423686723, "dur":232, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/ScriptingAssemblies.json" }}
-,{ "pid":12345, "tid":2, "ts":1654332423686958, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423686964, "dur":2211, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/ScriptingAssemblies.json" }}
-,{ "pid":12345, "tid":2, "ts":1654332423689227, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level2" }}
-,{ "pid":12345, "tid":2, "ts":1654332423689278, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423689285, "dur":1869, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level2" }}
-,{ "pid":12345, "tid":2, "ts":1654332423691205, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level0" }}
-,{ "pid":12345, "tid":2, "ts":1654332423691251, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1654332423691257, "dur":2468, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level0" }}
-,{ "pid":12345, "tid":2, "ts":1654332423693773, "dur":180585, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423592562, "dur":390, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423592952, "dur":6172, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423599130, "dur":110, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
-,{ "pid":12345, "tid":3, "ts":1654332423599243, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423602979, "dur":3693, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
-,{ "pid":12345, "tid":3, "ts":1654332423606717, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/browscap.ini" }}
-,{ "pid":12345, "tid":3, "ts":1654332423606781, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423606787, "dur":5182, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/browscap.ini" }}
-,{ "pid":12345, "tid":3, "ts":1654332423612027, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VideoModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423612084, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423612091, "dur":3369, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VideoModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423615515, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VehiclesModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423615576, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423615586, "dur":4521, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VehiclesModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423620154, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423620206, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423620276, "dur":4795, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423625124, "dur":509, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UI.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423625636, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423625643, "dur":7949, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UI.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423633640, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423633691, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423633698, "dur":3443, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423637200, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423637259, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423637267, "dur":2756, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423640076, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.IMGUIModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423640128, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423640135, "dur":5312, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.IMGUIModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423645498, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423645555, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423645564, "dur":3007, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423648619, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AIModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423648705, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423648712, "dur":3941, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AIModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423652704, "dur":227, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423652935, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423652945, "dur":3129, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423656126, "dur":229, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Environments.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423656359, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423656365, "dur":2432, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Environments.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423658847, "dur":232, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Stl.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423659082, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423659089, "dur":2483, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Stl.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423661612, "dur":194, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.InternalAPIEngineBridge.003.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423661809, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423661815, "dur":2699, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.InternalAPIEngineBridge.003.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423664564, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Security.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423664614, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423664620, "dur":7235, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Security.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423671907, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Configuration.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423671960, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423671967, "dur":4776, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Configuration.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423676788, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/mscorlib.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423676833, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1654332423676841, "dur":54165, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/mscorlib.dll" }}
-,{ "pid":12345, "tid":3, "ts":1654332423731049, "dur":143348, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423592619, "dur":340, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423592959, "dur":6282, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423599241, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":4, "ts":1654332423599303, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423608240, "dur":3571, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":4, "ts":1654332423611864, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VRModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423611923, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423611929, "dur":8286, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VRModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423620281, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423620333, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423620340, "dur":4757, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423625143, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TLSModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423625190, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423625197, "dur":3172, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TLSModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423628422, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TerrainModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423628482, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423628489, "dur":5209, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TerrainModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423633743, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423633786, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423633824, "dur":3777, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423637653, "dur":281, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423637938, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423637945, "dur":4522, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423642517, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423642566, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423642572, "dur":6158, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423648792, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423648846, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423648853, "dur":5780, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423654681, "dur":254, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Internal.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423654938, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423654975, "dur":5087, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Internal.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423660112, "dur":534, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423660649, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423660656, "dur":7569, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423668270, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.EnterpriseServices.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423668323, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423668329, "dur":3763, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.EnterpriseServices.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423672142, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.ComponentModel.Composition.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423672192, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423672244, "dur":6317, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.ComponentModel.Composition.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423678607, "dur":340, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Assembly-CSharp.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423678950, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423678957, "dur":4701, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Assembly-CSharp.dll" }}
-,{ "pid":12345, "tid":4, "ts":1654332423683705, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Resources/unity_builtin_extra" }}
-,{ "pid":12345, "tid":4, "ts":1654332423683752, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423683759, "dur":2584, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Resources/unity_builtin_extra" }}
-,{ "pid":12345, "tid":4, "ts":1654332423686392, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets0.assets" }}
-,{ "pid":12345, "tid":4, "ts":1654332423686442, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423686448, "dur":4737, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets0.assets" }}
-,{ "pid":12345, "tid":4, "ts":1654332423691240, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/globalgamemanagers.assets" }}
-,{ "pid":12345, "tid":4, "ts":1654332423691293, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1654332423691299, "dur":2449, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/globalgamemanagers.assets" }}
-,{ "pid":12345, "tid":4, "ts":1654332423693826, "dur":180578, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423592717, "dur":246, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423592963, "dur":6182, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423599145, "dur":86, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/web.config" }}
-,{ "pid":12345, "tid":5, "ts":1654332423599233, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423601820, "dur":4540, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/web.config" }}
-,{ "pid":12345, "tid":5, "ts":1654332423606405, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
-,{ "pid":12345, "tid":5, "ts":1654332423606532, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423606540, "dur":3928, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
-,{ "pid":12345, "tid":5, "ts":1654332423610515, "dur":676, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator.exe" }}
-,{ "pid":12345, "tid":5, "ts":1654332423611194, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423611200, "dur":11205, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator.exe" }}
-,{ "pid":12345, "tid":5, "ts":1654332423622455, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UmbraModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423622511, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423622517, "dur":4074, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UmbraModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423626639, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423626690, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423626696, "dur":4468, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423631228, "dur":64, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423631295, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423631326, "dur":10006, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423641376, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.GIModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423641459, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423641466, "dur":4607, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.GIModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423646118, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AudioModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423646201, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423646210, "dur":4508, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AudioModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423650853, "dur":726, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Timeline.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423651583, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423651590, "dur":4866, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Timeline.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423656504, "dur":218, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423656725, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423656731, "dur":3147, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423659926, "dur":236, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.KdTree.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423660165, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423660171, "dur":2652, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.KdTree.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423662872, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Xml.Linq.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423662921, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423662927, "dur":4387, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Xml.Linq.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423667361, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.IO.Compression.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423667411, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423667418, "dur":6566, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.IO.Compression.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423674025, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/netstandard.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423674069, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423674075, "dur":4250, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/netstandard.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423678374, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Mono.Security.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423678424, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423678431, "dur":5815, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Mono.Security.dll" }}
-,{ "pid":12345, "tid":5, "ts":1654332423684289, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets2.assets" }}
-,{ "pid":12345, "tid":5, "ts":1654332423684335, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423684342, "dur":1667, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets2.assets" }}
-,{ "pid":12345, "tid":5, "ts":1654332423686058, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets0.assets.resS" }}
-,{ "pid":12345, "tid":5, "ts":1654332423686104, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1654332423686110, "dur":61009, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets0.assets.resS" }}
-,{ "pid":12345, "tid":5, "ts":1654332423747154, "dur":127244, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1654332423592831, "dur":140, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1654332423592971, "dur":6177, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1654332423599148, "dur":98, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
-,{ "pid":12345, "tid":6, "ts":1654332423599248, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1654332423605252, "dur":3703, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
-,{ "pid":12345, "tid":6, "ts":1654332423609015, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
-,{ "pid":12345, "tid":6, "ts":1654332423609072, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1654332423609078, "dur":125406, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
-,{ "pid":12345, "tid":6, "ts":1654332423734524, "dur":139874, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423592860, "dur":115, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423592975, "dur":6220, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423599195, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
-,{ "pid":12345, "tid":7, "ts":1654332423599266, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423606933, "dur":5569, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
-,{ "pid":12345, "tid":7, "ts":1654332423612548, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VFXModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423612596, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423612602, "dur":4215, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VFXModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423616864, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423616921, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423616928, "dur":5571, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423622549, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423622603, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423622609, "dur":5258, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423627917, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423627968, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423627975, "dur":3145, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423631175, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.StreamingModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423631238, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423631244, "dur":5813, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.StreamingModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423637101, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423637150, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423637157, "dur":4918, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423642125, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423642169, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423642176, "dur":3498, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423645720, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423645774, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423645780, "dur":2706, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423648533, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423648583, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423648590, "dur":5750, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423654389, "dur":212, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Networking.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423654604, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423654611, "dur":4242, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Networking.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423658906, "dur":249, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Poly2Tri.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423659158, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423659164, "dur":5827, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Poly2Tri.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423665042, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Runtime.Serialization.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423665095, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423665102, "dur":22059, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Runtime.Serialization.dll" }}
-,{ "pid":12345, "tid":7, "ts":1654332423687214, "dur":294, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/RuntimeInitializeOnLoads.json" }}
-,{ "pid":12345, "tid":7, "ts":1654332423687511, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423687517, "dur":2198, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/RuntimeInitializeOnLoads.json" }}
-,{ "pid":12345, "tid":7, "ts":1654332423689762, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level1" }}
-,{ "pid":12345, "tid":7, "ts":1654332423689812, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423689818, "dur":2638, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level1" }}
-,{ "pid":12345, "tid":7, "ts":1654332423692503, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/globalgamemanagers" }}
-,{ "pid":12345, "tid":7, "ts":1654332423692552, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1654332423692558, "dur":2619, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/globalgamemanagers" }}
-,{ "pid":12345, "tid":7, "ts":1654332423695247, "dur":179117, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1654332423592961, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1654332423592961, "dur":6182, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1654332423599144, "dur":83, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":8, "ts":1654332423599231, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1654332423601438, "dur":4315, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":8, "ts":1654332423605803, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":8, "ts":1654332423605851, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1654332423606159, "dur":3335, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":8, "ts":1654332423609542, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/UnityPlayer.dll" }}
-,{ "pid":12345, "tid":8, "ts":1654332423609593, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1654332423609598, "dur":264680, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/UnityPlayer.dll" }}
-,{ "pid":12345, "tid":8, "ts":1654332423874320, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
-,{ "pid":12345, "tid":8, "ts":1654332423874321, "dur":0, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423593026, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423593027, "dur":6114, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423599142, "dur":99, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":9, "ts":1654332423599244, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423603367, "dur":3995, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":9, "ts":1654332423607406, "dur":84, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423607492, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423607611, "dur":15083, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423622748, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UIElementsModule.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423622804, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423622811, "dur":20671, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UIElementsModule.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423643537, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423643682, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423643690, "dur":3096, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423646831, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AnimationModule.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423646893, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423646899, "dur":5744, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AnimationModule.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423652696, "dur":254, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423652953, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423652960, "dur":4754, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423657765, "dur":222, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Analytics.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423657990, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423657997, "dur":2500, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Analytics.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423660547, "dur":219, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Csg.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423660769, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423660776, "dur":2722, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Csg.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423663558, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Transactions.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423663612, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423663618, "dur":3507, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Transactions.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423667174, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.IO.Compression.FileSystem.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423667230, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423667237, "dur":2600, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.IO.Compression.FileSystem.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423669882, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423669926, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1654332423669931, "dur":33512, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.dll" }}
-,{ "pid":12345, "tid":9, "ts":1654332423703493, "dur":170868, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1654332423593174, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1654332423593175, "dur":5962, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1654332423599137, "dur":114, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
-,{ "pid":12345, "tid":10, "ts":1654332423599253, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1654332423606004, "dur":3957, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
-,{ "pid":12345, "tid":10, "ts":1654332423610009, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/UnityCrashHandler64.exe" }}
-,{ "pid":12345, "tid":10, "ts":1654332423610062, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1654332423610067, "dur":25713, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/UnityCrashHandler64.exe" }}
-,{ "pid":12345, "tid":10, "ts":1654332423635837, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.Physics2DModule.dll" }}
-,{ "pid":12345, "tid":10, "ts":1654332423635888, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1654332423635894, "dur":5870, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.Physics2DModule.dll" }}
-,{ "pid":12345, "tid":10, "ts":1654332423641814, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.GameCenterModule.dll" }}
-,{ "pid":12345, "tid":10, "ts":1654332423641876, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1654332423641883, "dur":9170, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.GameCenterModule.dll" }}
-,{ "pid":12345, "tid":10, "ts":1654332423651100, "dur":806, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.TextMeshPro.dll" }}
-,{ "pid":12345, "tid":10, "ts":1654332423651910, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1654332423651948, "dur":11168, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.TextMeshPro.dll" }}
-,{ "pid":12345, "tid":10, "ts":1654332423663193, "dur":120, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Xml.dll" }}
-,{ "pid":12345, "tid":10, "ts":1654332423663317, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1654332423663323, "dur":43292, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Xml.dll" }}
-,{ "pid":12345, "tid":10, "ts":1654332423706649, "dur":167714, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423593234, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423593234, "dur":5900, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423599144, "dur":77, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
-,{ "pid":12345, "tid":11, "ts":1654332423599224, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423600867, "dur":5308, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
-,{ "pid":12345, "tid":11, "ts":1654332423606283, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/web.config" }}
-,{ "pid":12345, "tid":11, "ts":1654332423606347, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423606355, "dur":5542, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/web.config" }}
-,{ "pid":12345, "tid":11, "ts":1654332423611948, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423612002, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423612008, "dur":4355, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423616406, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423616460, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423616467, "dur":4941, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423621465, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423621523, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423621529, "dur":7948, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423629521, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423629567, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423629574, "dur":2554, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423632174, "dur":83, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423632260, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423632267, "dur":2950, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423635302, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ProfilerModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423635358, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423635365, "dur":2772, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ProfilerModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423638183, "dur":187, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.InputModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423638373, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423638380, "dur":2943, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.InputModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423641372, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.GridModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423641420, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423641466, "dur":4543, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.GridModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423646062, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ClothModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423646115, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423646143, "dur":9260, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ClothModule.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423655454, "dur":253, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423655710, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423655717, "dur":13318, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423669189, "dur":211, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Drawing.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423669404, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423669411, "dur":13210, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Drawing.dll" }}
-,{ "pid":12345, "tid":11, "ts":1654332423682669, "dur":215, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
-,{ "pid":12345, "tid":11, "ts":1654332423682887, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423683682, "dur":1694, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
-,{ "pid":12345, "tid":11, "ts":1654332423685424, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets1.assets" }}
-,{ "pid":12345, "tid":11, "ts":1654332423685473, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423685479, "dur":3547, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets1.assets" }}
-,{ "pid":12345, "tid":11, "ts":1654332423689075, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/resources.assets" }}
-,{ "pid":12345, "tid":11, "ts":1654332423689166, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1654332423689173, "dur":4431, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/resources.assets" }}
-,{ "pid":12345, "tid":11, "ts":1654332423693656, "dur":180703, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423593421, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423593421, "dur":5709, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423599133, "dur":102, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/web.config" }}
-,{ "pid":12345, "tid":12, "ts":1654332423599238, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423602363, "dur":4023, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/web.config" }}
-,{ "pid":12345, "tid":12, "ts":1654332423606439, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
-,{ "pid":12345, "tid":12, "ts":1654332423606536, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423606545, "dur":4648, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
-,{ "pid":12345, "tid":12, "ts":1654332423611247, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.XRModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423611302, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423611376, "dur":7412, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.XRModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423618839, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423618897, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423618904, "dur":2869, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423621825, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UNETModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423621873, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423621880, "dur":5505, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UNETModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423627435, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423627489, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423627495, "dur":6298, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423633845, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423633903, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423633911, "dur":3243, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423637212, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.LocalizationModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423637273, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423637280, "dur":2598, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.LocalizationModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423639933, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423639984, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423639991, "dur":6265, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423646333, "dur":772, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423647108, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423647115, "dur":3946, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423651112, "dur":397, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Threading.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423651513, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423651521, "dur":2701, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Threading.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423654273, "dur":235, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Registration.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423654511, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423654518, "dur":2962, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Registration.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423657530, "dur":233, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Configuration.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423657766, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423657803, "dur":7525, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Configuration.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423665380, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Numerics.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423665433, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423665439, "dur":4458, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Numerics.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423669946, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Data.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423669999, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1654332423670005, "dur":27849, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Data.dll" }}
-,{ "pid":12345, "tid":12, "ts":1654332423697896, "dur":176500, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1654332423879678, "dur":2120, "ph":"X", "name": "ProfilerWriteOutput" }
-,{ "pid": 0, "tid": 1, "ts": 1654332423888511, "dur": 1354, "ph": "X", "name": "backend_profiler1.traceevents", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1654332423888000, "dur": 1906, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+,{ "pid":12345, "tid":0, "ts":1654367708875252, "dur":1585, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708876843, "dur":99, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1654367708876957, "dur":15, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1654367708876973, "dur":1279, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1654367708878319, "dur":878, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708879197, "dur":1, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708928902, "dur":407, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929309, "dur":17, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929326, "dur":4, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929331, "dur":27, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929358, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929359, "dur":9, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929368, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929370, "dur":7, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929377, "dur":34, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929411, "dur":9, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929420, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929422, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929427, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929429, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929434, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929435, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929440, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929441, "dur":24, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929465, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929467, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929471, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929472, "dur":29, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929501, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929502, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929508, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929527, "dur":2, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708929540, "dur":2884, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1654367708879049, "dur":261, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708879310, "dur":6836, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708886148, "dur":623, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":1, "ts":1654367708886771, "dur":145, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708886917, "dur":667, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator.exe" }}
+,{ "pid":12345, "tid":1, "ts":1654367708887584, "dur":59, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708887643, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708887695, "dur":547, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708888243, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708888297, "dur":139, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708888437, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708888490, "dur":178, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708888669, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708888727, "dur":142, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708888869, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708888922, "dur":195, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708889118, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708889160, "dur":110, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708889270, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708889306, "dur":151, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708889457, "dur":299, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708889757, "dur":131, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708889889, "dur":193, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890083, "dur":47, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890131, "dur":160, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890291, "dur":47, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890339, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UDP.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890376, "dur":100, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890476, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890522, "dur":95, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890618, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890657, "dur":112, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890769, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890806, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890847, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890881, "dur":96, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708890977, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets1.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1654367708891022, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708892489, "dur":4018, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets1.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1654367708896559, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level2" }}
+,{ "pid":12345, "tid":1, "ts":1654367708896612, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1654367708896618, "dur":2008, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level2" }}
+,{ "pid":12345, "tid":1, "ts":1654367708898674, "dur":30234, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1654367708878878, "dur":399, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1654367708879278, "dur":6858, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1654367708886136, "dur":139, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":2, "ts":1654367708886275, "dur":571, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1654367708886847, "dur":10008, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":2, "ts":1654367708896856, "dur":130, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1654367708896988, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":2, "ts":1654367708897051, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1654367708897064, "dur":2840, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":2, "ts":1654367708899956, "dur":28946, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708879003, "dur":300, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708879303, "dur":6828, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708886134, "dur":151, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":3, "ts":1654367708886286, "dur":147, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708886438, "dur":120, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":3, "ts":1654367708886559, "dur":148, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708886708, "dur":133, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1654367708886841, "dur":119, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708886961, "dur":87, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":3, "ts":1654367708887049, "dur":136, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708887185, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708887229, "dur":235, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708887465, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708887503, "dur":180, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708887684, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708887729, "dur":511, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888241, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888283, "dur":106, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888389, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888428, "dur":102, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888531, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888577, "dur":100, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888678, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888717, "dur":97, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888815, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888855, "dur":100, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888956, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708888993, "dur":184, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708889177, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708889218, "dur":153, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708889372, "dur":82, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708889454, "dur":128, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708889583, "dur":239, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708889822, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708889883, "dur":272, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890155, "dur":50, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890206, "dur":182, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.KdTree.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890388, "dur":116, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890505, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890543, "dur":102, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890646, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890686, "dur":94, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890781, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890822, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890863, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890915, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708890970, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets2.assets" }}
+,{ "pid":12345, "tid":3, "ts":1654367708891018, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708892002, "dur":4540, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets2.assets" }}
+,{ "pid":12345, "tid":3, "ts":1654367708896595, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level0" }}
+,{ "pid":12345, "tid":3, "ts":1654367708896869, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1654367708896876, "dur":2396, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level0" }}
+,{ "pid":12345, "tid":3, "ts":1654367708899320, "dur":29602, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1654367708879079, "dur":236, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1654367708879315, "dur":6823, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1654367708886139, "dur":576, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":4, "ts":1654367708886715, "dur":139, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1654367708886855, "dur":9067, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":4, "ts":1654367708895923, "dur":158, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1654367708896083, "dur":268, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":4, "ts":1654367708896351, "dur":222, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1654367708896574, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level1" }}
+,{ "pid":12345, "tid":4, "ts":1654367708896637, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1654367708896692, "dur":3531, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/level1" }}
+,{ "pid":12345, "tid":4, "ts":1654367708900257, "dur":28657, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708879225, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708879225, "dur":6898, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708886134, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":5, "ts":1654367708886135, "dur":637, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708886774, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/app.info" }}
+,{ "pid":12345, "tid":5, "ts":1654367708886776, "dur":131, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708886908, "dur":93, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":5, "ts":1654367708887001, "dur":50, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708887051, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708887096, "dur":110, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708887207, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708887248, "dur":382, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708887631, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708887688, "dur":555, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708888244, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708888304, "dur":141, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708888446, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708888490, "dur":126, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708888616, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708888658, "dur":103, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708888762, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708888804, "dur":98, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708888903, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708888943, "dur":133, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708889076, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708889115, "dur":87, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708889203, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708889241, "dur":214, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708889456, "dur":391, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.VectorGraphics.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708889848, "dur":150, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708889999, "dur":216, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708890215, "dur":71, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708890287, "dur":182, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Csg.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708890469, "dur":115, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708890585, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708890624, "dur":92, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708890717, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708890760, "dur":41, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708890802, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":5, "ts":1654367708890838, "dur":104, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708890942, "dur":180, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":5, "ts":1654367708891123, "dur":84, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708891208, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":5, "ts":1654367708891248, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1654367708894317, "dur":5699, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":5, "ts":1654367708900096, "dur":28810, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708879337, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708879338, "dur":6813, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708886153, "dur":187, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":6, "ts":1654367708886340, "dur":131, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708886472, "dur":111, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":6, "ts":1654367708886583, "dur":250, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708886834, "dur":123, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":6, "ts":1654367708886958, "dur":133, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708887092, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708887149, "dur":143, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708887293, "dur":84, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708887378, "dur":285, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708887664, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708887723, "dur":513, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708888237, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708888280, "dur":102, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708888383, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708888422, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708888528, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708888588, "dur":109, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708888698, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708888745, "dur":103, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708888849, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708888887, "dur":100, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708888987, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708889025, "dur":173, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708889199, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708889254, "dur":139, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708889393, "dur":87, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708889480, "dur":142, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708889622, "dur":227, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708889849, "dur":70, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708889919, "dur":219, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708890138, "dur":62, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708890200, "dur":240, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Poly2Tri.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708890440, "dur":144, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708890584, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708890637, "dur":145, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708890782, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708890831, "dur":73, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708890905, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":6, "ts":1654367708890974, "dur":127, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708891102, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":6, "ts":1654367708891171, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1654367708893840, "dur":34971, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":6, "ts":1654367708928849, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":6, "ts":1654367708928851, "dur":0, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1654367708879383, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1654367708879383, "dur":6757, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1654367708886143, "dur":9846, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":7, "ts":1654367708895990, "dur":147, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1654367708896138, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":7, "ts":1654367708896212, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1654367708896238, "dur":4543, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":7, "ts":1654367708900816, "dur":28091, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1654367708879522, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1654367708879522, "dur":6620, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1654367708886143, "dur":9788, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":8, "ts":1654367708895931, "dur":145, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1654367708896078, "dur":241, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":8, "ts":1654367708896319, "dur":221, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1654367708896541, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/resources.assets" }}
+,{ "pid":12345, "tid":8, "ts":1654367708896601, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1654367708896614, "dur":2943, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/resources.assets" }}
+,{ "pid":12345, "tid":8, "ts":1654367708899614, "dur":29289, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1654367708879558, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1654367708879558, "dur":6586, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1654367708886146, "dur":10857, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":9, "ts":1654367708897004, "dur":364, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1654367708897369, "dur":589, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/boot.config" }}
+,{ "pid":12345, "tid":9, "ts":1654367708897958, "dur":765, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1654367708898725, "dur":30174, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708879602, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708879602, "dur":6556, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708886159, "dur":215, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":10, "ts":1654367708886375, "dur":129, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708886505, "dur":146, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":10, "ts":1654367708886651, "dur":225, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708886877, "dur":115, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708886992, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708887053, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708887119, "dur":115, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708887235, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708887278, "dur":392, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708887671, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708887719, "dur":531, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708888251, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708888302, "dur":134, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708888437, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708888490, "dur":155, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708888646, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708888691, "dur":103, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708888795, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708888833, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708888940, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708888979, "dur":126, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708889105, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708889145, "dur":136, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708889281, "dur":103, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708889384, "dur":174, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708889559, "dur":467, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708890027, "dur":138, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708890166, "dur":236, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.Stl.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708890402, "dur":147, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708890550, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708890607, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708890663, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708890714, "dur":57, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708890772, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708890823, "dur":109, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708890932, "dur":328, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708891301, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1654367708894796, "dur":4459, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":10, "ts":1654367708899305, "dur":29600, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708879739, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708879740, "dur":6420, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708886160, "dur":229, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":11, "ts":1654367708886389, "dur":161, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708886551, "dur":138, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":11, "ts":1654367708886689, "dur":136, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708886826, "dur":123, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":11, "ts":1654367708886949, "dur":126, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708887075, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708887128, "dur":135, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708887264, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708887319, "dur":355, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708887675, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708887719, "dur":250, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708887970, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708888005, "dur":252, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708888257, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708888310, "dur":160, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708888471, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708888528, "dur":154, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708888684, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708888742, "dur":147, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708888890, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708888941, "dur":146, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708889087, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708889134, "dur":143, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708889278, "dur":178, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708889457, "dur":220, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708889678, "dur":237, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708889915, "dur":64, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708889980, "dur":236, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708890216, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708890284, "dur":349, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.ProBuilder.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708890633, "dur":113, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708890747, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708890787, "dur":47, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708890834, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708890871, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708890910, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":11, "ts":1654367708890947, "dur":88, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708891036, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets1.assets" }}
+,{ "pid":12345, "tid":11, "ts":1654367708891082, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1654367708893305, "dur":5179, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/sharedassets1.assets" }}
+,{ "pid":12345, "tid":11, "ts":1654367708898542, "dur":30359, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708879774, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708879774, "dur":6375, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708886151, "dur":755, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":12, "ts":1654367708886906, "dur":109, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708887016, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708887059, "dur":120, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708887179, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708887222, "dur":100, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708887323, "dur":209, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708887532, "dur":174, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708887707, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708887768, "dur":463, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708888232, "dur":372, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708888604, "dur":137, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708888742, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708888798, "dur":143, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708888942, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708888994, "dur":197, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708889191, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708889248, "dur":138, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708889387, "dur":77, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708889464, "dur":124, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708889588, "dur":189, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708889777, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708889827, "dur":161, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708889988, "dur":45, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708890034, "dur":211, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708890245, "dur":61, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708890307, "dur":208, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/Unity.InternalAPIEngineBridge.003.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708890515, "dur":160, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708890676, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708890728, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708890784, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":12, "ts":1654367708890833, "dur":124, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708890957, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":12, "ts":1654367708891018, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708892145, "dur":4891, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":12, "ts":1654367708897101, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":12, "ts":1654367708897156, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1654367708897162, "dur":2907, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/jakaufmann/OneDrive - Tesla/projects/DLSBuildLocation/Build/DigitalLogicSimulator_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":12, "ts":1654367708900113, "dur":28796, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1654367708934589, "dur":1599, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid": 0, "tid": 1, "ts": 1654367708945703, "dur": 837, "ph": "X", "name": "backend_profiler0.traceevents", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1654367708945615, "dur": 950, "ph": "X", "name": "Write chrome-trace events", "args": {} },

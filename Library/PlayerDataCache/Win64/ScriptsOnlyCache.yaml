@@ -13,10 +13,6 @@ ScriptsOnlyBuild:
     - SceneLoader
     - Selection
     - WireManager
-    Unity.CollabProxy.Editor.dll:
-    - Unity.Cloud.Collaborate.UserInterface.CollaborateWindow
-    Unity.PlasticSCM.Editor.dll:
-    - Unity.PlasticSCM.Editor.PlasticWindow
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -363,31 +359,31 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 20666}
+      Script: {instanceID: 1608}
     - Class: 114
-      Script: {instanceID: 20988}
+      Script: {instanceID: 1614}
     - Class: 114
-      Script: {instanceID: 21376}
+      Script: {instanceID: 1616}
     - Class: 114
-      Script: {instanceID: 21786}
+      Script: {instanceID: 2008}
     - Class: 114
-      Script: {instanceID: 21938}
+      Script: {instanceID: 2816}
     - Class: 114
-      Script: {instanceID: 21994}
+      Script: {instanceID: 2970}
     - Class: 114
-      Script: {instanceID: 22186}
+      Script: {instanceID: 3028}
     - Class: 114
-      Script: {instanceID: 22452}
+      Script: {instanceID: 3224}
     - Class: 114
-      Script: {instanceID: 22600}
+      Script: {instanceID: 3490}
     - Class: 114
-      Script: {instanceID: 23378}
+      Script: {instanceID: 4412}
     - Class: 114
-      Script: {instanceID: 23752}
+      Script: {instanceID: 4790}
     - Class: 114
-      Script: {instanceID: 42180}
+      Script: {instanceID: 25674}
     - Class: 114
-      Script: {instanceID: 42182}
+      Script: {instanceID: 25676}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -426,65 +422,65 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 20666}
+      Script: {instanceID: 1608}
     - Class: 114
-      Script: {instanceID: 20704}
+      Script: {instanceID: 1610}
     - Class: 114
-      Script: {instanceID: 20804}
+      Script: {instanceID: 1612}
     - Class: 114
-      Script: {instanceID: 20820}
+      Script: {instanceID: 1614}
     - Class: 114
-      Script: {instanceID: 20878}
+      Script: {instanceID: 1616}
     - Class: 114
-      Script: {instanceID: 20988}
+      Script: {instanceID: 1618}
     - Class: 114
-      Script: {instanceID: 21376}
+      Script: {instanceID: 1620}
     - Class: 114
-      Script: {instanceID: 21438}
+      Script: {instanceID: 1622}
     - Class: 114
-      Script: {instanceID: 21786}
+      Script: {instanceID: 1624}
     - Class: 114
-      Script: {instanceID: 21938}
+      Script: {instanceID: 1720}
     - Class: 114
-      Script: {instanceID: 21994}
+      Script: {instanceID: 1822}
     - Class: 114
-      Script: {instanceID: 22186}
+      Script: {instanceID: 1894}
     - Class: 114
-      Script: {instanceID: 22232}
+      Script: {instanceID: 2008}
     - Class: 114
-      Script: {instanceID: 22244}
+      Script: {instanceID: 2466}
     - Class: 114
-      Script: {instanceID: 22452}
+      Script: {instanceID: 2816}
     - Class: 114
-      Script: {instanceID: 22472}
+      Script: {instanceID: 2970}
     - Class: 114
-      Script: {instanceID: 22502}
+      Script: {instanceID: 3028}
     - Class: 114
-      Script: {instanceID: 22518}
+      Script: {instanceID: 3224}
     - Class: 114
-      Script: {instanceID: 22600}
+      Script: {instanceID: 3272}
     - Class: 114
-      Script: {instanceID: 22684}
+      Script: {instanceID: 3490}
     - Class: 114
-      Script: {instanceID: 22836}
+      Script: {instanceID: 3510}
     - Class: 114
-      Script: {instanceID: 22992}
+      Script: {instanceID: 3540}
     - Class: 114
-      Script: {instanceID: 23136}
+      Script: {instanceID: 3556}
     - Class: 114
-      Script: {instanceID: 23358}
+      Script: {instanceID: 3720}
     - Class: 114
-      Script: {instanceID: 23678}
+      Script: {instanceID: 4168}
     - Class: 114
-      Script: {instanceID: 23868}
+      Script: {instanceID: 4716}
     - Class: 114
-      Script: {instanceID: 23976}
+      Script: {instanceID: 4914}
     - Class: 114
-      Script: {instanceID: 24424}
+      Script: {instanceID: 5478}
     - Class: 114
-      Script: {instanceID: 24460}
+      Script: {instanceID: 5514}
     - Class: 114
-      Script: {instanceID: 24912}
+      Script: {instanceID: 5972}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -525,55 +521,55 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 20666}
+      Script: {instanceID: 1608}
     - Class: 114
-      Script: {instanceID: 20704}
+      Script: {instanceID: 1610}
     - Class: 114
-      Script: {instanceID: 20804}
+      Script: {instanceID: 1612}
     - Class: 114
-      Script: {instanceID: 20820}
+      Script: {instanceID: 1614}
     - Class: 114
-      Script: {instanceID: 20988}
+      Script: {instanceID: 1618}
     - Class: 114
-      Script: {instanceID: 21374}
+      Script: {instanceID: 1622}
     - Class: 114
-      Script: {instanceID: 21590}
+      Script: {instanceID: 1624}
     - Class: 114
-      Script: {instanceID: 21786}
+      Script: {instanceID: 1720}
     - Class: 114
-      Script: {instanceID: 21938}
+      Script: {instanceID: 1822}
     - Class: 114
-      Script: {instanceID: 21994}
+      Script: {instanceID: 2008}
     - Class: 114
-      Script: {instanceID: 22186}
+      Script: {instanceID: 2402}
     - Class: 114
-      Script: {instanceID: 22452}
+      Script: {instanceID: 2618}
     - Class: 114
-      Script: {instanceID: 22472}
+      Script: {instanceID: 2816}
     - Class: 114
-      Script: {instanceID: 22572}
+      Script: {instanceID: 2970}
     - Class: 114
-      Script: {instanceID: 22600}
+      Script: {instanceID: 3028}
     - Class: 114
-      Script: {instanceID: 22836}
+      Script: {instanceID: 3224}
     - Class: 114
-      Script: {instanceID: 22992}
+      Script: {instanceID: 3490}
     - Class: 114
-      Script: {instanceID: 23358}
+      Script: {instanceID: 3510}
     - Class: 114
-      Script: {instanceID: 23378}
+      Script: {instanceID: 3610}
     - Class: 114
-      Script: {instanceID: 23678}
+      Script: {instanceID: 4412}
     - Class: 114
-      Script: {instanceID: 23850}
+      Script: {instanceID: 4716}
     - Class: 114
-      Script: {instanceID: 23868}
+      Script: {instanceID: 4896}
     - Class: 114
-      Script: {instanceID: 23976}
+      Script: {instanceID: 4914}
     - Class: 114
-      Script: {instanceID: 23992}
+      Script: {instanceID: 5038}
     - Class: 114
-      Script: {instanceID: 24334}
+      Script: {instanceID: 5386}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -595,6 +591,60 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
+      Hash: a6e561615949734e9f12f9b61661f43e
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ContentSizeFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 69415240821be7986b27e72bf9609a30
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
+      Hash: 699619b86d9359741a4f58540298c80b
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: 0dbc3be398b4869a5c8d0d8481ee402c
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: LayoutElement
+  - hash:
+      serializedVersion: 2
+      Hash: 8fbc134fd506d97c845cf2b715231396
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 134322c9293c1896357cce271b819ce4
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: EventTrigger
+  - hash:
+      serializedVersion: 2
+      Hash: ef5c43f921427d03730f6ea4c848f07d
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: RectMask2D
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UIElements
@@ -605,12 +655,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
-  - hash:
-      serializedVersion: 2
-      Hash: a6e561615949734e9f12f9b61661f43e
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
   - hash:
       serializedVersion: 2
       Hash: e9389e944eb81a3a9df56fcdb09ce6a9
@@ -647,12 +691,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Toggle
-  - hash:
-      serializedVersion: 2
-      Hash: 0dbc3be398b4869a5c8d0d8481ee402c
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: LayoutElement
   - hash:
       serializedVersion: 2
       Hash: 6bc76e17f0d5e93f3eea7f5a2fe227f3
@@ -737,12 +775,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
-  - hash:
-      serializedVersion: 2
-      Hash: 699619b86d9359741a4f58540298c80b
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Text
   - hash:
       serializedVersion: 2
       Hash: 3aa24cc128ebabf19f69e6eacec4adf8
@@ -871,12 +903,6 @@ ScriptsOnlyBuild:
     className: Controls
   - hash:
       serializedVersion: 2
-      Hash: 8fbc134fd506d97c845cf2b715231396
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: InputField
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -961,12 +987,6 @@ ScriptsOnlyBuild:
     className: MenuControls
   - hash:
       serializedVersion: 2
-      Hash: 69415240821be7986b27e72bf9609a30
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
-  - hash:
-      serializedVersion: 2
       Hash: fe2d355deb0ca31d59a0a7cf4d141fc3
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -1003,12 +1023,6 @@ ScriptsOnlyBuild:
     className: TMP_FrameRateCounter
   - hash:
       serializedVersion: 2
-      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ContentSizeFitter
-  - hash:
-      serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1025,12 +1039,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1115,12 +1123,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
-  - hash:
-      serializedVersion: 2
-      Hash: 134322c9293c1896357cce271b819ce4
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: EventTrigger
   - hash:
       serializedVersion: 2
       Hash: db748703f6b978444470a4f4b1c1161c
@@ -1247,12 +1249,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlPlayableAsset
-  - hash:
-      serializedVersion: 2
-      Hash: ef5c43f921427d03730f6ea4c848f07d
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: RectMask2D
   - hash:
       serializedVersion: 2
       Hash: 87ad3705a58f19c47136728d4a6e9c47

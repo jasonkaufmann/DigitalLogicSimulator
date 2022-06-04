@@ -31,7 +31,6 @@
 -s="C:\Program Files\Unity\Hub\Editor\2021.3.4f1\Editor\Data\Managed\UnityEngine"
 -s="C:\Users\jakaufmann\OneDrive - Tesla\projects\DigitalLogicSimulator\Library\PlayerScriptAssemblies"
 -s="C:\Users\jakaufmann\OneDrive - Tesla\projects\DigitalLogicSimulator\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\AOT"
--s="C:\Users\jakaufmann\OneDrive - Tesla\projects\DigitalLogicSimulator\Assets\JsonDotNet\Assemblies\Standalone"
 -s="C:\Users\jakaufmann\OneDrive - Tesla\projects\DigitalLogicSimulator\Assets\JsonDotNet\Assemblies\AOT"
 -s="C:\Users\jakaufmann\OneDrive - Tesla\projects\DigitalLogicSimulator\Assets\JsonDotNet\Assemblies\Windows"
 -s="C:\Users\jakaufmann\OneDrive - Tesla\projects\DigitalLogicSimulator\Library\PackageCache\com.unity.purchasing.udp@2.2.5\Runtime"
